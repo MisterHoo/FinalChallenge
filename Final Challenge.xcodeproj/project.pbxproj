@@ -8,22 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		663CBBE821E451E400572FFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663CBBE721E451E400572FFC /* AppDelegate.swift */; };
-		663CBBEA21E451E400572FFC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663CBBE921E451E400572FFC /* ViewController.swift */; };
 		663CBBED21E451E400572FFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 663CBBEB21E451E400572FFC /* Main.storyboard */; };
 		663CBBF021E451E400572FFC /* Final_Challenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 663CBBEE21E451E400572FFC /* Final_Challenge.xcdatamodeld */; };
 		663CBBF221E451E500572FFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 663CBBF121E451E500572FFC /* Assets.xcassets */; };
 		663CBBF521E451E500572FFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 663CBBF321E451E500572FFC /* LaunchScreen.storyboard */; };
+		66B737C421E46299000C9B50 /* TastePreferenceTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66B737C321E46299000C9B50 /* TastePreferenceTest.storyboard */; };
+		66B737C621E4650B000C9B50 /* LoginVerification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66B737C521E4650B000C9B50 /* LoginVerification.storyboard */; };
+		66B737C821E46577000C9B50 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B737C721E46577000C9B50 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		663CBBE421E451E400572FFC /* Final Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Final Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		663CBBE721E451E400572FFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		663CBBE921E451E400572FFC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		663CBBEC21E451E400572FFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		663CBBEF21E451E400572FFC /* Final_Challenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Final_Challenge.xcdatamodel; sourceTree = "<group>"; };
 		663CBBF121E451E500572FFC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		663CBBF421E451E500572FFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		663CBBF621E451E500572FFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66B737C321E46299000C9B50 /* TastePreferenceTest.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TastePreferenceTest.storyboard; sourceTree = "<group>"; };
+		66B737C521E4650B000C9B50 /* LoginVerification.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginVerification.storyboard; sourceTree = "<group>"; };
+		66B737C721E46577000C9B50 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +60,41 @@
 		663CBBE621E451E400572FFC /* Final Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				66B737C021E46231000C9B50 /* View */,
+				66B737C121E46238000C9B50 /* Model */,
+				66B737C221E4623C000C9B50 /* Controller */,
 				663CBBE721E451E400572FFC /* AppDelegate.swift */,
-				663CBBE921E451E400572FFC /* ViewController.swift */,
-				663CBBEB21E451E400572FFC /* Main.storyboard */,
 				663CBBF121E451E500572FFC /* Assets.xcassets */,
-				663CBBF321E451E500572FFC /* LaunchScreen.storyboard */,
 				663CBBF621E451E500572FFC /* Info.plist */,
 				663CBBEE21E451E400572FFC /* Final_Challenge.xcdatamodeld */,
 			);
 			path = "Final Challenge";
+			sourceTree = "<group>";
+		};
+		66B737C021E46231000C9B50 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				663CBBEB21E451E400572FFC /* Main.storyboard */,
+				66B737C321E46299000C9B50 /* TastePreferenceTest.storyboard */,
+				66B737C521E4650B000C9B50 /* LoginVerification.storyboard */,
+				663CBBF321E451E500572FFC /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		66B737C121E46238000C9B50 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		66B737C221E4623C000C9B50 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				66B737C721E46577000C9B50 /* LoginViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,7 +155,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66B737C621E4650B000C9B50 /* LoginVerification.storyboard in Resources */,
 				663CBBF521E451E500572FFC /* LaunchScreen.storyboard in Resources */,
+				66B737C421E46299000C9B50 /* TastePreferenceTest.storyboard in Resources */,
 				663CBBF221E451E500572FFC /* Assets.xcassets in Resources */,
 				663CBBED21E451E400572FFC /* Main.storyboard in Resources */,
 			);
@@ -138,7 +170,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				663CBBEA21E451E400572FFC /* ViewController.swift in Sources */,
+				66B737C821E46577000C9B50 /* LoginViewController.swift in Sources */,
 				663CBBF021E451E400572FFC /* Final_Challenge.xcdatamodeld in Sources */,
 				663CBBE821E451E400572FFC /* AppDelegate.swift in Sources */,
 			);
