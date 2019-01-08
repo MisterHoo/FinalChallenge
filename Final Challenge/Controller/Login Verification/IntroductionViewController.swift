@@ -1,8 +1,8 @@
-\//
+//
 //  IntroductionViewController.swift
 //  Final Challenge
 //
-//  Created by Yosua Hoo on 08/01/19.
+//  Created by Brandon Cornelius on 08/01/19.
 //  Copyright © 2019 Yosua Hoo. All rights reserved.
 //
 
