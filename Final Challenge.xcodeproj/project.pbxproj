@@ -15,6 +15,17 @@
 		66B737C421E46299000C9B50 /* TastePreferenceTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66B737C321E46299000C9B50 /* TastePreferenceTest.storyboard */; };
 		66B737C621E4650B000C9B50 /* LoginVerification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66B737C521E4650B000C9B50 /* LoginVerification.storyboard */; };
 		66B737C821E46577000C9B50 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B737C721E46577000C9B50 /* LoginViewController.swift */; };
+		66B737CC21E46B5B000C9B50 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B737CB21E46B5B000C9B50 /* ScanViewController.swift */; };
+		66B737CE21E46B64000C9B50 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B737CD21E46B64000C9B50 /* ResultViewController.swift */; };
+		66B737D021E46B72000C9B50 /* GiveReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B737CF21E46B72000C9B50 /* GiveReviewViewController.swift */; };
+		66B737D321E46C10000C9B50 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B737D221E46C10000C9B50 /* ProfileViewController.swift */; };
+		66B737D921E46C98000C9B50 /* IntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B737D821E46C98000C9B50 /* IntroductionViewController.swift */; };
+		66B737DB21E46C9E000C9B50 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B737DA21E46C9E000C9B50 /* SignUpViewController.swift */; };
+		66B737DE21E46DFD000C9B50 /* ResultPhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B737DD21E46DFD000C9B50 /* ResultPhotoTableViewCell.swift */; };
+		66B737E021E4700E000C9B50 /* ResultActionButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B737DF21E4700E000C9B50 /* ResultActionButtonTableViewCell.swift */; };
+		66B737E221E47020000C9B50 /* ResultInformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B737E121E47020000C9B50 /* ResultInformationTableViewCell.swift */; };
+		66B737E421E47033000C9B50 /* ResultPredictionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B737E321E47033000C9B50 /* ResultPredictionTableViewCell.swift */; };
+		66B737E621E47044000C9B50 /* ResultSimilarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B737E521E47044000C9B50 /* ResultSimilarTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +39,17 @@
 		66B737C321E46299000C9B50 /* TastePreferenceTest.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TastePreferenceTest.storyboard; sourceTree = "<group>"; };
 		66B737C521E4650B000C9B50 /* LoginVerification.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginVerification.storyboard; sourceTree = "<group>"; };
 		66B737C721E46577000C9B50 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		66B737CB21E46B5B000C9B50 /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
+		66B737CD21E46B64000C9B50 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		66B737CF21E46B72000C9B50 /* GiveReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiveReviewViewController.swift; sourceTree = "<group>"; };
+		66B737D221E46C10000C9B50 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		66B737D821E46C98000C9B50 /* IntroductionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionViewController.swift; sourceTree = "<group>"; };
+		66B737DA21E46C9E000C9B50 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		66B737DD21E46DFD000C9B50 /* ResultPhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultPhotoTableViewCell.swift; sourceTree = "<group>"; };
+		66B737DF21E4700E000C9B50 /* ResultActionButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultActionButtonTableViewCell.swift; sourceTree = "<group>"; };
+		66B737E121E47020000C9B50 /* ResultInformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultInformationTableViewCell.swift; sourceTree = "<group>"; };
+		66B737E321E47033000C9B50 /* ResultPredictionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultPredictionTableViewCell.swift; sourceTree = "<group>"; };
+		66B737E521E47044000C9B50 /* ResultSimilarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultSimilarTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,9 +114,52 @@
 		66B737C221E4623C000C9B50 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				66B737C721E46577000C9B50 /* LoginViewController.swift */,
+				66B737D721E46C8C000C9B50 /* Login Verification */,
+				66B737D621E46C87000C9B50 /* Taste */,
+				66B737D121E46B76000C9B50 /* Main */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		66B737D121E46B76000C9B50 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				66B737DC21E46DC3000C9B50 /* Result */,
+				66B737CB21E46B5B000C9B50 /* ScanViewController.swift */,
+				66B737CF21E46B72000C9B50 /* GiveReviewViewController.swift */,
+				66B737D221E46C10000C9B50 /* ProfileViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		66B737D621E46C87000C9B50 /* Taste */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Taste;
+			sourceTree = "<group>";
+		};
+		66B737D721E46C8C000C9B50 /* Login Verification */ = {
+			isa = PBXGroup;
+			children = (
+				66B737C721E46577000C9B50 /* LoginViewController.swift */,
+				66B737D821E46C98000C9B50 /* IntroductionViewController.swift */,
+				66B737DA21E46C9E000C9B50 /* SignUpViewController.swift */,
+			);
+			path = "Login Verification";
+			sourceTree = "<group>";
+		};
+		66B737DC21E46DC3000C9B50 /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				66B737CD21E46B64000C9B50 /* ResultViewController.swift */,
+				66B737DD21E46DFD000C9B50 /* ResultPhotoTableViewCell.swift */,
+				66B737DF21E4700E000C9B50 /* ResultActionButtonTableViewCell.swift */,
+				66B737E121E47020000C9B50 /* ResultInformationTableViewCell.swift */,
+				66B737E321E47033000C9B50 /* ResultPredictionTableViewCell.swift */,
+				66B737E521E47044000C9B50 /* ResultSimilarTableViewCell.swift */,
+			);
+			path = Result;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,9 +235,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66B737D921E46C98000C9B50 /* IntroductionViewController.swift in Sources */,
+				66B737CE21E46B64000C9B50 /* ResultViewController.swift in Sources */,
+				66B737D021E46B72000C9B50 /* GiveReviewViewController.swift in Sources */,
 				66B737C821E46577000C9B50 /* LoginViewController.swift in Sources */,
 				663CBBF021E451E400572FFC /* Final_Challenge.xcdatamodeld in Sources */,
+				66B737E421E47033000C9B50 /* ResultPredictionTableViewCell.swift in Sources */,
+				66B737E021E4700E000C9B50 /* ResultActionButtonTableViewCell.swift in Sources */,
+				66B737D321E46C10000C9B50 /* ProfileViewController.swift in Sources */,
+				66B737DB21E46C9E000C9B50 /* SignUpViewController.swift in Sources */,
+				66B737DE21E46DFD000C9B50 /* ResultPhotoTableViewCell.swift in Sources */,
+				66B737E621E47044000C9B50 /* ResultSimilarTableViewCell.swift in Sources */,
 				663CBBE821E451E400572FFC /* AppDelegate.swift in Sources */,
+				66B737CC21E46B5B000C9B50 /* ScanViewController.swift in Sources */,
+				66B737E221E47020000C9B50 /* ResultInformationTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
