@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nUh-2l-Sb3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mBZ-TS-gk7">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -169,7 +169,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="ydz-PK-stM" customClass="ResultActionButtonTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResultActionTableCell" rowHeight="100" id="ydz-PK-stM" customClass="ResultActionButtonTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="577" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ydz-PK-stM" id="Xd0-TL-eYu">
@@ -209,10 +209,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iG7-lb-bfC"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="IMX-jn-Cjg" id="2ca-Ur-kUx"/>
+                        <segue destination="nUh-2l-Sb3" kind="show" identifier="ResultToGiveReview" id="rmh-zn-cBW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eS8-Uz-dRm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1391" y="137"/>
+            <point key="canvasLocation" x="1457" y="21"/>
         </scene>
         <!--Give Review View Controller-->
         <scene sceneID="z3c-L4-1Um">

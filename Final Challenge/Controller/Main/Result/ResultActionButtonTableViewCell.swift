@@ -8,21 +8,26 @@
 
 import UIKit
 
+protocol ResultActionDelegate{
+    func AteFood()
+    func DidNotAte()
+}
+
 class ResultActionButtonTableViewCell: UITableViewCell {
 
-    
+    var resultActionDelegate : ResultActionDelegate?
     
     @IBAction func ButtonAteFood(_ sender: Any) {
-    
+        resultActionDelegate?.AteFood()
     }
     
     @IBAction func ButtonDidNotAte(_ sender: Any) {
-    
+        resultActionDelegate?.DidNotAte()
     }
     
     
     override func awakeFromNib() {
-        super.awakeFromNib()
+    super.awakeFromNib()
         // Initialization code
     }
 
