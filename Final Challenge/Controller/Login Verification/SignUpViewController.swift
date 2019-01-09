@@ -17,7 +17,6 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var rePasswordTextField: UITextField!
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
