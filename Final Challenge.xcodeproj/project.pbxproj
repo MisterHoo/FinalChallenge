@@ -111,11 +111,11 @@
 		663CBBE621E451E400572FFC /* Final Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				663CBBF121E451E500572FFC /* Assets.xcassets */,
 				66B737C021E46231000C9B50 /* View */,
 				66B737C121E46238000C9B50 /* Model */,
 				66B737C221E4623C000C9B50 /* Controller */,
 				663CBBE721E451E400572FFC /* AppDelegate.swift */,
-				663CBBF121E451E500572FFC /* Assets.xcassets */,
 				663CBBF621E451E500572FFC /* Info.plist */,
 				CAFFD6F621E479AE00147751 /* GoogleService-Info.plist */,
 				663CBBEE21E451E400572FFC /* Final_Challenge.xcdatamodeld */,
