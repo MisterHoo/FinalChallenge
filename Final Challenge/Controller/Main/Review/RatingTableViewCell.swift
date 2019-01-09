@@ -15,50 +15,51 @@ class RatingTableViewCell: UITableViewCell {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
-    
     @IBOutlet var starsImageView: [UIImageView]!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        resetStar()
+        
         starsImageView[0].addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(oneStarTapped)))
         starsImageView[1].addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(twoStarTapped)))
         starsImageView[2].addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(threeStarTapped)))
         starsImageView[3].addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(fourStarTapped)))
         starsImageView[4].addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(fiveStarTapped)))
-        // Initialization code
     }
     
     @objc func oneStarTapped(){
-//        starsImageView[0].image
+        resetStar()
+        starsImageView[0].image = UIImage(named: "StarYellow")
         
     }
     @objc func twoStarTapped(){
+        resetStar()
         for i in 0...1{
-//            starsImageView[i].image
+            starsImageView[i].image = UIImage(named: "StarYellow")
         }
-        
     }
     @objc func threeStarTapped(){
+        resetStar()
         for i in 0...2{
-//            starsImageView[i].image
+            starsImageView[i].image = UIImage(named: "StarYellow")
         }
-        
     }
     @objc func fourStarTapped(){
+        resetStar()
         for i in 0...3{
-//            starsImageView[i].image
+            starsImageView[i].image = UIImage(named: "StarYellow")
         }
-        
     }
     @objc func fiveStarTapped(){
         for star in starsImageView{
-//            star.image
+            star.image = UIImage(named: "StarYellow")
         }
     }
     
     func resetStar(){
         for star in starsImageView{
-//            star.image = 
+            star.image = UIImage(named: "StarGray")
         }
         
     }
