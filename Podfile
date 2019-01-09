@@ -7,4 +7,9 @@ target 'Final Challenge' do
 
   # Pods for Final Challenge
 
+pod 'Firebase/Core'
+pod 'Firebase/Database'
+pod 'Firebase/MLVision'
+pod 'Firebase/MLVisionTextModel'
+
 end
