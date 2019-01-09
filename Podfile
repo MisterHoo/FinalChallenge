@@ -9,5 +9,8 @@ target 'Final Challenge' do
 
 pod 'Firebase/Core'
 pod 'Firebase/Database'
+pod 'Firebase/Auth'
+pod 'Firebase/MLVision'
+pod 'Firebase/MLVisionTextModel'
 
 end
