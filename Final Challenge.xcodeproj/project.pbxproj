@@ -26,6 +26,7 @@
 		66B737E421E47033000C9B50 /* ResultPredictionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B737E321E47033000C9B50 /* ResultPredictionTableViewCell.swift */; };
 		66B737E621E47044000C9B50 /* ResultSimilarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B737E521E47044000C9B50 /* ResultSimilarTableViewCell.swift */; };
 		CAFFD6F521E478EE00147751 /* IntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFFD6F421E478EE00147751 /* IntroductionViewController.swift */; };
+		CAFFD6F721E479AE00147751 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CAFFD6F621E479AE00147751 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		66B737E321E47033000C9B50 /* ResultPredictionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultPredictionTableViewCell.swift; sourceTree = "<group>"; };
 		66B737E521E47044000C9B50 /* ResultSimilarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultSimilarTableViewCell.swift; sourceTree = "<group>"; };
 		CAFFD6F421E478EE00147751 /* IntroductionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionViewController.swift; sourceTree = "<group>"; };
+		CAFFD6F621E479AE00147751 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				663CBBE721E451E400572FFC /* AppDelegate.swift */,
 				663CBBF121E451E500572FFC /* Assets.xcassets */,
 				663CBBF621E451E500572FFC /* Info.plist */,
+				CAFFD6F621E479AE00147751 /* GoogleService-Info.plist */,
 				663CBBEE21E451E400572FFC /* Final_Challenge.xcdatamodeld */,
 			);
 			path = "Final Challenge";
@@ -225,6 +228,7 @@
 				66B737C421E46299000C9B50 /* TastePreferenceTest.storyboard in Resources */,
 				663CBBF221E451E500572FFC /* Assets.xcassets in Resources */,
 				663CBBED21E451E400572FFC /* Main.storyboard in Resources */,
+				CAFFD6F721E479AE00147751 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,7 +405,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "misterHoo.Final-Challenge";
+				PRODUCT_BUNDLE_IDENTIFIER = "calonFacil.Final-Challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -419,7 +423,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "misterHoo.Final-Challenge";
+				PRODUCT_BUNDLE_IDENTIFIER = "calonFacil.Final-Challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
