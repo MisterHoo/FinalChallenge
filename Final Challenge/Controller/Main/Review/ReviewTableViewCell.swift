@@ -8,8 +8,18 @@
 
 import UIKit
 
+//protocol ReviewSystemDelegate{
+//    func getReview(review: String)
+//
+//}
+
 class ReviewTableViewCell: UITableViewCell {
 
+    
+    @IBOutlet weak var reviewTextField: UITextField!
+    
+//    var reviewSystemDelegate : ReviewSystemDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +30,9 @@ class ReviewTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+//    func getReview(){
+//        guard let review = reviewTextField.text else {return}
+//        reviewSystemDelegate?.getReview(review: review)
+//    }
 }

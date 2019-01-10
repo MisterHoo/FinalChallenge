@@ -8,8 +8,19 @@
 
 import UIKit
 
+protocol ReviewActionDelegate{
+    func submit()
+}
+
 class SubmitTableViewCell: UITableViewCell {
 
+    var reviewActionDelegate : ReviewActionDelegate?
+    
+    
+    @IBAction func submitReview(_ sender: Any) {
+        reviewActionDelegate?.submit()
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
