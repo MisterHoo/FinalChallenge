@@ -9,22 +9,22 @@
 import UIKit
 
 protocol ResultActionDelegate{
-    func AteFood()
-    func DidNotAte()
+    func didAte()
+    func notEat()
 }
 
 class ResultActionButtonTableViewCell: UITableViewCell {
 
     var resultActionDelegate : ResultActionDelegate?
     
-    @IBAction func ButtonAteFood(_ sender: Any) {
-        resultActionDelegate?.AteFood()
+    
+    @IBAction func buttonAte(_ sender: Any) {
+        resultActionDelegate?.didAte()
     }
     
-    @IBAction func ButtonDidNotAte(_ sender: Any) {
-        resultActionDelegate?.DidNotAte()
+    @IBAction func buttonDidNotEat(_ sender: Any) {
+        resultActionDelegate?.notEat()
     }
-    
     
     override func awakeFromNib() {
     super.awakeFromNib()
