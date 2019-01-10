@@ -8,8 +8,22 @@
 
 import UIKit
 
-class ImageCameraTableViewCell: UITableViewCell {
+protocol CameraSystemDelegate{
+    func openCamera()
+}
 
+class ImageCameraTableViewCell: UITableViewCell{
+    
+    
+    @IBOutlet weak var photoFromCamera: UIImageView!
+    @IBOutlet weak var photoButton: UIButton!
+    
+    var cameraSystemDelegate : CameraSystemDelegate?
+    
+    @IBAction func takePhoto(_ sender: Any) {
+        cameraSystemDelegate?.openCamera()
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

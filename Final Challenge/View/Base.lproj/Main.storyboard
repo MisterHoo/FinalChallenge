@@ -238,7 +238,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="219" id="IRS-g3-aOU" customClass="ImageCameraTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CameraTableCell" rowHeight="219" id="IRS-g3-aOU" customClass="ImageCameraTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="219"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IRS-g3-aOU" id="RWg-xh-amp">
@@ -250,6 +250,9 @@
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZeT-S9-cXk">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="218.66666666666666"/>
+                                                    <connections>
+                                                        <action selector="takePhoto:" destination="IRS-g3-aOU" eventType="touchUpInside" id="fP1-JX-d7x"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -263,6 +266,10 @@
                                                 <constraint firstAttribute="trailing" secondItem="ZeT-S9-cXk" secondAttribute="trailing" id="y7Z-3E-yik"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="photoButton" destination="ZeT-S9-cXk" id="DlM-Fb-IgL"/>
+                                            <outlet property="photoFromCamera" destination="u9C-j5-SLx" id="9Nk-H8-w1f"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RatingTableCell" rowHeight="136" id="Jcl-4S-XcT" customClass="RatingTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="247" width="375" height="136"/>
@@ -332,7 +339,7 @@
                                             <outletCollection property="starsImageView" destination="01g-ni-m2X" collectionClass="NSMutableArray" id="YaH-yf-aUS"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="298" id="g3O-Oh-fb1" customClass="ReviewTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReviewTableCell" rowHeight="298" id="g3O-Oh-fb1" customClass="ReviewTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="383" width="375" height="298"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="g3O-Oh-fb1" id="UfH-Xi-U9h">
@@ -369,8 +376,11 @@
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="reviewTextField" destination="fFl-hA-EZA" id="K08-TJ-A9b"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="goA-NW-XbN" customClass="SubmitTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReviewActionTableCell" id="goA-NW-XbN" customClass="SubmitTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="681" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="goA-NW-XbN" id="jUz-f8-nIl">
@@ -381,6 +391,9 @@
                                                     <rect key="frame" x="164" y="3" width="46" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="submitReview:" destination="goA-NW-XbN" eventType="touchUpInside" id="iHr-t0-7f4"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -418,7 +431,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q0x-ep-VTa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3169" y="88"/>
+            <point key="canvasLocation" x="689" y="734"/>
         </scene>
     </scenes>
     <resources>
