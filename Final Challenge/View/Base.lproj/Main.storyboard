@@ -28,11 +28,13 @@
                     </view>
                     <connections>
                         <outlet property="imageView" destination="fwu-zu-vPq" id="b83-he-KuB"/>
+                        <segue destination="mBZ-TS-gk7" kind="show" id="4wJ-Ee-tBv"/>
+                        <segue destination="t22-SL-d4s" kind="show" id="vYS-8g-mF3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="688.79999999999995" y="41.379310344827587"/>
+            <point key="canvasLocation" x="689" y="21"/>
         </scene>
         <!--Result View Controller-->
         <scene sceneID="RWB-1X-8ap">
