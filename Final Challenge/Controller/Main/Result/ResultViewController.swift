@@ -48,19 +48,19 @@ extension ResultViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResultActionTableCell") as! ResultActionButtonTableViewCell
         
+        cell.resultActionDelegate = self
+        
         return cell
     }
 }
 
 extension ResultViewController : ResultActionDelegate{
-    func AteFood() {
-        performSegue(withIdentifier: "ResultToGiveReview", sender: self)
+    func didAte() {
+        print("I Eat")
+        self.performSegue(withIdentifier: "ResultToGiveReview", sender: self)
     }
     
-    func DidNotAte() {
-        
+    func notEat() {
+        print("Not Eat")
     }
-    
-    
-    
 }
