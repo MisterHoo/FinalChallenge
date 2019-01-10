@@ -25,6 +25,14 @@
             </objects>
             <point key="canvasLocation" x="-4" y="757"/>
         </scene>
+        <!--Main-->
+        <scene sceneID="SaW-on-mtJ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="tcy-py-Kvx" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c4a-tc-dTh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="706" y="589"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="fcu-ba-VnW">
             <objects>
@@ -121,7 +129,7 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZy-lI-c8h">
-                                <rect key="frame" x="171" y="670" width="32" height="30"/>
+                                <rect key="frame" x="87" y="670" width="116" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Next"/>
                                 <connections>
@@ -142,6 +150,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QVH-zT-9Ik">
+                                <rect key="frame" x="165" y="590" width="142" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="tcy-py-Kvx" kind="show" id="ISM-5i-BAO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="NEs-8x-9GD"/>
