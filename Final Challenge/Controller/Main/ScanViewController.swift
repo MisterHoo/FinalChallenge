@@ -9,17 +9,26 @@
 import UIKit
 import AVKit
 import Vision
+import FirebaseMLVision
+
 class ScanViewController: UIViewController {
     let session = AVCaptureSession()
     var requests = [VNRequest]()
     
     @IBOutlet weak var imageView: UIImageView!
     
+    var textRecognizer: VisionTextRecognizer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //camera setup
-        
+        let vision = Vision.vision()
+        textRecognizer = vision.onDeviceTextRecognizer()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        startLiveVideo()
+        startTextDetection()
     }
     func startLiveVideo() {
         session.sessionPreset = AVCaptureSession.Preset.photo
@@ -38,12 +47,23 @@ class ScanViewController: UIViewController {
         
         session.startRunning()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        startLiveVideo()
-        startTextDetection()
+ 
+    func bacaTextFirebase(sampeleBuffer: CMSampleBuffer){
+        let metadata = VisionImageMetadata()
+
+        let image = VisionImage(buffer: sampeleBuffer)
+        image.metadata = metadata
+        
+        textRecognizer.process(image) { (feture, error) in
+            self.processResult(from: feture, error: error)
+        }
     }
+    func processResult(from text: VisionText?, error: Error?){
+        print(text?.text)
+    }
+    
     func startTextDetection(){
+        //udh ga dipake
         let textRequest = VNDetectTextRectanglesRequest(completionHandler: self.detectTextHandeler)
         textRequest.reportCharacterBoxes = true
         self.requests = [textRequest]
@@ -142,5 +162,6 @@ extension ScanViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
         } catch {
             print(error)
         }
+        bacaTextFirebase(sampeleBuffer: sampleBuffer)
     }
 }
