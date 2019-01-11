@@ -22,8 +22,6 @@ class ResultViewController: UIViewController {
         tableView.allowsSelection = false
         
     }
-    
-
     /*
     // MARK: - Navigation
 
