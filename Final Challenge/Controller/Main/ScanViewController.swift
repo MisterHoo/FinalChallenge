@@ -28,8 +28,13 @@ class ScanViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         startLiveVideo()
-        startTextDetection()
+//        startTextDetection()
     }
+//    func captureOutput(_ output: AVCaptureOutput, didDrop sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+//        let metadata = VisionImageMetadata()
+//        print("jalan")
+//
+//    }
     func startLiveVideo() {
         session.sessionPreset = AVCaptureSession.Preset.photo
         let captureDevice = AVCaptureDevice.default(for: AVMediaType.video)
@@ -62,84 +67,83 @@ class ScanViewController: UIViewController {
         print(text?.text)
     }
     
-    func startTextDetection(){
-        //udh ga dipake
-        let textRequest = VNDetectTextRectanglesRequest(completionHandler: self.detectTextHandeler)
-        textRequest.reportCharacterBoxes = true
-        self.requests = [textRequest]
-    }
-    
-    func detectTextHandeler(request: VNRequest, error: Error?){
-        guard let observations = request.results else {
-            print("no result")
-            return
-        }
-        let result = observations.map({ $0 as? VNTextObservation})
-        DispatchQueue.main.async() {
-        self.imageView.layer.sublayers?.removeSubrange(1...)
-            for region in result {
-                guard let rg = region else {
-                    continue
-                }
-                self.highLightWord(box: rg)
-                
-                if let boxes = region?.characterBoxes{
-                    for characterBoxes in boxes{
-                        self.highLightLatters(box: characterBoxes)
-                    }
-                }
-            }
-        }
-    }
-    func highLightWord(box: VNTextObservation){
-        
-        guard let boxes = box.characterBoxes else {return}
-        
-        var maxX: CGFloat = 9999.0
-        var minX: CGFloat = 0.0
-        var maxY: CGFloat = 9999.0
-        var minY: CGFloat = 0.0
-        
-        for char in boxes {
-            if char.bottomLeft.x < maxX{
-                maxX = char.bottomLeft.x
-            }
-            if char.bottomRight.x > minX{
-                minX = char.bottomRight.x
-            }
-            if char.bottomRight.y < maxY{
-                maxY = char.bottomRight.y
-            }
-            if char.topRight.y > minY{
-                minY = char.topRight.y
-            }
-        }
-        let xCord = maxX * imageView.frame.size.width
-        let yCord = (1 - minY) * imageView.frame.size.height
-        let width = (minX - maxX) * imageView.frame.size.width
-        let height = ( minY - maxY) * imageView.frame.size.height
-        
-        let outline = CALayer()
-        outline.frame = CGRect(x: xCord, y: yCord, width: width, height: height)
-        outline.borderWidth = 2
-        outline.borderColor = UIColor.red.cgColor
-        
-        imageView.layer.addSublayer(outline)
-    }
-    
-    func highLightLatters(box: VNRectangleObservation) {
-        let xCord = box.topLeft.x * imageView.frame.size.width
-        let yCord = (1 - box.topRight.y) * imageView.frame.size.height
-        let width = (box.topRight.x - box.bottomLeft.x) * imageView.frame.size.width
-        let height = (box.topLeft.y - box.bottomLeft.y) * imageView.frame.size.height
-        
-        let outline = CALayer()
-        outline.frame = CGRect(x: xCord, y: yCord, width: width, height: height)
-        outline.borderWidth = 1
-        outline.borderColor = UIColor.blue.cgColor
-        
-        imageView.layer.addSublayer(outline)
-    }
+//    func startTextDetection(){
+//        let textRequest = VNDetectTextRectanglesRequest(completionHandler: self.detectTextHandeler)
+//        textRequest.reportCharacterBoxes = true
+//        self.requests = [textRequest]
+//    }
+//
+//    func detectTextHandeler(request: VNRequest, error: Error?){
+//        guard let observations = request.results else {
+//            print("no result")
+//            return
+//        }
+//        let result = observations.map({ $0 as? VNTextObservation})
+//        DispatchQueue.main.async() {
+//        self.imageView.layer.sublayers?.removeSubrange(1...)
+//            for region in result {
+//                guard let rg = region else {
+//                    continue
+//                }
+//                self.highLightWord(box: rg)
+//
+//                if let boxes = region?.characterBoxes{
+//                    for characterBoxes in boxes{
+//                        self.highLightLatters(box: characterBoxes)
+//                    }
+//                }
+//            }
+//        }
+//    }
+//    func highLightWord(box: VNTextObservation){
+//
+//        guard let boxes = box.characterBoxes else {return}
+//
+//        var maxX: CGFloat = 9999.0
+//        var minX: CGFloat = 0.0
+//        var maxY: CGFloat = 9999.0
+//        var minY: CGFloat = 0.0
+//
+//        for char in boxes {
+//            if char.bottomLeft.x < maxX{
+//                maxX = char.bottomLeft.x
+//            }
+//            if char.bottomRight.x > minX{
+//                minX = char.bottomRight.x
+//            }
+//            if char.bottomRight.y < maxY{
+//                maxY = char.bottomRight.y
+//            }
+//            if char.topRight.y > minY{
+//                minY = char.topRight.y
+//            }
+//        }
+//        let xCord = maxX * imageView.frame.size.width
+//        let yCord = (1 - minY) * imageView.frame.size.height
+//        let width = (minX - maxX) * imageView.frame.size.width
+//        let height = ( minY - maxY) * imageView.frame.size.height
+//
+//        let outline = CALayer()
+//        outline.frame = CGRect(x: xCord, y: yCord, width: width, height: height)
+//        outline.borderWidth = 2
+//        outline.borderColor = UIColor.red.cgColor
+//
+//        imageView.layer.addSublayer(outline)
+//    }
+//
+//    func highLightLatters(box: VNRectangleObservation) {
+//        let xCord = box.topLeft.x * imageView.frame.size.width
+//        let yCord = (1 - box.topRight.y) * imageView.frame.size.height
+//        let width = (box.topRight.x - box.bottomLeft.x) * imageView.frame.size.width
+//        let height = (box.topLeft.y - box.bottomLeft.y) * imageView.frame.size.height
+//
+//        let outline = CALayer()
+//        outline.frame = CGRect(x: xCord, y: yCord, width: width, height: height)
+//        outline.borderWidth = 1
+//        outline.borderColor = UIColor.blue.cgColor
+//
+//        imageView.layer.addSublayer(outline)
+//    }
    
 }
 
@@ -162,6 +166,7 @@ extension ScanViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
         } catch {
             print(error)
         }
+        
         bacaTextFirebase(sampeleBuffer: sampleBuffer)
     }
 }
