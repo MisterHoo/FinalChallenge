@@ -22,28 +22,43 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         guard let pass = passwordTextField.text else { return }
         guard let rePass = rePasswordTextField.text else { return }
         
-        Auth.auth().createUser(withEmail: email, password: pass) { user, error in
-            if error == nil && user != nil{
-                print("User created")
-            }else{
-                print("Error : \(error!.localizedDescription)")
-            }
-        }
-        
         if (username == "" || email == "" || pass == "" || rePass == "") {
             alertMsg(Message: "Fill the blank")
-        }else if email != "@"{
+        }else if !email.contains("@") {
             alertMsg(Message: "Please fill a proper email format")
         }else if pass.count < 8{
             alertMsg(Message: "Password must contain 8 characters")
         }else if rePass != pass {
             alertMsg(Message: "Password does not match")
+        }else {
+            Auth.auth().createUser(withEmail: email, password: pass) { user, error in
+                if error == nil && user != nil{
+                    print("User created")
+                    self.userCreatedAlertMsg(Message: "Successfully created !")
+                }else{
+                    print("Error : \(error!.localizedDescription)")
+                    self.alertMsg(Message: "Error occured")
+                }
+            }
         }
+    }
+    
+    @IBAction func backButton(_ sender: Any) {
+        dismiss(animated: false, completion: nil)
     }
     
     func alertMsg(Message: String) {
         let myAlert = UIAlertController(title: "Alert Message", message: Message, preferredStyle: UIAlertController.Style.alert)
-        let okAction = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil)
+        let okAction = UIAlertAction(title: "Continue", style: UIAlertAction.Style.default, handler: nil)
+        myAlert.addAction(okAction)
+        self.present(myAlert, animated: true, completion: nil)
+    }
+    
+    func userCreatedAlertMsg(Message: String) {
+        let myAlert = UIAlertController(title: "Hooray !", message: Message, preferredStyle: UIAlertController.Style.alert)
+        let okAction = UIAlertAction(title: "Continue", style: .default) { (action) in
+            self.dismiss(animated: true, completion: nil)
+        }
         myAlert.addAction(okAction)
         self.present(myAlert, animated: true, completion: nil)
     }

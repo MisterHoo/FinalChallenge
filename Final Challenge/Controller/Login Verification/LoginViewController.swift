@@ -7,24 +7,44 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    @IBAction func signUpButton(_ sender: Any) {
+        performSegue(withIdentifier: "toSignUpPage", sender: self)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func logInButton(_ sender: Any) {
+        //performSegue(withIdentifier: "toMainPage", sender: self)
+        guard let email = emailTextField.text else { return }
+        guard let pass = passwordTextField.text else { return }
+        
+        Auth.auth().signIn(withEmail: email, password: pass) { user, error in
+            if error == nil && user != nil {
+                self.dismiss(animated: true, completion: nil)
+            }else if email == "" || pass == ""{
+                self.alertMsg(Message: "Email / Password can not be empty")
+            }
+            else {
+                print("Error : \(error!.localizedDescription)")
+            }
+        }
+        print("Successfull Login")
     }
-    */
-
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+    
+    func alertMsg(Message: String) {
+        let myAlert = UIAlertController(title: "Alert Message", message: Message, preferredStyle: UIAlertController.Style.alert)
+        let okAction = UIAlertAction(title: "Continue", style: UIAlertAction.Style.default, handler: nil)
+        myAlert.addAction(okAction)
+        self.present(myAlert, animated: true, completion: nil)
+    }
 }
