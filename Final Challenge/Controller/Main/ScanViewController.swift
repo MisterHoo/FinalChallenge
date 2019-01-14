@@ -9,11 +9,18 @@
 import UIKit
 import AVKit
 import Vision
+import Firebase
 import FirebaseMLVision
 
 class ScanViewController: UIViewController {
     let session = AVCaptureSession()
     var requests = [VNRequest]()
+    
+    @IBAction func logOutButton(_ sender: Any) {
+        session.stopRunning()
+        try! Auth.auth().signOut()
+        self.dismiss(animated: true, completion: nil)
+    }
     
     @IBOutlet weak var imageView: UIImageView!
     
