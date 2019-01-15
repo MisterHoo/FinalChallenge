@@ -15,7 +15,7 @@ import FirebaseMLVision
 class ScanViewController: UIViewController {
     let session = AVCaptureSession()
     var requests = [VNRequest]()
-    let ref = Database.database().reference().childByAutoId()
+    let ref = Database.database().reference()
     
     @IBAction func logOutButton(_ sender: Any) {
         session.stopRunning()
@@ -34,14 +34,10 @@ class ScanViewController: UIViewController {
         super.viewDidLoad()
         let vision = Vision.vision()
         textRecognizer = vision.onDeviceTextRecognizer()
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        ref.observe(.value) { (snap: DataSnapshot) in
-            self.scanTextField.text = (snap.value as AnyObject).description
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,7 +76,7 @@ class ScanViewController: UIViewController {
         print(text?.text)
         if let text = text?.text{
             scanText = text
-            ref.setValue(scanText)
+            ref.child("scanText/scanResult").setValue(scanText)
         }
     }
     
