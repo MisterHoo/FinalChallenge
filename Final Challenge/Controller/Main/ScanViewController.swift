@@ -23,6 +23,7 @@ class ScanViewController: UIViewController {
         performSegue(withIdentifier: "toLoginPage", sender: self)
     }
     
+    @IBOutlet weak var scanTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
     
     var textRecognizer: VisionTextRecognizer!
@@ -36,12 +37,12 @@ class ScanViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        ref.observe(.value) { (snap: DataSnapshot) in
-//            self.
-//        }
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        ref.observe(.value) { (snap: DataSnapshot) in
+            self.scanTextField.text = (snap.value as AnyObject).description
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         startLiveVideo()
@@ -79,6 +80,7 @@ class ScanViewController: UIViewController {
         print(text?.text)
         if let text = text?.text{
             scanText = text
+            ref.setValue(scanText)
         }
     }
     
