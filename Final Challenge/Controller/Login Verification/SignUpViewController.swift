@@ -63,6 +63,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         self.present(myAlert, animated: true, completion: nil)
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        rePasswordTextField.resignFirstResponder()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

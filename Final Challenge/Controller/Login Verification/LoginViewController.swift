@@ -19,27 +19,34 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func logInButton(_ sender: Any) {
-        //performSegue(withIdentifier: "toMainPage", sender: self)
         guard let email = emailTextField.text else { return }
         guard let pass = passwordTextField.text else { return }
         
         Auth.auth().signIn(withEmail: email, password: pass) { user, error in
             if error == nil && user != nil {
-                self.dismiss(animated: true, completion: nil)
+                self.performSegue(withIdentifier: "toMainPage", sender: self)
             }else if email == "" || pass == ""{
                 self.alertMsg(Message: "Email / Password can not be empty")
-            }
-            else {
+            }else {
                 print("Error : \(error!.localizedDescription)")
             }
         }
-        print("Successfull Login")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        passwordTextField.resignFirstResponder()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let user = Auth.auth().currentUser
+    }
+
     
     func alertMsg(Message: String) {
         let myAlert = UIAlertController(title: "Alert Message", message: Message, preferredStyle: UIAlertController.Style.alert)
