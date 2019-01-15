@@ -15,6 +15,7 @@ import FirebaseMLVision
 class ScanViewController: UIViewController {
     let session = AVCaptureSession()
     var requests = [VNRequest]()
+    var sampleImage: CIImage!
     
     @IBAction func logOutButton(_ sender: Any) {
         session.stopRunning()
@@ -35,7 +36,7 @@ class ScanViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         startLiveVideo()
-//        startTextDetection()
+        startTextDetection()
     }
     func startLiveVideo() {
         session.sessionPreset = AVCaptureSession.Preset.hd1920x1080
@@ -54,7 +55,7 @@ class ScanViewController: UIViewController {
         
         session.startRunning()
     }
- 
+    //MARK: baca text dengan firebase
     func bacaTextFirebase(sampeleBuffer: CMSampleBuffer){
         let metadata = VisionImageMetadata()
 
@@ -66,9 +67,10 @@ class ScanViewController: UIViewController {
         }
     }
     func processResult(from text: VisionText?, error: Error?){
-        print(text?.text)
+        let resultText = text?.text
+        print(resultText)
     }
-    
+    //MARK: detect text dengan vision
     func startTextDetection(){
         let textRequest = VNDetectTextRectanglesRequest(completionHandler: self.detectTextHandeler)
         textRequest.reportCharacterBoxes = true
@@ -82,7 +84,7 @@ class ScanViewController: UIViewController {
         }
         let result = observations.map({ $0 as? VNTextObservation})
         DispatchQueue.main.async() {
-        self.imageView.layer.sublayers?.removeSubrange(1...)
+            self.imageView.layer.sublayers?.removeSubrange(1...)
             for region in result {
                 guard let rg = region else {
                     continue
@@ -130,7 +132,7 @@ class ScanViewController: UIViewController {
         outline.frame = CGRect(x: xCord, y: yCord, width: width, height: height)
         outline.borderWidth = 2
         outline.borderColor = UIColor.red.cgColor
-
+        
         imageView.layer.addSublayer(outline)
     }
 
@@ -187,7 +189,7 @@ extension ScanViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
         } catch {
             print(error)
         }
-        
+        var sampleImage = CIImage(cvPixelBuffer: pixelBuffer)
         bacaTextFirebase(sampeleBuffer: sampleBuffer)
     }
 }
