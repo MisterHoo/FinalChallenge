@@ -10,6 +10,9 @@ import UIKit
 
 class FoodsLikeTableViewCell: UITableViewCell {
 
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

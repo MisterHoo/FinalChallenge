@@ -26,24 +26,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fwu-zu-vPq">
-                                <rect key="frame" x="16" y="44" width="343" height="648"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x4B-gS-VLL">
-                                <rect key="frame" x="131" y="722" width="113" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Log out DUMMY"/>
-                                <connections>
-                                    <action selector="logOutButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Efy-6y-oS4"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KJ8-NO-ez1">
+                                <rect key="frame" x="-4" y="0.0" width="383" height="812"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1t-9p-TNH">
+                                        <rect key="frame" x="168" y="555" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="mindahinButton:" destination="BYZ-38-t0r" eventType="touchDown" id="0rC-bW-ucx"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fwu-zu-vPq">
+                                        <rect key="frame" x="0.0" y="0.0" width="383" height="812"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="fwu-zu-vPq" firstAttribute="top" secondItem="KJ8-NO-ez1" secondAttribute="top" id="3HH-ek-sw7"/>
+                                    <constraint firstAttribute="trailing" secondItem="fwu-zu-vPq" secondAttribute="trailing" id="7QY-Jj-1kp"/>
+                                    <constraint firstAttribute="bottom" secondItem="fwu-zu-vPq" secondAttribute="bottom" id="Mbl-08-vco"/>
+                                    <constraint firstItem="fwu-zu-vPq" firstAttribute="leading" secondItem="KJ8-NO-ez1" secondAttribute="leading" id="hec-QP-7Jy"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="KJ8-NO-ez1" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="4" id="56V-Rl-jDq"/>
+                            <constraint firstItem="KJ8-NO-ez1" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="34" id="J0F-nh-SZC"/>
+                            <constraint firstAttribute="bottom" secondItem="KJ8-NO-ez1" secondAttribute="bottom" id="LeF-sP-Yq5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="leading" secondItem="KJ8-NO-ez1" secondAttribute="leading" constant="4" id="TKv-Po-BIY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="KJ8-NO-ez1" secondAttribute="top" constant="44" id="TeD-Mu-wY3"/>
+                            <constraint firstItem="KJ8-NO-ez1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="Z5E-2k-WSB"/>
+                            <constraint firstItem="KJ8-NO-ez1" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="dA6-81-e54"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="fwu-zu-vPq" id="b83-he-KuB"/>
+                        <outlet property="scaleButton" destination="d1t-9p-TNH" id="ewb-JL-d0N"/>
                         <segue destination="mBZ-TS-gk7" kind="show" id="4wJ-Ee-tBv"/>
                         <segue destination="t22-SL-d4s" kind="show" id="vYS-8g-mF3"/>
                         <segue destination="ZAT-LV-0zx" kind="show" identifier="toLoginPage" id="5I5-ch-3x5"/>
@@ -51,7 +72,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="689" y="21"/>
+            <point key="canvasLocation" x="688.79999999999995" y="20.689655172413794"/>
         </scene>
         <!--Result View Controller-->
         <scene sceneID="RWB-1X-8ap">

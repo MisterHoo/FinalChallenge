@@ -39,20 +39,37 @@
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WNK-Af-X20">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="428.66666666666669"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BgH-H3-Vl9">
-                                                        <size key="itemSize" width="50" height="50"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BgH-H3-Vl9">
+                                                        <size key="itemSize" width="344" height="410"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="foodCollCell" id="v4h-mt-AWR" customClass="FoodCollectionViewCell" customModule="Final_Challenge" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                            <rect key="frame" x="0.0" y="9.3333333333333339" width="344" height="410"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="344" height="410"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ehd-Ad-hte">
+                                                                        <rect key="frame" x="16" y="44" width="312" height="332"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
                                                             </view>
+                                                            <constraints>
+                                                                <constraint firstItem="Ehd-Ad-hte" firstAttribute="top" secondItem="v4h-mt-AWR" secondAttribute="topMargin" id="5Wt-5b-p5w"/>
+                                                                <constraint firstAttribute="trailingMargin" secondItem="Ehd-Ad-hte" secondAttribute="trailing" id="ICn-aY-LvN"/>
+                                                                <constraint firstAttribute="bottomMargin" secondItem="Ehd-Ad-hte" secondAttribute="bottom" id="Pao-cq-D6w"/>
+                                                                <constraint firstItem="Ehd-Ad-hte" firstAttribute="leading" secondItem="v4h-mt-AWR" secondAttribute="leadingMargin" id="sRv-zR-2VE"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="foodLabel" destination="Ehd-Ad-hte" id="P1f-ws-uUO"/>
+                                                            </connections>
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>
@@ -78,20 +95,37 @@
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eKF-BA-6wu">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="147.66666666666666"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="z54-Ov-mar">
-                                                        <size key="itemSize" width="50" height="50"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="z54-Ov-mar">
+                                                        <size key="itemSize" width="110" height="136"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="rvN-8S-72w" customClass="FoodLikeCollectionViewCell" customModule="Final_Challenge" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="foodsLikeCollCell" id="rvN-8S-72w" customClass="FoodLikeCollectionViewCell" customModule="Final_Challenge" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="5.666666666666667" width="110" height="136"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="110" height="136"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6DW-91-vCf">
+                                                                        <rect key="frame" x="16" y="44" width="78" height="58"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
                                                             </view>
+                                                            <constraints>
+                                                                <constraint firstItem="6DW-91-vCf" firstAttribute="leading" secondItem="rvN-8S-72w" secondAttribute="leadingMargin" id="1DF-uK-6bZ"/>
+                                                                <constraint firstItem="6DW-91-vCf" firstAttribute="top" secondItem="rvN-8S-72w" secondAttribute="topMargin" id="SC9-4X-dwO"/>
+                                                                <constraint firstAttribute="trailingMargin" secondItem="6DW-91-vCf" secondAttribute="trailing" id="UpF-l2-aE4"/>
+                                                                <constraint firstAttribute="bottomMargin" secondItem="6DW-91-vCf" secondAttribute="bottom" id="WkU-9g-gtD"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="foodLikeLabel" destination="6DW-91-vCf" id="HOb-4m-Kky"/>
+                                                            </connections>
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>
@@ -103,6 +137,9 @@
                                                 <constraint firstItem="eKF-BA-6wu" firstAttribute="top" secondItem="L1Q-Rp-ZRp" secondAttribute="top" id="tCl-9v-2kC"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="collectionView" destination="eKF-BA-6wu" id="ltv-5m-g8d"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
