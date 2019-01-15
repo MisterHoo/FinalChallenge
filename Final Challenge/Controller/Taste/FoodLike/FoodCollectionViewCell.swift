@@ -10,4 +10,7 @@ import UIKit
 
 class FoodCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var foodLabel: UILabel!
+
+    
 }

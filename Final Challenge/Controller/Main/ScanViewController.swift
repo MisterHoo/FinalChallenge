@@ -19,6 +19,8 @@ class ScanViewController: UIViewController {
     
     var textRecognizer: VisionTextRecognizer!
     
+    var scanText : String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let vision = Vision.vision()
@@ -65,6 +67,9 @@ class ScanViewController: UIViewController {
     }
     func processResult(from text: VisionText?, error: Error?){
         print(text?.text)
+        if let text = text?.text{
+            scanText = text
+        }
     }
     
 //    func startTextDetection(){
