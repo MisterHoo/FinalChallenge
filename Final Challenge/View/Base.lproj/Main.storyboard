@@ -10,6 +10,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--LoginVerification-->
+        <scene sceneID="GTn-Bo-agu">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LoginVerification" id="ZAT-LV-0zx" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B4h-x7-6Mk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="128" y="168"/>
+        </scene>
         <!--Scan View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -38,6 +46,7 @@
                         <outlet property="imageView" destination="fwu-zu-vPq" id="b83-he-KuB"/>
                         <segue destination="mBZ-TS-gk7" kind="show" id="4wJ-Ee-tBv"/>
                         <segue destination="t22-SL-d4s" kind="show" id="vYS-8g-mF3"/>
+                        <segue destination="ZAT-LV-0zx" kind="show" identifier="toLoginPage" id="5I5-ch-3x5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
