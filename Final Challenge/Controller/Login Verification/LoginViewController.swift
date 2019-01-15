@@ -28,7 +28,7 @@ class LoginViewController: UIViewController {
             }else if email == "" || pass == ""{
                 self.alertMsg(Message: "Email / Password can not be empty")
             }else {
-                print("Error : \(error!.localizedDescription)")
+                self.alertMsg(Message: "Invalid email address or password")
             }
         }
     }
@@ -45,8 +45,18 @@ class LoginViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let user = Auth.auth().currentUser
+        //autoLogin()
     }
 
+    func autoLogin() {
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            if user == user{
+                self.performSegue(withIdentifier: "toMainPage", sender: self)
+            }else{
+                print("not login")
+            }
+        }
+    }
     
     func alertMsg(Message: String) {
         let myAlert = UIAlertController(title: "Alert Message", message: Message, preferredStyle: UIAlertController.Style.alert)
