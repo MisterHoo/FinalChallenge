@@ -76,7 +76,7 @@ class ScanViewController: UIViewController {
         print(text?.text)
         if let text = text?.text{
             scanText = text
-            ref.child("scanText/scanResult").setValue(scanText)
+            ref.child("user/\(AppDelegate.id)/scanText").setValue(scanText)
         }
     }
     
