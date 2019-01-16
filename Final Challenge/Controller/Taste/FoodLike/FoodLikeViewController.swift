@@ -7,14 +7,11 @@
 //
 
 import UIKit
-import Firebase
 
 class FoodLikeViewController: UIViewController {
 
     var foods : [String] = ["Ayam","Sapi","Kambing","Kucing","Anjing","BABI"]
     var foodsLike : [String] = []
-    let ref = Database.database().reference()
-    
     
     @IBOutlet weak var tableView: UITableView!
     

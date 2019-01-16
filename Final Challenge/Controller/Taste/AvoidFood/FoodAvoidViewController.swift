@@ -7,12 +7,9 @@
 //
 
 import UIKit
-import Firebase
 
 class FoodAvoidViewController: UIViewController {
-    
-    let ref = Database.database().reference()
-    
+
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func nextButton(_ sender: Any) {
