@@ -10,6 +10,10 @@ import UIKit
 
 class DoneTestViewController: UIViewController {
 
+    @IBAction func toSummaryPage(_ sender: Any) {
+        performSegue(withIdentifier: "toSummaryPage", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -19,7 +19,7 @@ class FoodLikeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func nextButton(_ sender: Any) {
-        self.ref.child("user/\(TastePalData.uid)/likedFood").setValue(foodsLike)
+        performSegue(withIdentifier: "toTasteDislikedPage", sender: self)
     }
     
     var c1 : UICollectionView?

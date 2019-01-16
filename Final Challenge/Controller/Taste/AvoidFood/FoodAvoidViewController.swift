@@ -8,16 +8,15 @@
 
 import UIKit
 import Firebase
-import FirebaseDatabase
 
 class FoodAvoidViewController: UIViewController {
-
+    
     let ref = Database.database().reference()
     
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func nextButton(_ sender: Any) {
-        self.ref.child("user/\(TastePalData.uid)/avoidFood").setValue(avoidedFood)
+        performSegue(withIdentifier: "toDonePage", sender: self)
     }
     
     var listFoods : [String] = ["Celeng", "Babi", "Cunyuk","Sapi Pesek", "Hog", "Pig", "Pork", "KEVIN"]
@@ -31,7 +30,7 @@ class FoodAvoidViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-
+        
         // Do any additional setup after loading the view.
     }
 }
@@ -119,7 +118,7 @@ extension FoodAvoidViewController : UICollectionViewDataSource,UICollectionViewD
                 let collCell = tableCell.collectionView.cellForItem(at: IndexPath(row: removedIndex, section: 0))
                 
                 collCell?.isUserInteractionEnabled = true
-            
+                
             }
         }
     }
