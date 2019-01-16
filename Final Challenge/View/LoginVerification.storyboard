@@ -17,11 +17,21 @@
                     <view key="view" contentMode="scaleToFill" id="51p-TW-xCq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rnd-aK-j0r">
+                                <rect key="frame" x="164" y="391" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="nextButton:" destination="uPD-PZ-Kgs" eventType="touchUpInside" id="d6v-Cr-TYr"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="2sx-Ai-JmS"/>
                     </view>
                     <connections>
-                        <segue destination="UIP-ca-c4B" kind="show" id="rIv-oj-a3i"/>
+                        <segue destination="UIP-ca-c4B" kind="show" identifier="toTastePreferencePage" id="rIv-oj-a3i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OKS-vK-3YQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -105,7 +115,7 @@
                         <outlet property="passwordTextField" destination="n1U-b0-ky5" id="Mct-eG-0wx"/>
                         <segue destination="tcy-py-Kvx" kind="show" identifier="toMainPage" id="XOw-LR-i0Q"/>
                         <segue destination="oO2-S1-gB9" kind="show" identifier="toSignUpPage" id="XlL-bh-scR"/>
-                        <segue destination="uPD-PZ-Kgs" kind="show" id="8Ti-vQ-64W"/>
+                        <segue destination="uPD-PZ-Kgs" kind="show" identifier="toIntroductionPage" id="8Ti-vQ-64W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ys-vs-DfN" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -7,13 +7,20 @@
 //
 
 import UIKit
+import Firebase
 
 class FoodLikeViewController: UIViewController {
 
     var foods : [String] = ["Ayam","Sapi","Kambing","Kucing","Anjing","BABI"]
     var foodsLike : [String] = []
+    let ref = Database.database().reference()
+    
     
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBAction func nextButton(_ sender: Any) {
+        self.ref.child("user/\(TastePalData.uid)/likedFood").setValue(foodsLike)
+    }
     
     var c1 : UICollectionView?
     var c2 : UICollectionView?

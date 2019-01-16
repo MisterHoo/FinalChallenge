@@ -7,10 +7,18 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
 class FoodAvoidViewController: UIViewController {
 
+    let ref = Database.database().reference()
+    
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBAction func nextButton(_ sender: Any) {
+        self.ref.child("user/\(TastePalData.uid)/avoidFood").setValue(avoidedFood)
+    }
     
     var listFoods : [String] = ["Celeng", "Babi", "Cunyuk","Sapi Pesek", "Hog", "Pig", "Pork", "KEVIN"]
     var avoidedFood : [String] = []

@@ -10,6 +10,13 @@ import UIKit
 
 class IntroductionViewController: UIViewController {
 
+    
+
+    @IBAction func nextButton(_ sender: Any) {
+        performSegue(withIdentifier: "toTastePreferencePage", sender: self)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

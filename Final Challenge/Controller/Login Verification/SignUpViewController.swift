@@ -23,7 +23,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         guard let email = emailTextField.text else { return }
         guard let pass = passwordTextField.text else { return }
         guard let rePass = rePasswordTextField.text else { return }
-//        guard let userID = Auth.auth().currentUser?.uid else { return }
         
         if (username == "" || email == "" || pass == "" || rePass == "") {
             alertMsg(Message: "Fill the blank")
@@ -37,8 +36,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             Auth.auth().createUser(withEmail: email, password: pass) { user, error in
                 if error == nil && user != nil{
                     print("User created")
-                    AppDelegate.id = user!.user.uid
-                    self.ref.child("user/\(AppDelegate.id)/email").setValue(email)
+                    TastePalData.uid = user!.user.uid
+                    self.ref.child("user/\(TastePalData.uid)/email").setValue(email)
                     self.userCreatedAlertMsg(Message: "Successfully created !")
                 }else{
                     print("Error : \(error!.localizedDescription)")
