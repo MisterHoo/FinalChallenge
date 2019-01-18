@@ -37,6 +37,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 if error == nil && user != nil{
                     print("User created")
                     TastePalData.uid = user!.user.uid
+                    self.ref.child("user/\(TastePalData.uid!)/name").setValue(username)
                     self.ref.child("user/\(TastePalData.uid!)/email").setValue(email)
                     self.userCreatedAlertMsg(Message: "Successfully created !")
                 }else{
