@@ -67,7 +67,7 @@ class ScanViewController: UIViewController {
 
         var sampleCIImage = CIImage(cvImageBuffer: sampeleBuffer)
         var sampleCropedImage = sampleCIImage.cropped(to: CGRect(x:1920/2 , y: (1080/2)+(1080/4), width: 1920/2, height: 1080/4))
-        var cropedImage = UIImage(cgImage: (convertCIImageToCGImage(inputImage: sampleCropedImage)))
+        var cropedImage = UIImage(cgImage: sampleCropedImage.convertCIImageToCGImage())
         var image = VisionImage(image: cropedImage)
         
         textRecognizer.process(image) { (feture, error) in

@@ -46,6 +46,7 @@
 		CAFFD6F521E478EE00147751 /* IntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFFD6F421E478EE00147751 /* IntroductionViewController.swift */; };
 		CAFFD6F721E479AE00147751 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CAFFD6F621E479AE00147751 /* GoogleService-Info.plist */; };
 		CAFFD6F921EF2B2100147751 /* TastePalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFFD6F821EF2B2100147751 /* TastePalData.swift */; };
+		CDE4B3AE21F1B6F200DFDE2D /*  CIImagetoCGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE4B3AD21F1B6F200DFDE2D /*  CIImagetoCGImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +93,7 @@
 		CAFFD6F421E478EE00147751 /* IntroductionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionViewController.swift; sourceTree = "<group>"; };
 		CAFFD6F621E479AE00147751 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CAFFD6F821EF2B2100147751 /* TastePalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TastePalData.swift; path = "Final Challenge/View/TastePalData.swift"; sourceTree = SOURCE_ROOT; };
+		CDE4B3AD21F1B6F200DFDE2D /*  CIImagetoCGImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " CIImagetoCGImage.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +199,7 @@
 		66B737C221E4623C000C9B50 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CDE4B3AC21F1B6C600DFDE2D /* Extension */,
 				66B737D721E46C8C000C9B50 /* Login Verification */,
 				66B737D621E46C87000C9B50 /* Taste */,
 				66B737D121E46B76000C9B50 /* Main */,
@@ -265,6 +268,15 @@
 				359B432ACDA4F0042D37E042 /* Pods-Final Challenge.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		CDE4B3AC21F1B6C600DFDE2D /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CDE4B3AD21F1B6F200DFDE2D /*  CIImagetoCGImage.swift */,
+			);
+			name = Extension;
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -415,6 +427,7 @@
 			files = (
 				66B737CE21E46B64000C9B50 /* ResultViewController.swift in Sources */,
 				66763D8021E8794900368E6E /* FoodsLikeTableViewCell.swift in Sources */,
+				CDE4B3AE21F1B6F200DFDE2D /*  CIImagetoCGImage.swift in Sources */,
 				66763D7E21E8794100368E6E /* FoodsTableViewCell.swift in Sources */,
 				66B737D021E46B72000C9B50 /* GiveReviewViewController.swift in Sources */,
 				66763D7721E8779500368E6E /* FoodAvoidViewController.swift in Sources */,
