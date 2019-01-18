@@ -15,10 +15,12 @@ class FoodLikeViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBAction func nextButton(_ sender: Any) {
+        performSegue(withIdentifier: "toTasteDislikedPage", sender: self)
+    }
+    
     var c1 : UICollectionView?
     var c2 : UICollectionView?
-    
-    let cellScaling : CGFloat = 0.8
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,21 +71,40 @@ extension FoodLikeViewController : UICollectionViewDataSource, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == c1{
             
-            let layout = collectionViewLayout as! UICollectionViewFlowLayout
-            layout.minimumInteritemSpacing = 5.0
+            let cellScaling : CGFloat = 0.8
             
-            let itemWidth = collectionView.bounds.width - layout.minimumInteritemSpacing
-            let itemHeight = collectionView.bounds.height
+            let itemWidth = collectionView.bounds.width * cellScaling
+            let itemHeight = collectionView.bounds.height * cellScaling
+            
+            let insetX = (collectionView.bounds.width - itemWidth) / 2.0
+            let insetY = (collectionView.bounds.height - itemHeight) / 2.0
+            
+            collectionView.contentInset = UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: insetX)
+            let layout = collectionViewLayout as! UICollectionViewFlowLayout
+            
+            layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
+            
+            c1?.collectionViewLayout = layout
             
             return CGSize(width: itemWidth, height: itemHeight)
         }else if collectionView == c2{
             
-            let layout = collectionViewLayout as! UICollectionViewFlowLayout
-            layout.minimumInteritemSpacing = 5.0
+            let cellScaling : CGFloat = 0.8
             
-            let itemWidth = (collectionView.bounds.width/5) - layout.minimumInteritemSpacing
-            let itemHeight = collectionView.bounds.height
-            
+            let itemWidth = (collectionView.bounds.width/5) * cellScaling
+            let itemHeight = collectionView.bounds.height * cellScaling
+//
+//            let insetX = (collectionView.bounds.width - itemWidth) / 2.0
+//            let insetY = (collectionView.bounds.height - itemHeight) / 2.0
+//
+//            collectionView.contentInset = UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: insetX)
+//
+//            let layout = collectionViewLayout as! UICollectionViewFlowLayout
+//
+//            layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
+//
+//            c2?.collectionViewLayout = layout
+//
             return CGSize(width: itemWidth, height: itemHeight)
             
         }else{
@@ -113,7 +134,7 @@ extension FoodLikeViewController : UICollectionViewDataSource, UICollectionViewD
             
             let collCell = collectionView.dequeueReusableCell(withReuseIdentifier: "foodsLikeCollCell", for: indexPath) as! FoodLikeCollectionViewCell
             
-            collCell.foodLikeLabel.text = foods[indexPath.row]
+            collCell.foodLikeLabel.text = foodsLike[indexPath.row]
             
             return collCell
         }else{
@@ -130,6 +151,50 @@ extension FoodLikeViewController : UICollectionViewDataSource, UICollectionViewD
             let likeCell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! FoodsLikeTableViewCell
             let likeCollection = likeCell.collectionView
             likeCollection?.reloadData()
+            
+            collectionView.cellForItem(at: indexPath)?.isUserInteractionEnabled = false
+        }else if collectionView == c2{
+            let collCell = collectionView.cellForItem(at: indexPath) as! FoodLikeCollectionViewCell
+            
+            let removedFood = foodsLike.remove(at: indexPath.row)
+            
+            collectionView.reloadData()
+            
+            let foodsCell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! FoodsTableViewCell
+            
+            if let removedIndex = foods.firstIndex(of: removedFood){
+                let foodCell = foodsCell.collectionView.cellForItem(at: IndexPath(row: removedIndex, section: 0))
+                
+                foodCell?.isUserInteractionEnabled = true
+            }
+        }
+    }
+}
+
+extension FoodLikeViewController : UIScrollViewDelegate{
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        
+        if c1 == scrollView{
+            let layout = c1?.collectionViewLayout as! UICollectionViewFlowLayout
+            let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumInteritemSpacing
+            
+            var offset = targetContentOffset.pointee
+            let index = (offset.x + scrollView.contentInset.left) / cellWidthIncludingSpacing
+            let roundedIndex = round(index)
+            
+            offset = CGPoint(x : roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left, y: -scrollView.contentInset.top)
+            targetContentOffset.pointee = offset
+        }else if c2 == scrollView{
+//            let layout = c2?.collectionViewLayout as! UICollectionViewFlowLayout
+//            let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumInteritemSpacing
+//
+//            var offset = targetContentOffset.pointee
+//            let index = (offset.x + scrollView.contentInset.left) / cellWidthIncludingSpacing
+//            let roundedIndex = round(index)
+//
+//            offset = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left, y: -scrollView.contentInset.top)
+//            targetContentOffset.pointee = offset
+//
         }
     }
 }

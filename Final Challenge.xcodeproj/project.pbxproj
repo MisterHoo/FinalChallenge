@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		4391CDE718C420FF2651BBA5 /* Pods_Final_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7173EE72361510184F29CE2C /* Pods_Final_Challenge.framework */; };
+		660D72F321EDDFEE00453D83 /* ListAvoidTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660D72F221EDDFEE00453D83 /* ListAvoidTableViewCell.swift */; };
+		660D72F521EDDFF500453D83 /* AvoidedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660D72F421EDDFF500453D83 /* AvoidedTableViewCell.swift */; };
+		660D72F721EDE00800453D83 /* ListAvoidCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660D72F621EDE00800453D83 /* ListAvoidCollectionViewCell.swift */; };
+		660D72F921EDE00F00453D83 /* AvoidedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660D72F821EDE00F00453D83 /* AvoidedCollectionViewCell.swift */; };
 		6620EC1A21E5AE49009FDC04 /* ImageCameraTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6620EC1921E5AE49009FDC04 /* ImageCameraTableViewCell.swift */; };
 		6620EC1C21E5AE73009FDC04 /* RatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6620EC1B21E5AE73009FDC04 /* RatingTableViewCell.swift */; };
 		6620EC1E21E5AE7A009FDC04 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6620EC1D21E5AE7A009FDC04 /* ReviewTableViewCell.swift */; };
@@ -41,12 +45,16 @@
 		66B737E621E47044000C9B50 /* ResultSimilarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B737E521E47044000C9B50 /* ResultSimilarTableViewCell.swift */; };
 		CAFFD6F521E478EE00147751 /* IntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFFD6F421E478EE00147751 /* IntroductionViewController.swift */; };
 		CAFFD6F721E479AE00147751 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CAFFD6F621E479AE00147751 /* GoogleService-Info.plist */; };
-		CD4A97AC21EDD8E400378E39 /* CIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A97AB21EDD8E400378E39 /* CIImageExtension.swift */; };
+		CAFFD6F921EF2B2100147751 /* TastePalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFFD6F821EF2B2100147751 /* TastePalData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		013BB0A6A2039AB2ED724247 /* Pods-Final Challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Final Challenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Final Challenge/Pods-Final Challenge.debug.xcconfig"; sourceTree = "<group>"; };
 		359B432ACDA4F0042D37E042 /* Pods-Final Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Final Challenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-Final Challenge/Pods-Final Challenge.release.xcconfig"; sourceTree = "<group>"; };
+		660D72F221EDDFEE00453D83 /* ListAvoidTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAvoidTableViewCell.swift; sourceTree = "<group>"; };
+		660D72F421EDDFF500453D83 /* AvoidedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvoidedTableViewCell.swift; sourceTree = "<group>"; };
+		660D72F621EDE00800453D83 /* ListAvoidCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAvoidCollectionViewCell.swift; sourceTree = "<group>"; };
+		660D72F821EDE00F00453D83 /* AvoidedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvoidedCollectionViewCell.swift; sourceTree = "<group>"; };
 		6620EC1921E5AE49009FDC04 /* ImageCameraTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCameraTableViewCell.swift; sourceTree = "<group>"; };
 		6620EC1B21E5AE73009FDC04 /* RatingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingTableViewCell.swift; sourceTree = "<group>"; };
 		6620EC1D21E5AE7A009FDC04 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
@@ -83,7 +91,7 @@
 		7173EE72361510184F29CE2C /* Pods_Final_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Final_Challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAFFD6F421E478EE00147751 /* IntroductionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionViewController.swift; sourceTree = "<group>"; };
 		CAFFD6F621E479AE00147751 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		CD4A97AB21EDD8E400378E39 /* CIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIImageExtension.swift; sourceTree = "<group>"; };
+		CAFFD6F821EF2B2100147751 /* TastePalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TastePalData.swift; path = "Final Challenge/View/TastePalData.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +106,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		660D72F121EDDFC500453D83 /* AvoidFood */ = {
+			isa = PBXGroup;
+			children = (
+				660D72F221EDDFEE00453D83 /* ListAvoidTableViewCell.swift */,
+				660D72F421EDDFF500453D83 /* AvoidedTableViewCell.swift */,
+				660D72F621EDE00800453D83 /* ListAvoidCollectionViewCell.swift */,
+				660D72F821EDE00F00453D83 /* AvoidedCollectionViewCell.swift */,
+				66763D7621E8779500368E6E /* FoodAvoidViewController.swift */,
+			);
+			path = AvoidFood;
+			sourceTree = "<group>";
+		};
 		6620EC1821E5AE28009FDC04 /* Review */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +189,7 @@
 		66B737C121E46238000C9B50 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CAFFD6F821EF2B2100147751 /* TastePalData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -176,7 +197,6 @@
 		66B737C221E4623C000C9B50 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CD4A97AA21EDD8B900378E39 /* Extension */,
 				66B737D721E46C8C000C9B50 /* Login Verification */,
 				66B737D621E46C87000C9B50 /* Taste */,
 				66B737D121E46B76000C9B50 /* Main */,
@@ -198,9 +218,9 @@
 		66B737D621E46C87000C9B50 /* Taste */ = {
 			isa = PBXGroup;
 			children = (
+				660D72F121EDDFC500453D83 /* AvoidFood */,
 				66763D7C21E8792B00368E6E /* FoodLike */,
 				66763D7421E8778C00368E6E /* TasteDislikeViewController.swift */,
-				66763D7621E8779500368E6E /* FoodAvoidViewController.swift */,
 				66763D7821E877A300368E6E /* DoneTestViewController.swift */,
 				66763D7A21E877A900368E6E /* SummaryViewController.swift */,
 			);
@@ -245,14 +265,6 @@
 				359B432ACDA4F0042D37E042 /* Pods-Final Challenge.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		CD4A97AA21EDD8B900378E39 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				CD4A97AB21EDD8E400378E39 /* CIImageExtension.swift */,
-			);
-			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -406,10 +418,15 @@
 				66763D7E21E8794100368E6E /* FoodsTableViewCell.swift in Sources */,
 				66B737D021E46B72000C9B50 /* GiveReviewViewController.swift in Sources */,
 				66763D7721E8779500368E6E /* FoodAvoidViewController.swift in Sources */,
+				CAFFD6F921EF2B2100147751 /* TastePalData.swift in Sources */,
 				66B737C821E46577000C9B50 /* LoginViewController.swift in Sources */,
 				66763D7321E8778200368E6E /* FoodLikeViewController.swift in Sources */,
 				663CBBF021E451E400572FFC /* Final_Challenge.xcdatamodeld in Sources */,
+				660D72F721EDE00800453D83 /* ListAvoidCollectionViewCell.swift in Sources */,
 				6620EC1A21E5AE49009FDC04 /* ImageCameraTableViewCell.swift in Sources */,
+				660D72F321EDDFEE00453D83 /* ListAvoidTableViewCell.swift in Sources */,
+				660D72F521EDDFF500453D83 /* AvoidedTableViewCell.swift in Sources */,
+				660D72F921EDE00F00453D83 /* AvoidedCollectionViewCell.swift in Sources */,
 				66B737E421E47033000C9B50 /* ResultPredictionTableViewCell.swift in Sources */,
 				66B737E021E4700E000C9B50 /* ResultActionButtonTableViewCell.swift in Sources */,
 				CAFFD6F521E478EE00147751 /* IntroductionViewController.swift in Sources */,
@@ -418,7 +435,6 @@
 				66B737DB21E46C9E000C9B50 /* SignUpViewController.swift in Sources */,
 				66B737DE21E46DFD000C9B50 /* ResultPhotoTableViewCell.swift in Sources */,
 				66763D8221E87B9800368E6E /* FoodCollectionViewCell.swift in Sources */,
-				CD4A97AC21EDD8E400378E39 /* CIImageExtension.swift in Sources */,
 				66B737E621E47044000C9B50 /* ResultSimilarTableViewCell.swift in Sources */,
 				6620EC1C21E5AE73009FDC04 /* RatingTableViewCell.swift in Sources */,
 				663CBBE821E451E400572FFC /* AppDelegate.swift in Sources */,

@@ -15,10 +15,8 @@ import FirebaseMLVision
 class ScanViewController: UIViewController {
     let session = AVCaptureSession()
     var requests = [VNRequest]()
-    let ref = Database.database().reference().childByAutoId()
-    var sampleImage: CIImage?
+    let ref = Database.database().reference()
     
-    let cropBox = CGRect(x: UIScreen().bounds.height/4, y: (UIScreen().bounds.width-64)/2, width: UIScreen().bounds.width/2, height: 64)
     @IBAction func logOutButton(_ sender: Any) {
         session.stopRunning()
         try! Auth.auth().signOut()
@@ -34,24 +32,18 @@ class ScanViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cropArea()
         let vision = Vision.vision()
         textRecognizer = vision.onDeviceTextRecognizer()
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        ref.observe(.value) { (snap: DataSnapshot) in
-            self.scanTextField.text = (snap.value as AnyObject).description
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         startLiveVideo()
-        //startTextDetection()
+//        startTextDetection()
     }
-    //MARK: Setting Camera
     func startLiveVideo() {
         session.sessionPreset = AVCaptureSession.Preset.hd1920x1080
         let captureDevice = AVCaptureDevice.default(for: AVMediaType.video)
@@ -64,49 +56,30 @@ class ScanViewController: UIViewController {
         session.addOutput(deviceOutput)
         
         let imageLayer = AVCaptureVideoPreviewLayer(session: session)
-        
         imageLayer.frame = imageView.bounds
         imageView.layer.addSublayer(imageLayer)
+        
         session.startRunning()
     }
-    //MARK: bikin persegi panjang buat croped area
-    func cropArea(){
-        let outline = CALayer()
-        outline.frame = cropBox
-        outline.borderWidth = 2
-        outline.borderColor = UIColor.red.cgColor
-        imageView.layer.addSublayer(outline)
-    }
-    //MARK: Text Recongnition with firebase
-    func bacaTextFirebase(sampeleBuffer: CVImageBuffer){
+ 
+    func bacaTextFirebase(sampeleBuffer: CMSampleBuffer){
+        let metadata = VisionImageMetadata()
+
+        let image = VisionImage(buffer: sampeleBuffer)
+        image.metadata = metadata
         
-        var sampleCIImage = CIImage(cvImageBuffer: sampeleBuffer)
-        var sampleCropedImage = sampleCIImage.cropped(to: CGRect(x:1920/2 , y: (1080/2)+(1080/4), width: 1920/2, height: 1080/4))
-        var cropedImage = UIImage(cgImage: (convertCIImageToCGImage(inputImage: sampleCropedImage)))
-        var image = VisionImage(image: cropedImage)
         textRecognizer.process(image) { (feture, error) in
             self.processResult(from: feture, error: error)
         }
     }
     func processResult(from text: VisionText?, error: Error?){
-        var blocktext = text?.blocks[0].text
-        print(blocktext)
         print(text?.text)
         if let text = text?.text{
             scanText = text
-            ref.setValue(scanText)
+            ref.child("user/\(TastePalData.uid!)/scanText").setValue(scanText)
         }
     }
-    //convert CIImage To CGImage
-    func convertCIImageToCGImage(inputImage: CIImage) -> CGImage! {
-        let context = CIContext(options: nil)
-        if context != nil {
-            return context.createCGImage(inputImage, from: inputImage.extent)
-        }
-        return nil
-    }
-    //MARK: vision text detection
-    //vision appcoda
+    
     func startTextDetection(){
         let textRequest = VNDetectTextRectanglesRequest(completionHandler: self.detectTextHandeler)
         textRequest.reportCharacterBoxes = true
@@ -126,6 +99,12 @@ class ScanViewController: UIViewController {
                     continue
                 }
                 self.highLightWord(box: rg)
+//
+//                if let boxes = region?.characterBoxes{
+//                    for characterBoxes in boxes{
+//                        self.highLightLatters(box: characterBoxes)
+//                    }
+//                }
             }
         }
     }
@@ -162,15 +141,23 @@ class ScanViewController: UIViewController {
         outline.frame = CGRect(x: xCord, y: yCord, width: width, height: height)
         outline.borderWidth = 2
         outline.borderColor = UIColor.red.cgColor
-        var image: [CIImage] = []
-        let cropBox = CGRect(x: xCord, y: yCord, width: width, height: height)
-        guard var imageRef = sampleImage?.cropped(to: cropBox) else {
-            //print("gambar ga ada")
-            return
-        }
-        image.append(imageRef)
+
         imageView.layer.addSublayer(outline)
     }
+
+//    func highLightLatters(box: VNRectangleObservation) {
+//        let xCord = box.topLeft.x * imageView.frame.size.width
+//        let yCord = (1 - box.topRight.y) * imageView.frame.size.height
+//        let width = (box.topRight.x - box.bottomLeft.x) * imageView.frame.size.width
+//        let height = (box.topLeft.y - box.bottomLeft.y) * imageView.frame.size.height
+//
+//        let outline = CALayer()
+//        outline.frame = CGRect(x: xCord, y: yCord, width: width, height: height)
+//        outline.borderWidth = 1
+//        outline.borderColor = UIColor.blue.cgColor
+//
+//        imageView.layer.addSublayer(outline)
+//    }
     
    var location = CGPoint(x: 0, y: 0)
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -212,6 +199,6 @@ extension ScanViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
             print(error)
         }
         
-        bacaTextFirebase(sampeleBuffer: pixelBuffer)
+        bacaTextFirebase(sampeleBuffer: sampleBuffer)
     }
 }

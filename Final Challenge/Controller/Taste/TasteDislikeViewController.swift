@@ -10,6 +10,11 @@ import UIKit
 
 class TasteDislikeViewController: UIViewController {
 
+    @IBAction func nextButton(_ sender: Any) {
+        
+        performSegue(withIdentifier: "toFoodAvoidPage", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

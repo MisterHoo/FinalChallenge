@@ -11,6 +11,8 @@ import Firebase
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
     
+    let ref = Database.database().reference()
+    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -34,6 +36,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             Auth.auth().createUser(withEmail: email, password: pass) { user, error in
                 if error == nil && user != nil{
                     print("User created")
+                    TastePalData.uid = user!.user.uid
+                    self.ref.child("user/\(TastePalData.uid!)/name").setValue(username)
+                    self.ref.child("user/\(TastePalData.uid!)/email").setValue(email)
                     self.userCreatedAlertMsg(Message: "Successfully created !")
                 }else{
                     print("Error : \(error!.localizedDescription)")
