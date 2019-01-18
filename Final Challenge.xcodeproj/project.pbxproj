@@ -41,6 +41,7 @@
 		66B737E621E47044000C9B50 /* ResultSimilarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B737E521E47044000C9B50 /* ResultSimilarTableViewCell.swift */; };
 		CAFFD6F521E478EE00147751 /* IntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFFD6F421E478EE00147751 /* IntroductionViewController.swift */; };
 		CAFFD6F721E479AE00147751 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CAFFD6F621E479AE00147751 /* GoogleService-Info.plist */; };
+		CD4A97AC21EDD8E400378E39 /* CIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A97AB21EDD8E400378E39 /* CIImageExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		7173EE72361510184F29CE2C /* Pods_Final_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Final_Challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAFFD6F421E478EE00147751 /* IntroductionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionViewController.swift; sourceTree = "<group>"; };
 		CAFFD6F621E479AE00147751 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CD4A97AB21EDD8E400378E39 /* CIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIImageExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 		66B737C221E4623C000C9B50 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CD4A97AA21EDD8B900378E39 /* Extension */,
 				66B737D721E46C8C000C9B50 /* Login Verification */,
 				66B737D621E46C87000C9B50 /* Taste */,
 				66B737D121E46B76000C9B50 /* Main */,
@@ -242,6 +245,14 @@
 				359B432ACDA4F0042D37E042 /* Pods-Final Challenge.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		CD4A97AA21EDD8B900378E39 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CD4A97AB21EDD8E400378E39 /* CIImageExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -407,6 +418,7 @@
 				66B737DB21E46C9E000C9B50 /* SignUpViewController.swift in Sources */,
 				66B737DE21E46DFD000C9B50 /* ResultPhotoTableViewCell.swift in Sources */,
 				66763D8221E87B9800368E6E /* FoodCollectionViewCell.swift in Sources */,
+				CD4A97AC21EDD8E400378E39 /* CIImageExtension.swift in Sources */,
 				66B737E621E47044000C9B50 /* ResultSimilarTableViewCell.swift in Sources */,
 				6620EC1C21E5AE73009FDC04 /* RatingTableViewCell.swift in Sources */,
 				663CBBE821E451E400572FFC /* AppDelegate.swift in Sources */,
