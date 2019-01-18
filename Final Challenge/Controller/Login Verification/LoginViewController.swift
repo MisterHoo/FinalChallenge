@@ -24,7 +24,7 @@ class LoginViewController: UIViewController {
         
         Auth.auth().signIn(withEmail: email, password: pass) { user, error in
             if error == nil && user != nil {
-                TastePalData.user.uid = user!.user.uid
+                TastePalData.uid = user!.user.uid
                 self.performSegue(withIdentifier: "toIntroductionPage", sender: self)
             }else if email == "" || pass == ""{
                 self.alertMsg(Message: "Email / Password can not be empty")
