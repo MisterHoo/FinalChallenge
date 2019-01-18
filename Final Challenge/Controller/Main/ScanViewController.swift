@@ -78,7 +78,7 @@ class ScanViewController: UIViewController {
         print(text?.text)
         if let text = text?.text{
             scanText = text
-            ref.child("user/\(TastePalData.uid!)/scanText").setValue(scanText)
+            ref.child("user/\(TastePalData.user.uid!)/scanText").setValue(scanText)
         }
     }
     //convert CIImage To CGImage

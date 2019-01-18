@@ -9,32 +9,31 @@
 import Foundation
 
 struct TastePalData {
-    static var uid: String!
-    static var name: String!
-    static var email: String!
+    static var user = userInformation()
+    static var food: [foodInformation] = []
 }
 
-//class tasteInformation : NSObject {
-//    @objc dynamic var type: String!
-//    @objc dynamic var desc: String!
-//    @objc dynamic var percentage : Float = 0.0
-//}
-//
-//class foodInformation{
-//    @objc dynamic var rating = 0
-//    @objc dynamic var review: String!
-//    @objc dynamic var image: String!
-//    @objc dynamic var name: String!
-//    @objc dynamic var location: String!
-//    @objc dynamic var history: String!
-//}
-//
-//class userInformation{
-//    @objc dynamic var uid: String!
-//    @objc dynamic var username: String!
-//    @objc dynamic var email: String!
-//    @objc dynamic var photoProfile: String!
-//    @objc dynamic var tastePreference : [tasteInformation] = []
-//    @objc dynamic var foodAvoid: [String]!
-//
-//}
+class tasteInformation {
+    var type: String!
+    var description: String!
+    var percentage : Int!
+}
+
+class foodInformation {
+    var rating: Int!
+    var review: String!
+    var image: String!
+    var name: String!
+    var location: String!
+    var history: String!
+}
+
+class userInformation {
+    var uid: String!
+    var username: String!
+    var email: String!
+    var photoProfile: String!
+    var tastePreference: [tasteInformation]!
+    var foodAvoid: [String]!
+    
+}
