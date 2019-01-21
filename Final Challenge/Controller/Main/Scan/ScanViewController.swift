@@ -61,12 +61,14 @@ class ScanViewController: UIViewController {
         
         session.startRunning()
     }
- 
-    func bacaTextFirebase(sampeleBuffer: CMSampleBuffer){
+    //MARK: baca text Firebase
+    func bacaTextFirebase(sampeleBuffer: CVImageBuffer){
         let metadata = VisionImageMetadata()
 
-        let image = VisionImage(buffer: sampeleBuffer)
-        image.metadata = metadata
+        var sampleCIImage = CIImage(cvImageBuffer: sampeleBuffer)
+        var sampleCropedImage = sampleCIImage.cropped(to: CGRect(x:1920/2 , y: (1080/2)+(1080/4), width: 1920/2, height: 1080/4))
+        var cropedImage = UIImage(cgImage: sampleCropedImage.convertCIImageToCGImage())
+        var image = VisionImage(image: cropedImage)
         
         textRecognizer.process(image) { (feture, error) in
             self.processResult(from: feture, error: error)
@@ -76,10 +78,18 @@ class ScanViewController: UIViewController {
         print(text?.text)
         if let text = text?.text{
             scanText = text
-            ref.child("user/\(TastePalData.uid!)/scanText").setValue(scanText)
+            ref.child("user/\(TastePalData.user.uid!)/scanText").setValue(scanText)
         }
     }
-    
+    //convert CIImage To CGImage
+    func convertCIImageToCGImage(inputImage: CIImage) -> CGImage! {
+        let context = CIContext(options: nil)
+        if context != nil {
+            return context.createCGImage(inputImage, from: inputImage.extent)
+        }
+        return nil
+    }
+    //MARK: baca  text vision
     func startTextDetection(){
         let textRequest = VNDetectTextRectanglesRequest(completionHandler: self.detectTextHandeler)
         textRequest.reportCharacterBoxes = true
@@ -199,6 +209,6 @@ extension ScanViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
             print(error)
         }
         
-        bacaTextFirebase(sampeleBuffer: sampleBuffer)
+        bacaTextFirebase(sampeleBuffer: pixelBuffer)
     }
 }

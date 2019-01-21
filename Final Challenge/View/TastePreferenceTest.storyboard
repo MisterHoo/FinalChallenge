@@ -152,7 +152,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="aFq-HB-iwY" id="gBE-aq-WYr"/>
-                        <segue destination="FZa-aS-xe2" kind="show" id="kn8-gK-wvC"/>
+                        <segue destination="FZa-aS-xe2" kind="show" identifier="toTasteDislikedPage" id="kn8-gK-wvC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G53-TZ-X52" userLabel="First Responder" sceneMemberID="firstResponder"/>
