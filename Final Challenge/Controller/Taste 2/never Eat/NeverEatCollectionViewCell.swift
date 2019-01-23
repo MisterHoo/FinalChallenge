@@ -9,7 +9,7 @@
 import UIKit
 
 class NeverEatCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var foodNever: UIImageView!
+    @IBOutlet weak var foodNeverImage: UIImageView!
     @IBOutlet weak var foodNeverLabel: UILabel!
     @IBOutlet weak var foodCheck: UIImageView!
     

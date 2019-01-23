@@ -55,6 +55,8 @@
 		CAFFD6F521E478EE00147751 /* IntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFFD6F421E478EE00147751 /* IntroductionViewController.swift */; };
 		CAFFD6F721E479AE00147751 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CAFFD6F621E479AE00147751 /* GoogleService-Info.plist */; };
 		CAFFD6F921EF2B2100147751 /* TastePalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFFD6F821EF2B2100147751 /* TastePalData.swift */; };
+		CD30B9CB21F8683000E43DAB /* FoodPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD30B9CA21F8683000E43DAB /* FoodPreference.swift */; };
+		CD30B9CD21F86B9B00E43DAB /* FoodNever.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD30B9CC21F86B9B00E43DAB /* FoodNever.swift */; };
 		CDBAD5FD21F8396300017B9F /* TastePreferenceTestV2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDBAD5FC21F8396300017B9F /* TastePreferenceTestV2.storyboard */; };
 		CDBAD60221F83DF800017B9F /* FoodKindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBAD60121F83DF800017B9F /* FoodKindViewController.swift */; };
 		CDBAD60821F83F7000017B9F /* FoodKindCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBAD60721F83F7000017B9F /* FoodKindCollectionViewCell.swift */; };
@@ -116,6 +118,8 @@
 		CAFFD6F421E478EE00147751 /* IntroductionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionViewController.swift; sourceTree = "<group>"; };
 		CAFFD6F621E479AE00147751 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CAFFD6F821EF2B2100147751 /* TastePalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TastePalData.swift; path = "Final Challenge/View/TastePalData.swift"; sourceTree = SOURCE_ROOT; };
+		CD30B9CA21F8683000E43DAB /* FoodPreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodPreference.swift; sourceTree = "<group>"; };
+		CD30B9CC21F86B9B00E43DAB /* FoodNever.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodNever.swift; sourceTree = "<group>"; };
 		CDBAD5FC21F8396300017B9F /* TastePreferenceTestV2.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TastePreferenceTestV2.storyboard; sourceTree = "<group>"; };
 		CDBAD60121F83DF800017B9F /* FoodKindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodKindViewController.swift; sourceTree = "<group>"; };
 		CDBAD60721F83F7000017B9F /* FoodKindCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodKindCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -269,6 +273,8 @@
 			children = (
 				6611209821F83D7E005403AF /* FoodReview.swift */,
 				CAFFD6F821EF2B2100147751 /* TastePalData.swift */,
+				CD30B9CC21F86B9B00E43DAB /* FoodNever.swift */,
+				CD30B9CA21F8683000E43DAB /* FoodPreference.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -562,6 +568,7 @@
 				6620EC1A21E5AE49009FDC04 /* ImageCameraTableViewCell.swift in Sources */,
 				660D72F321EDDFEE00453D83 /* ListAvoidTableViewCell.swift in Sources */,
 				CDBAD60821F83F7000017B9F /* FoodKindCollectionViewCell.swift in Sources */,
+				CD30B9CB21F8683000E43DAB /* FoodPreference.swift in Sources */,
 				660D72F521EDDFF500453D83 /* AvoidedTableViewCell.swift in Sources */,
 				660D72F921EDE00F00453D83 /* AvoidedCollectionViewCell.swift in Sources */,
 				66B737E421E47033000C9B50 /* ResultPredictionTableViewCell.swift in Sources */,
@@ -577,6 +584,7 @@
 				66763D8221E87B9800368E6E /* FoodCollectionViewCell.swift in Sources */,
 				66B737E621E47044000C9B50 /* ResultSimilarTableViewCell.swift in Sources */,
 				6620EC1C21E5AE73009FDC04 /* RatingTableViewCell.swift in Sources */,
+				CD30B9CD21F86B9B00E43DAB /* FoodNever.swift in Sources */,
 				663CBBE821E451E400572FFC /* AppDelegate.swift in Sources */,
 				6620EC1E21E5AE7A009FDC04 /* ReviewTableViewCell.swift in Sources */,
 				66763D7521E8778C00368E6E /* TasteDislikeViewController.swift in Sources */,
