@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import MapKit
 
 class DropDownViewController: UIViewController {
     
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var locationSearchBar: UISearchBar!
+    
+    let locationManager = CLLocationManager()
     
     var possibleRestaurant : [String] = []
     var foundedRestaurant : [String] = []
@@ -28,6 +31,32 @@ class DropDownViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    func setLocation(){
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
+    }
+}
+
+extension DropDownViewController : CLLocationManagerDelegate{
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse{
+            locationManager.requestLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first{
+            print("location : \(location)")
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Error : " + error.localizedDescription)
+    }
+    
 }
 
 extension DropDownViewController : UITableViewDelegate, UITableViewDataSource{
