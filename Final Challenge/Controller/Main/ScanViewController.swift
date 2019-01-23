@@ -16,6 +16,8 @@ class ScanViewController: UIViewController {
     let session = AVCaptureSession()
     var requests = [VNRequest]()
     let ref = Database.database().reference()
+    var scanSize = CGRect(x: (UIScreen.main.bounds.width/2)-150, y: (UIScreen.main.bounds.height/2)-100, width: 300, height: 100)
+    
     
     @IBAction func logOutButton(_ sender: Any) {
         session.stopRunning()
@@ -34,8 +36,16 @@ class ScanViewController: UIViewController {
         super.viewDidLoad()
         let vision = Vision.vision()
         textRecognizer = vision.onDeviceTextRecognizer()
+        drawScanBox()
     }
-    
+    func drawScanBox(){
+        let outline2 = CALayer()
+        outline2.frame = scanSize
+        outline2.borderWidth = 2
+        outline2.borderColor = UIColor.red.cgColor
+        view.layer.addSublayer(outline2)
+
+    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
@@ -66,7 +76,8 @@ class ScanViewController: UIViewController {
         let metadata = VisionImageMetadata()
 
         var sampleCIImage = CIImage(cvImageBuffer: sampeleBuffer)
-        var sampleCropedImage = sampleCIImage.cropped(to: CGRect(x:1920/2 , y: (1080/2)+(1080/4), width: 1920/2, height: 1080/4))
+        var cropedRect = CGRect(x: (1920/UIScreen.main.bounds.width)*scanSize.origin.x, y: (1080/UIScreen.main.bounds.height)*scanSize.origin.y, width: (1920/UIScreen.main.bounds.width)*scanSize.size.width, height: (1080/UIScreen.main.bounds.height)*scanSize.size.height)
+        var sampleCropedImage = sampleCIImage.cropped(to: cropedRect)
         var cropedImage = UIImage(cgImage: sampleCropedImage.convertCIImageToCGImage())
         var image = VisionImage(image: cropedImage)
         
@@ -76,10 +87,10 @@ class ScanViewController: UIViewController {
     }
     func processResult(from text: VisionText?, error: Error?){
         print(text?.text)
-        if let text = text?.text{
-            scanText = text
-            ref.child("user/\(TastePalData.user.uid!)/scanText").setValue(scanText)
-        }
+//        if let text = text?.text{
+//            scanText = text
+//            ref.child("user/\(TastePalData.user.uid!)/scanText").setValue(scanText)
+//        }
     }
     //convert CIImage To CGImage
     func convertCIImageToCGImage(inputImage: CIImage) -> CGImage! {
