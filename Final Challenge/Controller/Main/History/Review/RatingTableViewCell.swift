@@ -10,9 +10,6 @@ import UIKit
 
 class RatingTableViewCell: UITableViewCell {
 
-
-    @IBOutlet weak var foodNameLabel: UILabel!
-    @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
     @IBOutlet var starsImageView: [UIImageView]!

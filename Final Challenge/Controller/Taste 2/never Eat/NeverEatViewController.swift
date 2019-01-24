@@ -25,13 +25,13 @@ class NeverEatViewController: UIViewController,UICollectionViewDataSource, UICol
         // Do any additional setup after loading the view.
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return foodKind.count
+        return neverList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellNever", for: indexPath) as! NeverEatCollectionViewCell
-        cell.foodKindLabel.text = foodKind[indexPath.item]
-        cell.foodKindImageView.image = foodKindImage[indexPath.item]
+        cell.foodNeverLabel.text = neverList[indexPath.item]
+        cell.foodNever.image = neverImage[indexPath.item]
         
         return cell
     }

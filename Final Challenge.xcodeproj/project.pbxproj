@@ -189,6 +189,7 @@
 		6611209721F83BAA005403AF /* History */ = {
 			isa = PBXGroup;
 			children = (
+				6620EC1821E5AE28009FDC04 /* Review */,
 				6611209321F83B22005403AF /* HistoryViewController.swift */,
 				6611209521F83B98005403AF /* HistoryTableViewCell.swift */,
 			);
@@ -290,7 +291,6 @@
 			children = (
 				6611209721F83BAA005403AF /* History */,
 				6611207721F054FF005403AF /* Scan */,
-				6620EC1821E5AE28009FDC04 /* Review */,
 				66B737DC21E46DC3000C9B50 /* Result */,
 				66B737D221E46C10000C9B50 /* ProfileViewController.swift */,
 			);
