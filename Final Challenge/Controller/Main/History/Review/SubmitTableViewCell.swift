@@ -15,6 +15,7 @@ protocol ReviewActionDelegate{
 class SubmitTableViewCell: UITableViewCell {
 
     var reviewActionDelegate : ReviewActionDelegate?
+    @IBOutlet weak var reviewButton: UIButton!
     
     
     @IBAction func submitReview(_ sender: Any) {
@@ -23,6 +24,8 @@ class SubmitTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        reviewButton.layer.cornerRadius = 10
         // Initialization code
     }
 
