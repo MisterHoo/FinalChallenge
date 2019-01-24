@@ -9,41 +9,40 @@
 import UIKit
 
 class FoodKindViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate {
-    var foodKind = ["Indonesian","Japanese","Italian","Indian","Thai","Middle-East"]
     
-    var foodKindImage: [UIImage] = [
-        UIImage(named: "StarGray")! ,
-        UIImage(named: "StarYellow")!,
-        UIImage(named: "StarYellow")!,
-        UIImage(named: "StarYellow")!,
-        UIImage(named: "StarYellow")!,
-        UIImage(named: "StarYellow")!,
-    ]
+    var foodPreference : [FoodPreference] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    @IBAction func toNever(_ sender: Any) {
+        performSegue(withIdentifier: "toNeverView", sender: self)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return foodKind.count
+        return foodPreference.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellKind", for: indexPath) as! FoodKindCollectionViewCell
-        cell.foodKindLabel.text = foodKind[indexPath.item]
-        cell.foodKindImageView.image = foodKindImage[indexPath.item]
+        cell.foodKindLabel.text = foodPreference[indexPath.item].name
+//        cell.foodKindImageView.image = foodPreference[indexPath.row].image
         
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! FoodKindCollectionViewCell
         
-        if cell.check == false {
+        if foodPreference[indexPath.row].like == false {
+            foodPreference[indexPath.row].like = true
             cell.chekThis()
             cell.check = true
         }
         else {
-           cell.uncheck()
+            foodPreference[indexPath.row].like = false
+            cell.uncheck()
             cell.check = false
         }
         

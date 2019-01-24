@@ -75,6 +75,9 @@
                                 <rect key="frame" x="295" y="685" width="57" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="toNever:" destination="kuY-0Q-OfJ" eventType="touchUpInside" id="3CV-0K-f49"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What kind of food do you like?" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gjn-mD-Pbc">
                                 <rect key="frame" x="16" y="44" width="225" height="97"/>
@@ -88,12 +91,12 @@
                         <viewLayoutGuide key="safeArea" id="sDZ-VR-yqQ"/>
                     </view>
                     <connections>
-                        <segue destination="g5Y-bC-2bl" kind="show" id="AnF-xz-WC8"/>
+                        <segue destination="g5Y-bC-2bl" kind="show" identifier="toNeverView" id="zMg-xv-ag5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2hN-sC-p1b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="55" y="20"/>
+            <point key="canvasLocation" x="46" y="20"/>
         </scene>
         <!--Never Eat View Controller-->
         <scene sceneID="zjN-OM-42L">

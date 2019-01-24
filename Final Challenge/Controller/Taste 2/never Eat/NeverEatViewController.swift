@@ -9,40 +9,35 @@
 import UIKit
 
 class NeverEatViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate {
-    var neverList = ["Indonesian","Japanese","Italian","Indian","Thai","Middle-East"]
     
-    var neverImage: [UIImage] = [
-        UIImage(named: "StarGray")! ,
-        UIImage(named: "StarYellow")!,
-        UIImage(named: "StarYellow")!,
-        UIImage(named: "StarYellow")!,
-        UIImage(named: "StarYellow")!,
-        UIImage(named: "StarYellow")!,
-        ]
+    var foodNeverList : [FoodNeverEat] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return neverList.count
+        return foodNeverList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellNever", for: indexPath) as! NeverEatCollectionViewCell
-        cell.foodNeverLabel.text = neverList[indexPath.item]
-        cell.foodNever.image = neverImage[indexPath.item]
+        cell.foodNeverLabel.text = foodNeverList[indexPath.item].name
+//        cell.foodNeverImage.image = foodNeverList[indexPath.item].image
         
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! FoodKindCollectionViewCell
         
-        if cell.check == false {
+        if foodNeverList[indexPath.row].check == false{
+            foodNeverList[indexPath.row].check = true
             cell.chekThis()
             cell.check = true
         }
         else {
+            foodNeverList[indexPath.row].check = false
             cell.uncheck()
             cell.check = false
         }
