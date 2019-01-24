@@ -1,5 +1,5 @@
 //
-//  ReviewTableViewCell.swift
+//  SubmitTableViewCell.swift
 //  Final Challenge
 //
 //  Created by Yosua Hoo on 09/01/19.
@@ -8,20 +8,24 @@
 
 import UIKit
 
-//protocol ReviewSystemDelegate{
-//    func getReview(review: String)
-//
-//}
+protocol ReviewActionDelegate{
+    func submit()
+}
 
-class ReviewTableViewCell: UITableViewCell {
+class SubmitTableViewCell: UITableViewCell {
 
+    var reviewActionDelegate : ReviewActionDelegate?
+    @IBOutlet weak var reviewButton: UIButton!
     
-    @IBOutlet weak var reviewTextField: UITextField!
     
-//    var reviewSystemDelegate : ReviewSystemDelegate?
+    @IBAction func submitReview(_ sender: Any) {
+        reviewActionDelegate?.submit()
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        reviewButton.layer.cornerRadius = 10
         // Initialization code
     }
 
@@ -30,9 +34,5 @@ class ReviewTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-//    func getReview(){
-//        guard let review = reviewTextField.text else {return}
-//        reviewSystemDelegate?.getReview(review: review)
-//    }
+
 }

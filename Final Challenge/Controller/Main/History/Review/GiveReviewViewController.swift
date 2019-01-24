@@ -14,6 +14,8 @@ class GiveReviewViewController: UIViewController {
     var reviewToSubmit = ""
     var takenPhoto : UIImage?
     
+    let basicTaste = BasicTasteData.basicTaste
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,17 +45,23 @@ extension GiveReviewViewController : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0{
+            //description
             let cell = tableView.dequeueReusableCell(withIdentifier: "CameraTableCell") as! ImageCameraTableViewCell
             
             cell.cameraSystemDelegate = self
             
             return cell
         }else if indexPath.row == 1{
+            //rating
             let cell = tableView.dequeueReusableCell(withIdentifier: "RatingTableCell") as! RatingTableViewCell
             
             return cell
         }else if indexPath.row == 1{
+            //description
             let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewTableCell") as! ReviewTableViewCell
+            
+            cell.collectionView.delegate = self
+            cell.collectionView.dataSource = self
             
 //            cell.reviewSystemDelegate = self
             
@@ -67,6 +75,24 @@ extension GiveReviewViewController : UITableViewDelegate, UITableViewDataSource{
             return cell
         }
     }
+}
+
+extension GiveReviewViewController : UICollectionViewDelegate, UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return basicTaste.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReviewTasteCell", for: indexPath) as! ReviewBasicTasteCollectionViewCell
+        
+        cell.layer.backgroundColor = basicTaste[indexPath.row].color as! CGColor
+        cell.basicTasteLabel.text = basicTaste[indexPath.row].name
+        
+        return cell
+    }
+    
+    
+    
 }
 
 //extension GiveReviewViewController : ReviewSystemDelegate{

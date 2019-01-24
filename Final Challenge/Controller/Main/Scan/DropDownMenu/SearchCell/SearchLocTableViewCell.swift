@@ -1,25 +1,17 @@
 //
-//  SubmitTableViewCell.swift
+//  SearchLocTableViewCell.swift
 //  Final Challenge
 //
-//  Created by Yosua Hoo on 09/01/19.
+//  Created by Yosua Hoo on 18/01/19.
 //  Copyright © 2019 Yosua Hoo. All rights reserved.
 //
 
 import UIKit
 
-protocol ReviewActionDelegate{
-    func submit()
-}
+class SearchLocTableViewCell: UITableViewCell {
 
-class SubmitTableViewCell: UITableViewCell {
-
-    var reviewActionDelegate : ReviewActionDelegate?
-    
-    
-    @IBAction func submitReview(_ sender: Any) {
-        reviewActionDelegate?.submit()
-    }
+    @IBOutlet weak var restaurantName: UILabel!
+    @IBOutlet weak var distance: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,5 +23,5 @@ class SubmitTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }
