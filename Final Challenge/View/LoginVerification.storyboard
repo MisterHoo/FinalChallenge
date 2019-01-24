@@ -202,6 +202,17 @@
                                     <action selector="backButton:" destination="oO2-S1-gB9" eventType="touchUpInside" id="Rhh-2P-Rvk"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7W7-AA-6Hp">
+                                <rect key="frame" x="69" y="441" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CYf-AH-mqn">
+                                <rect key="frame" x="69" y="441" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="imageButton:" destination="oO2-S1-gB9" eventType="touchUpInside" id="AfP-Nl-U0e"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="NEs-8x-9GD"/>
@@ -210,12 +221,13 @@
                         <outlet property="emailTextField" destination="VoA-o9-BIT" id="Ti5-U6-wor"/>
                         <outlet property="nameTextField" destination="PDl-O7-a8v" id="Y1F-OI-Lj5"/>
                         <outlet property="passwordTextField" destination="k5G-dO-iWJ" id="bYs-Iq-bp1"/>
+                        <outlet property="photoProfile" destination="7W7-AA-6Hp" id="Rn2-fo-0oZ"/>
                         <outlet property="rePasswordTextField" destination="9OT-bZ-UZd" id="Gfk-7v-hk3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NXM-ow-4fs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4" y="-667"/>
+            <point key="canvasLocation" x="-4" y="-667.24137931034488"/>
         </scene>
     </scenes>
 </document>
