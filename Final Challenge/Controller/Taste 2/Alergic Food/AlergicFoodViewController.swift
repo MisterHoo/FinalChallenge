@@ -8,19 +8,24 @@
 
 import UIKit
 
-class AlergicFoodViewController: UITableViewController{
+class AlergicFoodViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
     var alergic = ["nut","Sea Food"]
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    @IBOutlet weak var alergicTableView: UITableView!
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return alergic.count
     }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "AlergicCell", for: indexPath) as! AlergicSelectedTableViewCell
         cell.alergicLabel.text = alergic[indexPath.row]
         cell.myTableviewController = self
+        if alergic.endIndex == alergic.count{
+            alergic.append("Add Food")
+        }
         return cell
     }
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         

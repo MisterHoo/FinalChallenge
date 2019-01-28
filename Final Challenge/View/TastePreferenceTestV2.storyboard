@@ -233,23 +233,26 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="alergicName" destination="RHF-4p-yHZ" id="PNb-nn-r11"/>
+                                            <outlet property="alergicLabel" destination="RHF-4p-yHZ" id="VaA-rY-ONc"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="cU8-DI-4L5" id="iK2-wN-uT1"/>
-                                    <outlet property="delegate" destination="cU8-DI-4L5" id="Tgs-f5-DZc"/>
+                                    <outlet property="dataSource" destination="cU8-DI-4L5" id="tXz-Vy-P0T"/>
+                                    <outlet property="delegate" destination="cU8-DI-4L5" id="sje-LI-7fi"/>
                                 </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="uFh-za-h1Q"/>
                     </view>
+                    <connections>
+                        <outlet property="alergicTableView" destination="15K-Gg-Ugb" id="Qpu-Jz-lzb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FRo-lP-3YO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1684" y="19.95073891625616"/>
+            <point key="canvasLocation" x="1945" y="20"/>
         </scene>
     </scenes>
     <resources>
