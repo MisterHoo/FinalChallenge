@@ -43,5 +43,8 @@ class NeverEatViewController: UIViewController,UICollectionViewDataSource, UICol
         }
         
     }
-
+    @IBAction func toAvoidView(_ sender: Any) {
+        performSegue(withIdentifier: "ToAvoid", sender: self)
+    }
+    
 }
