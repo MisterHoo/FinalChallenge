@@ -62,6 +62,8 @@
 		CAFFD6F521E478EE00147751 /* IntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFFD6F421E478EE00147751 /* IntroductionViewController.swift */; };
 		CAFFD6F721E479AE00147751 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CAFFD6F621E479AE00147751 /* GoogleService-Info.plist */; };
 		CAFFD6F921EF2B2100147751 /* TastePalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFFD6F821EF2B2100147751 /* TastePalData.swift */; };
+		CD20EB6D21FECC4500F147B2 /* AlergicSelectedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD20EB6B21FECC4500F147B2 /* AlergicSelectedTableViewCell.swift */; };
+		CD20EB6E21FECC4500F147B2 /* AlergicFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD20EB6C21FECC4500F147B2 /* AlergicFoodViewController.swift */; };
 		CD30B9CB21F8683000E43DAB /* FoodPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD30B9CA21F8683000E43DAB /* FoodPreference.swift */; };
 		CD30B9CD21F86B9B00E43DAB /* FoodNever.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD30B9CC21F86B9B00E43DAB /* FoodNever.swift */; };
 		CDBAD5FD21F8396300017B9F /* TastePreferenceTestV2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDBAD5FC21F8396300017B9F /* TastePreferenceTestV2.storyboard */; };
@@ -132,6 +134,8 @@
 		CAFFD6F421E478EE00147751 /* IntroductionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionViewController.swift; sourceTree = "<group>"; };
 		CAFFD6F621E479AE00147751 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CAFFD6F821EF2B2100147751 /* TastePalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TastePalData.swift; path = "Final Challenge/View/TastePalData.swift"; sourceTree = SOURCE_ROOT; };
+		CD20EB6B21FECC4500F147B2 /* AlergicSelectedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlergicSelectedTableViewCell.swift; sourceTree = "<group>"; };
+		CD20EB6C21FECC4500F147B2 /* AlergicFoodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlergicFoodViewController.swift; sourceTree = "<group>"; };
 		CD30B9CA21F8683000E43DAB /* FoodPreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodPreference.swift; sourceTree = "<group>"; };
 		CD30B9CC21F86B9B00E43DAB /* FoodNever.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodNever.swift; sourceTree = "<group>"; };
 		CDBAD5FC21F8396300017B9F /* TastePreferenceTestV2.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TastePreferenceTestV2.storyboard; sourceTree = "<group>"; };
@@ -377,6 +381,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		CD20EB6A21FECC4500F147B2 /* Alergic Food */ = {
+			isa = PBXGroup;
+			children = (
+				CD20EB6B21FECC4500F147B2 /* AlergicSelectedTableViewCell.swift */,
+				CD20EB6C21FECC4500F147B2 /* AlergicFoodViewController.swift */,
+			);
+			path = "Alergic Food";
+			sourceTree = "<group>";
+		};
 		CDBAD5FE21F83D8900017B9F /* New Group */ = {
 			isa = PBXGroup;
 			children = (
@@ -387,6 +400,7 @@
 		CDBAD5FF21F83D9F00017B9F /* Taste 2 */ = {
 			isa = PBXGroup;
 			children = (
+				CD20EB6A21FECC4500F147B2 /* Alergic Food */,
 				CDBAD60921F8606B00017B9F /* never Eat */,
 				CDBAD60021F83DCF00017B9F /* Food Kind */,
 			);
@@ -619,8 +633,10 @@
 				6620EC2021E5AE7F009FDC04 /* SubmitTableViewCell.swift in Sources */,
 				66763D7B21E877A900368E6E /* SummaryViewController.swift in Sources */,
 				6611209621F83B98005403AF /* HistoryTableViewCell.swift in Sources */,
+				CD20EB6D21FECC4500F147B2 /* AlergicSelectedTableViewCell.swift in Sources */,
 				66763D8421E87BA300368E6E /* FoodLikeCollectionViewCell.swift in Sources */,
 				66B737CC21E46B5B000C9B50 /* ScanViewController.swift in Sources */,
+				CD20EB6E21FECC4500F147B2 /* AlergicFoodViewController.swift in Sources */,
 				66B737E221E47020000C9B50 /* ResultInformationTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
