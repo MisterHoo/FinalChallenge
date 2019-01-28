@@ -40,25 +40,20 @@ extension GiveReviewViewController : UITableViewDelegate, UITableViewDataSource{
         }else if indexPath.row == 1{
             return 300
         }else{
-            return 100
+            return 50
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0{
-            //description
+            //description && rating
             let cell = tableView.dequeueReusableCell(withIdentifier: "CameraTableCell") as! ImageCameraTableViewCell
             
             cell.cameraSystemDelegate = self
             
             return cell
         }else if indexPath.row == 1{
-            //rating
-            let cell = tableView.dequeueReusableCell(withIdentifier: "RatingTableCell") as! RatingTableViewCell
-            
-            return cell
-        }else if indexPath.row == 1{
-            //description
+            //submit
             let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewTableCell") as! ReviewTableViewCell
             
             cell.collectionView.delegate = self
@@ -72,6 +67,7 @@ extension GiveReviewViewController : UITableViewDelegate, UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewActionTableCell") as! SubmitTableViewCell
             
             cell.reviewActionDelegate = self
+            cell.reviewButton.layer.cornerRadius = 25
             
             return cell
         }
