@@ -154,7 +154,7 @@ extension FoodLikeViewController : UICollectionViewDataSource, UICollectionViewD
                     self.foodsLike.removeAll()
                     
                     for foodLikes in snapshot.children{
-                        
+                        print(foodLikes)
                     }
                 }
             }

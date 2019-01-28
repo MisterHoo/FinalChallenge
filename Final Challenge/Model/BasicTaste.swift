@@ -27,4 +27,22 @@ struct BasicTasteData{
          BasicTaste(name: "Bitter", color: UIColor(red: 139/255, green: 87/255, blue: 42/255, alpha: 1)),
          BasicTaste(name: "Bland", color: UIColor(red: 139/255, green: 144/255, blue: 124/255, alpha: 1)),
          BasicTaste(name: "Savoury", color: UIColor(red: 209/255, green: 155/255, blue: 66/255, alpha: 1))]
+    
+    public func getTasteInfo(taste : Taste) -> BasicTaste?{
+        if taste == Taste.sweet{
+            return BasicTasteData.basicTaste[0]
+        }else if taste == Taste.salty{
+            return BasicTasteData.basicTaste[1]
+        }else if taste == Taste.sour{
+            return BasicTasteData.basicTaste[2]
+        }else if taste == Taste.bitter{
+            return BasicTasteData.basicTaste[3]
+        }else if taste == Taste.bland{
+            return BasicTasteData.basicTaste[4]
+        }else if taste == Taste.savoury{
+            return BasicTasteData.basicTaste[5]
+        }
+        return nil
+    }
 }
+
