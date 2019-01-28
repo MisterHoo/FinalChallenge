@@ -41,7 +41,7 @@ extension HistoryViewController : UITableViewDelegate, UITableViewDataSource{
         
         cell.dateLabel.text = formatter.string(from: reviews[indexPath.row].date!)
         
-        for i in 0...reviews[indexPath.row].rating!-1{
+        for i in 0...(reviews[indexPath.row].rating! - 1){
             cell.starRatingOutlet[i].image = UIImage(named: "StarYellow")
             
         }
