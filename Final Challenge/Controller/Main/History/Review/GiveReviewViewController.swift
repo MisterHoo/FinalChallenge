@@ -28,6 +28,7 @@ class GiveReviewViewController: UIViewController {
     }
 }
 
+//TableView
 extension GiveReviewViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
@@ -77,6 +78,7 @@ extension GiveReviewViewController : UITableViewDelegate, UITableViewDataSource{
     }
 }
 
+//collectionViewTaste
 extension GiveReviewViewController : UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return basicTaste.count
@@ -95,12 +97,7 @@ extension GiveReviewViewController : UICollectionViewDelegate, UICollectionViewD
     
 }
 
-//extension GiveReviewViewController : ReviewSystemDelegate{
-//    func getReview(review: String) {
-//        reviewToSubmit = review
-//    }
-//}
-
+//Submit
 extension GiveReviewViewController : ReviewActionDelegate{
     func submit() {
         let cell = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! ReviewTableViewCell
@@ -114,6 +111,7 @@ extension GiveReviewViewController : ReviewActionDelegate{
     }
 }
 
+// Image Picker
 extension GiveReviewViewController : CameraSystemDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
     
     func openCamera() {
