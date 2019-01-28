@@ -11,12 +11,6 @@ import UIKit
 class AlergicSelectedTableViewCell: UITableViewCell {
     @IBOutlet weak var alergicLabel: UILabel!
     var myTableviewController: AlergicFoodViewController?
-    var hapusIni:() -> Void = {}
-    
-    @IBAction func cancelButton(_ sender: Any) {
-        myTableviewController?.deleteCell(cell: self)
-        hapusIni()
-    }
     
     
     override func awakeFromNib() {

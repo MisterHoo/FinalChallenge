@@ -21,13 +21,6 @@ class AlergicFoodViewController: UITableViewController{
         cell.myTableviewController = self
         return cell
     }
-    func deleteCell(cell: UITableViewCell){
-        if let deletionIndexPath = tableView.indexPath(for: cell){
-            alergic.remove(at: deletionIndexPath.row)
-            tableView.deleteRows(at: [deletionIndexPath], with: .automatic)
-        }
-
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
