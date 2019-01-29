@@ -9,7 +9,7 @@
 import UIKit
 
 class ResultViewController: UIViewController {
-
+    
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -23,35 +23,34 @@ class ResultViewController: UIViewController {
         
     }
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 extension ResultViewController : UITableViewDelegate, UITableViewDataSource{
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ResultActionTableCell") as! ResultActionButtonTableViewCell
-        
-        cell.resultActionDelegate = self
-        
-        return cell
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "reviewTableCell") as! ReviewTableViewCell
+            
+            //cell.userReviewDelegate = self
+            
+            return cell
+        }else {
+            return UITableViewCell()
+        }
     }
 }
-
 extension ResultViewController : ResultActionDelegate{
     func didAte() {
         print("I Eat")
@@ -62,3 +61,4 @@ extension ResultViewController : ResultActionDelegate{
         print("Not Eat")
     }
 }
+

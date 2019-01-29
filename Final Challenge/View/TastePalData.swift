@@ -33,7 +33,7 @@ class userInformation {
     var username: String!
     var email: String!
     var photoProfile: String!
-    var tastePreference: [tasteInformation]!
+    var tastePreference: [TastePreference]!
     var foodAvoid: [String]!
     
 }

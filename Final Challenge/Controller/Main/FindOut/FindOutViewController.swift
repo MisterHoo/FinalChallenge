@@ -11,21 +11,98 @@ import UIKit
 class FindOutViewController: UIViewController {
 
     
+    @IBOutlet weak var tableView: UITableView!
+    
+    let screenHeight = UIScreen.main.bounds.height
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if let navbar = navigationController?.navigationBar{
+            navbar.prefersLargeTitles = true
+            navbar.backgroundColor = UIColor(red: 62/255, green: 60/255, blue: 73/255, alpha: 1)
+//            navbar.tintColor = UIColor(red: 62/255, green: 60/255, blue: 73/255, alpha: 1)
+            navbar.barTintColor = UIColor(red: 62/255, green: 60/255, blue: 73/255, alpha: 1)
+        }
+        
+        view.backgroundColor = UIColor(red: 62/255, green: 60/255, blue: 73/255, alpha: 1)
+        
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.allowsSelection = false
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidAppear(_ animated: Bool) {
+//        tableView.reloadData()
     }
-    */
 
+}
+
+extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0{
+            //Location
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LocationFOCell") as! LocationFOTableViewCell
+            
+            return cell
+        }else if indexPath.row == 1{
+            //Search
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SearchFOCell") as! SearchFOTableViewCell
+            
+            return cell
+        }else if indexPath.row == 2{
+            //TastePreference
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TastePreferenceFOCell") as! TastePreferenceFOTableViewCell
+            
+            cell.animateView()
+            
+            return cell
+        }else if indexPath.row == 3{
+            //collectionView
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FoodMightLikeFOCell") as! FoodMightLikeFOTableViewCell
+            
+            cell.collectionView.delegate = self
+            cell.collectionView.dataSource = self
+            
+            return cell
+        }else{
+            return UITableViewCell()
+        }
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0{
+            return 50
+        }else if indexPath.row == 1{
+            return 50
+        }else if indexPath.row == 2{
+            return 100
+        }else if indexPath.row == 3{
+            //it should be 0.46 (370/812)
+            return 0.5 * screenHeight
+        }else {
+            return 0
+        }
+    }
+}
+
+extension FindOutViewController : UICollectionViewDelegate, UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodMightLikeCollCell", for: indexPath) as! FoodMightLikeFOCollectionViewCell
+        
+        return cell
+    }
+    
+    
+    
 }

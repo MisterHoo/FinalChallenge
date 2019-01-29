@@ -8,17 +8,18 @@
 
 import UIKit
 
-//protocol ReviewSystemDelegate{
-//    func getReview(review: String)
-//
-//}
+protocol UserReviewDelegate{
+    func getReview(review: String)
+
+}
 
 class ReviewTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var reviewTextField: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
-    //    var reviewSystemDelegate : ReviewSystemDelegate?
+    
+    var userReviewDelegate: UserReviewDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

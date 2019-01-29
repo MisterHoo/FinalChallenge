@@ -22,7 +22,6 @@
 		6611209621F83B98005403AF /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6611209521F83B98005403AF /* HistoryTableViewCell.swift */; };
 		6611209921F83D7E005403AF /* FoodReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6611209821F83D7E005403AF /* FoodReview.swift */; };
 		6620EC1A21E5AE49009FDC04 /* ImageCameraTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6620EC1921E5AE49009FDC04 /* ImageCameraTableViewCell.swift */; };
-		6620EC1C21E5AE73009FDC04 /* RatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6620EC1B21E5AE73009FDC04 /* RatingTableViewCell.swift */; };
 		6620EC1E21E5AE7A009FDC04 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6620EC1D21E5AE7A009FDC04 /* ReviewTableViewCell.swift */; };
 		6620EC2021E5AE7F009FDC04 /* SubmitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6620EC1F21E5AE7F009FDC04 /* SubmitTableViewCell.swift */; };
 		663CBBE821E451E400572FFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663CBBE721E451E400572FFC /* AppDelegate.swift */; };
@@ -44,6 +43,8 @@
 		66B1411B21FED4290013C5E7 /* TastePreferenceFOTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B1411A21FED4290013C5E7 /* TastePreferenceFOTableViewCell.swift */; };
 		66B1411D21FED4310013C5E7 /* FoodMightLikeFOTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B1411C21FED4310013C5E7 /* FoodMightLikeFOTableViewCell.swift */; };
 		66B1411F21FEE3270013C5E7 /* TastePreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B1411E21FEE3270013C5E7 /* TastePreference.swift */; };
+		66B1412122004E210013C5E7 /* FoodMightLikeFOCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B1412022004E210013C5E7 /* FoodMightLikeFOCollectionViewCell.swift */; };
+		66B1412522005ACD0013C5E7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B1412422005ACD0013C5E7 /* TabBarViewController.swift */; };
 		66B737C421E46299000C9B50 /* TastePreferenceTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66B737C321E46299000C9B50 /* TastePreferenceTest.storyboard */; };
 		66B737C621E4650B000C9B50 /* LoginVerification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66B737C521E4650B000C9B50 /* LoginVerification.storyboard */; };
 		66B737C821E46577000C9B50 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B737C721E46577000C9B50 /* LoginViewController.swift */; };
@@ -101,7 +102,6 @@
 		6611209521F83B98005403AF /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		6611209821F83D7E005403AF /* FoodReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodReview.swift; sourceTree = "<group>"; };
 		6620EC1921E5AE49009FDC04 /* ImageCameraTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCameraTableViewCell.swift; sourceTree = "<group>"; };
-		6620EC1B21E5AE73009FDC04 /* RatingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingTableViewCell.swift; sourceTree = "<group>"; };
 		6620EC1D21E5AE7A009FDC04 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		6620EC1F21E5AE7F009FDC04 /* SubmitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitTableViewCell.swift; sourceTree = "<group>"; };
 		663CBBE421E451E400572FFC /* Final Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Final Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +125,8 @@
 		66B1411A21FED4290013C5E7 /* TastePreferenceFOTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastePreferenceFOTableViewCell.swift; sourceTree = "<group>"; };
 		66B1411C21FED4310013C5E7 /* FoodMightLikeFOTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodMightLikeFOTableViewCell.swift; sourceTree = "<group>"; };
 		66B1411E21FEE3270013C5E7 /* TastePreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastePreference.swift; sourceTree = "<group>"; };
+		66B1412022004E210013C5E7 /* FoodMightLikeFOCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodMightLikeFOCollectionViewCell.swift; sourceTree = "<group>"; };
+		66B1412422005ACD0013C5E7 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = "Final Challenge/Controller/Main/TabBarViewController.swift"; sourceTree = SOURCE_ROOT; };
 		66B737C321E46299000C9B50 /* TastePreferenceTest.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TastePreferenceTest.storyboard; sourceTree = "<group>"; };
 		66B737C521E4650B000C9B50 /* LoginVerification.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginVerification.storyboard; sourceTree = "<group>"; };
 		66B737C721E46577000C9B50 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -244,7 +246,6 @@
 				66E4617D21F98F750084F7A5 /* ReviewBasicTasteCollectionViewCell.swift */,
 				6620EC1921E5AE49009FDC04 /* ImageCameraTableViewCell.swift */,
 				66B737CF21E46B72000C9B50 /* GiveReviewViewController.swift */,
-				6620EC1B21E5AE73009FDC04 /* RatingTableViewCell.swift */,
 				6620EC1D21E5AE7A009FDC04 /* ReviewTableViewCell.swift */,
 				6620EC1F21E5AE7F009FDC04 /* SubmitTableViewCell.swift */,
 			);
@@ -336,6 +337,7 @@
 		66B737D121E46B76000C9B50 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				66B1412422005ACD0013C5E7 /* TabBarViewController.swift */,
 				66DB37E421FEC51700A695E8 /* FindOut */,
 				6611209721F83BAA005403AF /* History */,
 				6611207721F054FF005403AF /* Scan */,
@@ -389,6 +391,7 @@
 		66DB37E421FEC51700A695E8 /* FindOut */ = {
 			isa = PBXGroup;
 			children = (
+				66B1412022004E210013C5E7 /* FoodMightLikeFOCollectionViewCell.swift */,
 				66B1411621FED3DB0013C5E7 /* LocationFOTableViewCell.swift */,
 				66B1411821FED3FD0013C5E7 /* SearchFOTableViewCell.swift */,
 				66DB37E221FEC50D00A695E8 /* FindOutViewController.swift */,
@@ -655,12 +658,14 @@
 				660D72F721EDE00800453D83 /* ListAvoidCollectionViewCell.swift in Sources */,
 				66E4617E21F98F750084F7A5 /* ReviewBasicTasteCollectionViewCell.swift in Sources */,
 				6611208D21F1DE15005403AF /* SearchLocTableViewCell.swift in Sources */,
+				66B1412122004E210013C5E7 /* FoodMightLikeFOCollectionViewCell.swift in Sources */,
 				CAC3D53721F9AB7E002CF4D9 /* ProfileHeaderTableViewCell.swift in Sources */,
 				6620EC1A21E5AE49009FDC04 /* ImageCameraTableViewCell.swift in Sources */,
 				660D72F321EDDFEE00453D83 /* ListAvoidTableViewCell.swift in Sources */,
 				CDBAD60821F83F7000017B9F /* FoodKindCollectionViewCell.swift in Sources */,
 				CD30B9CB21F8683000E43DAB /* FoodPreference.swift in Sources */,
 				66E4617C21F98AFC0084F7A5 /* BasicTaste.swift in Sources */,
+				66B1412522005ACD0013C5E7 /* TabBarViewController.swift in Sources */,
 				660D72F521EDDFF500453D83 /* AvoidedTableViewCell.swift in Sources */,
 				660D72F921EDE00F00453D83 /* AvoidedCollectionViewCell.swift in Sources */,
 				66B737E421E47033000C9B50 /* ResultPredictionTableViewCell.swift in Sources */,
@@ -679,7 +684,6 @@
 				66763D8221E87B9800368E6E /* FoodCollectionViewCell.swift in Sources */,
 				66B737E621E47044000C9B50 /* ResultSimilarTableViewCell.swift in Sources */,
 				CAC3D53921F9AE77002CF4D9 /* TastePreferenceTableViewCell.swift in Sources */,
-				6620EC1C21E5AE73009FDC04 /* RatingTableViewCell.swift in Sources */,
 				CD30B9CD21F86B9B00E43DAB /* FoodNever.swift in Sources */,
 				663CBBE821E451E400572FFC /* AppDelegate.swift in Sources */,
 				6620EC1E21E5AE7A009FDC04 /* ReviewTableViewCell.swift in Sources */,
