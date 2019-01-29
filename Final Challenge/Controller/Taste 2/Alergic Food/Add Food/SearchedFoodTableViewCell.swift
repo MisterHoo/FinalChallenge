@@ -1,16 +1,16 @@
 //
-//  AddFoodTableViewCell.swift
+//  SearchedFoodTableViewCell.swift
 //  Final Challenge
 //
-//  Created by Kennyzi Yusuf on 28/01/19.
+//  Created by Kennyzi Yusuf on 29/01/19.
 //  Copyright © 2019 Yosua Hoo. All rights reserved.
 //
 
 import UIKit
 
-class AddFoodTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var addFood: UIButton!
+class SearchedFoodTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var avoidedFoodLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,8 +21,5 @@ class AddFoodTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    @IBAction func addFood(_ sender: Any) {
-    
-    }
-    
+
 }
