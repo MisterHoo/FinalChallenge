@@ -422,10 +422,10 @@
 			isa = PBXGroup;
 			children = (
 				CDC932F7220035B600B3F33A /* Add Food */,
+				CD20EB6C21FECC4500F147B2 /* AlergicFoodViewController.swift */,
 				CD20EB6B21FECC4500F147B2 /* AlergicSelectedTableViewCell.swift */,
 				CD51B00F21FF05410084812E /* AddFoodTableViewCell.swift */,
 				CD51B01021FF05410084812E /* AddFoodTableViewCell.xib */,
-				CD20EB6C21FECC4500F147B2 /* AlergicFoodViewController.swift */,
 			);
 			path = "Alergic Food";
 			sourceTree = "<group>";
