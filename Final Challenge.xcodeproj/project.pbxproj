@@ -44,6 +44,8 @@
 		66B1411B21FED4290013C5E7 /* TastePreferenceFOTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B1411A21FED4290013C5E7 /* TastePreferenceFOTableViewCell.swift */; };
 		66B1411D21FED4310013C5E7 /* FoodMightLikeFOTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B1411C21FED4310013C5E7 /* FoodMightLikeFOTableViewCell.swift */; };
 		66B1411F21FEE3270013C5E7 /* TastePreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B1411E21FEE3270013C5E7 /* TastePreference.swift */; };
+		66B1412122004E210013C5E7 /* FoodMightLikeFOCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B1412022004E210013C5E7 /* FoodMightLikeFOCollectionViewCell.swift */; };
+		66B1412522005ACD0013C5E7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B1412422005ACD0013C5E7 /* TabBarViewController.swift */; };
 		66B737C421E46299000C9B50 /* TastePreferenceTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66B737C321E46299000C9B50 /* TastePreferenceTest.storyboard */; };
 		66B737C621E4650B000C9B50 /* LoginVerification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66B737C521E4650B000C9B50 /* LoginVerification.storyboard */; };
 		66B737C821E46577000C9B50 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B737C721E46577000C9B50 /* LoginViewController.swift */; };
@@ -121,6 +123,8 @@
 		66B1411A21FED4290013C5E7 /* TastePreferenceFOTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastePreferenceFOTableViewCell.swift; sourceTree = "<group>"; };
 		66B1411C21FED4310013C5E7 /* FoodMightLikeFOTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodMightLikeFOTableViewCell.swift; sourceTree = "<group>"; };
 		66B1411E21FEE3270013C5E7 /* TastePreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastePreference.swift; sourceTree = "<group>"; };
+		66B1412022004E210013C5E7 /* FoodMightLikeFOCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodMightLikeFOCollectionViewCell.swift; sourceTree = "<group>"; };
+		66B1412422005ACD0013C5E7 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = "Final Challenge/Controller/Main/TabBarViewController.swift"; sourceTree = SOURCE_ROOT; };
 		66B737C321E46299000C9B50 /* TastePreferenceTest.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TastePreferenceTest.storyboard; sourceTree = "<group>"; };
 		66B737C521E4650B000C9B50 /* LoginVerification.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginVerification.storyboard; sourceTree = "<group>"; };
 		66B737C721E46577000C9B50 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -328,6 +332,7 @@
 		66B737D121E46B76000C9B50 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				66B1412422005ACD0013C5E7 /* TabBarViewController.swift */,
 				66DB37E421FEC51700A695E8 /* FindOut */,
 				6611209721F83BAA005403AF /* History */,
 				6611207721F054FF005403AF /* Scan */,
@@ -381,6 +386,7 @@
 		66DB37E421FEC51700A695E8 /* FindOut */ = {
 			isa = PBXGroup;
 			children = (
+				66B1412022004E210013C5E7 /* FoodMightLikeFOCollectionViewCell.swift */,
 				66B1411621FED3DB0013C5E7 /* LocationFOTableViewCell.swift */,
 				66B1411821FED3FD0013C5E7 /* SearchFOTableViewCell.swift */,
 				66DB37E221FEC50D00A695E8 /* FindOutViewController.swift */,
@@ -633,12 +639,14 @@
 				660D72F721EDE00800453D83 /* ListAvoidCollectionViewCell.swift in Sources */,
 				66E4617E21F98F750084F7A5 /* ReviewBasicTasteCollectionViewCell.swift in Sources */,
 				6611208D21F1DE15005403AF /* SearchLocTableViewCell.swift in Sources */,
+				66B1412122004E210013C5E7 /* FoodMightLikeFOCollectionViewCell.swift in Sources */,
 				CAC3D53721F9AB7E002CF4D9 /* ProfileHeaderTableViewCell.swift in Sources */,
 				6620EC1A21E5AE49009FDC04 /* ImageCameraTableViewCell.swift in Sources */,
 				660D72F321EDDFEE00453D83 /* ListAvoidTableViewCell.swift in Sources */,
 				CDBAD60821F83F7000017B9F /* FoodKindCollectionViewCell.swift in Sources */,
 				CD30B9CB21F8683000E43DAB /* FoodPreference.swift in Sources */,
 				66E4617C21F98AFC0084F7A5 /* BasicTaste.swift in Sources */,
+				66B1412522005ACD0013C5E7 /* TabBarViewController.swift in Sources */,
 				660D72F521EDDFF500453D83 /* AvoidedTableViewCell.swift in Sources */,
 				660D72F921EDE00F00453D83 /* AvoidedCollectionViewCell.swift in Sources */,
 				66B737E421E47033000C9B50 /* ResultPredictionTableViewCell.swift in Sources */,

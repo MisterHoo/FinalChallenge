@@ -23,7 +23,7 @@
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
-	<string>TastePreferenceTestV2</string>
+	<string>Main</string>
 	<key>NSCameraUsageDescription</key>
 	<string>For text recognition and take a photo of the food</string>
 	<key>UIRequiredDeviceCapabilities</key>
