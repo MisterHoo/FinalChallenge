@@ -10,6 +10,7 @@ import UIKit
 
 class AddFoodTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var addFood: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +21,8 @@ class AddFoodTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    @IBAction func addFood(_ sender: Any) {
+        
+    }
+    
 }
