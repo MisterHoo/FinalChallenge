@@ -19,8 +19,6 @@ class ReviewTableViewCell: UITableViewCell {
     @IBOutlet weak var reviewTextField: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var userReviewDelegate: UserReviewDelegate?
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
