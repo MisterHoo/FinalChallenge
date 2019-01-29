@@ -12,6 +12,9 @@ class ResultViewController: UIViewController {
     
     
     @IBOutlet weak var tableView: UITableView!
+    let secTitle = "Review"
+    
+    var reviews : [Review] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,33 +25,52 @@ class ResultViewController: UIViewController {
         tableView.allowsSelection = false
         
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
 
 extension ResultViewController : UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 1{
+            return secTitle
+        }else{
+            return nil
+        }
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        
+        if section == 0{
+            return 2
+        }else if section == 1{
+            return 3
+            //return reviews.count
+        }else{
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "reviewTableCell") as! ReviewTableViewCell
+        
+        if indexPath.section == 0{
+            if indexPath.row == 0 {
+                //ngebalikin information
+                let cell = tableView.dequeueReusableCell(withIdentifier: "foodInformation") as! FoodInformationTableViewCell
+                
+                return cell
+            }else if indexPath.row == 1{
+                //ngeblikin recommended Food
+                let cell = tableView.dequeueReusableCell(withIdentifier: "foodRecommend") as! FoodRecommendationTableViewCell
+                
+                return cell
+            }else{
+                return UITableViewCell()
+            }
+        }else if indexPath.section == 1{
+            //ngebalikin cell review
             
-            //cell.userReviewDelegate = self
+            let cell = tableView.dequeueReusableCell(withIdentifier: "reviewUser") as! ReviewTableViewCell
             
             return cell
-        }else {
-            return UITableViewCell()
         }
+        return UITableViewCell()
     }
 }
 extension ResultViewController : ResultActionDelegate{
@@ -60,5 +82,13 @@ extension ResultViewController : ResultActionDelegate{
     func notEat() {
         print("Not Eat")
     }
+}
+
+extension ResultViewController : UserReviewDelegate{
+    func getReview(review: String) {
+        print("test")
+    }
+    
+    
 }
 

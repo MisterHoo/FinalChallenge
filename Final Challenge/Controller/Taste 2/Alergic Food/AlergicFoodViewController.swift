@@ -25,9 +25,13 @@ class AlergicFoodViewController: UIViewController,UITableViewDelegate,UITableVie
         }else {
             print("masuk")
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddFoodTableViewCell") as! AddFoodTableViewCell
+            cell.addFood.addTarget(self, action: #selector(toSearch), for: .touchUpInside)
             
             return cell
         }
+    }
+    @objc func toSearch(){
+        performSegue(withIdentifier: "ToAddFood", sender: self)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.count != alergic.endIndex{

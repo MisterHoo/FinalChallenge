@@ -1,17 +1,15 @@
 //
-//  AddFoodTableViewCell.swift
+//  FoodRecommendationTableViewCell.swift
 //  Final Challenge
 //
-//  Created by Kennyzi Yusuf on 28/01/19.
+//  Created by Brandon Cornelius on 29/01/19.
 //  Copyright © 2019 Yosua Hoo. All rights reserved.
 //
 
 import UIKit
 
-class AddFoodTableViewCell: UITableViewCell {
+class FoodRecommendationTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var addFood: UIButton!
-    var alergicFoodViewController: AlergicFoodViewController!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,8 +20,5 @@ class AddFoodTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    @IBAction func addFood(_ sender: Any) {
-        
-    }
-    
+
 }
