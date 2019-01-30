@@ -19,6 +19,8 @@ class GiveReviewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = TastePalColor.charcoal
+        
         tableView.delegate = self
         tableView.dataSource = self
         

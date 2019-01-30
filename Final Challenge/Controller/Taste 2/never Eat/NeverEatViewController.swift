@@ -15,6 +15,8 @@ class NeverEatViewController: UIViewController,UICollectionViewDataSource, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = TastePalColor.charcoal
+        
         // Do any additional setup after loading the view.
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

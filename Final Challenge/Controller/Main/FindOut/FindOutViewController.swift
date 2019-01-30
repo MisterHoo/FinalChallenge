@@ -17,15 +17,8 @@ class FindOutViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let navbar = navigationController?.navigationBar{
-            navbar.prefersLargeTitles = true
-            navbar.backgroundColor = UIColor(red: 62/255, green: 60/255, blue: 73/255, alpha: 1)
-//            navbar.tintColor = UIColor(red: 62/255, green: 60/255, blue: 73/255, alpha: 1)
-            navbar.barTintColor = UIColor(red: 62/255, green: 60/255, blue: 73/255, alpha: 1)
-        }
         
-        view.backgroundColor = UIColor(red: 62/255, green: 60/255, blue: 73/255, alpha: 1)
-        
+        view.backgroundColor = TastePalColor.charcoal
         
         tableView.delegate = self
         tableView.dataSource = self

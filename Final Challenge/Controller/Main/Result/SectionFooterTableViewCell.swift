@@ -1,20 +1,25 @@
 //
-//  FoodInformationTableViewCell.swift
+//  SectionFooterTableViewCell.swift
 //  Final Challenge
 //
-//  Created by Brandon Cornelius on 29/01/19.
+//  Created by Yosua Hoo on 30/01/19.
 //  Copyright © 2019 Yosua Hoo. All rights reserved.
 //
 
 import UIKit
 
-class FoodInformationTableViewCell: UITableViewCell {
+protocol SeeAllReviewDelegate{
+    func seeAllReview()
+}
+
+class SectionFooterTableViewCell: UITableViewCell {
     
     
-    @IBOutlet weak var foodImage: UIImageView!
+    var seeAllReviewDelegate : SeeAllReviewDelegate?
     
-    @IBOutlet weak var foodName: UILabel!
-    @IBOutlet weak var location: UILabel!
+    @IBAction func seeAllReview(_ sender: Any) {
+        seeAllReviewDelegate?.seeAllReview()
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

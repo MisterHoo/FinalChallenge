@@ -12,6 +12,15 @@ class AlergicFoodViewController: UIViewController,UITableViewDelegate,UITableVie
     var alergic = ["nut","Sea Food"]
 
     @IBOutlet weak var alergicTableView: UITableView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = TastePalColor.charcoal
+        
+        alergicTableView.register(UINib(nibName: "AddFoodTableViewCell", bundle: nil), forCellReuseIdentifier: "AddFoodTableViewCell")
+        // Do any additional setup after loading the view.
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (alergic.count + 1)
     }
@@ -56,11 +65,4 @@ class AlergicFoodViewController: UIViewController,UITableViewDelegate,UITableVie
             return UITableViewCell.EditingStyle.none
         }
     }
- 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        alergicTableView.register(UINib(nibName: "AddFoodTableViewCell", bundle: nil), forCellReuseIdentifier: "AddFoodTableViewCell")
-        // Do any additional setup after loading the view.
-    }
-
 }
