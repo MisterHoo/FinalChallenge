@@ -283,6 +283,9 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hE5-rt-cSd">
                                                     <rect key="frame" x="14" y="11" width="22" height="22"/>
+                                                    <connections>
+                                                        <action selector="addFood:" destination="BPg-Vp-yxw" eventType="touchUpInside" id="bfZ-Z9-AMv"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwD-hL-6ls">
                                                     <rect key="frame" x="44" y="11" width="42" height="22"/>
@@ -301,6 +304,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="addFoodOutlet" destination="hE5-rt-cSd" id="KwQ-pR-2l6"/>
                                             <outlet property="avoidedFoodLabel" destination="nwD-hL-6ls" id="yTQ-Fm-Lzm"/>
                                         </connections>
                                     </tableViewCell>
@@ -330,7 +334,11 @@
                                 <action selector="cancel:" destination="nuk-oH-pU4" id="Eil-cH-Gbu"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="g3N-eL-EEb"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="g3N-eL-EEb">
+                            <connections>
+                                <action selector="done:" destination="nuk-oH-pU4" id="NhU-ct-Hzw"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="searchFood" destination="V7Q-Mh-qAY" id="yWJ-1R-x3x"/>

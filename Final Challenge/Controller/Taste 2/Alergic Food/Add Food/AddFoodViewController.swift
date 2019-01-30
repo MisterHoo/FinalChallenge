@@ -28,6 +28,13 @@ class AddFoodViewController: UIViewController,UITableViewDelegate, UITableViewDa
     @IBAction func cancel(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    @IBAction func done(_ sender: Any) {
+        if let presenter = presentingViewController as? AlergicFoodViewController {
+            presenter.alergic.append(contentsOf: tempFood)
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searching{
             return searchedWord.count
@@ -37,12 +44,33 @@ class AddFoodViewController: UIViewController,UITableViewDelegate, UITableViewDa
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "foodCell", for: indexPath) as! SearchedFoodTableViewCell
+
         if searching {
             cell.avoidedFoodLabel.text = searchedWord[indexPath.row]
+            cell.addFoodOutlet.tag = indexPath.row
+            cell.addFoodOutlet.addTarget(self, action: #selector(addFoodName(sender:)), for: .touchUpInside)
         }else {
             cell.avoidedFoodLabel.text = birds[indexPath.row]
+            cell.addFoodOutlet.tag = indexPath.row
+            cell.addFoodOutlet.addTarget(self, action: #selector(addFoodName(sender:)), for: .touchUpInside)
         }
         return cell
+    }
+    @objc func addFoodName(sender: UIButton){
+        let index = sender.tag
+        if searching {
+            let tempName = searchedWord[index]
+            tempFood.append(searchedWord[index])
+            searchedWord.remove(at: index)
+            birds.removeAll{ $0 == tempName }
+            searchTableView.reloadData()
+            print("appemd ke temp dari searching")
+        }else {
+            tempFood.append(birds[index])
+            birds.remove(at: index)
+            searchTableView.reloadData()
+            print("appemd ke temp ga searching")
+        }
     }
 
 }

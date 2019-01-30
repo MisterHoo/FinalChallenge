@@ -12,6 +12,7 @@ class AlergicFoodViewController: UIViewController,UITableViewDelegate,UITableVie
     var alergic = ["nut","Sea Food"]
 
     @IBOutlet weak var alergicTableView: UITableView!
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (alergic.count + 1)
     }
@@ -33,6 +34,7 @@ class AlergicFoodViewController: UIViewController,UITableViewDelegate,UITableVie
     @objc func toSearch(){
         performSegue(withIdentifier: "ToAddFood", sender: self)
     }
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.count != alergic.endIndex{
             
@@ -61,6 +63,9 @@ class AlergicFoodViewController: UIViewController,UITableViewDelegate,UITableVie
         super.viewDidLoad()
         alergicTableView.register(UINib(nibName: "AddFoodTableViewCell", bundle: nil), forCellReuseIdentifier: "AddFoodTableViewCell")
         // Do any additional setup after loading the view.
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        alergicTableView.reloadData()
     }
 
 }

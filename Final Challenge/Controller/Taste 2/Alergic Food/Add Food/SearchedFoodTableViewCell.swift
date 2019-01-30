@@ -10,6 +10,7 @@ import UIKit
 
 class SearchedFoodTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var addFoodOutlet: UIButton!
     @IBOutlet weak var avoidedFoodLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,5 +22,8 @@ class SearchedFoodTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    @IBAction func addFood(_ sender: Any) {
+        
+    }
+    
 }
