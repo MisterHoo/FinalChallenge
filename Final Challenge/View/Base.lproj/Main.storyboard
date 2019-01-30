@@ -522,6 +522,9 @@
                                                     <state key="normal" title="I Ate It">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="AteAction:" destination="Xhj-tP-zxg" eventType="touchUpInside" id="vpf-fS-zs0"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Matches" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YQL-W1-TcH">
                                                     <rect key="frame" x="15" y="263.33333333333331" width="345" height="99.333333333333314"/>
@@ -555,6 +558,7 @@
                                             <outlet property="foodImage" destination="kbq-vx-kJi" id="F8I-pf-chN"/>
                                             <outlet property="foodName" destination="4QJ-Pt-uuz" id="eLk-wa-j34"/>
                                             <outlet property="location" destination="m6s-LU-f0d" id="WWY-mE-aKP"/>
+                                            <outlet property="match" destination="YQL-W1-TcH" id="Kqt-2e-tBq"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="foodRecommend" rowHeight="270" id="h6K-hH-Hag" customClass="FoodRecommendationTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
@@ -565,7 +569,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Bxe-n5-bdG">
-                                                    <rect key="frame" x="8" y="51.999999999999986" width="359" height="152.66666666666663"/>
+                                                    <rect key="frame" x="15" y="55" width="345" height="147"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="crI-0M-Eot">
                                                         <size key="itemSize" width="100" height="146"/>
@@ -574,7 +578,7 @@
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="jcZ-Un-jgL">
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RecommendedFoodCell" id="jcZ-Un-jgL" customClass="RecommendFoodCollectionViewCell" customModule="Final_Challenge" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="100" height="146"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -601,34 +605,41 @@
                                                                 <constraint firstItem="Brh-va-Goh" firstAttribute="top" secondItem="jcZ-Un-jgL" secondAttribute="top" id="o51-tq-wnV"/>
                                                                 <constraint firstItem="hdm-6m-iNk" firstAttribute="leading" secondItem="jcZ-Un-jgL" secondAttribute="leading" id="wXt-56-3Xd"/>
                                                             </constraints>
+                                                            <connections>
+                                                                <outlet property="foodImage" destination="Brh-va-Goh" id="4Jw-Yi-tq3"/>
+                                                                <outlet property="foodName" destination="hdm-6m-iNk" id="QPW-Re-GbV"/>
+                                                            </connections>
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HzV-Vs-5VL">
-                                                    <rect key="frame" x="8" y="23" width="359" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recommended Food" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HzV-Vs-5VL">
+                                                    <rect key="frame" x="15" y="26" width="345" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kPe-P1-AMU">
-                                                    <rect key="frame" x="8" y="216.66666666666666" width="359" height="44.999999999999972"/>
+                                                    <rect key="frame" x="15" y="214" width="345" height="45"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QjL-yU-LnU">
-                                                            <rect key="frame" x="0.0" y="1" width="359" height="43"/>
+                                                            <rect key="frame" x="0.0" y="1" width="345" height="43"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                             <state key="normal" title="See All Recommended Food">
                                                                 <color key="titleColor" red="0.58431372550000005" green="0.56470588239999997" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="seeAllRecommend:" destination="h6K-hH-Hag" eventType="touchUpInside" id="Q9o-cy-B7N"/>
+                                                            </connections>
                                                         </button>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rdm-UY-CEk">
-                                                            <rect key="frame" x="0.0" y="0.0" width="359" height="1"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="345" height="1"/>
                                                             <color key="backgroundColor" red="0.58431372550000005" green="0.56470588239999997" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="bxJ-oP-Ksr"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thj-ao-aQ0">
-                                                            <rect key="frame" x="0.0" y="44.000000000000028" width="359" height="1"/>
+                                                            <rect key="frame" x="0.0" y="44" width="345" height="1"/>
                                                             <color key="backgroundColor" red="0.58431372550000005" green="0.56470588239999997" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="i0T-gD-2gx"/>
@@ -666,6 +677,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="collectionView" destination="Bxe-n5-bdG" id="M0p-so-0T1"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reviewUser" rowHeight="161" id="rEe-HY-h59" customClass="ReviewTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="778" width="375" height="161"/>
@@ -762,7 +776,7 @@
                                         <rect key="frame" x="0.0" y="939" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eQa-04-IRF" id="RWt-oD-3hV">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JgN-fh-Cve">

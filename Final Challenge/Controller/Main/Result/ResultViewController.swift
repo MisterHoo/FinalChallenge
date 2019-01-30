@@ -56,10 +56,19 @@ extension ResultViewController : UITableViewDelegate, UITableViewDataSource{
                 //ngebalikin information
                 let cell = tableView.dequeueReusableCell(withIdentifier: "foodInformation") as! FoodInformationTableViewCell
                 
+                //ISI label dan image
+                
+                cell.userAteDelegate = self
+                
                 return cell
             }else if indexPath.row == 1{
                 //ngeblikin recommended Food
                 let cell = tableView.dequeueReusableCell(withIdentifier: "foodRecommend") as! FoodRecommendationTableViewCell
+                
+                cell.seeAllRecommendDelegate = self
+                
+                cell.collectionView.delegate = self
+                cell.collectionView.dataSource = self
                 
                 return cell
             }else{
@@ -86,29 +95,56 @@ extension ResultViewController : UITableViewDelegate, UITableViewDataSource{
         }
     }
 }
-extension ResultViewController : ResultActionDelegate{
-    func didAte() {
-        print("I Eat")
-        self.performSegue(withIdentifier: "ResultToGiveReview", sender: self)
+
+extension ResultViewController : UICollectionViewDelegate, UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
     }
     
-    func notEat() {
-        print("Not Eat")
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendedFoodCell", for: indexPath) as! RecommendFoodCollectionViewCell
+        
+        return cell
     }
+    
+    
+    
 }
-
-extension ResultViewController : UserReviewDelegate{
-    func getReview(review: String) {
-        print("test")
-    }
-}
+//extension ResultViewController : ResultActionDelegate{
+//    func didAte() {
+//        print("I Eat")
+//        self.performSegue(withIdentifier: "ResultToGiveReview", sender: self)
+//    }
+//
+//    func notEat() {
+//        print("Not Eat")
+//    }
+//}
+//
+//extension ResultViewController : UserReviewDelegate{
+//    func getReview(review: String) {
+//        print("test")
+//    }
+//}
 
 extension ResultViewController : SeeAllReviewDelegate{
     func seeAllReview() {
         //Isi segue buat all review
 //        performSegue(withIdentifier: <#T##String#>, sender: <#T##Any?#>)
     }
+}
+
+extension ResultViewController : SeeAllRecommendDelegate{
+    func seeAllRecommend() {
+        //isi segue buat all recommend
+    }
     
-    
+}
+
+extension ResultViewController : UserAteDelegate{
+    func didAte() {
+        //userMakan
+        
+    }
 }
 
