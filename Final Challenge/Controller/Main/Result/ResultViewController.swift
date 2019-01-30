@@ -19,6 +19,8 @@ class ResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = TastePalColor.charcoal
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -65,12 +67,23 @@ extension ResultViewController : UITableViewDelegate, UITableViewDataSource{
             }
         }else if indexPath.section == 1{
             //ngebalikin cell review
-            
             let cell = tableView.dequeueReusableCell(withIdentifier: "reviewUser") as! ReviewTableViewCell
             
             return cell
         }
         return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if section == 1{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewSectionFooterCell") as! SectionFooterTableViewCell
+            
+            cell.seeAllReviewDelegate = self
+            
+            return UITableViewCell()
+        }else{
+            return nil
+        }
     }
 }
 extension ResultViewController : ResultActionDelegate{
@@ -87,6 +100,13 @@ extension ResultViewController : ResultActionDelegate{
 extension ResultViewController : UserReviewDelegate{
     func getReview(review: String) {
         print("test")
+    }
+}
+
+extension ResultViewController : SeeAllReviewDelegate{
+    func seeAllReview() {
+        //Isi segue buat all review
+//        performSegue(withIdentifier: <#T##String#>, sender: <#T##Any?#>)
     }
     
     

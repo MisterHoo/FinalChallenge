@@ -17,6 +17,8 @@ class HistoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = TastePalColor.charcoal
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -49,6 +51,9 @@ extension HistoryViewController : UITableViewDelegate, UITableViewDataSource{
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
     
     
     

@@ -29,6 +29,7 @@
 		663CBBF021E451E400572FFC /* Final_Challenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 663CBBEE21E451E400572FFC /* Final_Challenge.xcdatamodeld */; };
 		663CBBF221E451E500572FFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 663CBBF121E451E500572FFC /* Assets.xcassets */; };
 		663CBBF521E451E500572FFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 663CBBF321E451E500572FFC /* LaunchScreen.storyboard */; };
+		6651E5C02201A6F6007BAAEF /* SectionFooterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6651E5BF2201A6F6007BAAEF /* SectionFooterTableViewCell.swift */; };
 		66763D7321E8778200368E6E /* FoodLikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66763D7221E8778200368E6E /* FoodLikeViewController.swift */; };
 		66763D7521E8778C00368E6E /* TasteDislikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66763D7421E8778C00368E6E /* TasteDislikeViewController.swift */; };
 		66763D7721E8779500368E6E /* FoodAvoidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66763D7621E8779500368E6E /* FoodAvoidViewController.swift */; };
@@ -114,6 +115,7 @@
 		663CBBF121E451E500572FFC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		663CBBF421E451E500572FFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		663CBBF621E451E500572FFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6651E5BF2201A6F6007BAAEF /* SectionFooterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionFooterTableViewCell.swift; sourceTree = "<group>"; };
 		66763D7221E8778200368E6E /* FoodLikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLikeViewController.swift; sourceTree = "<group>"; };
 		66763D7421E8778C00368E6E /* TasteDislikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasteDislikeViewController.swift; sourceTree = "<group>"; };
 		66763D7621E8779500368E6E /* FoodAvoidViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodAvoidViewController.swift; sourceTree = "<group>"; };
@@ -385,6 +387,7 @@
 		66B737DC21E46DC3000C9B50 /* Result */ = {
 			isa = PBXGroup;
 			children = (
+				6651E5BF2201A6F6007BAAEF /* SectionFooterTableViewCell.swift */,
 				66B737CD21E46B64000C9B50 /* ResultViewController.swift */,
 				66B737DF21E4700E000C9B50 /* ResultActionButtonTableViewCell.swift */,
 				66B737DD21E46DFD000C9B50 /* ResultPhotoTableViewCell.swift */,
@@ -707,6 +710,7 @@
 				6611209621F83B98005403AF /* HistoryTableViewCell.swift in Sources */,
 				CD20EB6D21FECC4500F147B2 /* AlergicSelectedTableViewCell.swift in Sources */,
 				66763D8421E87BA300368E6E /* FoodLikeCollectionViewCell.swift in Sources */,
+				6651E5C02201A6F6007BAAEF /* SectionFooterTableViewCell.swift in Sources */,
 				66B737CC21E46B5B000C9B50 /* ScanViewController.swift in Sources */,
 				CD20EB6E21FECC4500F147B2 /* AlergicFoodViewController.swift in Sources */,
 				66B737E221E47020000C9B50 /* ResultInformationTableViewCell.swift in Sources */,

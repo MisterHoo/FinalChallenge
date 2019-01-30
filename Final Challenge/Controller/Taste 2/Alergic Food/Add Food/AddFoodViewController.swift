@@ -22,6 +22,8 @@ class AddFoodViewController: UIViewController,UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = TastePalColor.charcoal
 
         // Do any additional setup after loading the view.
     }
