@@ -10,6 +10,7 @@ import UIKit
 
 class AddFoodTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var viewAddFood: UIView!
     @IBOutlet weak var addFood: UIButton!
     var alergicFoodViewController: AlergicFoodViewController!
     override func awakeFromNib() {

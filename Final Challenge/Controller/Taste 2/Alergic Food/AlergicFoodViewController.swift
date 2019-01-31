@@ -27,6 +27,7 @@ class AlergicFoodViewController: UIViewController,UITableViewDelegate,UITableVie
             print("masuk")
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddFoodTableViewCell") as! AddFoodTableViewCell
             cell.addFood.addTarget(self, action: #selector(toSearch), for: .touchUpInside)
+            cell.backgroundColor = UIColor.clear
             
             return cell
         }
@@ -58,7 +59,15 @@ class AlergicFoodViewController: UIViewController,UITableViewDelegate,UITableVie
             return UITableViewCell.EditingStyle.none
         }
     }
- 
+    //MARK: Button
+    
+    @IBAction func previous(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    @IBAction func letsGo(_ sender: Any) {
+        performSegue(withIdentifier: "ToMain", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         alergicTableView.register(UINib(nibName: "AddFoodTableViewCell", bundle: nil), forCellReuseIdentifier: "AddFoodTableViewCell")
