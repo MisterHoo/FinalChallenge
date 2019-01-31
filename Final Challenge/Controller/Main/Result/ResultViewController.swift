@@ -76,7 +76,11 @@ extension ResultViewController : UITableViewDelegate, UITableViewDataSource{
             }
         }else if indexPath.section == 1{
             //ngebalikin cell review
-            let cell = tableView.dequeueReusableCell(withIdentifier: "reviewUser") as! ReviewTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "reviewUser") as! ResultReviewTableViewCell
+            
+            cell.userImage.layer.cornerRadius = cell.userImage.frame.width/2
+            cell.readMoreDelegate = self
+            
             
             return cell
         }
@@ -139,6 +143,12 @@ extension ResultViewController : SeeAllRecommendDelegate{
         //isi segue buat all recommend
     }
     
+}
+
+extension ResultViewController : ReadMoreDelegate{
+    func ReadMore() {
+        //isi segue buat readmore
+    }
 }
 
 extension ResultViewController : UserAteDelegate{

@@ -22,8 +22,6 @@ class FindOutViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        
-        tableView.allowsSelection = false
         // Do any additional setup after loading the view.
     }
     
@@ -43,15 +41,26 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
             //Location
             let cell = tableView.dequeueReusableCell(withIdentifier: "LocationFOCell") as! LocationFOTableViewCell
             
+            tableView.separatorStyle = .none
+            
+            cell.selectionStyle = .none
+            
             return cell
         }else if indexPath.row == 1{
             //Search
             let cell = tableView.dequeueReusableCell(withIdentifier: "SearchFOCell") as! SearchFOTableViewCell
+            tableView.separatorStyle = .none
+            
+            cell.selectionStyle = .none
             
             return cell
         }else if indexPath.row == 2{
             //TastePreference
             let cell = tableView.dequeueReusableCell(withIdentifier: "TastePreferenceFOCell") as! TastePreferenceFOTableViewCell
+            
+            tableView.separatorStyle = .none
+            
+            cell.selectionStyle = .none
             
             cell.animateView()
             
@@ -63,7 +72,20 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
             cell.collectionView.delegate = self
             cell.collectionView.dataSource = self
             
+            tableView.separatorStyle = .singleLine
+            tableView.separatorColor = TastePalColor.olive
+            cell.selectionStyle = .none
+            
             return cell
+        }else if indexPath.row == 4{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FoodMightLikeFooter")
+            
+            cell?.textLabel?.text = "See All Food That You Might Like"
+            cell?.selectionStyle = .none
+            tableView.separatorStyle = .singleLine
+            tableView.separatorColor = TastePalColor.olive
+            
+            return cell!
         }else{
             return UITableViewCell()
         }
@@ -78,7 +100,7 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
             return 100
         }else if indexPath.row == 3{
             //it should be 0.46 (370/812)
-            return 0.5 * screenHeight
+            return 0.36 * screenHeight
         }else {
             return 0
         }
