@@ -45,6 +45,11 @@ class NeverEatViewController: UIViewController,UICollectionViewDataSource, UICol
         }
         
     }
+    //MARK: button
+    
+    @IBAction func previous(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     @IBAction func toAvoidView(_ sender: Any) {
         performSegue(withIdentifier: "ToAvoid", sender: self)
     }
