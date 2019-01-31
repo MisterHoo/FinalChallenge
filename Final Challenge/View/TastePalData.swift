@@ -43,4 +43,5 @@ class userInformation {
 struct TastePalColor {
     static var charcoal = UIColor(red: 62/255, green: 60/255, blue: 73/255, alpha: 1)
     static var olive = UIColor(red: 149/255, green: 144/255, blue: 93/255, alpha: 1)
+    static var darkWhite = UIColor(red: 235/255, green: 234/255, blue: 240/255, alpha: 1)
 }

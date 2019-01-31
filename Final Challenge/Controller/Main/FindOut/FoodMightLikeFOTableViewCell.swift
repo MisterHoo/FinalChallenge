@@ -20,7 +20,7 @@ class FoodMightLikeFOTableViewCell: UITableViewCell {
         let itemSize = collectionView.frame.width / 2 - 12
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 12, left: 0, bottom: 4, right: 0)
-        layout.itemSize = CGSize(width: itemSize, height: collectionView.frame.height)
+        layout.itemSize = CGSize(width: itemSize, height: 1.6 * itemSize)
         
         layout.minimumLineSpacing = 12
         layout.minimumInteritemSpacing = 4

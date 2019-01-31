@@ -19,6 +19,10 @@ class HistoryViewController: UIViewController {
         
         view.backgroundColor = TastePalColor.charcoal
         
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        tableView.tableFooterView = UIView()
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -29,25 +33,28 @@ class HistoryViewController: UIViewController {
 
 extension HistoryViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return reviews.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryTableCell") as! HistoryTableViewCell
         
-        cell.foodName.text = reviews[indexPath.row].name
-        cell.placeName.text = reviews[indexPath.row].place
+        cell.selectionStyle = .none
+        tableView.separatorColor = TastePalColor.olive
         
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d, yyyy HH:mm"
-        
-        cell.dateLabel.text = formatter.string(from: reviews[indexPath.row].date!)
-        
-        for i in 0...(reviews[indexPath.row].rating! - 1){
-            cell.starRatingOutlet[i].image = UIImage(named: "StarYellow")
-            
-        }
-        
+//        cell.foodName.text = reviews[indexPath.row].name
+//        cell.placeName.text = reviews[indexPath.row].place
+//
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "MMM d, yyyy HH:mm"
+//
+//        cell.dateLabel.text = formatter.string(from: reviews[indexPath.row].date!)
+//
+//        for i in 0...(reviews[indexPath.row].rating! - 1){
+//            cell.starRatingOutlet[i].image = UIImage(named: "StarYellow")
+//
+//        }
+//
         return cell
     }
     
@@ -55,6 +62,9 @@ extension HistoryViewController : UITableViewDelegate, UITableViewDataSource{
         return 100
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "HistoryToReview", sender: self)
+    }
     
     
 }

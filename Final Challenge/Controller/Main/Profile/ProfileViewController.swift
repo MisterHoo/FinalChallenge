@@ -14,6 +14,10 @@ class ProfileViewController: UIViewController {
     
     var screenHeight = UIScreen.main.bounds.height
     
+    var userImage = UIImage(named: "Star Gray")
+    var userName = "Justine"
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,8 +25,48 @@ class ProfileViewController: UIViewController {
         tableView.dataSource = self
         
         view.backgroundColor = UIColor.white
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editProfile))
+        
+        navigationItem.titleView = createNavigationView()
         
         tableView.tableFooterView = UIView()
+    }
+    
+    @objc func editProfile(){
+        print("tapped")
+        performSegue(withIdentifier: "toEditProfilePage", sender: self)
+    }
+    
+    func createNavigationView() -> UIView{
+        let navTitleView = UIView()
+        let imageView = UIImageView()
+        let label = UILabel()
+        
+        label.text = userName
+        label.font = UIFont.systemFont(ofSize: 34, weight: .bold)
+        
+        imageView.image = userImage
+        
+        navTitleView.addSubview(imageView)
+        navTitleView.addSubview(label)
+        
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        label.translatesAutoresizingMaskIntoConstraints = false
+        imageView.heightAnchor.constraint(equalToConstant: 40)
+        imageView.widthAnchor.constraint(equalToConstant: 40)
+        
+        imageView.leadingAnchor.constraint(equalTo: navTitleView.leadingAnchor, constant: 16)
+        imageView.topAnchor.constraint(equalTo: navTitleView.topAnchor, constant: 0)
+        imageView.trailingAnchor.constraint(equalTo: label.leadingAnchor, constant: 8)
+        imageView.bottomAnchor.constraint(equalTo: navTitleView.bottomAnchor, constant: 0)
+        
+        label.centerYAnchor.constraint(equalTo: navTitleView.centerYAnchor, constant: 0)
+        label.trailingAnchor.constraint(equalTo: navTitleView.trailingAnchor, constant: 0)
+        
+        return navTitleView
+        
     }
     
 }
@@ -49,10 +93,7 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Tapped")
-        
         if indexPath.row == 2{
-            print("cell 2")
             performSegue(withIdentifier: "ProfileToFavo", sender: self)
         }
     }

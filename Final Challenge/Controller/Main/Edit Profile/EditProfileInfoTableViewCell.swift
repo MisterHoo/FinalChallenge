@@ -1,17 +1,20 @@
 //
-//  SearchFOTableViewCell.swift
+//  EditProfileInfoTableViewCell.swift
 //  Final Challenge
 //
-//  Created by Yosua Hoo on 28/01/19.
+//  Created by Yosua Hoo on 31/01/19.
 //  Copyright © 2019 Yosua Hoo. All rights reserved.
 //
 
 import UIKit
 
-class SearchFOTableViewCell: UITableViewCell {
+class EditProfileInfoTableViewCell: UITableViewCell {
+
     
+    @IBOutlet weak var profileImage: UIImageView!
     
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var profileEmail: UILabel!
+    @IBOutlet weak var profileName: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

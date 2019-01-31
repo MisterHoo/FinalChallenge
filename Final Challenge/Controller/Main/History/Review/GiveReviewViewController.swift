@@ -21,12 +21,21 @@ class GiveReviewViewController: UIViewController {
         
         view.backgroundColor = TastePalColor.charcoal
         
+        navigationItem.title = "Review"
+        navigationItem.largeTitleDisplayMode = .never
+        //benerin right bar button item
+        navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .organize, target: nil, action: #selector(favoriteFood))
+        
         tableView.delegate = self
         tableView.dataSource = self
         
         tableView.allowsSelection = false
     
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func favoriteFood(){
+        print("Jadi Favorite")
     }
 }
 
@@ -38,7 +47,7 @@ extension GiveReviewViewController : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0{
-            return 200
+            return 120
         }else if indexPath.row == 1{
             return 300
         }else{
@@ -50,6 +59,7 @@ extension GiveReviewViewController : UITableViewDelegate, UITableViewDataSource{
         if indexPath.row == 0{
             //description && rating
             let cell = tableView.dequeueReusableCell(withIdentifier: "CameraTableCell") as! ImageCameraTableViewCell
+            cell.selectionStyle = .none
             
             cell.cameraSystemDelegate = self
             
@@ -57,6 +67,7 @@ extension GiveReviewViewController : UITableViewDelegate, UITableViewDataSource{
         }else if indexPath.row == 1{
             //submit
             let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewTableCell") as! ReviewTableViewCell
+            cell.selectionStyle = .none
             
             cell.collectionView.delegate = self
             cell.collectionView.dataSource = self
@@ -67,9 +78,10 @@ extension GiveReviewViewController : UITableViewDelegate, UITableViewDataSource{
             
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewActionTableCell") as! SubmitTableViewCell
+            cell.selectionStyle = .none
             
             cell.reviewActionDelegate = self
-            cell.reviewButton.layer.cornerRadius = 25
+            cell.reviewButton.layer.cornerRadius = 4
             
             return cell
         }
@@ -85,14 +97,12 @@ extension GiveReviewViewController : UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReviewTasteCell", for: indexPath) as! ReviewBasicTasteCollectionViewCell
         
-        cell.layer.backgroundColor = basicTaste[indexPath.row].color as! CGColor
+        cell.backgroundColor = basicTaste[indexPath.row].color
+        cell.layer.cornerRadius = 4
         cell.basicTasteLabel.text = basicTaste[indexPath.row].name
         
         return cell
     }
-    
-    
-    
 }
 
 //Submit
@@ -117,7 +127,7 @@ extension GiveReviewViewController : CameraSystemDelegate, UINavigationControlle
         camera.delegate = self
         camera.sourceType = UIImagePickerController.SourceType.camera
         
-        camera.allowsEditing = false
+        camera.allowsEditing = true
         
         self.present(camera,animated: true){
             //After Complete

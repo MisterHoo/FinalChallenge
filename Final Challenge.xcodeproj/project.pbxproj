@@ -67,6 +67,8 @@
 		66EE05172202C45200FD770D /* FavoriteFoodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EE05162202C45200FD770D /* FavoriteFoodCollectionViewCell.swift */; };
 		66EE05192202CF5B00FD770D /* ResultReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EE05182202CF5B00FD770D /* ResultReviewTableViewCell.swift */; };
 		66EE051B2202DD9700FD770D /* FavoriteFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EE051A2202DD9700FD770D /* FavoriteFoodViewController.swift */; };
+		66EE05232203414400FD770D /* FoodMightLikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EE05222203414400FD770D /* FoodMightLikeViewController.swift */; };
+		66EE05262203576D00FD770D /* EditProfileInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EE05252203576D00FD770D /* EditProfileInfoTableViewCell.swift */; };
 		CA7D005E220054760090C8B3 /* FoodRecommendationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D005D220054760090C8B3 /* FoodRecommendationTableViewCell.swift */; };
 		CA7D0060220055150090C8B3 /* FoodInformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D005F220055150090C8B3 /* FoodInformationTableViewCell.swift */; };
 		CAC3D53521F9AA0B002CF4D9 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3D53421F9AA0B002CF4D9 /* EditProfileViewController.swift */; };
@@ -156,6 +158,8 @@
 		66EE05162202C45200FD770D /* FavoriteFoodCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFoodCollectionViewCell.swift; sourceTree = "<group>"; };
 		66EE05182202CF5B00FD770D /* ResultReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultReviewTableViewCell.swift; sourceTree = "<group>"; };
 		66EE051A2202DD9700FD770D /* FavoriteFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFoodViewController.swift; sourceTree = "<group>"; };
+		66EE05222203414400FD770D /* FoodMightLikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodMightLikeViewController.swift; sourceTree = "<group>"; };
+		66EE05252203576D00FD770D /* EditProfileInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileInfoTableViewCell.swift; sourceTree = "<group>"; };
 		7173EE72361510184F29CE2C /* Pods_Final_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Final_Challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7D005D220054760090C8B3 /* FoodRecommendationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRecommendationTableViewCell.swift; sourceTree = "<group>"; };
 		CA7D005F220055150090C8B3 /* FoodInformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodInformationTableViewCell.swift; sourceTree = "<group>"; };
@@ -360,6 +364,7 @@
 				66EE05132201AE4300FD770D /* Profile */,
 				66B737DC21E46DC3000C9B50 /* Result */,
 				66EE05202202E01C00FD770D /* Favorite */,
+				66EE05242203414B00FD770D /* FoodMightLike */,
 				66EE05212202E02B00FD770D /* Edit Profile */,
 			);
 			path = Main;
@@ -450,9 +455,18 @@
 		66EE05212202E02B00FD770D /* Edit Profile */ = {
 			isa = PBXGroup;
 			children = (
+				66EE05252203576D00FD770D /* EditProfileInfoTableViewCell.swift */,
 				CAC3D53421F9AA0B002CF4D9 /* EditProfileViewController.swift */,
 			);
 			path = "Edit Profile";
+			sourceTree = "<group>";
+		};
+		66EE05242203414B00FD770D /* FoodMightLike */ = {
+			isa = PBXGroup;
+			children = (
+				66EE05222203414400FD770D /* FoodMightLikeViewController.swift */,
+			);
+			path = FoodMightLike;
 			sourceTree = "<group>";
 		};
 		80273975D5873B842119DABD /* Frameworks */ = {
@@ -707,6 +721,7 @@
 				6611207E21F055D7005403AF /* DropDownViewController.swift in Sources */,
 				CAC3D53D21F9B0E1002CF4D9 /* FavoriteFoodTableViewCell.swift in Sources */,
 				CDBAD60B21F8614C00017B9F /* NeverEatCollectionViewCell.swift in Sources */,
+				66EE05232203414400FD770D /* FoodMightLikeViewController.swift in Sources */,
 				66DB37E321FEC50D00A695E8 /* FindOutViewController.swift in Sources */,
 				66B1411921FED3FD0013C5E7 /* SearchFOTableViewCell.swift in Sources */,
 				660D72F721EDE00800453D83 /* ListAvoidCollectionViewCell.swift in Sources */,
@@ -723,6 +738,7 @@
 				66B1412522005ACD0013C5E7 /* TabBarViewController.swift in Sources */,
 				660D72F521EDDFF500453D83 /* AvoidedTableViewCell.swift in Sources */,
 				660D72F921EDE00F00453D83 /* AvoidedCollectionViewCell.swift in Sources */,
+				66EE05262203576D00FD770D /* EditProfileInfoTableViewCell.swift in Sources */,
 				66B737E421E47033000C9B50 /* ResultPredictionTableViewCell.swift in Sources */,
 				CA7D0060220055150090C8B3 /* FoodInformationTableViewCell.swift in Sources */,
 				6611209921F83D7E005403AF /* FoodReview.swift in Sources */,

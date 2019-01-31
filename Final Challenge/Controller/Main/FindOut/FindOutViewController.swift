@@ -12,6 +12,7 @@ class FindOutViewController: UIViewController {
 
     
     @IBOutlet weak var tableView: UITableView!
+ 
     
     let screenHeight = UIScreen.main.bounds.height
     
@@ -22,18 +23,23 @@ class FindOutViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        tableView.tableFooterView = UIView()
+        
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
 //        tableView.reloadData()
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
     }
 
 }
 
 extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -50,8 +56,9 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
             //Search
             let cell = tableView.dequeueReusableCell(withIdentifier: "SearchFOCell") as! SearchFOTableViewCell
             tableView.separatorStyle = .none
-            
             cell.selectionStyle = .none
+            
+            cell.searchBar.barTintColor = TastePalColor.charcoal
             
             return cell
         }else if indexPath.row == 2{
@@ -90,6 +97,12 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
             return UITableViewCell()
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 4{
+            performSegue(withIdentifier: "FindOutToMightLike", sender: self)
+        }
+    }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0{
@@ -100,8 +113,10 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
             return 100
         }else if indexPath.row == 3{
             //it should be 0.46 (370/812)
-            return 0.36 * screenHeight
-        }else {
+            return 0.4 * screenHeight
+        }else if indexPath.row == 4{
+            return 44
+        }else{
             return 0
         }
     }

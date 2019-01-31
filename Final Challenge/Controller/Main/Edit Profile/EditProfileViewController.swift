@@ -10,21 +10,66 @@ import UIKit
 
 class EditProfileViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.tableFooterView = UIView()
+        view.backgroundColor = TastePalColor.darkWhite
+        
+        navigationItem.title = "Edit Profile"
+        navigationItem.largeTitleDisplayMode = .never
 
         // Do any additional setup after loading the view.
     }
-    
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension EditProfileViewController : UITableViewDataSource, UITableViewDelegate{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0{
+            return 190
+        }else if indexPath.row == 1{
+            return 44
+        }else if indexPath.row == 2{
+            return 44
+        }else{
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "imageCell") as! EditProfileInfoTableViewCell
+            
+            cell.profileImage.layer.cornerRadius = 4
+            cell.backgroundColor = TastePalColor.darkWhite
+            
+            return cell
+        }else if indexPath.row == 1{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell")
+            
+            cell?.backgroundColor = UIColor.white
+            
+            cell?.textLabel?.text = "Name & Email"
+            
+            return cell!
+        }else if indexPath.row == 2{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell")
+            
+            cell?.textLabel?.text = "Password"
+            cell?.backgroundColor = UIColor.white
+            
+            return cell!
+        }else{
+            return UITableViewCell()
+        }
+    }
 }
