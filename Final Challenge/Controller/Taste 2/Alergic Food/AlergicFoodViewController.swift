@@ -71,6 +71,7 @@ class AlergicFoodViewController: UIViewController,UITableViewDelegate,UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         alergicTableView.register(UINib(nibName: "AddFoodTableViewCell", bundle: nil), forCellReuseIdentifier: "AddFoodTableViewCell")
+        view.backgroundColor = TastePalColor.charcoal
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
