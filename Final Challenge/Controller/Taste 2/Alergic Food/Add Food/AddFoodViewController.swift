@@ -36,7 +36,7 @@ class AddFoodViewController: UIViewController,UITableViewDelegate, UITableViewDa
         }
         dismiss(animated: true, completion: nil)
     }
-    
+    //MARK: Table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searching{
             return searchedWord.count
