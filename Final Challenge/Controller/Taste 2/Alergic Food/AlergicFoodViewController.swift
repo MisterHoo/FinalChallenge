@@ -99,6 +99,7 @@ class AlergicFoodViewController: UIViewController,UITableViewDelegate,UITableVie
         let defaults = UserDefaults.standard
         let myarray = defaults.stringArray(forKey: "tempFood") ?? [String]()
         alergic.append(contentsOf: myarray)
+        alergic.removeDuplicates()
         defaults.removeObject(forKey: "tempFood")
     }
     override func viewDidLoad() {

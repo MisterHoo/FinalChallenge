@@ -22,11 +22,13 @@ class AddFoodViewController: UIViewController,UITableViewDelegate, UITableViewDa
     
     var defaults = UserDefaults.standard
     
+    override func viewWillAppear(_ animated: Bool) {
+        checkAlergic()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         searchFood.barTintColor = TastePalColor.charcoal
         view.backgroundColor = TastePalColor.charcoal
-        checkAlergic()
 
         // Do any additional setup after loading the view.
     }
