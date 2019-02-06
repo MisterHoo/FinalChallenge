@@ -26,6 +26,7 @@ class AddFoodViewController: UIViewController,UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         searchFood.barTintColor = TastePalColor.charcoal
         view.backgroundColor = TastePalColor.charcoal
+        checkAlergic()
 
         // Do any additional setup after loading the view.
     }
@@ -33,6 +34,9 @@ class AddFoodViewController: UIViewController,UITableViewDelegate, UITableViewDa
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func done(_ sender: Any) {
+        if let presenter = presentingViewController as? AlergicFoodViewController {
+            presenter.alergic.append(contentsOf: tempFood)
+        }
         defaults.set(tempFood, forKey: "tempFood")
         dismiss(animated: true, completion: nil)
     }
@@ -79,6 +83,16 @@ class AddFoodViewController: UIViewController,UITableViewDelegate, UITableViewDa
             searchTableView.reloadData()
             print("appemd ke temp ga searching")
         }
+    }
+    func checkAlergic(){
+        let defaults = UserDefaults.standard
+        let myarray = defaults.stringArray(forKey: "tempFood2") ?? [String]()
+        for food in myarray {
+            if birds.contains(food) {
+                birds.removeAll{ $0 == food }
+            }
+        }
+        defaults.removeObject(forKey: "tempFood2")
     }
 
 }

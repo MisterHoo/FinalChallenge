@@ -10,7 +10,8 @@ import UIKit
 
 class AlergicFoodViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
     
-    var alergic:[String] = ["See Food", "Sea food", "Saw Food"]
+    var alergic:[String] = []
+    var tempFood2:[String] = []
     let notificationFeddback = UINotificationFeedbackGenerator()
 
     @IBOutlet weak var alergicTableView: UITableView!
@@ -98,6 +99,7 @@ class AlergicFoodViewController: UIViewController,UITableViewDelegate,UITableVie
         let defaults = UserDefaults.standard
         let myarray = defaults.stringArray(forKey: "tempFood") ?? [String]()
         alergic.append(contentsOf: myarray)
+        defaults.removeObject(forKey: "tempFood")
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,6 +111,11 @@ class AlergicFoodViewController: UIViewController,UITableViewDelegate,UITableVie
     override func viewDidAppear(_ animated: Bool) {
         readTempFood()
         alergicTableView.reloadData()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        let defaults = UserDefaults.standard
+        tempFood2.append(contentsOf: alergic)
+        defaults.set(tempFood2, forKey: "tempFood2")
     }
 
 }
