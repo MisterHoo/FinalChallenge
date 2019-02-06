@@ -20,14 +20,24 @@ class FindOutViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = TastePalColor.charcoal
+        navigationController?.navigationBar.backgroundColor = TastePalColor.charcoal
+        
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         tableView.delegate = self
         tableView.dataSource = self
         
         tableView.tableFooterView = UIView()
+        tableView.layoutIfNeeded()
         
         // Do any additional setup after loading the view.
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.tableView.layoutIfNeeded()
+    }
+    
     
     override func viewDidAppear(_ animated: Bool) {
 //        tableView.reloadData()
@@ -42,13 +52,13 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
         return 5
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0{
             //Location
             let cell = tableView.dequeueReusableCell(withIdentifier: "LocationFOCell") as! LocationFOTableViewCell
             
             tableView.separatorStyle = .none
-            
             cell.selectionStyle = .none
             
             return cell
@@ -66,7 +76,8 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "TastePreferenceFOCell") as! TastePreferenceFOTableViewCell
             
             tableView.separatorStyle = .none
-            
+        
+            cell.reset()
             cell.selectionStyle = .none
             
             cell.animateView()
@@ -82,6 +93,7 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
             tableView.separatorStyle = .singleLine
             tableView.separatorColor = TastePalColor.olive
             cell.selectionStyle = .none
+            cell.clipsToBounds = true
             
             return cell
         }else if indexPath.row == 4{
@@ -91,6 +103,7 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
             cell?.selectionStyle = .none
             tableView.separatorStyle = .singleLine
             tableView.separatorColor = TastePalColor.olive
+            cell?.clipsToBounds = true
             
             return cell!
         }else{
@@ -99,7 +112,9 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 4{
+        if indexPath.row == 0{
+            performSegue(withIdentifier: "FindOutToResult", sender: self)
+        }else if indexPath.row == 4{
             performSegue(withIdentifier: "FindOutToMightLike", sender: self)
         }
     }

@@ -15,6 +15,7 @@ class NavBarViewController: UINavigationController {
         
         let navBar = self.navigationBar
         navBar.barTintColor = UIColor(red: 62/255, green: 60/255, blue: 73/255, alpha: 1)
+        navBar.backgroundColor = TastePalColor.charcoal
 
         // Do any additional setup after loading the view.
     }

@@ -15,7 +15,7 @@ class TabBarViewController: UITabBarController {
         
         let tabBar = self.tabBar
         tabBar.barTintColor = UIColor(red: 62/255, green: 60/255, blue: 73/255, alpha: 1)
-
+//        tabBar.isTranslucent = true
         // Do any additional setup after loading the view.
     }
 

@@ -8,21 +8,12 @@
 
 import UIKit
 
-protocol SeeAllRecommendDelegate{
-    func seeAllRecommend()
-}
 
 class FoodRecommendationTableViewCell: UITableViewCell {
 
     
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
-    var seeAllRecommendDelegate : SeeAllRecommendDelegate?
-
-    @IBAction func seeAllRecommend(_ sender: Any) {
-        seeAllRecommendDelegate?.seeAllRecommend()
-    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

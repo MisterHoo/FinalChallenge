@@ -16,6 +16,15 @@ class GiveReviewViewController: UIViewController {
     
     let basicTaste = BasicTasteData.basicTaste
     
+    let screenHeight = UIScreen.main.bounds.height
+    
+    @IBOutlet weak var submitButton: UIButton!
+    
+
+    @IBAction func submitAction(_ sender: Any) {
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,7 +39,12 @@ class GiveReviewViewController: UIViewController {
         tableView.dataSource = self
         
         tableView.allowsSelection = false
-    
+        
+        //set button submit
+        
+        submitButton.layer.cornerRadius = 4
+//        submitButton.backgroundColor = TastePalColor.olive
+        
         // Do any additional setup after loading the view.
     }
     
@@ -42,14 +56,14 @@ class GiveReviewViewController: UIViewController {
 //TableView
 extension GiveReviewViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 2
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0{
-            return 120
+            return 140
         }else if indexPath.row == 1{
-            return 300
+            return 0.42 * screenHeight
         }else{
             return 50
         }
@@ -77,13 +91,14 @@ extension GiveReviewViewController : UITableViewDelegate, UITableViewDataSource{
             return cell
             
         }else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewActionTableCell") as! SubmitTableViewCell
-            cell.selectionStyle = .none
-            
-            cell.reviewActionDelegate = self
-            cell.reviewButton.layer.cornerRadius = 4
-            
-            return cell
+            return UITableViewCell()
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewActionTableCell") as! SubmitTableViewCell
+//            cell.selectionStyle = .none
+//
+//            cell.reviewActionDelegate = self
+//            cell.reviewButton.layer.cornerRadius = 4
+//
+//            return cell
         }
     }
 }
@@ -106,18 +121,18 @@ extension GiveReviewViewController : UICollectionViewDelegate, UICollectionViewD
 }
 
 //Submit
-extension GiveReviewViewController : ReviewActionDelegate{
-    func submit() {
-        let cell = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! ReviewTableViewCell
-        
-        guard let review = cell.reviewTextField.text else {return}
-        
-        reviewToSubmit = review
-        
-        print(reviewToSubmit)
-    
-    }
-}
+//extension GiveReviewViewController : ReviewActionDelegate{
+//    func submit() {
+//        let cell = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! ReviewTableViewCell
+//        
+//        guard let review = cell.reviewTextField.text else {return}
+//        
+//        reviewToSubmit = review
+//        
+//        print(reviewToSubmit)
+//    
+//    }
+//}
 
 // Image Picker
 extension GiveReviewViewController : CameraSystemDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate{

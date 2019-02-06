@@ -24,7 +24,38 @@ class FavoriteFoodViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .never
 
         tableView.tableFooterView = UIView()
+        
         // Do any additional setup after loading the view.
+    }
+    
+    func setTabBarVisible(visible:Bool, animated:Bool) {
+        
+        //* This cannot be called before viewDidLayoutSubviews(), because the frame is not set before this time
+        
+        // bail if the current state matches the desired state
+        
+        // get a frame calculation ready
+        
+        
+        
+//        self.view.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height+66)
+        
+//        let frame = self.tabBarController?.tabBar.frame
+//        let height = frame?.size.height
+//        let offsetY = (visible ? -height! : height)
+//
+//        // zero duration means no animation
+//        let duration : TimeInterval = (animated ? 0.3 : 0.0)
+//
+//        self.tabBarController?.tabBar.frame = (frame?.offsetBy(dx: 0, dy: offsetY!))!
+        
+        //  animate the tabBar
+//        if frame != nil {
+//            UIView.animateWithDuration(duration) {
+//
+//                return
+//            }
+//        }
     }
 }
 

@@ -14,12 +14,12 @@ class ProfileViewController: UIViewController {
     
     var screenHeight = UIScreen.main.bounds.height
     
-    var userImage = UIImage(named: "Star Gray")
+    var userImage = UIImage(named: "StarGray")
     var userName = "Justine"
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -27,15 +27,32 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = UIColor.white
         navigationController?.navigationBar.prefersLargeTitles = true
         
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+
+        navigationItem.largeTitleDisplayMode = .always
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editProfile))
         
-        navigationItem.titleView = createNavigationView()
+
+        
+        let navigationView = createNavigationView()
+
+        navigationItem.titleView = navigationView
+
+
+//        navigationView.translatesAutoresizingMaskIntoConstraints = false
+//        navigationView.heightAnchor.constraint(equalToConstant: 40)
+//        navigationView.bottomAnchor.constraint(equalTo: (navigationController?.navigationBar.bottomAnchor)!, constant: 0)
+//        navigationView.leadingAnchor.constraint(equalTo: (navigationController?.navigationBar.leadingAnchor)!, constant: 0)
+//        navigationView.trailingAnchor.constraint(equalTo: (navigationController?.navigationBar.trailingAnchor)!, constant: 0)
+//
+//        navigationView.layoutIfNeeded()
         
         tableView.tableFooterView = UIView()
     }
     
     @objc func editProfile(){
-        print("tapped")
         performSegue(withIdentifier: "toEditProfilePage", sender: self)
     }
     
@@ -44,8 +61,13 @@ class ProfileViewController: UIViewController {
         let imageView = UIImageView()
         let label = UILabel()
         
+        navTitleView.backgroundColor = UIColor.green
+        label.backgroundColor = UIColor.blue
+        imageView.backgroundColor = UIColor.red
+        
         label.text = userName
         label.font = UIFont.systemFont(ofSize: 34, weight: .bold)
+        label.textColor = UIColor.white
         
         imageView.image = userImage
         
@@ -59,11 +81,16 @@ class ProfileViewController: UIViewController {
         
         imageView.leadingAnchor.constraint(equalTo: navTitleView.leadingAnchor, constant: 16)
         imageView.topAnchor.constraint(equalTo: navTitleView.topAnchor, constant: 0)
-        imageView.trailingAnchor.constraint(equalTo: label.leadingAnchor, constant: 8)
-        imageView.bottomAnchor.constraint(equalTo: navTitleView.bottomAnchor, constant: 0)
+//        imageView.trailingAnchor.constraint(equalTo: label.leadingAnchor, constant: 8)
+//        imageView.bottomAnchor.constraint(equalTo: navTitleView.bottomAnchor, constant: 0)
         
         label.centerYAnchor.constraint(equalTo: navTitleView.centerYAnchor, constant: 0)
         label.trailingAnchor.constraint(equalTo: navTitleView.trailingAnchor, constant: 0)
+        
+        imageView.layoutIfNeeded()
+        label.layoutIfNeeded()
+        
+        navTitleView.frame = CGRect(x: 0, y: 0, width: (navigationController?.navigationBar.frame.width)!, height: (navigationController?.navigationBar.frame.height)!)
         
         return navTitleView
         
@@ -103,6 +130,7 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "TastePreferenceTableViewCell") as! TastePreferenceTableViewCell
             
             tableView.separatorStyle = .none
+            cell.reset()
             cell.selectionStyle = .none
             
             cell.animateView()

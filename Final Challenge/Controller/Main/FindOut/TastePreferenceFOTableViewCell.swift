@@ -50,6 +50,13 @@ class TastePreferenceFOTableViewCell: UITableViewCell {
 //        label.layoutIfNeeded()
     }
     
+    func reset(){
+        indexPercentage = 0
+        indexDuration = 0
+        indexLeading = 0
+        baseWidth = Float(baseRect.frame.width)
+    }
+    
     
 
     override func setSelected(_ selected: Bool, animated: Bool) {

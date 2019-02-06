@@ -23,8 +23,19 @@ class EditProfileViewController: UIViewController {
         
         navigationItem.title = "Edit Profile"
         navigationItem.largeTitleDisplayMode = .never
+        
+//        navigationController?.tabBarController?.hidesBottomBarWhenPushed = true
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+//        self.tabBarController?.tabBar.isHidden = true
+//        self.tabBarController?.tabBar.isTranslucent = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+//        self.tabBarController?.tabBar.isHidden = false
     }
 }
 

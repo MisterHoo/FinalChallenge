@@ -21,7 +21,10 @@ class HistoryViewController: UIViewController {
         
         navigationController?.navigationBar.prefersLargeTitles = true
         
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
         tableView.tableFooterView = UIView()
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         tableView.delegate = self
         tableView.dataSource = self
