@@ -15,10 +15,7 @@ class FoodKindViewController: UIViewController,UICollectionViewDataSource, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.isHidden = false
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.title = "What kind of food do you like ?"
-        
+        navigationController?.navigationBar.isHidden = true
         view.backgroundColor = TastePalColor.charcoal
 
         // Do any additional setup after loading the view.
@@ -51,6 +48,5 @@ class FoodKindViewController: UIViewController,UICollectionViewDataSource, UICol
             cell.uncheck()
             cell.check = false
         }
-        
     }
 }
