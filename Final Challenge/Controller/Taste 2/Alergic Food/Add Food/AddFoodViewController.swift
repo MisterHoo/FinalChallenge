@@ -14,15 +14,17 @@ class AddFoodViewController: UIViewController,UITableViewDelegate, UITableViewDa
     @IBOutlet weak var searchFood: UISearchBar!
     @IBOutlet weak var searchTableView: UITableView!
     
-    var birds = ["finch", "sparrow", "eagle"]
+    var birds:[String] = ["finch", "sparrow", "eagle"]
     var tempFood:[String] = []
     
     var searchedWord = [String]()
     var searching = false
     
+    var defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        searchFood.barTintColor = TastePalColor.charcoal
         view.backgroundColor = TastePalColor.charcoal
 
         // Do any additional setup after loading the view.
@@ -31,9 +33,7 @@ class AddFoodViewController: UIViewController,UITableViewDelegate, UITableViewDa
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func done(_ sender: Any) {
-        if let presenter = presentingViewController as? AlergicFoodViewController {
-            presenter.alergic.append(contentsOf: tempFood)
-        }
+        defaults.set(tempFood, forKey: "tempFood")
         dismiss(animated: true, completion: nil)
     }
     //MARK: Table view
@@ -57,6 +57,12 @@ class AddFoodViewController: UIViewController,UITableViewDelegate, UITableViewDa
             cell.addFoodOutlet.addTarget(self, action: #selector(addFoodName(sender:)), for: .touchUpInside)
         }
         return cell
+    }
+    //MARK: Table View Header
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let  headerCell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell")
+        headerCell?.backgroundColor = TastePalColor.charcoal
+        return headerCell
     }
     @objc func addFoodName(sender: UIButton){
         let index = sender.tag
