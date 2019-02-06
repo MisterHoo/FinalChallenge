@@ -45,3 +45,11 @@ struct TastePalColor {
     static var olive = UIColor(red: 149/255, green: 144/255, blue: 93/255, alpha: 1)
     static var darkWhite = UIColor(red: 235/255, green: 234/255, blue: 240/255, alpha: 1)
 }
+
+struct TastePalIcon{
+    static var starGray = UIImage(named: "StarGray")
+    static var starYellow = UIImage(named: "StarYellow")
+    static var heartEmpty = UIImage(named: "Heart")
+    static var heartFilled = UIImage(named: "HeartFilled")
+    static var tick = UIImage(named: "Tick")
+}

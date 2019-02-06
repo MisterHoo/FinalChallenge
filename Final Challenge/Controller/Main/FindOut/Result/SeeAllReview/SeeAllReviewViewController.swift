@@ -36,14 +36,20 @@ extension SeeAllReviewViewController : UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AllReviewCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AllReviewCell") as! AllReviewTableViewCell
         
+        cell.readMoreDelegate = self
+        cell.profilePicture.layer.cornerRadius = cell.profilePicture.frame.width / 2
 //        cell?.textLabel?.text
 //        cell?.detailTextLabel?.text
 //        cell?.imageView?.image
 //        
-        return cell!
+        return cell
     }
-    
-    
+}
+
+extension SeeAllReviewViewController : ReadMoreDelegate{
+    func ReadMore() {
+        print("ReadMore")
+    }
 }

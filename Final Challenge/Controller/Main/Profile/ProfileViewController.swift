@@ -57,7 +57,7 @@ class ProfileViewController: UIViewController {
     }
     
     func createNavigationView() -> UIView{
-        let navTitleView = UIView()
+        let navTitleView = UIStackView()
         let imageView = UIImageView()
         let label = UILabel()
         
@@ -71,26 +71,35 @@ class ProfileViewController: UIViewController {
         
         imageView.image = userImage
         
-        navTitleView.addSubview(imageView)
-        navTitleView.addSubview(label)
+//        navTitleView.addSubview(imageView)
+//        navTitleView.addSubview(label)
+        
+        navTitleView.addArrangedSubview(imageView)
+        navTitleView.addArrangedSubview(label)
+        
+        navTitleView.frame.size.width = 200
+        navTitleView.frame.size.height = 40
+        
+        navTitleView.axis = .horizontal
+        navTitleView.alignment = .center
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
         label.translatesAutoresizingMaskIntoConstraints = false
         imageView.heightAnchor.constraint(equalToConstant: 40)
         imageView.widthAnchor.constraint(equalToConstant: 40)
         
-        imageView.leadingAnchor.constraint(equalTo: navTitleView.leadingAnchor, constant: 16)
-        imageView.topAnchor.constraint(equalTo: navTitleView.topAnchor, constant: 0)
+//        imageView.leadingAnchor.constraint(equalTo: navTitleView.leadingAnchor, constant: 16)
+//        imageView.topAnchor.constraint(equalTo: navTitleView.topAnchor, constant: 0)
 //        imageView.trailingAnchor.constraint(equalTo: label.leadingAnchor, constant: 8)
 //        imageView.bottomAnchor.constraint(equalTo: navTitleView.bottomAnchor, constant: 0)
         
-        label.centerYAnchor.constraint(equalTo: navTitleView.centerYAnchor, constant: 0)
-        label.trailingAnchor.constraint(equalTo: navTitleView.trailingAnchor, constant: 0)
+//        label.centerYAnchor.constraint(equalTo: navTitleView.centerYAnchor, constant: 0)
+//        label.trailingAnchor.constraint(equalTo: navTitleView.trailingAnchor, constant: 0)
         
         imageView.layoutIfNeeded()
         label.layoutIfNeeded()
         
-        navTitleView.frame = CGRect(x: 0, y: 0, width: (navigationController?.navigationBar.frame.width)!, height: (navigationController?.navigationBar.frame.height)!)
+//        navTitleView.frame = CGRect(x: 0, y: 0, width: (navigationController?.navigationBar.frame.width)!, height: (navigationController?.navigationBar.frame.height)!)
         
         return navTitleView
         

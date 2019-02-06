@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "ColoredStars.png",
+      "filename" : "Heart.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "ColoredStars@2x.png",
+      "filename" : "Heart@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "ColoredStars@3x.png",
+      "filename" : "Heart@3x.png",
       "scale" : "3x"
     }
   ],

@@ -56,13 +56,17 @@ extension ResultViewController : UITableViewDelegate, UITableViewDataSource{
             //information result
             return 0.53 * screenHeight
         }else if indexPath == IndexPath(row: 1, section: 0){
-                return 0.22 * screenHeight
+            //recommended food collection
+                return 0.25 * screenHeight
         }else if indexPath == IndexPath(row: 2, section: 0){
+            //see all recommended
             return 44
         }else if indexPath.section == 1{
             if indexPath.row == 3{
+                //see all review
                 return 44
             }else{
+                //review
                 return 0.2 * screenHeight
             }
         }else{
@@ -117,9 +121,10 @@ extension ResultViewController : UITableViewDelegate, UITableViewDataSource{
                 //ngeblikin recommended Food
                 let cell = tableView.dequeueReusableCell(withIdentifier: "foodRecommend") as! FoodRecommendationTableViewCell
                 
-                tableView.separatorColor = TastePalColor.olive
+//                tableView.separatorColor = TastePalColor.olive
+//                tableView.separatorStyle = .singleLine
                 cell.selectionStyle = .none
-                tableView.separatorStyle = .singleLine
+                
                 
                 cell.collectionView.delegate = self
                 cell.collectionView.dataSource = self

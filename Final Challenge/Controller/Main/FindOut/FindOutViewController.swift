@@ -79,8 +79,9 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
         
             cell.reset()
             cell.selectionStyle = .none
-            
-            cell.animateView()
+            if(cell.baseRect.subviews.count == 0){
+                cell.animateView()
+            }
             
             return cell
         }else if indexPath.row == 3{

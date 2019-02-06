@@ -17,6 +17,7 @@ class GiveReviewViewController: UIViewController {
     let basicTaste = BasicTasteData.basicTaste
     
     let screenHeight = UIScreen.main.bounds.height
+    var favoriteButton : UIBarButtonItem?
     
     @IBOutlet weak var submitButton: UIButton!
     
@@ -33,7 +34,9 @@ class GiveReviewViewController: UIViewController {
         navigationItem.title = "Review"
         navigationItem.largeTitleDisplayMode = .never
         //benerin right bar button item
-        navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .organize, target: nil, action: #selector(favoriteFood))
+        favoriteButton = UIBarButtonItem(image: TastePalIcon.heartEmpty, style: .done, target: self, action: #selector(favoriteFood))
+        
+        navigationItem.rightBarButtonItem = favoriteButton
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -49,28 +52,72 @@ class GiveReviewViewController: UIViewController {
     }
     
     @objc func favoriteFood(){
-        print("Jadi Favorite")
+        
+        if favoriteButton?.image == TastePalIcon.heartEmpty{
+            //jadi favorite
+            favoriteButton?.image = TastePalIcon.heartFilled
+            print("Jadi Favorite")
+        }else{
+            //gak jadi favorite
+            favoriteButton?.image = TastePalIcon.heartEmpty
+            print("RemoveFromFavorite")
+        }
     }
 }
 
 //TableView
 extension GiveReviewViewController : UITableViewDelegate, UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0{
-            return 140
-        }else if indexPath.row == 1{
-            return 0.42 * screenHeight
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0{
+            //camera & taste
+            return 2
+        }else if section == 1{
+            //alergen
+//            if review.count == 0{
+                return 3
+//            }else if{
+//                return review.count + 2
+//            }
+        }else if section == 2{
+            return 1
         }else{
-            return 50
+            return 0
         }
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath == IndexPath(row: 0, section: 0){
+            return 140
+        }else if indexPath == IndexPath(row: 1, section: 0){
+            return 0.15 * screenHeight
+        }else if indexPath.section == 1{
+            if indexPath.row == 0{
+                //header
+                return 44
+            }else{
+                if indexPath.row == 1{
+                    //placeholder text
+                    return 44
+                }else{
+                    //add
+                    return 44
+                }
+            }
+        }else if indexPath.section == 2{
+            return 0.15 * screenHeight
+        }else{
+            return 0
+        }
+    }
+    
+  
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0{
+        if indexPath == IndexPath(row: 0, section: 0){
             //description && rating
             let cell = tableView.dequeueReusableCell(withIdentifier: "CameraTableCell") as! ImageCameraTableViewCell
             cell.selectionStyle = .none
@@ -78,27 +125,55 @@ extension GiveReviewViewController : UITableViewDelegate, UITableViewDataSource{
             cell.cameraSystemDelegate = self
             
             return cell
-        }else if indexPath.row == 1{
+        }else if indexPath == IndexPath(row: 1, section: 0){
             //submit
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewTableCell") as! ReviewTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "GiveReviewTasteTableCell") as! GiveReviewTasteTableViewCell
             cell.selectionStyle = .none
             
             cell.collectionView.delegate = self
             cell.collectionView.dataSource = self
             
-//            cell.reviewSystemDelegate = self
-            
             return cell
             
+        }else if indexPath.section == 1{
+            if indexPath == IndexPath(row: 0, section: 1){
+                let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderAllergen")
+                
+                return cell!
+            }else{
+//            }else if review.count == 0{
+                if indexPath == IndexPath(row: 1, section: 1){
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyPlaceholderText")
+                    
+                    return cell!
+                }else{
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "AddAlergenCell")
+                    
+                    return cell!
+                }
+            }
+//            }else{
+//                //isi yg ada reviewnya
+//                if indexPath.row == Review.count + 1{
+//                    let cell = tableView.dequeueReusableCell(withIdentifier: "AddAlergenCell")
+//
+//                    return cell!
+//                }else{
+//                    let cell = tableView.dequeueReusableCell(withIdentifier: "AlergenCell")
+//                    //isi allergen
+//
+//                    return cell!
+//                }
+//            }
+        }else if indexPath.section == 2{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewDescTableCell") as! GiveReviewDescTableViewCell
+            
+            cell.userTextView.layer.cornerRadius = 4
+//            cell.userTextView.text
+            
+            return cell
         }else{
             return UITableViewCell()
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewActionTableCell") as! SubmitTableViewCell
-//            cell.selectionStyle = .none
-//
-//            cell.reviewActionDelegate = self
-//            cell.reviewButton.layer.cornerRadius = 4
-//
-//            return cell
         }
     }
 }
@@ -117,6 +192,21 @@ extension GiveReviewViewController : UICollectionViewDelegate, UICollectionViewD
         cell.basicTasteLabel.text = basicTaste[indexPath.row].name
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let item = collectionView.cellForItem(at: indexPath) as! ReviewBasicTasteCollectionViewCell
+        
+        item.selectedView.isHidden = false
+        item.tickImage.isHidden = false
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let item = collectionView.cellForItem(at: indexPath) as! ReviewBasicTasteCollectionViewCell
+        
+        item.selectedView.isHidden = true
+        item.tickImage.isHidden = true
     }
 }
 
