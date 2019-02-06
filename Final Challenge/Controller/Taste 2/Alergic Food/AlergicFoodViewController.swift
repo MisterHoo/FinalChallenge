@@ -10,9 +10,10 @@ import UIKit
 
 class AlergicFoodViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
     var alergic = ["nut","Sea Food"]
+    let notificationFeddback = UINotificationFeedbackGenerator()
 
     @IBOutlet weak var alergicTableView: UITableView!
-    
+    //MARK: Table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (alergic.count + 1)
     }
@@ -47,6 +48,7 @@ class AlergicFoodViewController: UIViewController,UITableViewDelegate,UITableVie
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete{
             alergic.remove(at: indexPath.row)
+            notificationFeddback.notificationOccurred(.success)
             tableView.reloadData()
         }
     }
