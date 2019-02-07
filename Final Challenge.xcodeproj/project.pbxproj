@@ -93,6 +93,7 @@
 		CDBAD60821F83F7000017B9F /* FoodKindCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBAD60721F83F7000017B9F /* FoodKindCollectionViewCell.swift */; };
 		CDBAD60B21F8614C00017B9F /* NeverEatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBAD60A21F8614C00017B9F /* NeverEatCollectionViewCell.swift */; };
 		CDBAD60D21F8615D00017B9F /* NeverEatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBAD60C21F8615D00017B9F /* NeverEatViewController.swift */; };
+		CDC76855220AF9A800DDED86 /* RemoveDuplicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC76854220AF9A800DDED86 /* RemoveDuplicate.swift */; };
 		CDC932F9220036CB00B3F33A /* AddFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC932F8220036CB00B3F33A /* AddFoodViewController.swift */; };
 		CDC932FB22004C5E00B3F33A /* SearchedFoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC932FA22004C5E00B3F33A /* SearchedFoodTableViewCell.swift */; };
 		CDE4B3AE21F1B6F200DFDE2D /*  CIImagetoCGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE4B3AD21F1B6F200DFDE2D /*  CIImagetoCGImage.swift */; };
@@ -189,6 +190,7 @@
 		CDBAD60721F83F7000017B9F /* FoodKindCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodKindCollectionViewCell.swift; sourceTree = "<group>"; };
 		CDBAD60A21F8614C00017B9F /* NeverEatCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeverEatCollectionViewCell.swift; sourceTree = "<group>"; };
 		CDBAD60C21F8615D00017B9F /* NeverEatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeverEatViewController.swift; sourceTree = "<group>"; };
+		CDC76854220AF9A800DDED86 /* RemoveDuplicate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveDuplicate.swift; sourceTree = "<group>"; };
 		CDC932F8220036CB00B3F33A /* AddFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodViewController.swift; sourceTree = "<group>"; };
 		CDC932FA22004C5E00B3F33A /* SearchedFoodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedFoodTableViewCell.swift; sourceTree = "<group>"; };
 		CDE4B3AD21F1B6F200DFDE2D /*  CIImagetoCGImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " CIImagetoCGImage.swift"; sourceTree = "<group>"; };
@@ -574,6 +576,7 @@
 			isa = PBXGroup;
 			children = (
 				CDE4B3AD21F1B6F200DFDE2D /*  CIImagetoCGImage.swift */,
+				CDC76854220AF9A800DDED86 /* RemoveDuplicate.swift */,
 			);
 			name = Extension;
 			path = "New Group";
@@ -751,6 +754,7 @@
 				663CBBF021E451E400572FFC /* Final_Challenge.xcdatamodeld in Sources */,
 				6611207E21F055D7005403AF /* DropDownViewController.swift in Sources */,
 				CAC3D53D21F9B0E1002CF4D9 /* FavoriteFoodTableViewCell.swift in Sources */,
+				CDC76855220AF9A800DDED86 /* RemoveDuplicate.swift in Sources */,
 				CDBAD60B21F8614C00017B9F /* NeverEatCollectionViewCell.swift in Sources */,
 				66EE05232203414400FD770D /* FoodMightLikeViewController.swift in Sources */,
 				66DB37E321FEC50D00A695E8 /* FindOutViewController.swift in Sources */,
