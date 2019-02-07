@@ -24,12 +24,42 @@ class HistoryViewController: UIViewController {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         tableView.tableFooterView = UIView()
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(showFilter))
         
         tableView.delegate = self
         tableView.dataSource = self
         
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func showFilter(){
+        print("Filter")
+        let alert = UIAlertController(title: "Filter History", message: nil, preferredStyle: .actionSheet)
+        
+        let removeAction = UIAlertAction(title: "Remove Filter", style: .destructive) { (action) in
+            print("RemoveFilter")
+        }
+        
+        let notReviewedAction = UIAlertAction(title: "Haven't Reviewed", style: .default) { (action) in
+            print("Haven't Reviewed")
+        }
+        
+        let recentAction = UIAlertAction(title: "Recent", style: .default) { (action) in
+            print("Recent")
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+        }
+        
+        alert.addAction(recentAction)
+        alert.addAction(notReviewedAction)
+        alert.addAction(removeAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true) {
+            print("ShowedUp")
+        }
     }
 
 }
