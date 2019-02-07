@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SpriteKit
 
 class ProfileViewController: UIViewController {
     
@@ -78,15 +79,16 @@ class ProfileViewController: UIViewController {
         navTitleView.addArrangedSubview(label)
         
         navTitleView.frame.size.width = 200
-        navTitleView.frame.size.height = 40
+        navTitleView.frame.size.height = 50
         
         navTitleView.axis = .horizontal
         navTitleView.alignment = .center
+        navTitleView.spacing = 4
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
         label.translatesAutoresizingMaskIntoConstraints = false
-        imageView.heightAnchor.constraint(equalToConstant: 40)
-        imageView.widthAnchor.constraint(equalToConstant: 40)
+        imageView.heightAnchor.constraint(equalToConstant: 50)
+        imageView.widthAnchor.constraint(equalToConstant: 50)
         
 //        imageView.leadingAnchor.constraint(equalTo: navTitleView.leadingAnchor, constant: 16)
 //        imageView.topAnchor.constraint(equalTo: navTitleView.topAnchor, constant: 0)
@@ -194,3 +196,4 @@ extension ProfileViewController: UICollectionViewDataSource, UICollectionViewDel
 //        performSegue(withIdentifier: "toEditProfilePage", sender: self)
 //    }
 //}
+
