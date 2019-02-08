@@ -95,6 +95,7 @@ class AlergicFoodViewController: UIViewController,UITableViewDelegate,UITableVie
     @IBAction func letsGo(_ sender: Any) {
         performSegue(withIdentifier: "ToMain", sender: self)
     }
+    //MARK: read the data after searching the food
     func readTempFood(){
         let defaults = UserDefaults.standard
         let myarray = defaults.stringArray(forKey: "tempFood") ?? [String]()

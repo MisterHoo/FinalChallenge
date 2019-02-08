@@ -10,6 +10,9 @@ import UIKit
 
 class AddFoodViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
   
+    struct AvoidedFoodStruct {
+        var name = String()
+    }
     
     @IBOutlet weak var searchFood: UISearchBar!
     @IBOutlet weak var searchTableView: UITableView!
@@ -100,7 +103,7 @@ class AddFoodViewController: UIViewController,UITableViewDelegate, UITableViewDa
 }
 extension AddFoodViewController:UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchedWord = birds.filter({ $0.prefix(searchText.count) == searchText})
+        searchedWord = birds.filter({ $0.prefix(searchText.count).lowercased().contains(searchText.lowercased())})
         searching = true
         searchTableView.reloadData()
     }

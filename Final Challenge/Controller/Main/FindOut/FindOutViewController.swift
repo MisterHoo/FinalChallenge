@@ -10,9 +10,9 @@ import UIKit
 
 class FindOutViewController: UIViewController {
 
-    
+    //MARK: Outlet
     @IBOutlet weak var tableView: UITableView!
- 
+    
     
     let screenHeight = UIScreen.main.bounds.height
     

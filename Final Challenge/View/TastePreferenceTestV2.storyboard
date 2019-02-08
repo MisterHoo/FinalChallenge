@@ -485,16 +485,25 @@
                     <connections>
                         <outlet property="searchFood" destination="V7Q-Mh-qAY" id="yWJ-1R-x3x"/>
                         <outlet property="searchTableView" destination="CgV-ku-1sU" id="Blk-ad-Xny"/>
+                        <segue destination="UdB-Pg-LQL" kind="show" id="KZl-TL-bMf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="28L-yV-gqS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2914" y="767"/>
+            <point key="canvasLocation" x="2766" y="767"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="QrF-qv-Sle">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="UdB-Pg-LQL" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6kI-cy-CJ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3522" y="767"/>
         </scene>
         <!--Nav Bar View Controller-->
         <scene sceneID="eFC-UY-3l8">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lOD-pI-Qzv" customClass="NavBarViewController" customModule="Final_Challenge" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="avoidedFoodSearch" automaticallyAdjustsScrollViewInsets="NO" id="lOD-pI-Qzv" customClass="NavBarViewController" customModule="Final_Challenge" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="wmw-tC-iT2">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>

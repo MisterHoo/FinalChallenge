@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchFOTableViewCell: UITableViewCell {
+class SearchFOTableViewCell: UITableViewCell, UISearchBarDelegate {
     
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -23,5 +23,7 @@ class SearchFOTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+//    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+//        
+//    }
 }

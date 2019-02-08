@@ -13,16 +13,23 @@ class GiveReviewViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var reviewToSubmit = ""
     var takenPhoto : UIImage?
+    var avoidedFood: [String] = []
     
     let basicTaste = BasicTasteData.basicTaste
     
     let screenHeight = UIScreen.main.bounds.height
     var favoriteButton : UIBarButtonItem?
     
+    let tastePreferenceTestV2 = UIStoryboard(name: "TastePreferenceTestV2", bundle: nil)
+    
     @IBOutlet weak var submitButton: UIButton!
     
 
     @IBAction func submitAction(_ sender: Any) {
+    }
+    @IBAction func addButton(_ sender: Any) {
+        let avoidedFood = tastePreferenceTestV2.instantiateViewController(withIdentifier: "avoidedFoodSearch")
+        self.present(avoidedFood, animated: true, completion: nil)
     }
     
     
@@ -63,9 +70,24 @@ class GiveReviewViewController: UIViewController {
             print("RemoveFromFavorite")
         }
     }
+    //MARK: read the data after searching the food
+    func readTempFood(){
+        let defaults = UserDefaults.standard
+        let myarray = defaults.stringArray(forKey: "tempFood") ?? [String]()
+        avoidedFood.append(contentsOf: myarray)
+        avoidedFood.removeDuplicates()
+        defaults.removeObject(forKey: "tempFood")
+    }
+    //MARK: save data temporarly for checking
+    override func viewWillDisappear(_ animated: Bool) {
+        var tempFood2 :[String] = []
+        let defaults = UserDefaults.standard
+        tempFood2.append(contentsOf: avoidedFood)
+        defaults.set(tempFood2, forKey: "tempFood2")
+    }
 }
 
-//TableView
+//MARK: TableView
 extension GiveReviewViewController : UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
