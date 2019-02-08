@@ -183,6 +183,7 @@ extension GiveReviewViewController : UITableViewDelegate, UITableViewDataSource{
 //                }else{
 //                    let cell = tableView.dequeueReusableCell(withIdentifier: "AlergenCell")
 //                    //isi allergen
+//                    cell?.textLabel?.text = avoidedFood[indexPath.row]
 //
 //                    return cell!
 //                }
@@ -200,7 +201,7 @@ extension GiveReviewViewController : UITableViewDelegate, UITableViewDataSource{
     }
 }
 
-//collectionViewTaste
+//MARK: collectionViewTaste
 extension GiveReviewViewController : UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return basicTaste.count
@@ -246,7 +247,7 @@ extension GiveReviewViewController : UICollectionViewDelegate, UICollectionViewD
 //    }
 //}
 
-// Image Picker
+//MARK: Image Picker
 extension GiveReviewViewController : CameraSystemDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
     
     func openCamera() {
