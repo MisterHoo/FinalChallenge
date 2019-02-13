@@ -12,6 +12,13 @@ class FoodKindViewController: UIViewController{
     
     var foodPreference : [FoodLike] = DummyFoodPreference.foodLike
     
+    var sweet = 0
+    var salty = 0
+    var sour = 0
+    var savoury = 0
+    var bitter = 0
+    var bland = 0
+    
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -113,6 +120,45 @@ extension FoodKindViewController : UICollectionViewDataSource, UICollectionViewD
 
 extension FoodKindViewController : NextActionDelegate{
     func nextAction() {
+        calculateTastePreference()
+        
         performSegue(withIdentifier: "toNeverView", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let dest = segue.destination as? NeverEatViewController else {return}
+        
+        dest.sweet = sweet
+        dest.salty = salty
+        dest.sour = sour
+        dest.savoury = savoury
+        dest.bitter = bitter
+        dest.bland = bland
+    }
+    
+    func calculateTastePreference(){
+        
+        for food in foodPreference{
+            if food.like == true{
+                if(food.sweet == true){
+                    sweet += 1
+                }
+                if(food.salty == true){
+                    salty += 1
+                }
+                if(food.savoury == true){
+                    savoury += 1
+                }
+                if(food.sour == true){
+                    sour += 1
+                }
+                if(food.bitter == true){
+                    bitter += 1
+                }
+                if(food.bland == true){
+                    bland += 1
+                }
+            }
+        }
     }
 }

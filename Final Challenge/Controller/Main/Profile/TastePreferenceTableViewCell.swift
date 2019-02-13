@@ -14,7 +14,7 @@ class TastePreferenceTableViewCell: UITableViewCell {
     @IBOutlet weak var baseRect: UIView!
     
     //    var tastePreference = TastePalData.user.tastePreferencexb
-    var tastePreferences : [TastePreference] = [TastePreference(type: Taste.sweet, value: 40), TastePreference(type: Taste.savoury, value: 30),TastePreference(type: Taste.sour, value: 20), TastePreference(type: Taste.bitter, value: 10)]
+    var tastePreferences : [TastePreference] = DummyFoodPreference.tastePreference
     
     var indexPercentage : Float = 0
     var indexDuration : Float = 0

@@ -10,7 +10,7 @@ import Foundation
 
 class TastePreference : NSObject {
     let tasteData : BasicTaste?
-    let value : Float?
+    var value : Float?
     let type : Taste?
     
     
@@ -18,5 +18,9 @@ class TastePreference : NSObject {
         self.type = type
         self.value = value
         self.tasteData = BasicTasteData().getTasteInfo(taste: type)
+    }
+    
+    func setValue(value : Float){
+        self.value = value
     }
 }
