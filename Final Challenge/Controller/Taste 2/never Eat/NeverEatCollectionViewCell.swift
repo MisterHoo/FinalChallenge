@@ -13,9 +13,13 @@ class NeverEatCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var foodNeverLabel: UILabel!
     @IBOutlet weak var foodCheck: UIImageView!
     
+    override func awakeFromNib() {
+        foodNeverImage.layer.cornerRadius = 8
+    }
+    
     var check = false
     
-    func chekThis(){
+    func checkThis(){
         foodCheck.isHidden = false
     }
     func uncheck(){

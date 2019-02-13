@@ -53,3 +53,29 @@ struct TastePalIcon{
     static var heartFilled = UIImage(named: "HeartFilled")
     static var tick = UIImage(named: "Tick")
 }
+
+struct DummyFoodPreference{
+    static var foodLike : [FoodLike] = [FoodLike(origin: "Indonesian", image: UIImage(named: "Indonesian")!, like: false, sweet: true, salty: false, savoury: true, sour: true, bitter: false, bland: false),
+                                                    FoodLike(origin: "Japanese", image: UIImage(named: "Japanese")!, like: false, sweet: false, salty: true, savoury: true, sour: true, bitter: false, bland: false),
+                                                    FoodLike(origin: "Italian", image: UIImage(named: "Italian")!, like: false, sweet: true, salty: false, savoury: true, sour: true, bitter: false, bland: false),
+                                                    FoodLike(origin: "Indian", image: UIImage(named: "Indian")!, like: false, sweet: true, salty: false, savoury: true, sour: false, bitter: false, bland: false),
+                                                    FoodLike(origin: "Middle-eastern", image: UIImage(named: "Middle-East")!, like: false, sweet: true, salty: false, savoury: true, sour: false, bitter: false, bland: false),
+                                                    FoodLike(origin: "Thai", image: UIImage(named: "Thai")!, like: false, sweet: true, salty: true, savoury: true, sour: true, bitter: false, bland: false),
+                                                    FoodLike(origin: "Chinese", image: UIImage(named: "Chinese")!, like: false, sweet: true, salty: true, savoury: true, sour: true, bitter: false, bland: false),
+                                                    FoodLike(origin: "French", image: UIImage(named: "French")!, like: false, sweet: true, salty: false, savoury: true, sour: true, bitter: true, bland: true),
+                                                    FoodLike(origin: "Mexican", image: UIImage(named: "Mexican")!, like: false, sweet: true, salty: true, savoury: true, sour: false, bitter: false, bland: false),
+                                                    FoodLike(origin: "Korean", image: UIImage(named: "Korean")!, like: false, sweet: true, salty: false, savoury: true, sour: true, bitter: false, bland: false),
+                                                    FoodLike(origin: "Spanish", image: UIImage(named: "Spanish")!, like: false, sweet: true, salty: true, savoury: false, sour: true, bitter: false, bland: false),
+                                                    FoodLike(origin: "Greek", image: UIImage(named: "Greek")!, like: false, sweet: false, salty: true, savoury: false, sour: true, bitter: false, bland: true),
+                                                    FoodLike(origin: "Malay", image: UIImage(named: "Malay")!, like: false, sweet: false, salty: false, savoury: true, sour: true, bitter: false, bland: false),
+                                                    FoodLike(origin: "Viet", image: UIImage(named: "Viet")!, like: false, sweet: true, salty: true, savoury: false, sour: true, bitter: true, bland: false),
+                                                    FoodLike(origin: "Turkish", image: UIImage(named: "Turkish")!, like: false, sweet: true, salty: false, savoury: true, sour: true, bitter: false, bland: false)]
+    
+    static var tasteNotLike : [TasteTest] = [TasteTest(name: "Sweet", image: UIImage(named: "Sweet")!, check: false),
+                                      TasteTest(name: "Salty", image: UIImage(named: "Salty")!, check: false),
+                                      TasteTest(name: "Sour", image: UIImage(named: "Sour")!, check: false),
+                                      TasteTest(name: "Savoury", image: UIImage(named: "Savoury")!, check: false),
+                                      TasteTest(name: "Bitter", image: UIImage(named: "Bitter")!, check: false),
+                                      TasteTest(name: "Bland", image: UIImage(named: "Bland")!, check: false)]
+   
+}
