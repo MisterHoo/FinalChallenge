@@ -32,6 +32,8 @@
 		663CBBF021E451E400572FFC /* Final_Challenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 663CBBEE21E451E400572FFC /* Final_Challenge.xcdatamodeld */; };
 		663CBBF221E451E500572FFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 663CBBF121E451E500572FFC /* Assets.xcassets */; };
 		663CBBF521E451E500572FFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 663CBBF321E451E500572FFC /* LaunchScreen.storyboard */; };
+		664059062213D4EB0084574A /* FoodLikeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664059052213D4EA0084574A /* FoodLikeTableViewCell.swift */; };
+		664059082213D4F50084574A /* FoodNextActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664059072213D4F50084574A /* FoodNextActionTableViewCell.swift */; };
 		6653E98A2205D959009D6BE6 /* RecommendedFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6653E9892205D959009D6BE6 /* RecommendedFoodViewController.swift */; };
 		6653E98C2205D964009D6BE6 /* SeeAllReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6653E98B2205D964009D6BE6 /* SeeAllReviewViewController.swift */; };
 		66763D7321E8778200368E6E /* FoodLikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66763D7221E8778200368E6E /* FoodLikeViewController.swift */; };
@@ -128,6 +130,8 @@
 		663CBBF121E451E500572FFC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		663CBBF421E451E500572FFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		663CBBF621E451E500572FFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		664059052213D4EA0084574A /* FoodLikeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLikeTableViewCell.swift; sourceTree = "<group>"; };
+		664059072213D4F50084574A /* FoodNextActionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodNextActionTableViewCell.swift; sourceTree = "<group>"; };
 		6653E9892205D959009D6BE6 /* RecommendedFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedFoodViewController.swift; sourceTree = "<group>"; };
 		6653E98B2205D964009D6BE6 /* SeeAllReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllReviewViewController.swift; sourceTree = "<group>"; };
 		66763D7221E8778200368E6E /* FoodLikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLikeViewController.swift; sourceTree = "<group>"; };
@@ -556,6 +560,8 @@
 		CDBAD60021F83DCF00017B9F /* Food Kind */ = {
 			isa = PBXGroup;
 			children = (
+				664059052213D4EA0084574A /* FoodLikeTableViewCell.swift */,
+				664059072213D4F50084574A /* FoodNextActionTableViewCell.swift */,
 				CDBAD60121F83DF800017B9F /* FoodKindViewController.swift */,
 				CDBAD60721F83F7000017B9F /* FoodKindCollectionViewCell.swift */,
 			);
@@ -800,6 +806,7 @@
 				66B737DE21E46DFD000C9B50 /* ResultPhotoTableViewCell.swift in Sources */,
 				CD51B01121FF05410084812E /* AddFoodTableViewCell.swift in Sources */,
 				66763D8221E87B9800368E6E /* FoodCollectionViewCell.swift in Sources */,
+				664059062213D4EB0084574A /* FoodLikeTableViewCell.swift in Sources */,
 				66B737E621E47044000C9B50 /* ResultSimilarTableViewCell.swift in Sources */,
 				66EE051B2202DD9700FD770D /* FavoriteFoodViewController.swift in Sources */,
 				CAC3D53921F9AE77002CF4D9 /* TastePreferenceTableViewCell.swift in Sources */,
@@ -816,6 +823,7 @@
 				66763D8421E87BA300368E6E /* FoodLikeCollectionViewCell.swift in Sources */,
 				66B737CC21E46B5B000C9B50 /* ScanViewController.swift in Sources */,
 				CD20EB6E21FECC4500F147B2 /* AlergicFoodViewController.swift in Sources */,
+				664059082213D4F50084574A /* FoodNextActionTableViewCell.swift in Sources */,
 				66EE05172202C45200FD770D /* FavoriteFoodCollectionViewCell.swift in Sources */,
 				6653E98A2205D959009D6BE6 /* RecommendedFoodViewController.swift in Sources */,
 				66B737E221E47020000C9B50 /* ResultInformationTableViewCell.swift in Sources */,
