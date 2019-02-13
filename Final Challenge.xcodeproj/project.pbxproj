@@ -435,6 +435,7 @@
 		66DB37E421FEC51700A695E8 /* FindOut */ = {
 			isa = PBXGroup;
 			children = (
+				CD8204A92213EBF60081ABBD /* Find Out Search */,
 				66EE05242203414B00FD770D /* FoodMightLike */,
 				66B737DC21E46DC3000C9B50 /* Result */,
 				66B1412022004E210013C5E7 /* FoodMightLikeFOCollectionViewCell.swift */,
@@ -526,6 +527,13 @@
 				CD51B01021FF05410084812E /* AddFoodTableViewCell.xib */,
 			);
 			path = "Alergic Food";
+			sourceTree = "<group>";
+		};
+		CD8204A92213EBF60081ABBD /* Find Out Search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Find Out Search";
 			sourceTree = "<group>";
 		};
 		CDBAD5FE21F83D8900017B9F /* New Group */ = {
