@@ -13,16 +13,22 @@ class NeverEatCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var foodNeverLabel: UILabel!
     @IBOutlet weak var foodCheck: UIImageView!
     
+    @IBOutlet weak var selectionView: UIView!
+    
     override func awakeFromNib() {
         foodNeverImage.layer.cornerRadius = 8
+        selectionView.isHidden = true
+        selectionView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.45)
     }
     
     var check = false
     
     func checkThis(){
         foodCheck.isHidden = false
+        selectionView.isHidden = false
     }
     func uncheck(){
         foodCheck.isHidden = true
+        selectionView.isHidden = true
     }
 }
