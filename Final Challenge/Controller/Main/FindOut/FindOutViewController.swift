@@ -143,7 +143,7 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
             return 44
         }else{
             if indexPath.row == 0{
-                return 100
+                return 120
             }else if indexPath.row == 1{
                 //it should be 0.46 (370/812)
                 return 0.4 * screenHeight

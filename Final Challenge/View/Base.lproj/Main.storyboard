@@ -108,11 +108,11 @@
                                 <color key="separatorColor" red="0.24313725489999999" green="0.23529411759999999" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <inset key="separatorInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TastePreferenceFOCell" rowHeight="100" id="fwm-Xn-fg7" customClass="TastePreferenceFOTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                                    <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TastePreferenceFOCell" rowHeight="151" id="fwm-Xn-fg7" customClass="TastePreferenceFOTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="151"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fwm-Xn-fg7" id="JQb-SU-C0u">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="150.66666666666666"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Taste Preference" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zSV-Nn-8K4">
@@ -122,16 +122,69 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="do6-rc-Lca">
-                                                    <rect key="frame" x="15" y="48" width="345" height="31"/>
+                                                    <rect key="frame" x="15" y="46" width="345" height="56"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5gF-7X-b9R">
+                                                    <rect key="frame" x="15" y="110" width="345" height="30"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="iTy-o5-As0"/>
+                                                    </constraints>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="83a-PH-XFQ">
+                                                        <size key="itemSize" width="98" height="40"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TasteLegend" id="Wbj-ct-zAU" customClass="TasteLegendCollectionViewCell" customModule="Final_Challenge" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="98" height="40"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                                <rect key="frame" x="0.0" y="0.0" width="98" height="40"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="84b-vC-YHl">
+                                                                        <rect key="frame" x="4" y="16" width="8" height="8"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="8" id="WFC-5d-JCI"/>
+                                                                            <constraint firstAttribute="height" constant="8" id="b5A-tc-XdE"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4TQ-fp-vXi">
+                                                                        <rect key="frame" x="16" y="13" width="82" height="14"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </view>
+                                                            <constraints>
+                                                                <constraint firstItem="84b-vC-YHl" firstAttribute="centerY" secondItem="Wbj-ct-zAU" secondAttribute="centerY" id="D9J-jW-Pi8"/>
+                                                                <constraint firstItem="4TQ-fp-vXi" firstAttribute="leading" secondItem="84b-vC-YHl" secondAttribute="trailing" constant="4" id="KOC-wA-GlV"/>
+                                                                <constraint firstItem="4TQ-fp-vXi" firstAttribute="centerY" secondItem="84b-vC-YHl" secondAttribute="centerY" id="L2h-20-ZWv"/>
+                                                                <constraint firstItem="84b-vC-YHl" firstAttribute="leading" secondItem="Wbj-ct-zAU" secondAttribute="leading" constant="4" id="sbY-Lq-bUB"/>
+                                                                <constraint firstAttribute="trailing" secondItem="4TQ-fp-vXi" secondAttribute="trailing" id="tYT-nJ-Pte"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="tasteColor" destination="84b-vC-YHl" id="A3J-wg-Gzs"/>
+                                                                <outlet property="tasteName" destination="4TQ-fp-vXi" id="mUE-vW-wiH"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                </collectionView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="5gF-7X-b9R" firstAttribute="top" secondItem="do6-rc-Lca" secondAttribute="bottom" constant="8" id="589-Kf-nIS"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="5gF-7X-b9R" secondAttribute="trailing" id="8wF-ZD-Ly9"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="5gF-7X-b9R" secondAttribute="bottom" id="Bqh-4O-Blx"/>
                                                 <constraint firstItem="zSV-Nn-8K4" firstAttribute="top" secondItem="JQb-SU-C0u" secondAttribute="topMargin" constant="10" id="EmC-tZ-ahG"/>
+                                                <constraint firstItem="5gF-7X-b9R" firstAttribute="leading" secondItem="JQb-SU-C0u" secondAttribute="leadingMargin" id="FFW-dz-iag"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="zSV-Nn-8K4" secondAttribute="trailing" id="GHV-iH-hBn"/>
                                                 <constraint firstItem="zSV-Nn-8K4" firstAttribute="leading" secondItem="JQb-SU-C0u" secondAttribute="leadingMargin" id="Ign-Fg-H5e"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="do6-rc-Lca" secondAttribute="bottom" constant="10" id="O5Q-dg-xPa"/>
-                                                <constraint firstItem="do6-rc-Lca" firstAttribute="top" secondItem="zSV-Nn-8K4" secondAttribute="bottom" constant="10" id="nb1-zv-VgJ"/>
+                                                <constraint firstItem="do6-rc-Lca" firstAttribute="top" secondItem="zSV-Nn-8K4" secondAttribute="bottom" constant="8" id="nb1-zv-VgJ"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="do6-rc-Lca" secondAttribute="trailing" id="pRW-gp-eg9"/>
                                                 <constraint firstItem="do6-rc-Lca" firstAttribute="leading" secondItem="JQb-SU-C0u" secondAttribute="leadingMargin" id="wNi-mn-NHe"/>
                                             </constraints>
@@ -140,10 +193,11 @@
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="baseRect" destination="do6-rc-Lca" id="BJi-Kb-Rf7"/>
+                                            <outlet property="collectionView" destination="5gF-7X-b9R" id="QEW-0X-vUN"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FoodMightLikeFOCell" rowHeight="381" id="duo-LB-JDT" customClass="FoodMightLikeFOTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="128" width="375" height="381"/>
+                                        <rect key="frame" x="0.0" y="179" width="375" height="381"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="duo-LB-JDT" id="4RX-Rx-mh8">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="380.66666666666669"/>
@@ -233,14 +287,14 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FoodMightLikeFooter" textLabel="UuS-5C-U27" style="IBUITableViewCellStyleDefault" id="keA-Oe-xsr">
-                                        <rect key="frame" x="0.0" y="509" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="560" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="keA-Oe-xsr" id="j2a-uG-akN">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="See All Food That You Might Like" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UuS-5C-U27">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="43.666666666666664"/>
+                                                    <rect key="frame" x="24" y="0.0" width="316" height="43.666666666666664"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.58431372550000005" green="0.56470588239999997" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -253,7 +307,7 @@
                                         <inset key="separatorInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchedFood" id="ks7-Em-HdK" customClass="FoodSearchTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="553" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="604" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ks7-Em-HdK" id="8Z1-0t-hPe">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>

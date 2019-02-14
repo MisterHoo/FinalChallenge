@@ -94,7 +94,7 @@ class TastePreferenceFOTableViewCell: UITableViewCell {
             
             view.translatesAutoresizingMaskIntoConstraints = false
             
-            view.heightAnchor.constraint(equalToConstant:  baseRect.frame.height - 10).isActive = true
+            view.heightAnchor.constraint(equalToConstant:  baseRect.frame.height - 25).isActive = true
             view.topAnchor.constraint(equalTo: baseRect.topAnchor, constant: 0).isActive = true
             let leadingConstraint = view.leadingAnchor.constraint(equalTo: baseRect.leadingAnchor, constant: indexLeading)
             leadingConstraint.isActive = true
