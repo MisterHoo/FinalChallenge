@@ -209,8 +209,8 @@
                                                                 <constraint firstItem="RZY-Kd-oo7" firstAttribute="centerY" secondItem="0dg-Yj-gwS" secondAttribute="centerY" id="g2L-x1-lLE"/>
                                                             </constraints>
                                                             <connections>
-                                                                <outlet property="tasteColor" destination="RZY-Kd-oo7" id="m5e-0f-4bs"/>
-                                                                <outlet property="tasteName" destination="Tiy-oG-8sK" id="PhA-jP-WCr"/>
+                                                                <outlet property="tasteColor" destination="RZY-Kd-oo7" id="HJq-e4-838"/>
+                                                                <outlet property="tasteName" destination="Tiy-oG-8sK" id="7ZY-6R-oSB"/>
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>
