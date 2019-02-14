@@ -122,15 +122,19 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0{
+            //location
             return 50
         }else if indexPath.row == 1{
+            //search
             return 50
         }else if indexPath.row == 2{
-            return 100
+            //tastepreference
+            return 120
         }else if indexPath.row == 3{
             //it should be 0.46 (370/812)
             return 0.4 * screenHeight
         }else if indexPath.row == 4{
+            //foodmightlike
             return 44
         }else{
             return 0

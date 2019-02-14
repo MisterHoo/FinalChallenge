@@ -81,6 +81,9 @@ class NeverEatViewController: UIViewController,UICollectionViewDataSource, UICol
     }
     
     func calculateTaste(){
+        
+        DummyFoodPreference.tastePreference.removeAll()
+        
         for taste in tasteNever{
             if taste.check == true{
                 if taste.name == "Sweet"{
@@ -99,18 +102,18 @@ class NeverEatViewController: UIViewController,UICollectionViewDataSource, UICol
             }
         }
         
-        var totalValue = sweet + salty + sour + savoury + bitter + bland
+        let totalValue = sweet + salty + sour + savoury + bitter + bland
         
         if sweet != 0{
             
-            let value : Float = Float(sweet * 100 / totalValue)
+            let value : Float = Float(sweet) * 100 / Float(totalValue)
             DummyFoodPreference.tastePreference.append(TastePreference(type: .sweet, value: value))
             
             print("Sweet \(value)")
         }
         if salty != 0{
             
-            let value : Float = Float(salty * 100 / totalValue)
+            let value : Float = Float(salty) * 100 / Float(totalValue)
             DummyFoodPreference.tastePreference.append(TastePreference(type: .salty, value: value))
             
             print("salty \(value)")
@@ -118,7 +121,7 @@ class NeverEatViewController: UIViewController,UICollectionViewDataSource, UICol
         }
         if sour != 0{
             
-            let value : Float = Float(sour * 100 / totalValue)
+            let value : Float = Float(sour) * 100 / Float(totalValue)
             DummyFoodPreference.tastePreference.append(TastePreference(type: .sour, value: value))
             
             print("sour \(value)")
@@ -126,7 +129,7 @@ class NeverEatViewController: UIViewController,UICollectionViewDataSource, UICol
         }
         if savoury != 0{
             
-            let value : Float = Float(savoury * 100 / totalValue)
+            let value : Float = Float(savoury) * 100 / Float(totalValue)
             DummyFoodPreference.tastePreference.append(TastePreference(type: .savoury, value: value))
             
             print("savoury \(value)")
@@ -134,7 +137,7 @@ class NeverEatViewController: UIViewController,UICollectionViewDataSource, UICol
         }
         if bitter != 0{
             
-            let value : Float = Float(bitter * 100 / totalValue)
+            let value : Float = Float(bitter) * 100 / Float(totalValue)
             DummyFoodPreference.tastePreference.append(TastePreference(type: .bitter, value: value))
             
             print("bitter\(value)")
@@ -142,7 +145,7 @@ class NeverEatViewController: UIViewController,UICollectionViewDataSource, UICol
         }
         if bland != 0{
             
-            let value : Float = Float(bland  * 100 / totalValue)
+            let value : Float = Float(bland) * 100 / Float(totalValue)
             DummyFoodPreference.tastePreference.append(TastePreference(type: .bland, value: value))
             
             print("bland\(value)")
