@@ -15,6 +15,8 @@ class GiveReviewViewController: UIViewController {
     var takenPhoto : UIImage?
     var avoidedFood: [String] = []
     
+    var reviews : [Review] = []
+    
     let basicTaste = BasicTasteData.basicTaste
     
     let screenHeight = UIScreen.main.bounds.height
@@ -70,13 +72,18 @@ class GiveReviewViewController: UIViewController {
             print("RemoveFromFavorite")
         }
     }
-    //MARK: read the data after searching the food
+//MARK: read the data after searching the food
     func readTempFood(){
         let defaults = UserDefaults.standard
         let myarray = defaults.stringArray(forKey: "tempFood") ?? [String]()
         avoidedFood.append(contentsOf: myarray)
         avoidedFood.removeDuplicates()
+        print(avoidedFood)
         defaults.removeObject(forKey: "tempFood")
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        readTempFood()
+        tableView.reloadData()
     }
     //MARK: save data temporarly for checking
     override func viewWillDisappear(_ animated: Bool) {
@@ -99,11 +106,11 @@ extension GiveReviewViewController : UITableViewDelegate, UITableViewDataSource{
             return 2
         }else if section == 1{
             //alergen
-//            if review.count == 0{
+            if reviews.count == 0{
                 return 3
-//            }else if{
-//                return review.count + 2
-//            }
+            }else{
+                return reviews.count + 2
+            }
         }else if section == 2{
             return 1
         }else{
@@ -163,36 +170,37 @@ extension GiveReviewViewController : UITableViewDelegate, UITableViewDataSource{
                 
                 return cell!
             }else{
-//            }else if review.count == 0{
-                if indexPath == IndexPath(row: 1, section: 1){
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyPlaceholderText")
-                    
-                    return cell!
+                if reviews.count == 0{
+                    if indexPath == IndexPath(row: 1, section: 1){
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyPlaceholderText")
+                        
+                        return cell!
+                    }else{
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "AddAlergenCell")
+                        
+                        
+                        return cell!
+                    }
                 }else{
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "AddAlergenCell")
-                    
-                    return cell!
+                    //isi yg ada reviewnya
+                    if indexPath.row == avoidedFood.count + 1{
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "AddAlergenCell")
+                        
+                        return cell!
+                    }else{
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "AlergenCell")
+                        //isi allergen
+                        cell?.textLabel?.text = avoidedFood[indexPath.row]
+                        
+                        return cell!
+                    }
                 }
             }
-//            }else{
-//                //isi yg ada reviewnya
-//                if indexPath.row == Review.count + 1{
-//                    let cell = tableView.dequeueReusableCell(withIdentifier: "AddAlergenCell")
-//
-//                    return cell!
-//                }else{
-//                    let cell = tableView.dequeueReusableCell(withIdentifier: "AlergenCell")
-//                    //isi allergen
-//                    cell?.textLabel?.text = avoidedFood[indexPath.row]
-//
-//                    return cell!
-//                }
-//            }
         }else if indexPath.section == 2{
             let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewDescTableCell") as! GiveReviewDescTableViewCell
             
             cell.userTextView.layer.cornerRadius = 4
-//            cell.userTextView.text
+            //            cell.userTextView.text
             
             return cell
         }else{
@@ -200,6 +208,7 @@ extension GiveReviewViewController : UITableViewDelegate, UITableViewDataSource{
         }
     }
 }
+    
 
 //MARK: collectionViewTaste
 extension GiveReviewViewController : UICollectionViewDelegate, UICollectionViewDataSource{

@@ -34,7 +34,6 @@
 		663CBBF521E451E500572FFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 663CBBF321E451E500572FFC /* LaunchScreen.storyboard */; };
 		664059062213D4EB0084574A /* FoodLikeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664059052213D4EA0084574A /* FoodLikeTableViewCell.swift */; };
 		664059082213D4F50084574A /* FoodNextActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664059072213D4F50084574A /* FoodNextActionTableViewCell.swift */; };
-		6640590A221531170084574A /* TasteLegendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66405909221531170084574A /* TasteLegendCollectionViewCell.swift */; };
 		6653E98A2205D959009D6BE6 /* RecommendedFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6653E9892205D959009D6BE6 /* RecommendedFoodViewController.swift */; };
 		6653E98C2205D964009D6BE6 /* SeeAllReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6653E98B2205D964009D6BE6 /* SeeAllReviewViewController.swift */; };
 		66763D7321E8778200368E6E /* FoodLikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66763D7221E8778200368E6E /* FoodLikeViewController.swift */; };
@@ -133,7 +132,6 @@
 		663CBBF621E451E500572FFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		664059052213D4EA0084574A /* FoodLikeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLikeTableViewCell.swift; sourceTree = "<group>"; };
 		664059072213D4F50084574A /* FoodNextActionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodNextActionTableViewCell.swift; sourceTree = "<group>"; };
-		66405909221531170084574A /* TasteLegendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasteLegendCollectionViewCell.swift; sourceTree = "<group>"; };
 		6653E9892205D959009D6BE6 /* RecommendedFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedFoodViewController.swift; sourceTree = "<group>"; };
 		6653E98B2205D964009D6BE6 /* SeeAllReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllReviewViewController.swift; sourceTree = "<group>"; };
 		66763D7221E8778200368E6E /* FoodLikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLikeViewController.swift; sourceTree = "<group>"; };
@@ -441,7 +439,7 @@
 		66DB37E421FEC51700A695E8 /* FindOut */ = {
 			isa = PBXGroup;
 			children = (
-				66405909221531170084574A /* TasteLegendCollectionViewCell.swift */,
+				CD8204A92213EBF60081ABBD /* Find Out Search */,
 				66EE05242203414B00FD770D /* FoodMightLike */,
 				66B737DC21E46DC3000C9B50 /* Result */,
 				66B1412022004E210013C5E7 /* FoodMightLikeFOCollectionViewCell.swift */,
@@ -533,6 +531,13 @@
 				CD51B01021FF05410084812E /* AddFoodTableViewCell.xib */,
 			);
 			path = "Alergic Food";
+			sourceTree = "<group>";
+		};
+		CD8204A92213EBF60081ABBD /* Find Out Search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Find Out Search";
 			sourceTree = "<group>";
 		};
 		CDBAD5FE21F83D8900017B9F /* New Group */ = {
@@ -814,7 +819,6 @@
 				66763D7B21E877A900368E6E /* SummaryViewController.swift in Sources */,
 				66B1411D21FED4310013C5E7 /* FoodMightLikeFOTableViewCell.swift in Sources */,
 				6611209621F83B98005403AF /* HistoryTableViewCell.swift in Sources */,
-				6640590A221531170084574A /* TasteLegendCollectionViewCell.swift in Sources */,
 				CD20EB6D21FECC4500F147B2 /* AlergicSelectedTableViewCell.swift in Sources */,
 				66763D8421E87BA300368E6E /* FoodLikeCollectionViewCell.swift in Sources */,
 				66B737CC21E46B5B000C9B50 /* ScanViewController.swift in Sources */,

@@ -152,7 +152,4 @@ extension FindOutViewController : UICollectionViewDelegate, UICollectionViewData
         
         return cell
     }
-    
-    
-    
 }

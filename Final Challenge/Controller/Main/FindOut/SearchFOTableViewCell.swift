@@ -23,7 +23,7 @@ class SearchFOTableViewCell: UITableViewCell, UISearchBarDelegate {
 
         // Configure the view for the selected state
     }
-//    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-//        
-//    }
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
 }
