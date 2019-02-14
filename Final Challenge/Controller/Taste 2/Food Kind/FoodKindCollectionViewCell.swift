@@ -22,6 +22,24 @@ class FoodKindCollectionViewCell: UICollectionViewCell {
         foodKindImageView.layer.cornerRadius = 8
         selectionView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.45)
         selectionView.isHidden = true
+        
+        let shadowView = UIView(frame: CGRect(x: 0, y: 0, width: foodKindImageView.bounds.width, height: foodKindImageView.bounds.height))
+        
+        shadowView.backgroundColor = UIColor.clear
+        shadowView.clipsToBounds = false
+        shadowView.layer.cornerRadius = 8
+        
+        shadowView.layer.shadowRadius = 10
+        shadowView.layer.shadowOpacity = 0.6
+        shadowView.layer.shadowColor =
+            UIColor.black.cgColor
+        shadowView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        shadowView.layer.shadowPath = UIBezierPath(roundedRect: shadowView.frame, cornerRadius: 8).cgPath
+        
+        shadowView.layer.zPosition = -1
+        
+        addSubview(shadowView)
+        
     }
 
     func checkThis(){

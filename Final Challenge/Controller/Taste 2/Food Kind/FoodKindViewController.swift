@@ -51,7 +51,7 @@ extension FoodKindViewController : UITableViewDelegate, UITableViewDataSource {
 
             let numberCell : Float = Float(foodPreference.count / 3)
 
-            let itemHeight = Float((itemSize * 1.2) + 12) * numberCell.rounded(FloatingPointRoundingRule.up)
+            let itemHeight = Float((itemSize * 1.2)) * numberCell.rounded(FloatingPointRoundingRule.up)
 
             return CGFloat(itemHeight)
         }else{
@@ -94,6 +94,9 @@ extension FoodKindViewController : UICollectionViewDataSource, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellKind", for: indexPath) as! FoodKindCollectionViewCell
+        
+        cell.clipsToBounds = false
+        
         cell.foodKindLabel.text = foodPreference[indexPath.item].origin
         cell.foodKindImageView.image = foodPreference[indexPath.row].image
         
