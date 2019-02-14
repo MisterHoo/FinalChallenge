@@ -90,6 +90,7 @@
 		CD30B9CD21F86B9B00E43DAB /* FoodNever.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD30B9CC21F86B9B00E43DAB /* FoodNever.swift */; };
 		CD51B01121FF05410084812E /* AddFoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD51B00F21FF05410084812E /* AddFoodTableViewCell.swift */; };
 		CD51B01221FF05410084812E /* AddFoodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD51B01021FF05410084812E /* AddFoodTableViewCell.xib */; };
+		CD926E2B22142FA200A5FAC6 /* FoodSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD926E2A22142FA200A5FAC6 /* FoodSearchTableViewCell.swift */; };
 		CDBAD5FD21F8396300017B9F /* TastePreferenceTestV2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDBAD5FC21F8396300017B9F /* TastePreferenceTestV2.storyboard */; };
 		CDBAD60221F83DF800017B9F /* FoodKindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBAD60121F83DF800017B9F /* FoodKindViewController.swift */; };
 		CDBAD60821F83F7000017B9F /* FoodKindCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBAD60721F83F7000017B9F /* FoodKindCollectionViewCell.swift */; };
@@ -189,6 +190,7 @@
 		CD30B9CC21F86B9B00E43DAB /* FoodNever.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodNever.swift; sourceTree = "<group>"; };
 		CD51B00F21FF05410084812E /* AddFoodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodTableViewCell.swift; sourceTree = "<group>"; };
 		CD51B01021FF05410084812E /* AddFoodTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddFoodTableViewCell.xib; sourceTree = "<group>"; };
+		CD926E2A22142FA200A5FAC6 /* FoodSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSearchTableViewCell.swift; sourceTree = "<group>"; };
 		CDBAD5FC21F8396300017B9F /* TastePreferenceTestV2.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TastePreferenceTestV2.storyboard; sourceTree = "<group>"; };
 		CDBAD60121F83DF800017B9F /* FoodKindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodKindViewController.swift; sourceTree = "<group>"; };
 		CDBAD60721F83F7000017B9F /* FoodKindCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodKindCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -444,6 +446,7 @@
 				66B737DC21E46DC3000C9B50 /* Result */,
 				66B1412022004E210013C5E7 /* FoodMightLikeFOCollectionViewCell.swift */,
 				66B1411621FED3DB0013C5E7 /* LocationFOTableViewCell.swift */,
+				CD926E2A22142FA200A5FAC6 /* FoodSearchTableViewCell.swift */,
 				66B1411821FED3FD0013C5E7 /* SearchFOTableViewCell.swift */,
 				66DB37E221FEC50D00A695E8 /* FindOutViewController.swift */,
 				66B1411A21FED4290013C5E7 /* TastePreferenceFOTableViewCell.swift */,
@@ -794,6 +797,7 @@
 				66B737E021E4700E000C9B50 /* ResultActionButtonTableViewCell.swift in Sources */,
 				CAFFD6F521E478EE00147751 /* IntroductionViewController.swift in Sources */,
 				66EE05192202CF5B00FD770D /* ResultReviewTableViewCell.swift in Sources */,
+				CD926E2B22142FA200A5FAC6 /* FoodSearchTableViewCell.swift in Sources */,
 				6625BFAD220AB2D500A040C3 /* GiveReviewTasteTableViewCell.swift in Sources */,
 				66763D7921E877A300368E6E /* DoneTestViewController.swift in Sources */,
 				6625BFAF220ABD3E00A040C3 /* AddAlergenTableViewCell.swift in Sources */,

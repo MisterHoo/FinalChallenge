@@ -73,6 +73,7 @@ class AddFoodViewController: UIViewController,UITableViewDelegate, UITableViewDa
         headerCell?.backgroundColor = TastePalColor.charcoal
         return headerCell
     }
+    
     @objc func addFoodName(sender: UIButton){
         let index = sender.tag
         if searching {
@@ -89,6 +90,7 @@ class AddFoodViewController: UIViewController,UITableViewDelegate, UITableViewDa
             print("appemd ke temp ga searching")
         }
     }
+    
     func checkAlergic(){
         let defaults = UserDefaults.standard
         let myarray = defaults.stringArray(forKey: "tempFood2") ?? [String]()
@@ -103,8 +105,14 @@ class AddFoodViewController: UIViewController,UITableViewDelegate, UITableViewDa
 }
 extension AddFoodViewController:UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text == ""{
+            searchedWord.append(contentsOf: birds)
+            searchedWord.removeDuplicates()
+            searchTableView.reloadData()
+        }else {
         searchedWord = birds.filter({ $0.prefix(searchText.count).lowercased().contains(searchText.lowercased())})
         searching = true
         searchTableView.reloadData()
+        }
     }
 }
