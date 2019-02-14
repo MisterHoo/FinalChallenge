@@ -46,6 +46,8 @@
 		66763D8021E8794900368E6E /* FoodsLikeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66763D7F21E8794900368E6E /* FoodsLikeTableViewCell.swift */; };
 		66763D8221E87B9800368E6E /* FoodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66763D8121E87B9800368E6E /* FoodCollectionViewCell.swift */; };
 		66763D8421E87BA300368E6E /* FoodLikeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66763D8321E87BA300368E6E /* FoodLikeCollectionViewCell.swift */; };
+		6688AC8C22154F5D0002D315 /* ProfileEditNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6688AC8B22154F5D0002D315 /* ProfileEditNameViewController.swift */; };
+		6688AC8E22154F650002D315 /* ProfileEditPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6688AC8D22154F650002D315 /* ProfileEditPasswordViewController.swift */; };
 		66A221A1220062A40027AA59 /* NavBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A221A0220062A40027AA59 /* NavBarViewController.swift */; };
 		66B1411721FED3DB0013C5E7 /* LocationFOTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B1411621FED3DB0013C5E7 /* LocationFOTableViewCell.swift */; };
 		66B1411921FED3FD0013C5E7 /* SearchFOTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B1411821FED3FD0013C5E7 /* SearchFOTableViewCell.swift */; };
@@ -146,6 +148,8 @@
 		66763D7F21E8794900368E6E /* FoodsLikeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodsLikeTableViewCell.swift; sourceTree = "<group>"; };
 		66763D8121E87B9800368E6E /* FoodCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCollectionViewCell.swift; sourceTree = "<group>"; };
 		66763D8321E87BA300368E6E /* FoodLikeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLikeCollectionViewCell.swift; sourceTree = "<group>"; };
+		6688AC8B22154F5D0002D315 /* ProfileEditNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditNameViewController.swift; sourceTree = "<group>"; };
+		6688AC8D22154F650002D315 /* ProfileEditPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditPasswordViewController.swift; sourceTree = "<group>"; };
 		66A221A0220062A40027AA59 /* NavBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarViewController.swift; sourceTree = "<group>"; };
 		66B1411621FED3DB0013C5E7 /* LocationFOTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFOTableViewCell.swift; sourceTree = "<group>"; };
 		66B1411821FED3FD0013C5E7 /* SearchFOTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFOTableViewCell.swift; sourceTree = "<group>"; };
@@ -352,6 +356,22 @@
 			path = FoodLike;
 			sourceTree = "<group>";
 		};
+		6688AC8F22154F6D0002D315 /* Edit Profile Name */ = {
+			isa = PBXGroup;
+			children = (
+				6688AC8B22154F5D0002D315 /* ProfileEditNameViewController.swift */,
+			);
+			path = "Edit Profile Name";
+			sourceTree = "<group>";
+		};
+		6688AC9022154F750002D315 /* Edit Profile Password */ = {
+			isa = PBXGroup;
+			children = (
+				6688AC8D22154F650002D315 /* ProfileEditPasswordViewController.swift */,
+			);
+			path = "Edit Profile Password";
+			sourceTree = "<group>";
+		};
 		66B737C021E46231000C9B50 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -440,6 +460,13 @@
 			path = Result;
 			sourceTree = "<group>";
 		};
+		66C64B722215594100B6BB60 /* NavBarwithImage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NavBarwithImage;
+			sourceTree = "<group>";
+		};
 		66DB37E421FEC51700A695E8 /* FindOut */ = {
 			isa = PBXGroup;
 			children = (
@@ -474,6 +501,9 @@
 		66EE05132201AE4300FD770D /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				66C64B722215594100B6BB60 /* NavBarwithImage */,
+				6688AC9022154F750002D315 /* Edit Profile Password */,
+				6688AC8F22154F6D0002D315 /* Edit Profile Name */,
 				66EE05202202E01C00FD770D /* Favorite */,
 				66EE05212202E02B00FD770D /* Edit Profile */,
 				66EE05162202C45200FD770D /* FavoriteFoodCollectionViewCell.swift */,
@@ -782,6 +812,7 @@
 				660D72F721EDE00800453D83 /* ListAvoidCollectionViewCell.swift in Sources */,
 				66E4617E21F98F750084F7A5 /* ReviewBasicTasteCollectionViewCell.swift in Sources */,
 				6611208D21F1DE15005403AF /* SearchLocTableViewCell.swift in Sources */,
+				6688AC8C22154F5D0002D315 /* ProfileEditNameViewController.swift in Sources */,
 				66A221A1220062A40027AA59 /* NavBarViewController.swift in Sources */,
 				66B1412122004E210013C5E7 /* FoodMightLikeFOCollectionViewCell.swift in Sources */,
 				CAC3D53721F9AB7E002CF4D9 /* ProfileHeaderTableViewCell.swift in Sources */,
@@ -811,6 +842,7 @@
 				CAC3D53521F9AA0B002CF4D9 /* EditProfileViewController.swift in Sources */,
 				CDBAD60221F83DF800017B9F /* FoodKindViewController.swift in Sources */,
 				66B737DE21E46DFD000C9B50 /* ResultPhotoTableViewCell.swift in Sources */,
+				6688AC8E22154F650002D315 /* ProfileEditPasswordViewController.swift in Sources */,
 				CD51B01121FF05410084812E /* AddFoodTableViewCell.swift in Sources */,
 				66763D8221E87B9800368E6E /* FoodCollectionViewCell.swift in Sources */,
 				664059062213D4EB0084574A /* FoodLikeTableViewCell.swift in Sources */,

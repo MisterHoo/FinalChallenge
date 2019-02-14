@@ -24,6 +24,7 @@ class EditProfileViewController: UIViewController {
         navigationItem.title = "Edit Profile"
         navigationItem.largeTitleDisplayMode = .never
         
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 //        navigationController?.tabBarController?.hidesBottomBarWhenPushed = true
 
         // Do any additional setup after loading the view.

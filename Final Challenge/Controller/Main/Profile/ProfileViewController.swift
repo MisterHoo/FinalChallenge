@@ -15,8 +15,17 @@ class ProfileViewController: UIViewController {
     
     var screenHeight = UIScreen.main.bounds.height
     
-    var userImage = UIImage(named: "StarGray")
+    var userImage = UIImage(named: "Indonesian")
     var userName = "Justine"
+    
+    @IBOutlet weak var headerPicture: UIImageView!
+    @IBOutlet weak var headerName: UILabel!
+    @IBOutlet weak var headerView: UIView!
+    
+    
+    @IBAction func editProfileTapped(_ sender: Any) {
+        performSegue(withIdentifier: "toEditProfilePage", sender: self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,20 +35,25 @@ class ProfileViewController: UIViewController {
         tableView.dataSource = self
         
         view.backgroundColor = UIColor.white
-        navigationController?.navigationBar.prefersLargeTitles = true
+        headerView.backgroundColor = TastePalColor.charcoal
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
         navigationItem.largeTitleDisplayMode = .always
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editProfile))
+        headerPicture.layer.cornerRadius = headerPicture.frame.width / 2
         
-
+        headerPicture.image = userImage
+        headerName.text = "Hi \(userName),"
         
-        let navigationView = createNavigationView()
-
-        navigationItem.titleView = navigationView
+        
+        
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editProfile))
+//
+        
+//        let navigationView = createNavigationView()
+//
+//        navigationItem.titleView = navigationView
 
 
 //        navigationView.translatesAutoresizingMaskIntoConstraints = false
@@ -53,9 +67,9 @@ class ProfileViewController: UIViewController {
         tableView.tableFooterView = UIView()
     }
     
-    @objc func editProfile(){
-        performSegue(withIdentifier: "toEditProfilePage", sender: self)
-    }
+//    @objc func editProfile(){
+//        performSegue(withIdentifier: "toEditProfilePage", sender: self)
+//    }
     
     func createNavigationView() -> UIView{
         let navTitleView = UIStackView()
@@ -104,7 +118,14 @@ class ProfileViewController: UIViewController {
 //        navTitleView.frame = CGRect(x: 0, y: 0, width: (navigationController?.navigationBar.frame.width)!, height: (navigationController?.navigationBar.frame.height)!)
         
         return navTitleView
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool){
+        navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
     }
     
 }
