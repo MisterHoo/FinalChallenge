@@ -64,11 +64,14 @@ extension EditProfileViewController : UITableViewDataSource, UITableViewDelegate
             cell.profileImage.layer.cornerRadius = 4
             cell.backgroundColor = TastePalColor.darkWhite
             
+            cell.selectionStyle = .none
+            
             return cell
         }else if indexPath.row == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell")
             
             cell?.backgroundColor = UIColor.white
+            cell?.selectionStyle = .none
             
             cell?.textLabel?.text = "Name & Email"
             
@@ -78,10 +81,19 @@ extension EditProfileViewController : UITableViewDataSource, UITableViewDelegate
             
             cell?.textLabel?.text = "Password"
             cell?.backgroundColor = UIColor.white
+            cell?.selectionStyle = .none
             
             return cell!
         }else{
             return UITableViewCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 1{
+            performSegue(withIdentifier: "toEditName", sender: nil)
+        }else if indexPath.row == 2{
+            performSegue(withIdentifier: "toEditPass", sender: nil)
         }
     }
 }
