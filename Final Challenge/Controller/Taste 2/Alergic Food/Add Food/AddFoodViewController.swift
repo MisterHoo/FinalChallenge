@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreLocation
 class AddFoodViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
   
     struct AvoidedFoodStruct {
