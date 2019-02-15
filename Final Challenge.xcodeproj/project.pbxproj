@@ -69,6 +69,8 @@
 		66B737E221E47020000C9B50 /* ResultInformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B737E121E47020000C9B50 /* ResultInformationTableViewCell.swift */; };
 		66B737E421E47033000C9B50 /* ResultPredictionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B737E321E47033000C9B50 /* ResultPredictionTableViewCell.swift */; };
 		66B737E621E47044000C9B50 /* ResultSimilarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B737E521E47044000C9B50 /* ResultSimilarTableViewCell.swift */; };
+		66C64B7522168B9200B6BB60 /* ProfileEditingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C64B7322168B9200B6BB60 /* ProfileEditingTableViewCell.swift */; };
+		66C64B7622168B9200B6BB60 /* ProfileEditingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66C64B7422168B9200B6BB60 /* ProfileEditingTableViewCell.xib */; };
 		66DB37E321FEC50D00A695E8 /* FindOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DB37E221FEC50D00A695E8 /* FindOutViewController.swift */; };
 		66E4617C21F98AFC0084F7A5 /* BasicTaste.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E4617B21F98AFC0084F7A5 /* BasicTaste.swift */; };
 		66E4617E21F98F750084F7A5 /* ReviewBasicTasteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E4617D21F98F750084F7A5 /* ReviewBasicTasteCollectionViewCell.swift */; };
@@ -171,6 +173,8 @@
 		66B737E121E47020000C9B50 /* ResultInformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultInformationTableViewCell.swift; sourceTree = "<group>"; };
 		66B737E321E47033000C9B50 /* ResultPredictionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultPredictionTableViewCell.swift; sourceTree = "<group>"; };
 		66B737E521E47044000C9B50 /* ResultSimilarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultSimilarTableViewCell.swift; sourceTree = "<group>"; };
+		66C64B7322168B9200B6BB60 /* ProfileEditingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditingTableViewCell.swift; sourceTree = "<group>"; };
+		66C64B7422168B9200B6BB60 /* ProfileEditingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileEditingTableViewCell.xib; sourceTree = "<group>"; };
 		66DB37E221FEC50D00A695E8 /* FindOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindOutViewController.swift; sourceTree = "<group>"; };
 		66E4617B21F98AFC0084F7A5 /* BasicTaste.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTaste.swift; sourceTree = "<group>"; };
 		66E4617D21F98F750084F7A5 /* ReviewBasicTasteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewBasicTasteCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -467,6 +471,15 @@
 			path = NavBarwithImage;
 			sourceTree = "<group>";
 		};
+		66C64B7722168D6F00B6BB60 /* ProfileEditingCell */ = {
+			isa = PBXGroup;
+			children = (
+				66C64B7322168B9200B6BB60 /* ProfileEditingTableViewCell.swift */,
+				66C64B7422168B9200B6BB60 /* ProfileEditingTableViewCell.xib */,
+			);
+			path = ProfileEditingCell;
+			sourceTree = "<group>";
+		};
 		66DB37E421FEC51700A695E8 /* FindOut */ = {
 			isa = PBXGroup;
 			children = (
@@ -501,6 +514,7 @@
 		66EE05132201AE4300FD770D /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				66C64B7722168D6F00B6BB60 /* ProfileEditingCell */,
 				66C64B722215594100B6BB60 /* NavBarwithImage */,
 				6688AC9022154F750002D315 /* Edit Profile Password */,
 				6688AC8F22154F6D0002D315 /* Edit Profile Name */,
@@ -697,6 +711,7 @@
 				663CBBF521E451E500572FFC /* LaunchScreen.storyboard in Resources */,
 				66B737C421E46299000C9B50 /* TastePreferenceTest.storyboard in Resources */,
 				6611208E21F1DE15005403AF /* SearchLocTableViewCell.xib in Resources */,
+				66C64B7622168B9200B6BB60 /* ProfileEditingTableViewCell.xib in Resources */,
 				6611207F21F055D7005403AF /* DropDownViewController.xib in Resources */,
 				6611208921F1ADC9005403AF /* DropDownHeaderViewController.xib in Resources */,
 				663CBBF221E451E500572FFC /* Assets.xcassets in Resources */,
@@ -846,6 +861,7 @@
 				CD51B01121FF05410084812E /* AddFoodTableViewCell.swift in Sources */,
 				66763D8221E87B9800368E6E /* FoodCollectionViewCell.swift in Sources */,
 				664059062213D4EB0084574A /* FoodLikeTableViewCell.swift in Sources */,
+				66C64B7522168B9200B6BB60 /* ProfileEditingTableViewCell.swift in Sources */,
 				66B737E621E47044000C9B50 /* ResultSimilarTableViewCell.swift in Sources */,
 				66EE051B2202DD9700FD770D /* FavoriteFoodViewController.swift in Sources */,
 				CAC3D53921F9AE77002CF4D9 /* TastePreferenceTableViewCell.swift in Sources */,

@@ -10,7 +10,12 @@ import UIKit
 
 class ProfileEditNameViewController: UIViewController {
     
-
+    @IBOutlet weak var tableView: UITableView!
+    
+    let header : [String] = ["Full Name", "Email"]
+    let labelEdit : [String] = ["First","Middle","Last"]
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,6 +27,12 @@ class ProfileEditNameViewController: UIViewController {
         
         self.navigationItem.largeTitleDisplayMode = .never
         
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.register(UINib(nibName: "ProfileEditingTableViewCell", bundle: nil), forCellReuseIdentifier: "editingCell")
+        
+        tableView.tableFooterView = UIView()
 
         // Do any additional setup after loading the view.
     }
@@ -30,16 +41,53 @@ class ProfileEditNameViewController: UIViewController {
     
     
     }
+
+}
+
+extension ProfileEditNameViewController : UITableViewDelegate, UITableViewDataSource{
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0{
+            return 3
+        }else if section == 1{
+            return 1
+        }else{
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "editingCell") as! ProfileEditingTableViewCell
+        if indexPath.section == 0{
+            cell.contentEditing.text = labelEdit[indexPath.row]
+            
+            return cell
+        }else{
+            cell.contentEditing.text = "Email"
+            
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell")
+        
+        cell?.textLabel?.text = " "
+        cell?.detailTextLabel?.text = header[section]
+        
+        return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44
+    }
+    
 }
