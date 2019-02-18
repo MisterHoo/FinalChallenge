@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ReTestDelegate{
+    func retest()
+}
+
 class TastePreferenceTableViewCell: UITableViewCell {
     
     
@@ -15,6 +19,8 @@ class TastePreferenceTableViewCell: UITableViewCell {
     
     //    var tastePreference = TastePalData.user.tastePreferencexb
     var tastePreferences : [TastePreference] = DummyFoodPreference.tastePreference
+    
+    @IBOutlet weak var buttonReTest: UIButton!
     
     var indexPercentage : Float = 0
     var indexDuration : Float = 0
@@ -24,6 +30,16 @@ class TastePreferenceTableViewCell: UITableViewCell {
     var indexLeading : CGFloat = 0
     var indexTrailing : CGFloat = 0
     
+    var retestDelegate : ReTestDelegate?
+    
+    
+    @IBAction func reTestAction(_ sender: Any) {
+        retestDelegate?.retest()
+    }
+    
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -32,6 +48,24 @@ class TastePreferenceTableViewCell: UITableViewCell {
         indexLeading = 0
         baseWidth = Float(baseRect.frame.width)
         
+        buttonReTest.layer.borderColor = TastePalColor.olive.cgColor
+        buttonReTest.layer.borderWidth = 1
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        let totalWidth = collectionView.frame.width
+        print("Total nya segini bosque \(tastePreferences.count)")
+        
+        let itemSize = totalWidth / CGFloat(tastePreferences.count)
+        let layout = UICollectionViewFlowLayout()
+        //        layout.sectionInset = UIEdgeInsets(top: 12, left: 0, bottom: 4, right: 0)
+        layout.itemSize = CGSize(width: itemSize, height: 30)
+        
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        
+        collectionView.collectionViewLayout = layout
         
         //        let label = UILabel()
         //        label.text = "COBA - COBA"
@@ -71,7 +105,7 @@ class TastePreferenceTableViewCell: UITableViewCell {
             
             view.translatesAutoresizingMaskIntoConstraints = false
             
-            view.heightAnchor.constraint(equalToConstant:  baseRect.frame.height).isActive = true
+            view.heightAnchor.constraint(equalToConstant:  baseRect.frame.height - 20).isActive = true
             view.topAnchor.constraint(equalTo: baseRect.topAnchor, constant: 0).isActive = true
             let leadingConstraint = view.leadingAnchor.constraint(equalTo: baseRect.leadingAnchor, constant: indexLeading)
             leadingConstraint.isActive = true
@@ -130,4 +164,22 @@ class TastePreferenceTableViewCell: UITableViewCell {
         return view
     }
 
+}
+
+extension TastePreferenceTableViewCell : UICollectionViewDataSource, UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return tastePreferences.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TasteLegend", for: indexPath) as! TasteLegendProfileCollectionViewCell
+        
+        cell.tasteColor.backgroundColor = tastePreferences[indexPath.row].tasteData?.color
+        cell.tasteName.text = tastePreferences[indexPath.row].tasteData?.name
+        
+        return cell
+    }
+    
+    
+    
 }

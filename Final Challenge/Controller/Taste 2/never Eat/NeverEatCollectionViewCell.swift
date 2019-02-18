@@ -17,6 +17,8 @@ class NeverEatCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         foodNeverImage.layer.cornerRadius = 8
+        selectionView.layer.cornerRadius = 8
+        
         selectionView.isHidden = true
         selectionView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.45)
         

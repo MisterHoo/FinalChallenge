@@ -21,6 +21,7 @@
 		6611209421F83B22005403AF /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6611209321F83B22005403AF /* HistoryViewController.swift */; };
 		6611209621F83B98005403AF /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6611209521F83B98005403AF /* HistoryTableViewCell.swift */; };
 		6611209921F83D7E005403AF /* FoodReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6611209821F83D7E005403AF /* FoodReview.swift */; };
+		661ED7E82216A1F100D6A93F /* TasteLegendProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661ED7E72216A1F100D6A93F /* TasteLegendProfileCollectionViewCell.swift */; };
 		6620EC1A21E5AE49009FDC04 /* ImageCameraTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6620EC1921E5AE49009FDC04 /* ImageCameraTableViewCell.swift */; };
 		6620EC2021E5AE7F009FDC04 /* SubmitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6620EC1F21E5AE7F009FDC04 /* SubmitTableViewCell.swift */; };
 		6625BFA9220AAA9900A040C3 /* AllReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625BFA8220AAA9900A040C3 /* AllReviewTableViewCell.swift */; };
@@ -123,6 +124,7 @@
 		6611209321F83B22005403AF /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		6611209521F83B98005403AF /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		6611209821F83D7E005403AF /* FoodReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodReview.swift; sourceTree = "<group>"; };
+		661ED7E72216A1F100D6A93F /* TasteLegendProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasteLegendProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		6620EC1921E5AE49009FDC04 /* ImageCameraTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCameraTableViewCell.swift; sourceTree = "<group>"; };
 		6620EC1F21E5AE7F009FDC04 /* SubmitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitTableViewCell.swift; sourceTree = "<group>"; };
 		6625BFA8220AAA9900A040C3 /* AllReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllReviewTableViewCell.swift; sourceTree = "<group>"; };
@@ -525,6 +527,7 @@
 				CAC3D53821F9AE77002CF4D9 /* TastePreferenceTableViewCell.swift */,
 				CAC3D53621F9AB7E002CF4D9 /* ProfileHeaderTableViewCell.swift */,
 				CAC3D53C21F9B0E1002CF4D9 /* FavoriteFoodTableViewCell.swift */,
+				661ED7E72216A1F100D6A93F /* TasteLegendProfileCollectionViewCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -871,6 +874,7 @@
 				66763D7521E8778C00368E6E /* TasteDislikeViewController.swift in Sources */,
 				6620EC2021E5AE7F009FDC04 /* SubmitTableViewCell.swift in Sources */,
 				CA7D005E220054760090C8B3 /* FoodRecommendationTableViewCell.swift in Sources */,
+				661ED7E82216A1F100D6A93F /* TasteLegendProfileCollectionViewCell.swift in Sources */,
 				66763D7B21E877A900368E6E /* SummaryViewController.swift in Sources */,
 				66B1411D21FED4310013C5E7 /* FoodMightLikeFOTableViewCell.swift in Sources */,
 				6611209621F83B98005403AF /* HistoryTableViewCell.swift in Sources */,

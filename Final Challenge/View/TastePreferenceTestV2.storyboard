@@ -128,8 +128,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="99.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O37-qb-CIa">
-                                                    <rect key="frame" x="321" y="9.9999999999999964" width="46" height="59.666666666666657"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O37-qb-CIa">
+                                                    <rect key="frame" x="321" y="10" width="46" height="64.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                                                     <state key="normal" title="Next">
                                                         <color key="titleColor" red="0.58431372550000005" green="0.56470588239999997" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -142,7 +142,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="O37-qb-CIa" secondAttribute="trailing" constant="8" id="Okh-Zg-qXi"/>
                                                 <constraint firstItem="O37-qb-CIa" firstAttribute="top" secondItem="NbN-5S-eiI" secondAttribute="top" constant="10" id="quk-eo-M47"/>
-                                                <constraint firstAttribute="bottom" secondItem="O37-qb-CIa" secondAttribute="bottom" constant="30" id="x43-aZ-jzG"/>
+                                                <constraint firstAttribute="bottom" secondItem="O37-qb-CIa" secondAttribute="bottom" constant="25" id="x43-aZ-jzG"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -219,10 +219,10 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                     <subviews>
                                                         <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tick" translatesAutoresizingMaskIntoConstraints="NO" id="f9Y-hp-2Fg">
-                                                            <rect key="frame" x="86" y="4" width="10" height="10"/>
+                                                            <rect key="frame" x="81" y="4" width="15" height="15"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="10" id="ZlY-bu-f5P"/>
-                                                                <constraint firstAttribute="width" constant="10" id="gPV-Qd-5Wl"/>
+                                                                <constraint firstAttribute="height" constant="15" id="ZlY-bu-f5P"/>
+                                                                <constraint firstAttribute="width" constant="15" id="gPV-Qd-5Wl"/>
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>

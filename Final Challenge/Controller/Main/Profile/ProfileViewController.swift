@@ -22,14 +22,12 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var headerName: UILabel!
     @IBOutlet weak var headerView: UIView!
     
-    
     @IBAction func editProfileTapped(_ sender: Any) {
         performSegue(withIdentifier: "toEditProfilePage", sender: self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -135,7 +133,7 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0{
             //tastePreference
-            return 100
+            return 120
         }else if indexPath.row == 1{
             //favorite food
             return 0.40 * screenHeight
@@ -165,7 +163,10 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource{
             cell.reset()
             cell.selectionStyle = .none
             
-            cell.animateView()
+            cell.retestDelegate = self
+            if(cell.baseRect.subviews.count == 0){
+                cell.animateView()
+            }
             
             return cell
         }else if indexPath.row == 1 {
@@ -209,6 +210,12 @@ extension ProfileViewController: UICollectionViewDataSource, UICollectionViewDel
         cell.foodImage.layer.cornerRadius = 4
         
         return cell
+    }
+}
+
+extension ProfileViewController : ReTestDelegate{
+    func retest() {
+        performSegue(withIdentifier: "ToReTest", sender: nil)
     }
 }
 

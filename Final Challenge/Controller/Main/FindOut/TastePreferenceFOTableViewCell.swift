@@ -40,9 +40,6 @@ class TastePreferenceFOTableViewCell: UITableViewCell {
         collectionView.dataSource = self
         
         let totalWidth = collectionView.frame.width
-        
-        
-        print("Total Barang : \(tastePreferences.count)")
         let itemSize = totalWidth / CGFloat(tastePreferences.count)
         let layout = UICollectionViewFlowLayout()
 //        layout.sectionInset = UIEdgeInsets(top: 12, left: 0, bottom: 4, right: 0)

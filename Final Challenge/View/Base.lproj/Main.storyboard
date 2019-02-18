@@ -1538,13 +1538,13 @@
                                             <constraint firstAttribute="width" constant="40" id="Js7-sJ-V5V"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHn-rT-M56">
-                                        <rect key="frame" x="329" y="47" width="30" height="33"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHn-rT-M56">
+                                        <rect key="frame" x="319" y="50" width="40" height="33"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="bM5-7V-dxh"/>
+                                            <constraint firstAttribute="width" constant="40" id="bM5-7V-dxh"/>
                                             <constraint firstAttribute="height" constant="33" id="rkk-Qc-Q9c"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <state key="normal" title="Edit">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -1563,7 +1563,7 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="KHn-rT-M56" secondAttribute="trailing" constant="16" id="Efq-uQ-Ckm"/>
                                     <constraint firstItem="3fQ-zu-0YM" firstAttribute="centerY" secondItem="XwA-wm-icE" secondAttribute="centerY" id="Hq5-vT-fGP"/>
-                                    <constraint firstItem="KHn-rT-M56" firstAttribute="top" secondItem="2HN-57-haj" secondAttribute="top" constant="47" id="MGw-Hi-ujZ"/>
+                                    <constraint firstItem="KHn-rT-M56" firstAttribute="top" secondItem="2HN-57-haj" secondAttribute="top" constant="50" id="MGw-Hi-ujZ"/>
                                     <constraint firstItem="XwA-wm-icE" firstAttribute="leading" secondItem="2HN-57-haj" secondAttribute="leading" constant="16" id="Rex-xK-fup"/>
                                     <constraint firstItem="3fQ-zu-0YM" firstAttribute="leading" secondItem="XwA-wm-icE" secondAttribute="trailing" constant="8" id="mD5-kD-kh2"/>
                                     <constraint firstAttribute="trailing" secondItem="3fQ-zu-0YM" secondAttribute="trailing" id="ozB-6A-Sw1"/>
@@ -1603,11 +1603,11 @@
                                             <outlet property="profileImage" destination="i4e-c3-FzU" id="jd6-Kr-00v"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TastePreferenceTableViewCell" rowHeight="100" id="wLq-nz-0BR" customClass="TastePreferenceTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="94" width="375" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TastePreferenceTableViewCell" rowHeight="140" id="wLq-nz-0BR" customClass="TastePreferenceTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="94" width="375" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wLq-nz-0BR" id="Hn7-mS-1Mo">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Taste Preference" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GxM-g6-b9d">
@@ -1620,28 +1620,100 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDS-yp-UyU">
-                                                    <rect key="frame" x="15" y="38" width="345" height="41"/>
+                                                    <rect key="frame" x="15" y="36" width="345" height="55"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8Hg-1t-XE4">
+                                                    <rect key="frame" x="15" y="99" width="345" height="30"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="nNY-t0-xmG"/>
+                                                    </constraints>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xFt-jc-hDx">
+                                                        <size key="itemSize" width="121" height="33"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TasteLegend" id="sQJ-MC-4Vk" customClass="TasteLegendProfileCollectionViewCell" customModule="Final_Challenge" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="121" height="33"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                                <rect key="frame" x="0.0" y="0.0" width="121" height="33"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q9l-CD-kAL">
+                                                                        <rect key="frame" x="0.0" y="12.666666666666664" width="8" height="8"/>
+                                                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="8" id="LIw-HK-n9c"/>
+                                                                            <constraint firstAttribute="width" constant="8" id="dBL-iI-H8B"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pk4-tQ-HLJ">
+                                                                        <rect key="frame" x="12" y="9.6666666666666643" width="109" height="14"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </view>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstItem="pk4-tQ-HLJ" firstAttribute="leading" secondItem="q9l-CD-kAL" secondAttribute="trailing" constant="4" id="L58-VZ-mKD"/>
+                                                                <constraint firstAttribute="trailing" secondItem="pk4-tQ-HLJ" secondAttribute="trailing" id="OqJ-wv-R1d"/>
+                                                                <constraint firstItem="q9l-CD-kAL" firstAttribute="centerY" secondItem="sQJ-MC-4Vk" secondAttribute="centerY" id="Wc2-P9-XgB"/>
+                                                                <constraint firstItem="pk4-tQ-HLJ" firstAttribute="centerY" secondItem="q9l-CD-kAL" secondAttribute="centerY" id="dSd-MX-ZSt"/>
+                                                                <constraint firstItem="q9l-CD-kAL" firstAttribute="leading" secondItem="sQJ-MC-4Vk" secondAttribute="leading" id="w4O-kg-yX8"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="tasteColor" destination="q9l-CD-kAL" id="Xz2-hC-eQe"/>
+                                                                <outlet property="tasteName" destination="pk4-tQ-HLJ" id="tcW-BG-VHh"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                </collectionView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4PG-AD-sLs">
+                                                    <rect key="frame" x="172" y="9.6666666666666643" width="50" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="GMt-qV-YXq"/>
+                                                        <constraint firstAttribute="width" constant="50" id="XHg-1U-AYw"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <state key="normal" title="Re-Test">
+                                                        <color key="titleColor" red="0.58431372550000005" green="0.56470588239999997" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="reTestAction:" destination="wLq-nz-0BR" eventType="touchUpInside" id="lF9-Xd-x9Z"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="aDS-yp-UyU" secondAttribute="bottom" constant="10" id="9Jg-fR-GDy"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="8Hg-1t-XE4" secondAttribute="trailing" id="7Pi-YP-Mtt"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="8Hg-1t-XE4" secondAttribute="bottom" id="9nS-95-goL"/>
+                                                <constraint firstItem="4PG-AD-sLs" firstAttribute="leading" secondItem="GxM-g6-b9d" secondAttribute="trailing" constant="8" id="Gbe-eL-ba0"/>
+                                                <constraint firstItem="8Hg-1t-XE4" firstAttribute="leading" secondItem="Hn7-mS-1Mo" secondAttribute="leadingMargin" id="I01-lc-j1F"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="aDS-yp-UyU" secondAttribute="trailing" id="I6b-ZZ-yEQ"/>
                                                 <constraint firstItem="aDS-yp-UyU" firstAttribute="leading" secondItem="Hn7-mS-1Mo" secondAttribute="leadingMargin" id="I9O-TI-76M"/>
-                                                <constraint firstItem="aDS-yp-UyU" firstAttribute="top" secondItem="GxM-g6-b9d" secondAttribute="bottom" constant="10" id="OBf-gD-Nte"/>
+                                                <constraint firstItem="aDS-yp-UyU" firstAttribute="top" secondItem="GxM-g6-b9d" secondAttribute="bottom" constant="8" id="OBf-gD-Nte"/>
                                                 <constraint firstItem="GxM-g6-b9d" firstAttribute="leading" secondItem="Hn7-mS-1Mo" secondAttribute="leading" constant="15" id="YJi-pc-6bu"/>
                                                 <constraint firstItem="GxM-g6-b9d" firstAttribute="top" secondItem="Hn7-mS-1Mo" secondAttribute="top" constant="11" id="dNO-TX-WNV"/>
+                                                <constraint firstItem="8Hg-1t-XE4" firstAttribute="top" secondItem="aDS-yp-UyU" secondAttribute="bottom" constant="8" id="eOC-L1-WQe"/>
                                                 <constraint firstAttribute="trailing" secondItem="GxM-g6-b9d" secondAttribute="trailing" constant="211" id="mZE-HE-D7e"/>
+                                                <constraint firstItem="4PG-AD-sLs" firstAttribute="centerY" secondItem="GxM-g6-b9d" secondAttribute="centerY" id="oGV-GL-T8T"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="baseRect" destination="aDS-yp-UyU" id="iCc-fQ-45N"/>
+                                            <outlet property="buttonReTest" destination="4PG-AD-sLs" id="2JH-cS-jgx"/>
+                                            <outlet property="collectionView" destination="8Hg-1t-XE4" id="W3D-zh-G0O"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoriteFoodTableViewCell" rowHeight="365" id="fM1-Ff-GaV" customClass="FavoriteFoodTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="194" width="375" height="365"/>
+                                        <rect key="frame" x="0.0" y="234" width="375" height="365"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fM1-Ff-GaV" id="Iic-IQ-PG2" customClass="NearRecommendedTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="365"/>
@@ -1732,7 +1804,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FavoriteFooterCell" textLabel="Z9t-YR-nkW" style="IBUITableViewCellStyleDefault" id="nCZ-ya-X70">
-                                        <rect key="frame" x="0.0" y="559" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="599" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nCZ-ya-X70" id="gHk-W2-b5o">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="43.666666666666664"/>
@@ -1773,6 +1845,7 @@
                         <outlet property="tableView" destination="jpO-I6-D2Q" id="qv7-U2-wVC"/>
                         <segue destination="xaM-1t-qIk" kind="show" identifier="toEditProfilePage" id="K9d-jf-NOI"/>
                         <segue destination="mM4-a4-iOo" kind="show" identifier="ProfileToFavo" id="QHP-lQ-TPP"/>
+                        <segue destination="zPx-6j-mx5" kind="show" identifier="ToReTest" id="OtV-0P-cRU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q0x-ep-VTa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1945,6 +2018,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Huz-9m-dAk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3400.8000000000002" y="1622.6600985221676"/>
+        </scene>
+        <!--TastePreferenceTestV2-->
+        <scene sceneID="hwT-Fd-iFb">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TastePreferenceTestV2" id="zPx-6j-mx5" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IzG-Ig-Env" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3282" y="2036"/>
         </scene>
         <!--Profile Edit Password View Controller-->
         <scene sceneID="1Wx-6K-P45">

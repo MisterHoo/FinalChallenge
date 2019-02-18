@@ -20,6 +20,8 @@ class FoodKindCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         foodKindImageView.layer.cornerRadius = 8
+        selectionView.layer.cornerRadius = 8
+        
         selectionView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.45)
         selectionView.isHidden = true
         
