@@ -7,8 +7,8 @@
 //
 
 import UIKit
-
-class FindOutViewController: UIViewController {
+import CoreLocation
+class FindOutViewController: UIViewController, CLLocationManagerDelegate{
 
     //MARK: Outlet
     @IBOutlet weak var tableView: UITableView!
@@ -21,6 +21,7 @@ class FindOutViewController: UIViewController {
     
     let screenHeight = UIScreen.main.bounds.height
     
+    let locationManager = CLLocationManager()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,8 +36,49 @@ class FindOutViewController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.layoutIfNeeded()
         
+        setUpLocation()
         // Do any additional setup after loading the view.
     }
+    func setUpLocation(){
+        let authorization = CLLocationManager.authorizationStatus()
+        if authorization == .notDetermined{
+            locationManager.requestWhenInUseAuthorization()
+            return
+        }
+        
+        if authorization == .denied {
+            print("Location denied")
+        }else{
+            if CLLocationManager.locationServicesEnabled(){
+                locationManager.delegate = self
+                locationManager.desiredAccuracy = kCLLocationAccuracyBest
+                locationManager.startUpdatingLocation()
+            }else{
+                let alert = UIAlertController(title: "Alert", message: "plese turn on location", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                print("Plese enable location")
+            }
+        }
+       
+    }
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate  else {return}
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        let geo = CLGeocoder()
+        let location = locations[0]
+        geo.reverseGeocodeLocation(location) { (placeMark, error) in
+            if error != nil {
+                print("there is error\(error)")
+            }else {
+                if let place = placeMark?[0]{
+                    self.locationOutlet.text = place.locality
+                }
+            }
+        }
+    }
+   
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
