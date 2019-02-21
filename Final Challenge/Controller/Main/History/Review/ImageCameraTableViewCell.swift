@@ -33,6 +33,7 @@ class ImageCameraTableViewCell: UITableViewCell{
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        photoFromCamera.layer.cornerRadius = 4
         
         
         starRating[0].isUserInteractionEnabled = true

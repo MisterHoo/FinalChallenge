@@ -12,5 +12,11 @@ pod 'Firebase/Database'
 pod 'Firebase/Auth'
 pod 'Firebase/MLVision'
 pod 'Firebase/MLVisionTextModel'
+pod 'Alamofire'
+pod 'SDWebImage'
+pod 'IQKeyboardManagerSwift'
+pod 'SVProgressHUD'
+pod 'EasyMapping'
+pod 'SwiftyJSON'
 
 end

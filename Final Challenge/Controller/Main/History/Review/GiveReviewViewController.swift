@@ -265,6 +265,9 @@ extension GiveReviewViewController : CameraSystemDelegate, UINavigationControlle
         camera.sourceType = UIImagePickerController.SourceType.camera
         
         camera.allowsEditing = true
+        camera.showsCameraControls = true
+        camera.cameraDevice = .rear
+        camera.cameraCaptureMode = .photo
         
         self.present(camera,animated: true){
             //After Complete
@@ -272,21 +275,27 @@ extension GiveReviewViewController : CameraSystemDelegate, UINavigationControlle
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
+        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage{
             
             takenPhoto = image
+            print(info[UIImagePickerController.InfoKey.imageURL])
+            print(image.size)
+            
             setImage(image: image)
             
         }else{
             //error
         }
         
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true) {
+            
+        }
     }
     
     func setImage(image : UIImage){
         let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! ImageCameraTableViewCell
         
-        cell.imageView?.image = image
+        cell.photoFromCamera.image = image
+//        cell.clipsToBounds = true
     }
 }
