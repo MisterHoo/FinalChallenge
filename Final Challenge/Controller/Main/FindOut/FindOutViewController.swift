@@ -17,11 +17,19 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
     @IBOutlet weak var searchBarOutlet: UISearchBar!
     @IBOutlet weak var restourantTableView: UITableView!
     
+    //struct
+    struct restourantStruct {
+        var name = String()
+        var distance = Double()
+    }
+    
     var searching: Bool = false
     var searchResult: [String] = ["Nasi Bebek Goreng","Nasi Ayam Goreng","Teromg Bakar","Perkedel Jagung","Ayam Goreng"]
     var searchTemp: [String] = []
-    var closestRestourantsList:[String] = []
-    var distance:[Int] = []
+    //var closestRestourantsList:[String] = []
+    //var distance:[Int] = []
+    var restourantList:[restourantStruct] = []
+    
     let screenHeight = UIScreen.main.bounds.height
     
     let locationManager = CLLocationManager()
@@ -46,13 +54,18 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
         // Do any additional setup after loading the view.
     }
     func locationTouchable(){
+        
         locationOutlet.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(searchPlace))
         locationOutlet.addGestureRecognizer(tap)
     }
     @objc func searchPlace(){
         print("it working")
-        restourantTableView.isHidden = false
+        if restourantTableView.isHidden {
+            restourantTableView.isHidden = false
+        }else {
+            restourantTableView.isHidden = true
+        }
     }
     func setUpLocation(){
         let authorization = CLLocationManager.authorizationStatus()
@@ -110,12 +123,14 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
         search.start { (respons, error) in
             print("test coba nama")
             for mapItem in (respons?.mapItems)! {
-                self.closestRestourantsList.append(mapItem.name!)
+                restourantList.removeAll()
+//                self.closestRestourantsList.append(mapItem.name!)
                 let currentUserLocation = CLLocation(latitude: currLocation.latitude, longitude: currLocation.longitude)
                 let landMarkLocation = CLLocation(latitude: mapItem.placemark.coordinate.latitude, longitude:  mapItem.placemark.coordinate.longitude)
                 let distanceInMeters = currentUserLocation.distance(from: landMarkLocation)
-                self.distance.append(Int(distanceInMeters))
+//                self.distance.append(Int(distanceInMeters))
                 let closestRestourant = respons?.mapItems[0]
+                self.restourantList.append(restourantStruct(name: mapItem.name!, distance: distanceInMeters))
                 print(respons?.mapItems[0].placemark.coordinate)
                 print(respons?.mapItems[0].name)
                 self.locationOutlet.text = closestRestourant?.name
@@ -142,7 +157,7 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
 extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == restourantTableView {
-            return closestRestourantsList.count
+            return restourantList.count
         }else {
             if searching {
                 return searchResult.count
@@ -158,8 +173,8 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
         print(tableView)
         if tableView == restourantTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "restourantCell") as! RestorantTableViewCell
-            cell.restourantName.text = closestRestourantsList[indexPath.row]
-            cell.restourantRange.text = String(distance[indexPath.row])
+            cell.restourantName.text = restourantList[indexPath.row].name
+            cell.restourantRange.text = String(restourantList[indexPath.row].distance)
             return cell
         }else {
             if searching {
