@@ -129,7 +129,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O37-qb-CIa">
-                                                    <rect key="frame" x="321" y="10" width="46" height="64.666666666666671"/>
+                                                    <rect key="frame" x="313" y="10" width="46" height="64.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                                                     <state key="normal" title="Next">
                                                         <color key="titleColor" red="0.58431372550000005" green="0.56470588239999997" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -140,7 +140,7 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="O37-qb-CIa" secondAttribute="trailing" constant="8" id="Okh-Zg-qXi"/>
+                                                <constraint firstAttribute="trailing" secondItem="O37-qb-CIa" secondAttribute="trailing" constant="16" id="Okh-Zg-qXi"/>
                                                 <constraint firstItem="O37-qb-CIa" firstAttribute="top" secondItem="NbN-5S-eiI" secondAttribute="top" constant="10" id="quk-eo-M47"/>
                                                 <constraint firstAttribute="bottom" secondItem="O37-qb-CIa" secondAttribute="bottom" constant="25" id="x43-aZ-jzG"/>
                                             </constraints>
