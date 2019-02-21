@@ -8,17 +8,20 @@
 
 import UIKit
 import CoreLocation
+import MapKit
 class FindOutViewController: UIViewController, CLLocationManagerDelegate{
 
     //MARK: Outlet
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var locationOutlet: UILabel!
     @IBOutlet weak var searchBarOutlet: UISearchBar!
+    @IBOutlet weak var restourantTableView: UITableView!
     
     var searching: Bool = false
     var searchResult: [String] = ["Nasi Bebek Goreng","Nasi Ayam Goreng","Teromg Bakar","Perkedel Jagung","Ayam Goreng"]
     var searchTemp: [String] = []
-    
+    var closestRestourantsList:[String] = []
+    var distance:[Int] = []
     let screenHeight = UIScreen.main.bounds.height
     
     let locationManager = CLLocationManager()
@@ -36,8 +39,20 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
         tableView.tableFooterView = UIView()
         tableView.layoutIfNeeded()
         
+        searchBarOutlet.tintColor = UIColor.white
+        
+        locationTouchable()
         setUpLocation()
         // Do any additional setup after loading the view.
+    }
+    func locationTouchable(){
+        locationOutlet.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(searchPlace))
+        locationOutlet.addGestureRecognizer(tap)
+    }
+    @objc func searchPlace(){
+        print("it working")
+        restourantTableView.isHidden = false
     }
     func setUpLocation(){
         let authorization = CLLocationManager.authorizationStatus()
@@ -51,6 +66,7 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
         }else{
             if CLLocationManager.locationServicesEnabled(){
                 locationManager.delegate = self
+                locationManager.distanceFilter = 100.0
                 locationManager.desiredAccuracy = kCLLocationAccuracyBest
                 locationManager.startUpdatingLocation()
             }else{
@@ -62,6 +78,7 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
         }
        
     }
+    // update when user change location
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate  else {return}
@@ -73,8 +90,36 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
                 print("there is error\(error)")
             }else {
                 if let place = placeMark?[0]{
-                    self.locationOutlet.text = place.locality
+                    self.searchInMap(currLocation: locValue)
+                    let nearbyName = place.name ?? place.locality
+                    
+                    print(place)
                 }
+            }
+        }
+    }
+    //search closest landmark
+    func searchInMap(currLocation: CLLocationCoordinate2D){
+        let request = MKLocalSearch.Request()
+        request.naturalLanguageQuery = "Restaurant"
+        
+        let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+        request.region = MKCoordinateRegion(center: currLocation, span: span)
+        
+        let search = MKLocalSearch(request: request)
+        search.start { (respons, error) in
+            print("test coba nama")
+            for mapItem in (respons?.mapItems)! {
+                self.closestRestourantsList.append(mapItem.name!)
+                let currentUserLocation = CLLocation(latitude: currLocation.latitude, longitude: currLocation.longitude)
+                let landMarkLocation = CLLocation(latitude: mapItem.placemark.coordinate.latitude, longitude:  mapItem.placemark.coordinate.longitude)
+                let distanceInMeters = currentUserLocation.distance(from: landMarkLocation)
+                self.distance.append(Int(distanceInMeters))
+                let closestRestourant = respons?.mapItems[0]
+                print(respons?.mapItems[0].placemark.coordinate)
+                print(respons?.mapItems[0].name)
+                self.locationOutlet.text = closestRestourant?.name
+                self.restourantTableView.reloadData()
             }
         }
     }
@@ -96,78 +141,90 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
 
 extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searching {
-            return searchResult.count
-        }else{
-            return 3
-
+        if tableView == restourantTableView {
+            return closestRestourantsList.count
+        }else {
+            if searching {
+                return searchResult.count
+            }else{
+                return 3
+                
+            }
         }
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if searching {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "searchedFood") as! FoodSearchTableViewCell
-            cell.searchFoodText.text = searchResult[indexPath.row]
+        print(tableView)
+        if tableView == restourantTableView {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "restourantCell") as! RestorantTableViewCell
+            cell.restourantName.text = closestRestourantsList[indexPath.row]
+            cell.restourantRange.text = String(distance[indexPath.row])
             return cell
-            
-        }else{
-//            if indexPath.row == 0{
-//                //Location
-//                let cell = tableView.dequeueReusableCell(withIdentifier: "LocationFOCell") as! LocationFOTableViewCell
-//
-//                tableView.separatorStyle = .none
-//                cell.selectionStyle = .none
-//
-//                return cell
-//            }else if indexPath.row == 1{
-//                //Search
-//                let cell = tableView.dequeueReusableCell(withIdentifier: "SearchFOCell") as! SearchFOTableViewCell
-//                tableView.separatorStyle = .none
-//                cell.selectionStyle = .none
-//
-//                cell.searchBar.barTintColor = TastePalColor.charcoal
-//
-//                return cell
-//            }
-            if indexPath.row == 0{
-                //TastePreference
-                let cell = tableView.dequeueReusableCell(withIdentifier: "TastePreferenceFOCell") as! TastePreferenceFOTableViewCell
-                
-                tableView.separatorStyle = .none
-                
-                cell.reset()
-                cell.selectionStyle = .none
-                if(cell.baseRect.subviews.count == 0){
-                    cell.animateView()
-                }
-                
+        }else {
+            if searching {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "searchedFood") as! FoodSearchTableViewCell
+                cell.searchFoodText.text = searchResult[indexPath.row]
                 return cell
-            }else if indexPath.row == 1{
-                //collectionView
-                let cell = tableView.dequeueReusableCell(withIdentifier: "FoodMightLikeFOCell") as! FoodMightLikeFOTableViewCell
                 
-                cell.collectionView.delegate = self
-                cell.collectionView.dataSource = self
-                
-                tableView.separatorStyle = .singleLine
-                tableView.separatorColor = TastePalColor.olive
-                cell.selectionStyle = .none
-                cell.clipsToBounds = true
-                
-                return cell
-            }else if indexPath.row == 2{
-                let cell = tableView.dequeueReusableCell(withIdentifier: "FoodMightLikeFooter")
-                
-                cell?.textLabel?.text = "See All Food That You Might Like"
-                cell?.selectionStyle = .none
-                tableView.separatorStyle = .singleLine
-                tableView.separatorColor = TastePalColor.olive
-                cell?.clipsToBounds = true
-                
-                return cell!
             }else{
-                return UITableViewCell()
+                //            if indexPath.row == 0{
+                //                //Location
+                //                let cell = tableView.dequeueReusableCell(withIdentifier: "LocationFOCell") as! LocationFOTableViewCell
+                //
+                //                tableView.separatorStyle = .none
+                //                cell.selectionStyle = .none
+                //
+                //                return cell
+                //            }else if indexPath.row == 1{
+                //                //Search
+                //                let cell = tableView.dequeueReusableCell(withIdentifier: "SearchFOCell") as! SearchFOTableViewCell
+                //                tableView.separatorStyle = .none
+                //                cell.selectionStyle = .none
+                //
+                //                cell.searchBar.barTintColor = TastePalColor.charcoal
+                //
+                //                return cell
+                //            }
+                if indexPath.row == 0{
+                    //TastePreference
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "TastePreferenceFOCell") as! TastePreferenceFOTableViewCell
+                    
+                    tableView.separatorStyle = .none
+                    
+                    cell.reset()
+                    cell.selectionStyle = .none
+                    if(cell.baseRect.subviews.count == 0){
+                        cell.animateView()
+                    }
+                    
+                    return cell
+                }else if indexPath.row == 1{
+                    //collectionView
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "FoodMightLikeFOCell") as! FoodMightLikeFOTableViewCell
+                    
+                    cell.collectionView.delegate = self
+                    cell.collectionView.dataSource = self
+                    
+                    tableView.separatorStyle = .singleLine
+                    tableView.separatorColor = TastePalColor.olive
+                    cell.selectionStyle = .none
+                    cell.clipsToBounds = true
+                    
+                    return cell
+                }else if indexPath.row == 2{
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "FoodMightLikeFooter")
+                    
+                    cell?.textLabel?.text = "See All Food That You Might Like"
+                    cell?.selectionStyle = .none
+                    tableView.separatorStyle = .singleLine
+                    tableView.separatorColor = TastePalColor.olive
+                    cell?.clipsToBounds = true
+                    
+                    return cell!
+                }else{
+                    return UITableViewCell()
+                }
             }
         }
     }
@@ -181,18 +238,23 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if searching{
-            return 44
-        }else{
-            if indexPath.row == 0{
-                return 120
-            }else if indexPath.row == 1{
-                //it should be 0.46 (370/812)
-                return 0.4 * screenHeight
-            }else if indexPath.row == 2{
+        if tableView == restourantTableView {
+            return 70
+        }else {
+            
+            if searching{
                 return 44
             }else{
-                return 0
+                if indexPath.row == 0{
+                    return 120
+                }else if indexPath.row == 1{
+                    //it should be 0.46 (370/812)
+                    return 0.4 * screenHeight
+                }else if indexPath.row == 2{
+                    return 44
+                }else{
+                    return 0
+                }
             }
         }
     }

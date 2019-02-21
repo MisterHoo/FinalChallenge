@@ -106,6 +106,7 @@
 		CDC932F9220036CB00B3F33A /* AddFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC932F8220036CB00B3F33A /* AddFoodViewController.swift */; };
 		CDC932FB22004C5E00B3F33A /* SearchedFoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC932FA22004C5E00B3F33A /* SearchedFoodTableViewCell.swift */; };
 		CDE4B3AE21F1B6F200DFDE2D /*  CIImagetoCGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE4B3AD21F1B6F200DFDE2D /*  CIImagetoCGImage.swift */; };
+		CDE8CAD7221C0D6B007BAA23 /* RestorantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE8CAD6221C0D6B007BAA23 /* RestorantTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -212,6 +213,7 @@
 		CDC932F8220036CB00B3F33A /* AddFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodViewController.swift; sourceTree = "<group>"; };
 		CDC932FA22004C5E00B3F33A /* SearchedFoodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedFoodTableViewCell.swift; sourceTree = "<group>"; };
 		CDE4B3AD21F1B6F200DFDE2D /*  CIImagetoCGImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " CIImagetoCGImage.swift"; sourceTree = "<group>"; };
+		CDE8CAD6221C0D6B007BAA23 /* RestorantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorantTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -488,6 +490,7 @@
 				CD8204A92213EBF60081ABBD /* Find Out Search */,
 				66EE05242203414B00FD770D /* FoodMightLike */,
 				66B737DC21E46DC3000C9B50 /* Result */,
+				CD1616CB221BF9B6006BE202 /* searching restourant */,
 				66B1412022004E210013C5E7 /* FoodMightLikeFOCollectionViewCell.swift */,
 				66B1411621FED3DB0013C5E7 /* LocationFOTableViewCell.swift */,
 				CD926E2A22142FA200A5FAC6 /* FoodSearchTableViewCell.swift */,
@@ -572,6 +575,14 @@
 				359B432ACDA4F0042D37E042 /* Pods-Final Challenge.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		CD1616CB221BF9B6006BE202 /* searching restourant */ = {
+			isa = PBXGroup;
+			children = (
+				CDE8CAD6221C0D6B007BAA23 /* RestorantTableViewCell.swift */,
+			);
+			path = "searching restourant";
 			sourceTree = "<group>";
 		};
 		CD20EB6A21FECC4500F147B2 /* Alergic Food */ = {
@@ -881,6 +892,7 @@
 				6640590C2215373A0084574A /* TasteLegendCollectionViewCell.swift in Sources */,
 				CD20EB6D21FECC4500F147B2 /* AlergicSelectedTableViewCell.swift in Sources */,
 				66763D8421E87BA300368E6E /* FoodLikeCollectionViewCell.swift in Sources */,
+				CDE8CAD7221C0D6B007BAA23 /* RestorantTableViewCell.swift in Sources */,
 				66B737CC21E46B5B000C9B50 /* ScanViewController.swift in Sources */,
 				CD20EB6E21FECC4500F147B2 /* AlergicFoodViewController.swift in Sources */,
 				664059082213D4F50084574A /* FoodNextActionTableViewCell.swift in Sources */,
