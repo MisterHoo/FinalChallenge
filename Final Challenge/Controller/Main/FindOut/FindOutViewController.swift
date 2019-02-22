@@ -63,8 +63,10 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
         print("it working")
         if restourantTableView.isHidden {
             restourantTableView.isHidden = false
+            tableView.allowsSelection  = false
         }else {
             restourantTableView.isHidden = true
+            tableView.allowsSelection = true
         }
     }
     func setUpLocation(){
@@ -123,17 +125,19 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
         search.start { (respons, error) in
             print("test coba nama")
             for mapItem in (respons?.mapItems)! {
-                restourantList.removeAll()
 //                self.closestRestourantsList.append(mapItem.name!)
                 let currentUserLocation = CLLocation(latitude: currLocation.latitude, longitude: currLocation.longitude)
                 let landMarkLocation = CLLocation(latitude: mapItem.placemark.coordinate.latitude, longitude:  mapItem.placemark.coordinate.longitude)
-                let distanceInMeters = currentUserLocation.distance(from: landMarkLocation)
+                let distanceInKM = (currentUserLocation.distance(from: landMarkLocation))/1000
 //                self.distance.append(Int(distanceInMeters))
                 let closestRestourant = respons?.mapItems[0]
-                self.restourantList.append(restourantStruct(name: mapItem.name!, distance: distanceInMeters))
+                self.restourantList.append(restourantStruct(name: mapItem.name!, distance: distanceInKM))
                 print(respons?.mapItems[0].placemark.coordinate)
                 print(respons?.mapItems[0].name)
                 self.locationOutlet.text = closestRestourant?.name
+                self.restourantList = self.restourantList.sorted(by: { (p1, p2) -> Bool in
+                    return p1.distance < p2.distance
+                })
                 self.restourantTableView.reloadData()
             }
         }
@@ -174,7 +178,7 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
         if tableView == restourantTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "restourantCell") as! RestorantTableViewCell
             cell.restourantName.text = restourantList[indexPath.row].name
-            cell.restourantRange.text = String(restourantList[indexPath.row].distance)
+            cell.restourantRange.text = String(format: "%.2f", restourantList[indexPath.row].distance)+" KM"
             return cell
         }else {
             if searching {
@@ -246,7 +250,7 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0{
-            performSegue(withIdentifier: "FindOutToResult", sender: self)
+//            performSegue(withIdentifier: "FindOutToResult", sender: self)
         }else if indexPath.row == 2{
             performSegue(withIdentifier: "FindOutToMightLike", sender: self)
         }

@@ -88,13 +88,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5E-Gs-uVq">
-                                <rect key="frame" x="10" y="0.0" width="355" height="20.333333333333332"/>
+                                <rect key="frame" x="10" y="0.0" width="355" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="9P5-aI-n8k"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <searchBar contentMode="redraw" barStyle="black" searchBarStyle="prominent" text="" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="Et2-sK-qAD">
-                                <rect key="frame" x="0.0" y="20.333333333333343" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="56"/>
                                 <color key="barTintColor" red="0.24313725489999999" green="0.23529411759999999" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -102,7 +105,7 @@
                                 </connections>
                             </searchBar>
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vQs-Oj-TX0">
-                                <rect key="frame" x="0.0" y="76.333333333333314" width="375" height="512.66666666666674"/>
+                                <rect key="frame" x="0.0" y="100" width="375" height="489"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" red="0.24313725489999999" green="0.23529411759999999" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -350,7 +353,7 @@
                                 </prototypes>
                             </tableView>
                             <tableView hidden="YES" clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KEn-QE-YVa">
-                                <rect key="frame" x="0.0" y="76.333333333333314" width="375" height="512.66666666666674"/>
+                                <rect key="frame" x="0.0" y="100" width="375" height="489"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="restourantCell" rowHeight="70" id="HwF-RR-I51" customClass="RestorantTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
