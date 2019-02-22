@@ -134,10 +134,10 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
                 self.restourantList.append(restourantStruct(name: mapItem.name!, distance: distanceInKM))
                 print(respons?.mapItems[0].placemark.coordinate)
                 print(respons?.mapItems[0].name)
-                self.locationOutlet.text = closestRestourant?.name
                 self.restourantList = self.restourantList.sorted(by: { (p1, p2) -> Bool in
                     return p1.distance < p2.distance
                 })
+                self.locationOutlet.text = self.restourantList[0].name
                 self.restourantTableView.reloadData()
             }
         }
