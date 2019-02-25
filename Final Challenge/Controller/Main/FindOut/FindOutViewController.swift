@@ -18,17 +18,17 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
     @IBOutlet weak var restourantTableView: UITableView!
     
     //struct
-    struct restourantStruct {
+    struct RestourantStruct {
         var name = String()
         var distance = Double()
+        var coordinate = CLLocationCoordinate2D()
     }
     
     var searching: Bool = false
     var searchResult: [String] = ["Nasi Bebek Goreng","Nasi Ayam Goreng","Teromg Bakar","Perkedel Jagung","Ayam Goreng"]
     var searchTemp: [String] = []
-    //var closestRestourantsList:[String] = []
-    //var distance:[Int] = []
-    var restourantList:[restourantStruct] = []
+    var restourantList:[RestourantStruct] = []
+    var tempRestourantList:[RestourantStruct] = []
     
     let screenHeight = UIScreen.main.bounds.height
     
@@ -64,9 +64,11 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
         if restourantTableView.isHidden {
             restourantTableView.isHidden = false
             tableView.allowsSelection  = false
+            searchBarOutlet.showsCancelButton = true
         }else {
             restourantTableView.isHidden = true
             tableView.allowsSelection = true
+            searchBarOutlet.showsCancelButton = false
         }
     }
     func setUpLocation(){
@@ -125,19 +127,18 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
         search.start { (respons, error) in
             print("test coba nama")
             for mapItem in (respons?.mapItems)! {
-//                self.closestRestourantsList.append(mapItem.name!)
                 let currentUserLocation = CLLocation(latitude: currLocation.latitude, longitude: currLocation.longitude)
                 let landMarkLocation = CLLocation(latitude: mapItem.placemark.coordinate.latitude, longitude:  mapItem.placemark.coordinate.longitude)
                 let distanceInKM = (currentUserLocation.distance(from: landMarkLocation))/1000
+                
 //                self.distance.append(Int(distanceInMeters))
                 let closestRestourant = respons?.mapItems[0]
-                self.restourantList.append(restourantStruct(name: mapItem.name!, distance: distanceInKM))
-                print(respons?.mapItems[0].placemark.coordinate)
-                print(respons?.mapItems[0].name)
+                self.restourantList.append(RestourantStruct(name: mapItem.name!, distance: distanceInKM, coordinate: mapItem.placemark.coordinate))
                 self.restourantList = self.restourantList.sorted(by: { (p1, p2) -> Bool in
                     return p1.distance < p2.distance
                 })
                 self.locationOutlet.text = self.restourantList[0].name
+                self.tempRestourantList = self.restourantList
                 self.restourantTableView.reloadData()
             }
         }
@@ -161,10 +162,10 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
 extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == restourantTableView {
-            return restourantList.count
+            return tempRestourantList.count
         }else {
             if searching {
-                return searchResult.count
+                return searchTemp.count
             }else{
                 return 3
                 
@@ -177,13 +178,13 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
         print(tableView)
         if tableView == restourantTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "restourantCell") as! RestorantTableViewCell
-            cell.restourantName.text = restourantList[indexPath.row].name
-            cell.restourantRange.text = String(format: "%.2f", restourantList[indexPath.row].distance)+" KM"
+            cell.restourantName.text = tempRestourantList[indexPath.row].name
+            cell.restourantRange.text = String(format: "%.2f", tempRestourantList[indexPath.row].distance)+" KM"
             return cell
         }else {
             if searching {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "searchedFood") as! FoodSearchTableViewCell
-                cell.searchFoodText.text = searchResult[indexPath.row]
+                cell.searchFoodText.text = searchTemp[indexPath.row]
                 return cell
                 
             }else{
@@ -249,11 +250,20 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0{
-//            performSegue(withIdentifier: "FindOutToResult", sender: self)
-        }else if indexPath.row == 2{
-            performSegue(withIdentifier: "FindOutToMightLike", sender: self)
+        if tableView == restourantTableView{
+            locationOutlet.text = tempRestourantList[indexPath.row].name
+            if restourantTableView.isHidden == false{
+                restourantTableView.isHidden = true
+            }
+            searchBarOutlet.text?.removeAll()
+        } else {
+            if indexPath.row == 0{
+                //            performSegue(withIdentifier: "FindOutToResult", sender: self)
+            }else if indexPath.row == 2{
+                performSegue(withIdentifier: "FindOutToMightLike", sender: self)
+            }
         }
+       
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -292,27 +302,47 @@ extension FindOutViewController : UICollectionViewDelegate, UICollectionViewData
 }
 extension FindOutViewController : UISearchBarDelegate{
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searching = true
-        searchBar.showsCancelButton = true
-        searchResult.sort()
-        searchTemp.append(contentsOf: searchResult)
-        tableView.reloadData()
+        if restourantTableView.isHidden {
+            searching = true
+            searchBar.showsCancelButton = true
+            searchResult.sort()
+            searchTemp = searchResult
+            tableView.reloadData()
+        }else {
+            searchBar.showsCancelButton = true
+        }
+        
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searching = false
         tableView.reloadData()
         searchBar.showsCancelButton = false
         view.endEditing(true)
+        if restourantTableView.isHidden == false {
+            restourantTableView.isHidden = true
+        }
+        searchBar.text?.removeAll()
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchBar.text == "" {
-            searchResult.append(contentsOf: searchTemp)
-            searchResult.sort()
-            searchResult.removeDuplicates()
+        if restourantTableView.isHidden {
+            if searchText.isEmpty {
+                searchResult.sort()
+                searchResult.removeDuplicates()
+                searchTemp = searchResult
+               
+            }else{
+                searchTemp = searchResult.filter({$0.prefix(searchText.count).lowercased().contains(searchText.lowercased())})
+            }
             tableView.reloadData()
-        }else{
-            searchResult = searchResult.filter({$0.prefix(searchText.count).lowercased().contains(searchText.lowercased())})
-            tableView.reloadData()
+        }else {
+            if searchText.isEmpty {
+                tempRestourantList = restourantList
+            }else{
+                tempRestourantList = restourantList.filter({ (restourant) -> Bool in
+                    return restourant.name.lowercased().contains(searchText.lowercased())
+                })
+            }
+            restourantTableView.reloadData()
         }
     }
 }
