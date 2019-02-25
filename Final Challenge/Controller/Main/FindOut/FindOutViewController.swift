@@ -18,10 +18,13 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
     @IBOutlet weak var restourantTableView: UITableView!
     
     //struct
-    struct RestourantStruct {
+    struct RestourantStruct: Equatable {
         var name = String()
         var distance = Double()
         var coordinate = CLLocationCoordinate2D()
+        static func == (lhs: RestourantStruct, rhs:RestourantStruct) -> Bool {
+            return lhs.coordinate.latitude == rhs.coordinate.latitude && lhs.coordinate.longitude == rhs.coordinate.longitude
+        }
     }
     
     var searching: Bool = false
@@ -70,6 +73,19 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
             tableView.allowsSelection = true
             searchBarOutlet.showsCancelButton = false
         }
+    }
+    
+    func unique(restourants: [RestourantStruct]) -> [RestourantStruct] {
+        
+        var uniqueRestourants = [RestourantStruct]()
+        
+        for restourant in restourants {
+            if !uniqueRestourants.contains(restourant) {
+                uniqueRestourants.append(restourant)
+            }
+        }
+        
+        return uniqueRestourants
     }
     func setUpLocation(){
         let authorization = CLLocationManager.authorizationStatus()
@@ -138,6 +154,7 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
                     return p1.distance < p2.distance
                 })
                 self.locationOutlet.text = self.restourantList[0].name
+                self.restourantList = self.unique(restourants: self.restourantList)
                 self.tempRestourantList = self.restourantList
                 self.restourantTableView.reloadData()
             }
