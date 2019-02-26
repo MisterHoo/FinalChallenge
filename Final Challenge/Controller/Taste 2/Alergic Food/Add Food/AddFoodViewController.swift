@@ -17,7 +17,7 @@ class AddFoodViewController: UIViewController,UITableViewDelegate, UITableViewDa
     @IBOutlet weak var searchFood: UISearchBar!
     @IBOutlet weak var searchTableView: UITableView!
     
-    var birds:[String] = ["finch", "sparrow", "eagle"]
+    var foods:[String] = ["finch", "sparrow", "eagle","spawn"]
     var tempFood:[String] = []
     
     var searchedWord = [String]()
@@ -39,9 +39,6 @@ class AddFoodViewController: UIViewController,UITableViewDelegate, UITableViewDa
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func done(_ sender: Any) {
-        if let presenter = presentingViewController as? AlergicFoodViewController {
-            presenter.alergic.append(contentsOf: tempFood)
-        }
         defaults.set(tempFood, forKey: "tempFood")
         dismiss(animated: true, completion: nil)
     }
@@ -50,7 +47,7 @@ class AddFoodViewController: UIViewController,UITableViewDelegate, UITableViewDa
         if searching{
             return searchedWord.count
         } else {
-            return birds.count
+            return foods.count
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -61,7 +58,7 @@ class AddFoodViewController: UIViewController,UITableViewDelegate, UITableViewDa
             cell.addFoodOutlet.tag = indexPath.row
             cell.addFoodOutlet.addTarget(self, action: #selector(addFoodName(sender:)), for: .touchUpInside)
         }else {
-            cell.avoidedFoodLabel.text = birds[indexPath.row]
+            cell.avoidedFoodLabel.text = foods[indexPath.row]
             cell.addFoodOutlet.tag = indexPath.row
             cell.addFoodOutlet.addTarget(self, action: #selector(addFoodName(sender:)), for: .touchUpInside)
         }
@@ -80,12 +77,12 @@ class AddFoodViewController: UIViewController,UITableViewDelegate, UITableViewDa
             let tempName = searchedWord[index]
             tempFood.append(searchedWord[index])
             searchedWord.remove(at: index)
-            birds.removeAll{ $0 == tempName }
+            foods.removeAll{ $0 == tempName }
             searchTableView.reloadData()
             print("appemd ke temp dari searching")
         }else {
-            tempFood.append(birds[index])
-            birds.remove(at: index)
+            tempFood.append(foods[index])
+            foods.remove(at: index)
             searchTableView.reloadData()
             print("appemd ke temp ga searching")
         }
@@ -95,8 +92,8 @@ class AddFoodViewController: UIViewController,UITableViewDelegate, UITableViewDa
         let defaults = UserDefaults.standard
         let myarray = defaults.stringArray(forKey: "tempFood2") ?? [String]()
         for food in myarray {
-            if birds.contains(food) {
-                birds.removeAll{ $0 == food }
+            if foods.contains(food) {
+                foods.removeAll{ $0 == food }
             }
         }
         defaults.removeObject(forKey: "tempFood2")
@@ -106,11 +103,11 @@ class AddFoodViewController: UIViewController,UITableViewDelegate, UITableViewDa
 extension AddFoodViewController:UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text == ""{
-            searchedWord.append(contentsOf: birds)
+            searchedWord.append(contentsOf: foods)
             searchedWord.removeDuplicates()
             searchTableView.reloadData()
         }else {
-        searchedWord = birds.filter({ $0.prefix(searchText.count).lowercased().contains(searchText.lowercased())})
+        searchedWord = foods.filter({ $0.prefix(searchText.count).lowercased().contains(searchText.lowercased())})
         searching = true
         searchTableView.reloadData()
         }

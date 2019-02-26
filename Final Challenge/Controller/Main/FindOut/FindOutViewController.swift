@@ -16,6 +16,7 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
     @IBOutlet weak var locationOutlet: UILabel!
     @IBOutlet weak var searchBarOutlet: UISearchBar!
     @IBOutlet weak var restourantTableView: UITableView!
+    @IBOutlet weak var locationViewOutlet: UIView!
     
     //struct
     struct RestourantStruct: Equatable {
@@ -38,6 +39,8 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
     let locationManager = CLLocationManager()
     override func viewDidLoad() {
         super.viewDidLoad()
+        let cancelButtonAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
+        UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes , for: .normal)
         
         view.backgroundColor = TastePalColor.charcoal
         navigationController?.navigationBar.backgroundColor = TastePalColor.charcoal
@@ -51,6 +54,7 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
         tableView.layoutIfNeeded()
         
         searchBarOutlet.tintColor = UIColor.white
+        restourantTableView.isHidden = true
         
         locationTouchable()
         setUpLocation()
@@ -60,18 +64,33 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
         
         locationOutlet.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(searchPlace))
+        locationViewOutlet.addGestureRecognizer(tap)
         locationOutlet.addGestureRecognizer(tap)
     }
+ 
     @objc func searchPlace(){
         print("it working")
         if restourantTableView.isHidden {
             restourantTableView.isHidden = false
             tableView.allowsSelection  = false
             searchBarOutlet.showsCancelButton = true
+            locationViewOutlet.backgroundColor = UIColor.black
+            
+            searchBarOutlet.barStyle = .default
+            searchBarOutlet.barTintColor = UIColor.black
+            searchBarOutlet.tintColor = UIColor.black
+            
         }else {
             restourantTableView.isHidden = true
             tableView.allowsSelection = true
             searchBarOutlet.showsCancelButton = false
+            locationViewOutlet.backgroundColor = TastePalColor.charcoal
+            
+            searchBarOutlet.barStyle = .black
+            searchBarOutlet.barTintColor = TastePalColor.charcoal
+            searchBarOutlet.tintColor = UIColor.white
+            
+            view.endEditing(true)
         }
     }
     
@@ -134,21 +153,22 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
     //search closest landmark
     func searchInMap(currLocation: CLLocationCoordinate2D){
         let request = MKLocalSearch.Request()
-        request.naturalLanguageQuery = "Restaurant"
+        request.naturalLanguageQuery = "Restaurants"
         
-        let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-        request.region = MKCoordinateRegion(center: currLocation, span: span)
+       
+        request.region = MKCoordinateRegion(center: currLocation, latitudinalMeters: 10, longitudinalMeters: 10)
         
         let search = MKLocalSearch(request: request)
         search.start { (respons, error) in
-            print("test coba nama")
+            var count = 0
             for mapItem in (respons?.mapItems)! {
+                print(mapItem.placemark.name)
+                count = count+1
                 let currentUserLocation = CLLocation(latitude: currLocation.latitude, longitude: currLocation.longitude)
                 let landMarkLocation = CLLocation(latitude: mapItem.placemark.coordinate.latitude, longitude:  mapItem.placemark.coordinate.longitude)
                 let distanceInKM = (currentUserLocation.distance(from: landMarkLocation))/1000
                 
 //                self.distance.append(Int(distanceInMeters))
-                let closestRestourant = respons?.mapItems[0]
                 self.restourantList.append(RestourantStruct(name: mapItem.name!, distance: distanceInKM, coordinate: mapItem.placemark.coordinate))
                 self.restourantList = self.restourantList.sorted(by: { (p1, p2) -> Bool in
                     return p1.distance < p2.distance
@@ -158,6 +178,7 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
                 self.tempRestourantList = self.restourantList
                 self.restourantTableView.reloadData()
             }
+            print(count)
         }
     }
    
@@ -270,9 +291,12 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
         if tableView == restourantTableView{
             locationOutlet.text = tempRestourantList[indexPath.row].name
             if restourantTableView.isHidden == false{
+                tableView.deselectRow(at: indexPath, animated: true)
+                searchPlace()
                 restourantTableView.isHidden = true
             }
             searchBarOutlet.text?.removeAll()
+            searchBarOutlet.showsCancelButton = false
         } else {
             if indexPath.row == 0{
                 //            performSegue(withIdentifier: "FindOutToResult", sender: self)
@@ -336,7 +360,8 @@ extension FindOutViewController : UISearchBarDelegate{
         searchBar.showsCancelButton = false
         view.endEditing(true)
         if restourantTableView.isHidden == false {
-            restourantTableView.isHidden = true
+            locationViewOutlet.backgroundColor = TastePalColor.charcoal
+            searchPlace()
         }
         searchBar.text?.removeAll()
     }
