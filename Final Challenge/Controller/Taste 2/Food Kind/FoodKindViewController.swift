@@ -111,6 +111,10 @@ extension FoodKindViewController : UICollectionViewDataSource, UICollectionViewD
             foodPreference[indexPath.row].like = true
             cell.checkThis()
             cell.check = true
+            let heptic = UIImpactFeedbackGenerator(style: .medium)
+            
+            heptic.prepare()
+            heptic.impactOccurred()
         }
         else {
             foodPreference[indexPath.row].like = false
@@ -125,7 +129,29 @@ extension FoodKindViewController : NextActionDelegate{
     func nextAction() {
         calculateTastePreference()
         
-        performSegue(withIdentifier: "toNeverView", sender: self)
+        var flag = false
+        
+        for food in foodPreference{
+            if food.like == true{
+                flag = true
+                break
+            }
+        }
+        
+        if flag == true{
+            performSegue(withIdentifier: "toNeverView", sender: self)
+        }else{
+            let alert = UIAlertController(title: "Please choose at least one!", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default) { (action) in
+            }
+            
+            let heptic = UINotificationFeedbackGenerator()
+            heptic.notificationOccurred(.error)
+            
+            alert.addAction(action)
+            present(alert, animated: true) {
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
