@@ -57,7 +57,6 @@
 		66B1411F21FEE3270013C5E7 /* TastePreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B1411E21FEE3270013C5E7 /* TastePreference.swift */; };
 		66B1412122004E210013C5E7 /* FoodMightLikeFOCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B1412022004E210013C5E7 /* FoodMightLikeFOCollectionViewCell.swift */; };
 		66B1412522005ACD0013C5E7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B1412422005ACD0013C5E7 /* TabBarViewController.swift */; };
-		66B737C421E46299000C9B50 /* TastePreferenceTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66B737C321E46299000C9B50 /* TastePreferenceTest.storyboard */; };
 		66B737C621E4650B000C9B50 /* LoginVerification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66B737C521E4650B000C9B50 /* LoginVerification.storyboard */; };
 		66B737C821E46577000C9B50 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B737C721E46577000C9B50 /* LoginViewController.swift */; };
 		66B737CC21E46B5B000C9B50 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B737CB21E46B5B000C9B50 /* ScanViewController.swift */; };
@@ -167,7 +166,6 @@
 		66B1411E21FEE3270013C5E7 /* TastePreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastePreference.swift; sourceTree = "<group>"; };
 		66B1412022004E210013C5E7 /* FoodMightLikeFOCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodMightLikeFOCollectionViewCell.swift; sourceTree = "<group>"; };
 		66B1412422005ACD0013C5E7 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = "Final Challenge/Controller/Main/TabBarViewController.swift"; sourceTree = SOURCE_ROOT; };
-		66B737C321E46299000C9B50 /* TastePreferenceTest.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TastePreferenceTest.storyboard; sourceTree = "<group>"; };
 		66B737C521E4650B000C9B50 /* LoginVerification.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginVerification.storyboard; sourceTree = "<group>"; };
 		66B737C721E46577000C9B50 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		66B737CB21E46B5B000C9B50 /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
@@ -392,7 +390,6 @@
 			isa = PBXGroup;
 			children = (
 				663CBBEB21E451E400572FFC /* Main.storyboard */,
-				66B737C321E46299000C9B50 /* TastePreferenceTest.storyboard */,
 				CDBAD5FC21F8396300017B9F /* TastePreferenceTestV2.storyboard */,
 				66B737C521E4650B000C9B50 /* LoginVerification.storyboard */,
 				663CBBF321E451E500572FFC /* LaunchScreen.storyboard */,
@@ -743,7 +740,6 @@
 			files = (
 				66B737C621E4650B000C9B50 /* LoginVerification.storyboard in Resources */,
 				663CBBF521E451E500572FFC /* LaunchScreen.storyboard in Resources */,
-				66B737C421E46299000C9B50 /* TastePreferenceTest.storyboard in Resources */,
 				6611208E21F1DE15005403AF /* SearchLocTableViewCell.xib in Resources */,
 				66C64B7622168B9200B6BB60 /* ProfileEditingTableViewCell.xib in Resources */,
 				6611207F21F055D7005403AF /* DropDownViewController.xib in Resources */,
