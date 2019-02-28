@@ -46,10 +46,10 @@
             </objects>
             <point key="canvasLocation" x="725" y="30"/>
         </scene>
-        <!--TastePreferenceTest-->
+        <!--TastePreferenceTestV2-->
         <scene sceneID="MdF-0T-XhT">
             <objects>
-                <viewControllerPlaceholder storyboardName="TastePreferenceTest" id="UIP-ca-c4B" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="TastePreferenceTestV2" id="UIP-ca-c4B" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T0R-wO-i3A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="725" y="757"/>

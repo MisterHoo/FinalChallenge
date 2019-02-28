@@ -17,6 +17,8 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
     @IBOutlet weak var searchBarOutlet: UISearchBar!
     @IBOutlet weak var restourantTableView: UITableView!
     @IBOutlet weak var locationViewOutlet: UIView!
+    @IBOutlet weak var locationIcon: UIImageView!
+    @IBOutlet weak var locationArrow: UIImageView!
     
     //struct
     struct RestourantStruct: Equatable {
@@ -61,11 +63,15 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
         // Do any additional setup after loading the view.
     }
     func locationTouchable(){
-        
+        locationViewOutlet.isUserInteractionEnabled = true
         locationOutlet.isUserInteractionEnabled = true
+        locationArrow.isUserInteractionEnabled = true
+        locationIcon.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(searchPlace))
         locationViewOutlet.addGestureRecognizer(tap)
         locationOutlet.addGestureRecognizer(tap)
+        locationArrow.addGestureRecognizer(tap)
+        locationIcon.addGestureRecognizer(tap)
     }
  
     @objc func searchPlace(){
