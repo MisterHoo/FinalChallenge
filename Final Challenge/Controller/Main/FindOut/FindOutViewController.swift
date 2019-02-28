@@ -29,12 +29,14 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
             return lhs.coordinate.latitude == rhs.coordinate.latitude && lhs.coordinate.longitude == rhs.coordinate.longitude
         }
     }
-    
+    //variable
+    let notificationFeddback = UINotificationFeedbackGenerator()
     var searching: Bool = false
     var searchResult: [String] = ["Nasi Bebek Goreng","Nasi Ayam Goreng","Teromg Bakar","Perkedel Jagung","Ayam Goreng"]
     var searchTemp: [String] = []
     var restourantList:[RestourantStruct] = []
     var tempRestourantList:[RestourantStruct] = []
+    var selectedFood: [String] = []
     
     let screenHeight = UIScreen.main.bounds.height
     
@@ -203,7 +205,20 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
     }
-
+// add button action
+    @objc func addFood(sender: UIButton!){
+        let index = sender.tag
+        guard searchTemp != nil else {
+            print("search kosong")
+            return
+        }
+        if selectedFood.isEmpty{
+            selectedFood.append("0")
+        }
+        selectedFood.append(searchTemp[index])
+        searchTemp.remove(at: index)
+        tableView.reloadData()
+    }
 }
 
 extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
@@ -214,8 +229,11 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
             if searching {
                 return searchTemp.count
             }else{
-                return 3
-                
+                if selectedFood.isEmpty {
+                    return 3
+                }else {
+                    return 3 + selectedFood.count
+                }
             }
         }
     }
@@ -232,32 +250,27 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
             if searching {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "searchedFood") as! FoodSearchTableViewCell
                 cell.searchFoodText.text = searchTemp[indexPath.row]
-                
+                cell.addSearchFoodOutlet.tag = indexPath.row
+                cell.addSearchFoodOutlet.addTarget(self, action: #selector(addFood), for: .touchUpInside)
                 cell.selectionStyle = .none
                 cell.backgroundColor = TastePalColor.charcoal
                 
                 return cell
                 
             }else{
-                //            if indexPath.row == 0{
-                //                //Location
-                //                let cell = tableView.dequeueReusableCell(withIdentifier: "LocationFOCell") as! LocationFOTableViewCell
-                //
-                //                tableView.separatorStyle = .none
-                //                cell.selectionStyle = .none
-                //
-                //                return cell
-                //            }else if indexPath.row == 1{
-                //                //Search
-                //                let cell = tableView.dequeueReusableCell(withIdentifier: "SearchFOCell") as! SearchFOTableViewCell
-                //                tableView.separatorStyle = .none
-                //                cell.selectionStyle = .none
-                //
-                //                cell.searchBar.barTintColor = TastePalColor.charcoal
-                //
-                //                return cell
-                //            }
-                if indexPath.row == 0{
+                if indexPath.row < selectedFood.count && !selectedFood.isEmpty {
+                    if indexPath.row == 0{
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "YourPick")
+                        cell?.selectionStyle = .none
+                        return cell!
+                    }else {
+                        let cell = tableView.dequeueReusableCell(withIdentifier: "YourPickFood")
+                        cell?.textLabel?.text = selectedFood[indexPath.row]
+                        cell?.selectionStyle = .none
+                        cell?.editingStyle
+                        return cell!
+                    }
+                }else if indexPath.row == 0+selectedFood.count{
                     //TastePreference
                     let cell = tableView.dequeueReusableCell(withIdentifier: "TastePreferenceFOCell") as! TastePreferenceFOTableViewCell
                     
@@ -270,7 +283,7 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
                     }
                     
                     return cell
-                }else if indexPath.row == 1{
+                }else if indexPath.row == 1+selectedFood.count{
                     //collectionView
                     let cell = tableView.dequeueReusableCell(withIdentifier: "FoodMightLikeFOCell") as! FoodMightLikeFOTableViewCell
                     
@@ -283,7 +296,7 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
                     cell.clipsToBounds = true
                     
                     return cell
-                }else if indexPath.row == 2{
+                }else if indexPath.row == 2+selectedFood.count{
                     let cell = tableView.dequeueReusableCell(withIdentifier: "FoodMightLikeFooter")
                     
                     cell?.textLabel?.text = "See All Food That You Might Like"
@@ -313,7 +326,7 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
         } else {
             if indexPath.row == 0{
                 //            performSegue(withIdentifier: "FindOutToResult", sender: self)
-            }else if indexPath.row == 2{
+            }else if indexPath.row == 2+selectedFood.count{
                 performSegue(withIdentifier: "FindOutToMightLike", sender: self)
             }
         }
@@ -328,12 +341,14 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
             if searching{
                 return 44
             }else{
-                if indexPath.row == 0{
+                if indexPath.row < selectedFood.count && !selectedFood.isEmpty {
+                    return 44
+                }else if indexPath.row == 0+selectedFood.count{
                     return 120
-                }else if indexPath.row == 1{
+                }else if indexPath.row == 1+selectedFood.count{
                     //it should be 0.46 (370/812)
                     return 0.4 * screenHeight
-                }else if indexPath.row == 2{
+                }else if indexPath.row == 2+selectedFood.count{
                     return 44
                 }else{
                     return 0
@@ -341,6 +356,32 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
             }
         }
     }
+    //MARK: Commit edditing delate confirmation
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if tableView == tableView{
+            if editingStyle == UITableViewCell.EditingStyle.delete{
+                selectedFood.remove(at: indexPath.row)
+                notificationFeddback.notificationOccurred(.success)
+                tableView.reloadData()
+            }
+        }
+    }
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        if tableView == tableView {
+            if indexPath.row == 0 {
+                return UITableViewCell.EditingStyle.none
+            }
+            else if ((indexPath.row)<selectedFood.count){
+                return UITableViewCell.EditingStyle.delete
+            }
+            else {
+                return UITableViewCell.EditingStyle.none
+            }
+            return UITableViewCell.EditingStyle.none
+        }
+        return UITableViewCell.EditingStyle.none
+    }
+   
 }
 
 extension FindOutViewController : UICollectionViewDelegate, UICollectionViewDataSource{
@@ -361,6 +402,9 @@ extension FindOutViewController : UISearchBarDelegate{
             searchBar.showsCancelButton = true
             searchResult.sort()
             searchTemp = searchResult
+            for search in selectedFood {
+                searchTemp.removeAll{$0 == search}
+            }
             tableView.reloadData()
         }else {
             searchBar.showsCancelButton = true
@@ -384,6 +428,9 @@ extension FindOutViewController : UISearchBarDelegate{
                 searchResult.sort()
                 searchResult.removeDuplicates()
                 searchTemp = searchResult
+                for search in selectedFood {
+                    searchTemp.removeAll{$0 == search}
+                }
                
             }else{
                 searchTemp = searchResult.filter({$0.prefix(searchText.count).lowercased().contains(searchText.lowercased())})
