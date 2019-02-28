@@ -35,7 +35,11 @@ class HistoryTableViewCell: UITableViewCell {
         for star in starRatingOutlet{
             star.image = UIImage(named: "StarGray")
         }
-        
     }
-
+    
+    func setRating(index : Int){
+        for i in 0...index{
+            starRatingOutlet[i].image = TastePalIcon.starYellow
+        }
+    }
 }

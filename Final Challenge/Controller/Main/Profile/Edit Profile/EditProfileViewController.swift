@@ -12,6 +12,8 @@ class EditProfileViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    var profileImage : UIImage = TastePalIcon.editProfile!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -63,6 +65,7 @@ extension EditProfileViewController : UITableViewDataSource, UITableViewDelegate
             
             cell.profileImage.layer.cornerRadius = 4
             cell.backgroundColor = TastePalColor.darkWhite
+            cell.profileImage.image = profileImage
             
             cell.selectionStyle = .none
             

@@ -52,6 +52,14 @@ struct TastePalIcon{
     static var heartEmpty = UIImage(named: "Heart")
     static var heartFilled = UIImage(named: "HeartFilled")
     static var tick = UIImage(named: "Tick")
+    static var editProfile = UIImage(named: "Edit Profile Image Placeholder")
+    static var findOutFood = UIImage(named: "Find Out & Profile Food Image")
+    static var historyImage = UIImage(named: "History Image Placeholder")
+    static var profileImage = UIImage(named: "Profile Image Placeholder")
+    static var resultHeaderImage = UIImage(named: "Result Image Placeholder")
+    static var resultRecommendedImage = UIImage(named: "Result Recommended Image")
+    static var reviewProfile = UIImage(named: "Review Profile Image Placeholder")
+    
 }
 
 struct DummyFoodPreference{

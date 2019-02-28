@@ -19,6 +19,9 @@ class TastePalUrl: NSObject {
     static let API_GET = MAIN + "get/"
     static let API_POST = MAIN + "post/"
     static let GET_REVIEW = API_GET + "review"
+    static let POST_REVIEW = API_POST + "review"
+    
+    
 //    static let LOGIN = API_POST + "login" // [POST] : {email, password}
 //    static let LOGOUT = API_POST + "logout" // [POST] : {uid, token_access, token_refresh}
 //    static let MY_PROFILE = API_POST + "my_profile" //?ev=1&userid=" // [GET] : {ev, userid}

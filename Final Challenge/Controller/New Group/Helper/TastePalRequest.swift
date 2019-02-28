@@ -24,14 +24,61 @@ class TastePalRequest: NSObject {
         TastePalAPI.GET(url: url, /*header: headers,*/ showHUD: true, completion: {jsonData in
             let json = JSON(jsonData)
             print(json)
-            print(json["test"])
-            if(json["test"].stringValue == "nyobain"){
-                print(json["semoga bisa"].dictionary as Any)
+//            print(json["test"])
+            if(json["test"].boolValue){
+//                print(json["result"])
+//                print(json["result"].dictionaryObject!)
+                
+//                print(json["result"].dictionary as Any)
+                
                 let content = EKMapper.object(
                     fromExternalRepresentation: json["result"].dictionaryObject!,
-                    with: TPReviewModel.objectMapping()
+                    with: TPReviewListModel.objectMapping()
                 )
                 successCompletion(content as! TPReviewListModel,/*json["message"].stringValue*/"Success")
+            }else{
+                failCompletion(json["message"].stringValue)
+            }
+        })
+    }
+    
+    static func POST_REGISTER(
+        desc:String,
+        taste:String,
+        rating:Int,
+        food_image:String,
+        favorite_food:Bool,
+        uid:Int,
+        lng:Float,
+        lat:Float,
+        food_name:String,
+        resto_name:String,
+        resto_location:String,
+        successCompletion:@escaping (TPPostReviewModel, String) -> Void,
+        
+        failCompletion:@escaping (String) -> Void){
+        let parameters:Parameters = ["description":desc,
+                                     "taste":taste,
+                                     "rating":rating,
+                                     "food_image":food_image,
+                                     "favorite_food":favorite_food,
+                                     "uid":uid,
+                                     "lng":lng,
+                                     "lat":lat,
+                                     "food_name":food_name,
+                                     "resto_name":resto_name,
+                                     "resto_location":resto_location]
+        //        let headers:HTTPHeaders = ["X-Api-Key":"883F72561AFD4FAEB3A20E814DE4881E"]
+        TastePalAPI.POST(url: TastePalUrl.POST_REVIEW, /*header: headers,*/ parameter: parameters, showHUD: true,completion:{jsonData in
+            let json = JSON(jsonData)
+            print(json)
+            
+            if(json["status"].boolValue){
+                let user = EKMapper.object(
+                    fromExternalRepresentation: json["message"].dictionaryObject!,
+                    with: TPPostReviewModel.objectMapping()
+                )
+                successCompletion(user as! TPPostReviewModel,json["message"].stringValue)
             }else{
                 failCompletion(json["message"].stringValue)
             }
