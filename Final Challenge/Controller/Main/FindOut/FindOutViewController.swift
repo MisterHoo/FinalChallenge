@@ -362,6 +362,9 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
             if editingStyle == UITableViewCell.EditingStyle.delete{
                 selectedFood.remove(at: indexPath.row)
                 notificationFeddback.notificationOccurred(.success)
+                if selectedFood.count == 1{
+                    selectedFood.removeAll()
+                }
                 tableView.reloadData()
             }
         }
