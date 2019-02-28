@@ -41,8 +41,8 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
     let locationManager = CLLocationManager()
     override func viewDidLoad() {
         super.viewDidLoad()
-        let cancelButtonAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
-        UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes , for: .normal)
+        
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = UIColor.red
         
         view.backgroundColor = TastePalColor.charcoal
         navigationController?.navigationBar.backgroundColor = TastePalColor.charcoal
@@ -56,12 +56,15 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
         tableView.layoutIfNeeded()
         
         searchBarOutlet.tintColor = UIColor.white
+        
+        restourantTableView.tableFooterView = UIView()
         restourantTableView.isHidden = true
         
         locationTouchable()
         setUpLocation()
         // Do any additional setup after loading the view.
     }
+    
     func locationTouchable(){
         locationViewOutlet.isUserInteractionEnabled = true
         locationOutlet.isUserInteractionEnabled = true
@@ -69,9 +72,9 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
         locationIcon.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(searchPlace))
         locationViewOutlet.addGestureRecognizer(tap)
-        locationOutlet.addGestureRecognizer(tap)
-        locationArrow.addGestureRecognizer(tap)
-        locationIcon.addGestureRecognizer(tap)
+//        locationOutlet.addGestureRecognizer(tap)
+//        locationArrow.addGestureRecognizer(tap)
+//        locationIcon.addGestureRecognizer(tap)
     }
  
     @objc func searchPlace(){
@@ -79,22 +82,22 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
         if restourantTableView.isHidden {
             restourantTableView.isHidden = false
             tableView.allowsSelection  = false
-            searchBarOutlet.showsCancelButton = true
+//            searchBarOutlet.showsCancelButton = true
             locationViewOutlet.backgroundColor = UIColor.black
             
             searchBarOutlet.barStyle = .default
             searchBarOutlet.barTintColor = UIColor.black
-            searchBarOutlet.tintColor = UIColor.black
+//            searchBarOutlet.tintColor = UIColor.black
             
         }else {
             restourantTableView.isHidden = true
             tableView.allowsSelection = true
-            searchBarOutlet.showsCancelButton = false
+//            searchBarOutlet.showsCancelButton = false
             locationViewOutlet.backgroundColor = TastePalColor.charcoal
             
             searchBarOutlet.barStyle = .black
             searchBarOutlet.barTintColor = TastePalColor.charcoal
-            searchBarOutlet.tintColor = UIColor.white
+//            searchBarOutlet.tintColor = UIColor.white
             
             view.endEditing(true)
         }
@@ -229,6 +232,10 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
             if searching {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "searchedFood") as! FoodSearchTableViewCell
                 cell.searchFoodText.text = searchTemp[indexPath.row]
+                
+                cell.selectionStyle = .none
+                cell.backgroundColor = TastePalColor.charcoal
+                
                 return cell
                 
             }else{

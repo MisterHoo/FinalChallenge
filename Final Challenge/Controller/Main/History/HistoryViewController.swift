@@ -33,6 +33,11 @@ class HistoryViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+//    override func viewDidAppear(_ animated: Bool) {
+//        let filterButtonAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+//        UIBarButtonItem.appearance().setTitleTextAttributes(filterButtonAttributes , for: .normal)
+//    }
+    
     @objc func showFilter(){
         print("Filter")
         let alert = UIAlertController(title: "Filter History", message: nil, preferredStyle: .actionSheet)
