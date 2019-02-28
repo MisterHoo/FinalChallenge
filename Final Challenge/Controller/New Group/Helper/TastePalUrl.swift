@@ -9,15 +9,16 @@
 import UIKit
 
 class TastePalUrl: NSObject {
-//    static let MAIN = "http://mea.api.genesis-id.com/"
+    static let MAIN = "http://178.128.88.131:8080/tastepal/"
 //    static let IMAGE_PARENT_CATEGORY = MAIN + "parent_category_images/"
 //    static let IMAGE_CHILD_CATEGORY = MAIN + "child_category_images/"
 //    static let emailTest = "testing@gmail.com"
 //    static let passTest = "testing"
 //
 //    /* API */
-//    static let API_GET = MAIN + "G/"
-//    static let API_POST = MAIN + "P/"
+    static let API_GET = MAIN + "get/"
+    static let API_POST = MAIN + "post/"
+    static let GET_REVIEW = API_GET + "review"
 //    static let LOGIN = API_POST + "login" // [POST] : {email, password}
 //    static let LOGOUT = API_POST + "logout" // [POST] : {uid, token_access, token_refresh}
 //    static let MY_PROFILE = API_POST + "my_profile" //?ev=1&userid=" // [GET] : {ev, userid}

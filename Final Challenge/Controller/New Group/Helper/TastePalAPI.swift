@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SVProgressHUD
 
-class MAEApi: NSObject {
+class TastePalAPI: NSObject {
     static func GET(url:String,
                     /*header:HTTPHeaders,*/
         showHUD:Bool,
@@ -25,7 +25,6 @@ class MAEApi: NSObject {
             encoding : URLEncoding.default/*,
              headers: header*/
             ).responseJSON{ (response) in
-                
                 if response.result.isSuccess {
                     SVProgressHUD.dismiss()
                     completion(response.result.value!)

@@ -79,4 +79,5 @@ struct DummyFoodPreference{
                                       TasteTest(name: "Bland", image: UIImage(named: "Bland")!, check: false)]
    
     static var tastePreference : [TastePreference] = []
+    
 }

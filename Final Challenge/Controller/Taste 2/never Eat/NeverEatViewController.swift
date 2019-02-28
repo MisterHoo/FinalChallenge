@@ -81,34 +81,7 @@ class NeverEatViewController: UIViewController,UICollectionViewDataSource, UICol
     @IBAction func toAvoidView(_ sender: Any) {
         
         calculateTaste()
-        
-        var flag = false
-        
-        for taste in tasteNever{
-            if taste.check == true{
-                flag = true
-                break
-            }
-        }
-        
-        if flag == true{
         performSegue(withIdentifier: "ToAvoid", sender: self)
-        }else{
-            let alert = UIAlertController(title: "Please choose at least one!", message: nil, preferredStyle: .alert)
-            
-            let action = UIAlertAction(title: "OK", style: .default) { (action) in
-                
-            }
-            
-            alert.addAction(action)
-            
-            let heptic = UINotificationFeedbackGenerator()
-            heptic.notificationOccurred(.error)
-            
-            present(alert, animated: true) {
-                
-            }
-        }
     }
     
     func calculateTaste(){

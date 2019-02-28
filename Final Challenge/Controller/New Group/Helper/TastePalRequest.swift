@@ -14,27 +14,29 @@ import SVProgressHUD
 
 class TastePalRequest: NSObject {
     
-//    static func GET_TIPSTRICKDETAIL(
-//        endPoint:String,
-//        successCompletion:@escaping (TipsTrickDetailListModel, String) -> Void,
-//        failCompletion:@escaping (String) -> Void){
-//        //        let headers:HTTPHeaders = ["X-Api-Key":"883F72561AFD4FAEB3A20E814DE4881E"]
-//        let url = MAEUrl.TIPSTRICKDETAIL+endPoint
-//        print(url)
-//        MAEApi.GET(url: url, /*header: headers,*/ showHUD: true, completion: {jsonData in
-//            let json = JSON(jsonData)
-//            if(json["status"].boolValue){
-//                print(json["result"].dictionary as Any)
-//                let content = EKMapper.object(
-//                    fromExternalRepresentation: json["result"].dictionaryObject!,
-//                    with: TipsTrickDetailListModel.objectMapping()
-//                )
-//                successCompletion(content as! TipsTrickDetailListModel,/*json["message"].stringValue*/"Success")
-//            }else{
-//                failCompletion(json["message"].stringValue)
-//            }
-//        })
-//    }
+    static func GET_TPReview(
+        endPoint:String,
+        successCompletion:@escaping (TPReviewListModel, String) -> Void,
+        failCompletion:@escaping (String) -> Void){
+        //        let headers:HTTPHeaders = ["X-Api-Key":"883F72561AFD4FAEB3A20E814DE4881E"]
+        let url = TastePalUrl.GET_REVIEW
+        print(url)
+        TastePalAPI.GET(url: url, /*header: headers,*/ showHUD: true, completion: {jsonData in
+            let json = JSON(jsonData)
+            print(json)
+            print(json["test"])
+            if(json["test"].stringValue == "nyobain"){
+                print(json["semoga bisa"].dictionary as Any)
+                let content = EKMapper.object(
+                    fromExternalRepresentation: json["result"].dictionaryObject!,
+                    with: TPReviewModel.objectMapping()
+                )
+                successCompletion(content as! TPReviewListModel,/*json["message"].stringValue*/"Success")
+            }else{
+                failCompletion(json["message"].stringValue)
+            }
+        })
+    }
 //
 //    static func POST_SIGNIN(
 //        email:String,
