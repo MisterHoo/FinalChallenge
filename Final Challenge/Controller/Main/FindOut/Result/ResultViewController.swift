@@ -7,20 +7,22 @@
 //
 
 import UIKit
-
+import CoreLocation
 class ResultViewController: UIViewController {
-    
-    
+    //MARK: outlet
     @IBOutlet weak var tableView: UITableView!
+
+    //MARK: Variable
     let secTitle = "Review"
-    
+    var foodName:String?
+    var location:CLLocationCoordinate2D?
     var reviews : [Review] = []
     
     var screenHeight = UIScreen.main.bounds.height
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         view.backgroundColor = TastePalColor.charcoal
         
         tableView.delegate = self
@@ -108,7 +110,12 @@ extension ResultViewController : UITableViewDelegate, UITableViewDataSource{
             if indexPath.row == 0 {
                 //ngebalikin information
                 let cell = tableView.dequeueReusableCell(withIdentifier: "foodInformation") as! FoodInformationTableViewCell
-                
+                if let recivedName = foodName {
+                    cell.foodName.text = recivedName
+                }
+                if let reciveLoc = location{
+                    cell.location.text = "\(reciveLoc.latitude), \(reciveLoc.longitude)"
+                }
                 tableView.separatorColor = TastePalColor.olive
                 cell.selectionStyle = .none
                 tableView.separatorStyle = .none

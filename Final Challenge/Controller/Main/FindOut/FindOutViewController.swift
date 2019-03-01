@@ -37,6 +37,8 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
     var restourantList:[RestourantStruct] = []
     var tempRestourantList:[RestourantStruct] = []
     var selectedFood: [String] = []
+    var tempFoodName: String?
+    var tempFoodLoc: CLLocationCoordinate2D?
     
     let screenHeight = UIScreen.main.bounds.height
     
@@ -66,7 +68,13 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
         setUpLocation()
         // Do any additional setup after loading the view.
     }
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "FindOutToResult") {
+            let secondViewController = segue.destination as! ResultViewController
+            secondViewController.foodName = tempFoodName
+            secondViewController.location = tempFoodLoc
+        }
+    }
     func locationTouchable(){
         locationViewOutlet.isUserInteractionEnabled = true
         locationOutlet.isUserInteractionEnabled = true
@@ -178,7 +186,6 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
                 let currentUserLocation = CLLocation(latitude: currLocation.latitude, longitude: currLocation.longitude)
                 let landMarkLocation = CLLocation(latitude: mapItem.placemark.coordinate.latitude, longitude:  mapItem.placemark.coordinate.longitude)
                 let distanceInKM = (currentUserLocation.distance(from: landMarkLocation))/1000
-                
 //                self.distance.append(Int(distanceInMeters))
                 self.restourantList.append(RestourantStruct(name: mapItem.name!, distance: distanceInKM, coordinate: mapItem.placemark.coordinate))
                 self.restourantList = self.restourantList.sorted(by: { (p1, p2) -> Bool in
@@ -188,6 +195,7 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
                 self.restourantList = self.unique(restourants: self.restourantList)
                 self.tempRestourantList = self.restourantList
                 self.restourantTableView.reloadData()
+                self.tempFoodLoc = mapItem.placemark.coordinate
             }
             print(count)
         }
@@ -266,7 +274,7 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
                     }else {
                         let cell = tableView.dequeueReusableCell(withIdentifier: "YourPickFood")
                         cell?.textLabel?.text = selectedFood[indexPath.row]
-                        cell?.selectionStyle = .none
+                        cell?.selectionStyle = .default
                         cell?.editingStyle
                         return cell!
                     }
@@ -316,6 +324,7 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == restourantTableView{
             locationOutlet.text = tempRestourantList[indexPath.row].name
+            tempFoodLoc = tempRestourantList[indexPath.row].coordinate
             if restourantTableView.isHidden == false{
                 tableView.deselectRow(at: indexPath, animated: true)
                 searchPlace()
@@ -324,8 +333,16 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
             searchBarOutlet.text?.removeAll()
             searchBarOutlet.showsCancelButton = false
         } else {
-            if indexPath.row == 0{
-                //            performSegue(withIdentifier: "FindOutToResult", sender: self)
+            if indexPath.row < selectedFood.count && !selectedFood.isEmpty {
+                if indexPath.row == 0{
+                    
+                }else {
+                    tableView.deselectRow(at: indexPath, animated: true)
+                    print(selectedFood[indexPath.row])
+                    tempFoodName = selectedFood[indexPath.row]
+                    print("jalan pilih")
+                    performSegue(withIdentifier: "FindOutToResult", sender: self)
+                }
             }else if indexPath.row == 2+selectedFood.count{
                 performSegue(withIdentifier: "FindOutToMightLike", sender: self)
             }
