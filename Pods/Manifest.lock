@@ -66,6 +66,11 @@ PODS:
     - GoogleUtilities/Network (~> 5.2)
     - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
+  - GoogleMaps (2.7.0):
+    - GoogleMaps/Maps (= 2.7.0)
+  - GoogleMaps/Base (2.7.0)
+  - GoogleMaps/Maps (2.7.0):
+    - GoogleMaps/Base
   - GoogleMobileVision/Detector (1.5.0):
     - GoogleToolboxForMac/Logger (~> 2.1)
     - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
@@ -73,6 +78,8 @@ PODS:
     - Protobuf (~> 3.1)
   - GoogleMobileVision/TextDetector (1.5.0):
     - GoogleMobileVision/Detector (~> 1.5)
+  - GooglePlaces (2.7.0):
+    - GoogleMaps/Base (= 2.7.0)
   - GoogleToolboxForMac/Defines (2.2.0)
   - GoogleToolboxForMac/Logger (2.2.0):
     - GoogleToolboxForMac/Defines (= 2.2.0)
@@ -123,6 +130,8 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/MLVision
   - Firebase/MLVisionTextModel
+  - GoogleMaps
+  - GooglePlaces
   - IQKeyboardManagerSwift
   - SDWebImage
   - SVProgressHUD
@@ -144,7 +153,9 @@ SPEC REPOS:
     - FirebaseMLVisionTextModel
     - GoogleAPIClientForREST
     - GoogleAppMeasurement
+    - GoogleMaps
     - GoogleMobileVision
+    - GooglePlaces
     - GoogleToolboxForMac
     - GoogleUtilities
     - GTMSessionFetcher
@@ -171,7 +182,9 @@ SPEC CHECKSUMS:
   FirebaseMLVisionTextModel: abb5bc051ea1c286bfe04a0347ce25237d1df0aa
   GoogleAPIClientForREST: 825503f12cb5824601cf526cf06d81a1cea4afd9
   GoogleAppMeasurement: 98b71f5e04142793729a5ef23e5b96651ff4b70f
+  GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
   GoogleMobileVision: a1f93108b3527d67339e2de80e1db76645f9e8b9
+  GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
   GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
   GoogleUtilities: 95996bea7c7d9b8fb811b7507669a4a8762f80c7
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
@@ -183,6 +196,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: e58304fafd0f1c3aa680068e2a436b399be409a7
+PODFILE CHECKSUM: 532e7a4e19a0e7b1ae0dadaf8af7a158b57db92f
 
 COCOAPODS: 1.5.3

@@ -18,5 +18,8 @@ pod 'IQKeyboardManagerSwift'
 pod 'SVProgressHUD'
 pod 'EasyMapping'
 pod 'SwiftyJSON'
+pod 'GoogleMaps'
+pod 'GooglePlaces'
+
 
 end
