@@ -32,14 +32,6 @@ class FoodKindViewController: UIViewController{
         tableView.dataSource = self
         
         //Get Data
-        TastePalRequest.GET_TPReview(endPoint: "", successCompletion: { (reviewList, message) in
-            TastePalDataManager.Review = reviewList
-            print("Berhasil")
-            print(reviewList)
-        }) { (message) in
-            print("Gagal")
-            print(message)
-        }
         
         tableView.separatorColor = UIColor.clear
         

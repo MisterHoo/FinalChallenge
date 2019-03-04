@@ -10,7 +10,7 @@ import UIKit
 
 class HistoryViewController: UIViewController {
     
-    var reviews : [Review] = []
+    var reviews : [TPReviewModel] = []
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -24,6 +24,16 @@ class HistoryViewController: UIViewController {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         tableView.tableFooterView = UIView()
+        
+        TastePalRequest.GET_TPReview(endPoint: "", successCompletion: { (reviewList, message) in
+            TastePalDataManager.Review = reviewList
+            self.reviews = reviewList.TPReviewList
+            print("Berhasil")
+            
+            self.tableView.reloadData()
+        }) { (message) in
+            print("Gagal")
+        }
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(showFilter))
         
@@ -71,7 +81,7 @@ class HistoryViewController: UIViewController {
 
 extension HistoryViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return reviews.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -79,6 +89,10 @@ extension HistoryViewController : UITableViewDelegate, UITableViewDataSource{
         
         cell.selectionStyle = .none
         tableView.separatorColor = TastePalColor.olive
+        
+        cell.foodName.text = reviews[indexPath.row].food_name
+//        cell.placeName.text = "\(reviews[indexPath.row])"
+        cell.setRating(index: reviews[indexPath.row].rating-1)
         
 //        cell.foodName.text = reviews[indexPath.row].name
 //        cell.placeName.text = reviews[indexPath.row].place

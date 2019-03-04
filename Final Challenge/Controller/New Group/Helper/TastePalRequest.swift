@@ -14,22 +14,26 @@ import SVProgressHUD
 
 class TastePalRequest: NSObject {
     
-    static func GET_TPReview(
+    static func GET_TPReview(uid : Int,
         endPoint:String,
         successCompletion:@escaping (TPReviewListModel, String) -> Void,
         failCompletion:@escaping (String) -> Void){
         //        let headers:HTTPHeaders = ["X-Api-Key":"883F72561AFD4FAEB3A20E814DE4881E"]
-        let url = TastePalUrl.GET_REVIEW
+        let url = TastePalUrl.GET_REVIEW(uid: uid)
         print(url)
         TastePalAPI.GET(url: url, /*header: headers,*/ showHUD: true, completion: {jsonData in
             let json = JSON(jsonData)
             print(json)
-            print(json["test"])
-            if(json["test"].stringValue == "nyobain"){
-                print(json["semoga bisa"].dictionary as Any)
+//            print(json["test"])
+            if(json["test"].boolValue){
+//                print(json["result"])
+//                print(json["result"].dictionaryObject!)
+                
+//                print(json["result"].dictionary as Any)
+                
                 let content = EKMapper.object(
                     fromExternalRepresentation: json["result"].dictionaryObject!,
-                    with: TPReviewModel.objectMapping()
+                    with: TPReviewListModel.objectMapping()
                 )
                 successCompletion(content as! TPReviewListModel,/*json["message"].stringValue*/"Success")
             }else{
@@ -37,6 +41,188 @@ class TastePalRequest: NSObject {
             }
         })
     }
+    
+    static func GET_TPResult(uid : Int, lng : Float, lat : Float, food_name : String,
+                             endPoint:String,
+                             successCompletion:@escaping (TPResultListModel, String) -> Void,
+                             failCompletion:@escaping (String) -> Void){
+        //        let headers:HTTPHeaders = ["X-Api-Key":"883F72561AFD4FAEB3A20E814DE4881E"]
+        let url = TastePalUrl.GET_RESULT(lng: lng, lat: lat, food_name: food_name, uid: uid)
+        TastePalAPI.GET(url: url, /*header: headers,*/ showHUD: true, completion: {jsonData in
+            let json = JSON(jsonData)
+            print(json)
+            //            print(json["test"])
+            if(json["test"].boolValue){
+                //                print(json["result"])
+                //                print(json["result"].dictionaryObject!)
+                
+                //                print(json["result"].dictionary as Any)
+                
+                let content = EKMapper.object(
+                    fromExternalRepresentation: json["result"].dictionaryObject!,
+                    with: TPResultListModel.objectMapping()
+                )
+                successCompletion(content as! TPResultListModel,/*json["message"].stringValue*/"Success")
+            }else{
+                failCompletion(json["message"].stringValue)
+            }
+        })
+    }
+    
+    static func POST_NEWGUEST(
+        registered : String,
+        first_taste : String,
+        first_value : Float,
+        second_taste : String,
+        second_value : Float,
+        third_taste : String,
+        third_value : Float,
+        fourth_taste : String,
+        fourth_value : Float,
+        fifth_taste : String,
+        fifth_value : Float,
+        sixth_taste : String,
+        sixth_value : Float,
+        successCompletion:@escaping (TPNewGuestModel, String) -> Void,
+        failCompletion:@escaping (String) -> Void){
+        let parameters:Parameters = ["registered" : registered,
+                                     "first_taste" : first_taste,
+                                     "first_value" : first_value,
+                                     "second_taste" : second_taste,
+                                     "second_value" : second_value,
+                                     "third_taste" : third_taste,
+                                     "third_value" : third_value,
+                                     "fourth_taste" : fourth_taste,
+                                     "fourth_value" : fourth_value,
+                                     "fifth_taste" : fifth_taste,
+                                     "fifth_value" : fifth_value,
+                                     "sixth_taste" : sixth_taste,
+                                     "sixth_value" : sixth_value]
+        //        let headers:HTTPHeaders = ["X-Api-Key":"883F72561AFD4FAEB3A20E814DE4881E"]
+        
+        TastePalAPI.POST(url: TastePalUrl.POST_NEW_GUEST, parameter: parameters, /*header: headers*/ showHUD: true,completion:{jsonData in
+            let json = JSON(jsonData)
+            
+            if(json["status"].boolValue){
+                
+                let user = EKMapper.object(
+                    fromExternalRepresentation: json["message"].dictionaryObject!,
+                    with: TPNewGuestModel.objectMapping()
+                )
+                successCompletion(user as! TPNewGuestModel,"Success")
+            }else{
+                failCompletion(json["message"].stringValue)
+            }
+        })
+    }
+    
+    static func POST_REVIEW(
+        desc:String,
+        taste:String,
+        rating:Int,
+        food_image:String,
+        favorite_food:Bool,
+        uid:Int,
+        lng:Float,
+        lat:Float,
+        food_name:String,
+        resto_name:String,
+        resto_location:String,
+        successCompletion:@escaping (TPPostReviewModel, String) -> Void,
+        
+        failCompletion:@escaping (String) -> Void){
+        let parameters:Parameters = ["descript":desc,
+                                     "taste":taste,
+                                     "rating":rating,
+                                     "food_image":food_image,
+                                     "favorite_food":favorite_food,
+                                     "uid":uid,
+                                     "lng":lng,
+                                     "lat":lat,
+                                     "food_name":food_name,
+                                     "resto_name":resto_name,
+                                     "resto_location":resto_location]
+        //        let headers:HTTPHeaders = ["X-Api-Key":"883F72561AFD4FAEB3A20E814DE4881E"]
+        TastePalAPI.POST(url: TastePalUrl.POST_REVIEW, /*header: headers,*/ parameter: parameters, showHUD: true,completion:{jsonData in
+            let json = JSON(jsonData)
+            print(json)
+            
+            if(json["status"].boolValue){
+                let user = EKMapper.object(
+                    fromExternalRepresentation: json["message"].dictionaryObject!,
+                    with: TPPostReviewModel.objectMapping()
+                )
+                successCompletion(user as! TPPostReviewModel,json["message"].stringValue)
+            }else{
+                failCompletion(json["message"].stringValue)
+            }
+        })
+    }
+    
+    static func POST_ATEFOOD(
+        food_id : Int, uid : Int,
+        successCompletion:@escaping (TPAteFoodModel, String) -> Void,
+        
+        failCompletion:@escaping (String) -> Void){
+        let parameters:Parameters = ["food_id" : food_id,
+                                     "uid" : uid]
+        //        let headers:HTTPHeaders = ["X-Api-Key":"883F72561AFD4FAEB3A20E814DE4881E"]
+        TastePalAPI.POST(url: TastePalUrl.POST_ATEFOOD, /*header: headers,*/ parameter: parameters, showHUD: true,completion:{jsonData in
+            let json = JSON(jsonData)
+            print(json)
+            
+            if(json["status"].boolValue){
+                let user = EKMapper.object(
+                    fromExternalRepresentation: json["message"].dictionaryObject!,
+                    with: TPAteFoodModel.objectMapping()
+                )
+                successCompletion(user as! TPAteFoodModel,json["message"].stringValue)
+            }else{
+                failCompletion(json["message"].stringValue)
+            }
+        })
+    }
+    
+    /*$review_id = $request->getParam('review_id');
+    $descript = $request->getParam('descript');
+    $taste = $request->getParam('taste');
+    $rating = $request->getParam('rating');
+    $food_image = $request->getParam('food_image');
+    $favorite_food = $request->getParam('favorite_food') == 'true' ? 1 : 0;*/
+    
+    static func POST_UPDATEREVIEW(
+        review_id : Int,
+        descript : String,
+        taste : String,
+        rating : Int,
+        food_image : String,
+        favorite_food : String,
+        successCompletion:@escaping (TPUpdateReviewModel, String) -> Void,
+        
+        failCompletion:@escaping (String) -> Void){
+        let parameters:Parameters = ["review_id" : review_id,
+                                     "descript" : descript,
+                                     "taste" : taste,
+                                     "rating" : rating,
+                                     "food_image" : food_image,
+                                     "favorite_food" : favorite_food]
+        //        let headers:HTTPHeaders = ["X-Api-Key":"883F72561AFD4FAEB3A20E814DE4881E"]
+        TastePalAPI.POST(url: TastePalUrl.POST_ATEFOOD, /*header: headers,*/ parameter: parameters, showHUD: true,completion:{jsonData in
+            let json = JSON(jsonData)
+            print(json)
+            
+            if(json["status"].boolValue){
+                let user = EKMapper.object(
+                    fromExternalRepresentation: json["message"].dictionaryObject!,
+                    with: TPUpdateReviewModel.objectMapping()
+                )
+                successCompletion(user as! TPUpdateReviewModel,json["message"].stringValue)
+            }else{
+                failCompletion(json["message"].stringValue)
+            }
+        })
+    }
+    
 //
 //    static func POST_SIGNIN(
 //        email:String,

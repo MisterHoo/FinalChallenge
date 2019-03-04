@@ -16,27 +16,28 @@ class TPReviewListModel: NSObject, EKMappingProtocol{
         return EKObjectMapping(
             for: self,
             with: {(mapping) in
-                mapping.hasMany(TPReviewModel.self, forKeyPath: "semoga bisa", forProperty : "TPReview")
+                mapping.hasMany(TPReviewModel.self, forKeyPath: "content", forProperty: "TPReviewList")
         })
     }
 }
 
 class TPReviewModel : NSObject, EKMappingProtocol{
-    @objc dynamic var review_id = ""
-    @objc dynamic var desc = ""
-    @objc dynamic var taste = ""
-    @objc dynamic var rating = 0
-    @objc dynamic var food_image = ""
-    @objc dynamic var favorite_food = 0
-    @objc dynamic var food_id = 0
-    @objc dynamic var uid = 0
-    @objc dynamic var food_name = ""
     @objc dynamic var restaurant_id = 0
+    @objc dynamic var descript = ""
+    @objc dynamic var rating = 0
+    @objc dynamic var taste = ""
+    @objc dynamic var review_id = 0
+    @objc dynamic var food_name = ""
+    @objc dynamic var food_image = ""
+    @objc dynamic var favorite_food = ""
+    @objc dynamic var uid = 0
+    @objc dynamic var food_id = 0
     
-    convenience init(review_id : String, desc : String, taste : String, rating : Int, food_image : String, favorite_food : Int, food_id : Int, uid : Int, food_name : String, restaurant_id : Int) {
+    
+    convenience init(review_id : Int, descript : String, taste : String, rating : Int, food_image : String, favorite_food : String, food_id : Int, uid : Int, food_name : String, restaurant_id : Int) {
         self.init()
         self.review_id = review_id
-        self.desc = desc
+        self.descript = descript
         self.taste = taste
         self.rating = rating
         self.food_image = food_image
@@ -54,7 +55,7 @@ class TPReviewModel : NSObject, EKMappingProtocol{
                 mapping.mapProperties(from:
                     [
                         "review_id",
-                        "desc",
+                        "descript",
                         "taste",
                         "rating",
                         "food_image",
@@ -64,8 +65,6 @@ class TPReviewModel : NSObject, EKMappingProtocol{
                         "food_name",
                         "restaurant_id"
                     ])
-            
         })
     }
-    
 }

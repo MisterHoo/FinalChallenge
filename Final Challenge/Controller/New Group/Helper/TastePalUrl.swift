@@ -18,7 +18,26 @@ class TastePalUrl: NSObject {
 //    /* API */
     static let API_GET = MAIN + "get/"
     static let API_POST = MAIN + "post/"
-    static let GET_REVIEW = API_GET + "review"
+    static let API_UPDATE = MAIN + "update/"
+    static let POST_REVIEW = API_POST + "review" //sudah
+    static let POST_NEW_GUEST = API_POST + "newGuest" // sudah
+    static let POST_USER = API_POST + "user" 
+    static let POST_ATEFOOD = API_POST + "ateFood" // sudah
+    static let UPDATE_REVIEW = API_UPDATE + "review"
+    
+    static func GET_RESULT(lng : Float, lat : Float, food_name : String, uid : Int) -> String{ //sudah
+        let url : String = API_GET + "result/" + "longitude=" + String(lng) + "/latitude=" + String(lat) + "/food_name=" + food_name + "/" + String(uid)
+        
+        return url
+    }
+    
+    static func GET_REVIEW(uid : Int) -> String{ // sudah
+        let url : String = API_GET + "review/" + String(uid)
+        return url
+    }
+    
+    
+    
 //    static let LOGIN = API_POST + "login" // [POST] : {email, password}
 //    static let LOGOUT = API_POST + "logout" // [POST] : {uid, token_access, token_refresh}
 //    static let MY_PROFILE = API_POST + "my_profile" //?ev=1&userid=" // [GET] : {ev, userid}

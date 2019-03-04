@@ -22,13 +22,23 @@ class GiveReviewViewController: UIViewController {
     let screenHeight = UIScreen.main.bounds.height
     var favoriteButton : UIBarButtonItem?
     
+    var imageCamera : UIImage = TastePalIcon.historyImage!
+    
     let tastePreferenceTestV2 = UIStoryboard(name: "TastePreferenceTestV2", bundle: nil)
     
     @IBOutlet weak var submitButton: UIButton!
     
 
     @IBAction func submitAction(_ sender: Any) {
+//        TastePalRequest.POST_REGISTER(desc: <#T##String#>, taste: <#T##String#>, rating: <#T##Int#>, food_image: <#T##String#>, favorite_food: <#T##Bool#>, uid: <#T##Int#>, lng: <#T##Float#>, lat: <#T##Float#>, food_name: <#T##String#>, resto_name: <#T##String#>, resto_location: <#T##String#>, successCompletion: { (<#TPPostReviewModel#>, <#String#>) in
+//            <#code#>
+//        }) { (<#String#>) in
+//            <#code#>
+//        }
+        
+        
     }
+    
     @IBAction func addButton(_ sender: Any) {
         let avoidedFood = tastePreferenceTestV2.instantiateViewController(withIdentifier: "avoidedFoodSearch")
         self.present(avoidedFood, animated: true, completion: nil)
@@ -152,6 +162,7 @@ extension GiveReviewViewController : UITableViewDelegate, UITableViewDataSource{
             cell.selectionStyle = .none
             
             cell.cameraSystemDelegate = self
+            cell.photoFromCamera.image = imageCamera
             
             return cell
         }else if indexPath == IndexPath(row: 1, section: 0){
