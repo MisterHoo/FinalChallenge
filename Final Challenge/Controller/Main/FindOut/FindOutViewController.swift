@@ -21,7 +21,7 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
     @IBOutlet weak var locationViewOutlet: UIView!
     @IBOutlet weak var locationIcon: UIImageView!
     @IBOutlet weak var locationArrow: UIImageView!
-    //waduh
+    
     //struct
     struct RestourantStruct: Equatable {
         var name = String()

@@ -13,7 +13,7 @@ import EasyMapping
 import SVProgressHUD
 
 class TastePalRequest: NSObject {
-    
+    //MARK: GET
     static func GET_TPReview(uid : Int,
         endPoint:String,
         successCompletion:@escaping (TPReviewListModel, String) -> Void,
@@ -68,7 +68,29 @@ class TastePalRequest: NSObject {
             }
         })
     }
-    
+    static func GET_GoogleMapSearch(curLat : Double,
+                             curLng:Double,
+                             successCompletion:@escaping (GoogleMapsSearchModel, String) -> Void,
+                             failCompletion:@escaping (String) -> Void){
+        //https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=(yourlatitude),(yourlongitude)&radius=5000&keyword=starbucks&key=(yourkey)
+        //        let headers:HTTPHeaders = ["X-Api-Key":"AIzaSyBv7koUcTFTYxdkvLVHWU8h_TDVmzLNHwQ"]
+        let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(curLat),\(curLng)&radius=5000&keyword=starbucks&key=AIzaSyBv7koUcTFTYxdkvLVHWU8h_TDVmzLNHwQ"
+        print(url)
+        TastePalAPI.GET(url: url, showHUD: true, completion: {jsonData in
+            let json = JSON(jsonData)
+            
+            if(json["status"].stringValue == "OK"){
+                let content = EKMapper.object(
+                    fromExternalRepresentation: json["results"].dictionaryObject!,
+                    with: GoogleMapsSearchModel.objectMapping()
+                )
+                successCompletion(content as! GoogleMapsSearchModel,"Success")
+            }else{
+                failCompletion(json["status"].stringValue)
+            }
+        })
+    }
+    //MARK: Post
     static func POST_NEWGUEST(
         registered : String,
         first_taste : String,
