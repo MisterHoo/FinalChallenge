@@ -53,6 +53,10 @@
 		66A52FF5222692B50003A0E4 /* TPReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A52FF4222692B50003A0E4 /* TPReview.swift */; };
 		66A52FF72226971E0003A0E4 /* TastePalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A52FF62226971E0003A0E4 /* TastePalDataManager.swift */; };
 		66A52FFA2227E3710003A0E4 /* PostReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A52FF92227E3710003A0E4 /* PostReviewModel.swift */; };
+		66A52FFC222CECAE0003A0E4 /* NewGuestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A52FFB222CECAE0003A0E4 /* NewGuestModel.swift */; };
+		66A52FFE222CF0240003A0E4 /* ResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A52FFD222CF0230003A0E4 /* ResultModel.swift */; };
+		66A53000222CF3E40003A0E4 /* AteFoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A52FFF222CF3E40003A0E4 /* AteFoodModel.swift */; };
+		66A53002222CF5770003A0E4 /* UpdateReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A53001222CF5770003A0E4 /* UpdateReviewModel.swift */; };
 		66B1411721FED3DB0013C5E7 /* LocationFOTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B1411621FED3DB0013C5E7 /* LocationFOTableViewCell.swift */; };
 		66B1411921FED3FD0013C5E7 /* SearchFOTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B1411821FED3FD0013C5E7 /* SearchFOTableViewCell.swift */; };
 		66B1411B21FED4290013C5E7 /* TastePreferenceFOTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B1411A21FED4290013C5E7 /* TastePreferenceFOTableViewCell.swift */; };
@@ -165,6 +169,10 @@
 		66A52FF4222692B50003A0E4 /* TPReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPReview.swift; sourceTree = "<group>"; };
 		66A52FF62226971E0003A0E4 /* TastePalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastePalDataManager.swift; sourceTree = "<group>"; };
 		66A52FF92227E3710003A0E4 /* PostReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostReviewModel.swift; sourceTree = "<group>"; };
+		66A52FFB222CECAE0003A0E4 /* NewGuestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGuestModel.swift; sourceTree = "<group>"; };
+		66A52FFD222CF0230003A0E4 /* ResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultModel.swift; sourceTree = "<group>"; };
+		66A52FFF222CF3E40003A0E4 /* AteFoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AteFoodModel.swift; sourceTree = "<group>"; };
+		66A53001222CF5770003A0E4 /* UpdateReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateReviewModel.swift; sourceTree = "<group>"; };
 		66B1411621FED3DB0013C5E7 /* LocationFOTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFOTableViewCell.swift; sourceTree = "<group>"; };
 		66B1411821FED3FD0013C5E7 /* SearchFOTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFOTableViewCell.swift; sourceTree = "<group>"; };
 		66B1411A21FED4290013C5E7 /* TastePreferenceFOTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastePreferenceFOTableViewCell.swift; sourceTree = "<group>"; };
@@ -397,6 +405,10 @@
 			children = (
 				66A52FF4222692B50003A0E4 /* TPReview.swift */,
 				66A52FF92227E3710003A0E4 /* PostReviewModel.swift */,
+				66A52FFB222CECAE0003A0E4 /* NewGuestModel.swift */,
+				66A52FFD222CF0230003A0E4 /* ResultModel.swift */,
+				66A52FFF222CF3E40003A0E4 /* AteFoodModel.swift */,
+				66A53001222CF5770003A0E4 /* UpdateReviewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -529,8 +541,8 @@
 			children = (
 				66E1436B221A932F00994540 /* TastePalAPI.swift */,
 				66E1436D221A934D00994540 /* TastePalAlert.swift */,
-				66E14371221A941E00994540 /* TastePalUrl.swift */,
 				66A52FF62226971E0003A0E4 /* TastePalDataManager.swift */,
+				66E14371221A941E00994540 /* TastePalUrl.swift */,
 				66E1436F221A93B600994540 /* TastePalRequest.swift */,
 			);
 			path = Helper;
@@ -865,6 +877,7 @@
 				6625BFAB220AB01400A040C3 /* GiveReviewDescTableViewCell.swift in Sources */,
 				66763D7E21E8794100368E6E /* FoodsTableViewCell.swift in Sources */,
 				6653E98C2205D964009D6BE6 /* SeeAllReviewViewController.swift in Sources */,
+				66A52FFC222CECAE0003A0E4 /* NewGuestModel.swift in Sources */,
 				66B737D021E46B72000C9B50 /* GiveReviewViewController.swift in Sources */,
 				CDC932F9220036CB00B3F33A /* AddFoodViewController.swift in Sources */,
 				66763D7721E8779500368E6E /* FoodAvoidViewController.swift in Sources */,
@@ -880,6 +893,7 @@
 				CAC3D53D21F9B0E1002CF4D9 /* FavoriteFoodTableViewCell.swift in Sources */,
 				CDC76855220AF9A800DDED86 /* RemoveDuplicate.swift in Sources */,
 				CDBAD60B21F8614C00017B9F /* NeverEatCollectionViewCell.swift in Sources */,
+				66A53002222CF5770003A0E4 /* UpdateReviewModel.swift in Sources */,
 				66EE05232203414400FD770D /* FoodMightLikeViewController.swift in Sources */,
 				66DB37E321FEC50D00A695E8 /* FindOutViewController.swift in Sources */,
 				66B1411921FED3FD0013C5E7 /* SearchFOTableViewCell.swift in Sources */,
@@ -912,6 +926,7 @@
 				6625BFAD220AB2D500A040C3 /* GiveReviewTasteTableViewCell.swift in Sources */,
 				66763D7921E877A300368E6E /* DoneTestViewController.swift in Sources */,
 				6625BFAF220ABD3E00A040C3 /* AddAlergenTableViewCell.swift in Sources */,
+				66A53000222CF3E40003A0E4 /* AteFoodModel.swift in Sources */,
 				66A52FFA2227E3710003A0E4 /* PostReviewModel.swift in Sources */,
 				CDBAD60D21F8615D00017B9F /* NeverEatViewController.swift in Sources */,
 				66B737D321E46C10000C9B50 /* ProfileViewController.swift in Sources */,
@@ -948,6 +963,7 @@
 				CD20EB6E21FECC4500F147B2 /* AlergicFoodViewController.swift in Sources */,
 				664059082213D4F50084574A /* FoodNextActionTableViewCell.swift in Sources */,
 				66EE05172202C45200FD770D /* FavoriteFoodCollectionViewCell.swift in Sources */,
+				66A52FFE222CF0240003A0E4 /* ResultModel.swift in Sources */,
 				66E14370221A93B600994540 /* TastePalRequest.swift in Sources */,
 				6653E98A2205D959009D6BE6 /* RecommendedFoodViewController.swift in Sources */,
 				66B737E221E47020000C9B50 /* ResultInformationTableViewCell.swift in Sources */,

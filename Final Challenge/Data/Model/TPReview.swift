@@ -23,7 +23,7 @@ class TPReviewListModel: NSObject, EKMappingProtocol{
 
 class TPReviewModel : NSObject, EKMappingProtocol{
     @objc dynamic var restaurant_id = 0
-    @objc dynamic var desc = ""
+    @objc dynamic var descript = ""
     @objc dynamic var rating = 0
     @objc dynamic var taste = ""
     @objc dynamic var review_id = 0
@@ -34,10 +34,10 @@ class TPReviewModel : NSObject, EKMappingProtocol{
     @objc dynamic var food_id = 0
     
     
-    convenience init(review_id : Int, description : String, taste : String, rating : Int, food_image : String, favorite_food : String, food_id : Int, uid : Int, food_name : String, restaurant_id : Int) {
+    convenience init(review_id : Int, descript : String, taste : String, rating : Int, food_image : String, favorite_food : String, food_id : Int, uid : Int, food_name : String, restaurant_id : Int) {
         self.init()
         self.review_id = review_id
-        self.desc = description
+        self.descript = descript
         self.taste = taste
         self.rating = rating
         self.food_image = food_image
@@ -55,7 +55,7 @@ class TPReviewModel : NSObject, EKMappingProtocol{
                 mapping.mapProperties(from:
                     [
                         "review_id",
-                        "description",
+                        "descript",
                         "taste",
                         "rating",
                         "food_image",

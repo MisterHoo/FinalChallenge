@@ -15,7 +15,7 @@ class ProfileViewController: UIViewController {
     
     var screenHeight = UIScreen.main.bounds.height
     
-    var userImage = UIImage(named: "Indonesian")
+    var userImage = TastePalIcon.profileImage
     var userName = "Justine"
     
     @IBOutlet weak var headerPicture: UIImageView!
