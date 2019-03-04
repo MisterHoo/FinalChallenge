@@ -89,7 +89,7 @@
                                             <constraint firstAttribute="height" constant="21" id="6Za-xl-CYy"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5E-Gs-uVq">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5E-Gs-uVq">
                                         <rect key="frame" x="41" y="0.0" width="298" height="44"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -105,7 +105,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="mRq-65-5q5" secondAttribute="bottom" constant="11" id="1jG-YU-4Kz"/>
-                                    <constraint firstItem="8yJ-Hk-3Zr" firstAttribute="leading" relation="lessThanOrEqual" secondItem="p5E-Gs-uVq" secondAttribute="trailing" constant="5" id="7Zw-8o-V34"/>
+                                    <constraint firstItem="8yJ-Hk-3Zr" firstAttribute="leading" secondItem="p5E-Gs-uVq" secondAttribute="trailing" constant="5" id="7Zw-8o-V34"/>
                                     <constraint firstItem="p5E-Gs-uVq" firstAttribute="leading" secondItem="mRq-65-5q5" secondAttribute="trailing" constant="4" id="AHp-L2-m6p"/>
                                     <constraint firstAttribute="bottom" secondItem="p5E-Gs-uVq" secondAttribute="bottom" id="BMA-Nq-dyE"/>
                                     <constraint firstItem="8yJ-Hk-3Zr" firstAttribute="top" secondItem="Ogc-FB-jzX" secondAttribute="top" constant="17" id="Eqi-DJ-xu9"/>
@@ -356,11 +356,11 @@
                                         <rect key="frame" x="0.0" y="604" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="keA-Oe-xsr" id="j2a-uG-akN">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="See All Food That You Might Like" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UuS-5C-U27">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="43.666666666666664"/>
+                                                    <rect key="frame" x="24" y="0.0" width="316" height="43.666666666666664"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.58431372550000005" green="0.56470588239999997" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -380,7 +380,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Your Pick" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XAz-HM-yAI">
-                                                    <rect key="frame" x="16" y="0.0" width="344" height="43.666666666666664"/>
+                                                    <rect key="frame" x="24" y="0.0" width="336" height="43.666666666666664"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -473,11 +473,6 @@
                             <constraint firstItem="E1b-uy-b3c" firstAttribute="trailing" secondItem="Et2-sK-qAD" secondAttribute="trailing" id="qEd-dR-jfw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="E1b-uy-b3c"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="KEn-QE-YVa"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Find Out" largeTitleDisplayMode="always" id="tte-AR-BFZ"/>
                     <connections>
