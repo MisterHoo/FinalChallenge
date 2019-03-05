@@ -24,3 +24,12 @@ class TastePreference : NSObject {
         self.value = value
     }
 }
+
+enum Taste : String{
+    case sweet = "Sweet"
+    case salty = "Salty"
+    case sour = "Sour"
+    case bitter = "Bitter"
+    case bland = "Bland"
+    case savoury = "Savoury"
+}

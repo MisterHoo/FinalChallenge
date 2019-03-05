@@ -25,7 +25,7 @@ class TastePalRequest: NSObject {
             let json = JSON(jsonData)
             print(json)
 //            print(json["test"])
-            if(json["test"].boolValue){
+            if(json["status"].boolValue){
 //                print(json["result"])
 //                print(json["result"].dictionaryObject!)
                 
@@ -52,7 +52,7 @@ class TastePalRequest: NSObject {
             let json = JSON(jsonData)
             print(json)
             //            print(json["test"])
-            if(json["test"].boolValue){
+            if(json["status"].boolValue){
                 //                print(json["result"])
                 //                print(json["result"].dictionaryObject!)
                 
@@ -63,6 +63,62 @@ class TastePalRequest: NSObject {
                     with: TPResultListModel.objectMapping()
                 )
                 successCompletion(content as! TPResultListModel,/*json["message"].stringValue*/"Success")
+            }else{
+                failCompletion(json["message"].stringValue)
+            }
+        })
+    }
+    
+    static func GET_TPSuggestedFood(lng : Float, lat : Float,
+                             endPoint:String,
+                             successCompletion:@escaping (TPSuggestedFoodListModel, String) -> Void,
+                             failCompletion:@escaping (String) -> Void){
+        //        let headers:HTTPHeaders = ["X-Api-Key":"883F72561AFD4FAEB3A20E814DE4881E"]
+        let url = TastePalUrl.GET_SUGGESTEDFOOD(lng: lng, lat: lat)
+        print(url)
+        TastePalAPI.GET(url: url, /*header: headers,*/ showHUD: true, completion: {jsonData in
+            let json = JSON(jsonData)
+            print(json)
+            //            print(json["test"])
+            if(json["status"].boolValue){
+                //                print(json["result"])
+                //                print(json["result"].dictionaryObject!)
+                
+                //                print(json["result"].dictionary as Any)
+                
+                let content = EKMapper.object(
+                    fromExternalRepresentation: json["result"].dictionaryObject!,
+                    with: TPSuggestedFoodListModel.objectMapping()
+                )
+                successCompletion(content as! TPSuggestedFoodListModel,/*json["message"].stringValue*/"Success")
+            }else{
+                failCompletion(json["message"].stringValue)
+            }
+        })
+    }
+    
+    static func GET_TPTastePreference(taste_id : Int,
+                             endPoint:String,
+                             successCompletion:@escaping (TPTastePreferencesModel, String) -> Void,
+                             failCompletion:@escaping (String) -> Void){
+        //        let headers:HTTPHeaders = ["X-Api-Key":"883F72561AFD4FAEB3A20E814DE4881E"]
+        let url = TastePalUrl.GET_TASTEPREFERENCE(taste_id: taste_id)
+        
+        TastePalAPI.GET(url: url, /*header: headers,*/ showHUD: true, completion: {jsonData in
+            let json = JSON(jsonData)
+            print(json)
+            
+            if(json["status"].boolValue){
+                //                print(json["result"])
+                //                print(json["result"].dictionaryObject!)
+                
+                //                print(json["result"].dictionary as Any)
+                
+                let content = EKMapper.object(
+                    fromExternalRepresentation: json["result"].dictionaryObject!,
+                    with: TPTastePreferencesModel.objectMapping()
+                )
+                successCompletion(content as! TPTastePreferencesModel,/*json["message"].stringValue*/"Success")
             }else{
                 failCompletion(json["message"].stringValue)
             }
@@ -102,11 +158,12 @@ class TastePalRequest: NSObject {
         
         TastePalAPI.POST(url: TastePalUrl.POST_NEW_GUEST, parameter: parameters, /*header: headers*/ showHUD: true,completion:{jsonData in
             let json = JSON(jsonData)
+            print(json)
             
             if(json["status"].boolValue){
                 
                 let user = EKMapper.object(
-                    fromExternalRepresentation: json["message"].dictionaryObject!,
+                    fromExternalRepresentation: json["result"].dictionaryObject!,
                     with: TPNewGuestModel.objectMapping()
                 )
                 successCompletion(user as! TPNewGuestModel,"Success")

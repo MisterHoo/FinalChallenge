@@ -31,6 +31,7 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
             return lhs.coordinate.latitude == rhs.coordinate.latitude && lhs.coordinate.longitude == rhs.coordinate.longitude
         }
     }
+    
     //variable
     let notificationFeddback = UINotificationFeedbackGenerator()
     var searching: Bool = false
@@ -41,10 +42,11 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
     var selectedFood: [String] = []
     var tempFoodName: String?
     var tempFoodLoc: CLLocationCoordinate2D?
-    
     let screenHeight = UIScreen.main.bounds.height
-    
     let locationManager = CLLocationManager()
+    
+    var tastePreferences : [TastePreference] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,8 +70,87 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
         
         locationTouchable()
         setUpLocation()
+        
+        print("UID : \(TastePalDataManager.NewGuest.taste_id)")
+        
+        TastePalRequest.GET_TPTastePreference(taste_id: TastePalDataManager.NewGuest.taste_id, endPoint: "", successCompletion: { (TPTastePreference, message) in
+            TastePalDataManager.TastePreference = TPTastePreference
+            
+            
+            
+            let tpModel = TPTastePreference
+            
+            print(tpModel.first_taste)
+            
+            if tpModel.first_taste != ""{
+                self.tastePreferences.append(self.createTastePreference(type: tpModel.first_taste, value: tpModel.first_value))
+            }
+            
+            if tpModel.second_taste != ""{
+                self.tastePreferences.append(self.createTastePreference(type: tpModel.second_taste, value: tpModel.second_value))
+            }
+            
+            if tpModel.third_taste != ""{
+                self.tastePreferences.append(self.createTastePreference(type: tpModel.third_taste, value: tpModel.third_value))
+            }
+            
+            if tpModel.fourth_taste != ""{
+                self.tastePreferences.append(self.createTastePreference(type: tpModel.fourth_taste, value: tpModel.fourth_value))
+            }
+            
+            if tpModel.fifth_taste != ""{
+                self.tastePreferences.append(self.createTastePreference(type: tpModel.fifth_taste, value: tpModel.fifth_value))
+            }
+            
+            if tpModel.sixth_taste != ""{
+                self.tastePreferences.append(self.createTastePreference(type: tpModel.sixth_taste, value: tpModel.sixth_value))
+            }
+            print(message)
+            
+            for taste in self.tastePreferences{
+                print(taste.type?.rawValue)
+                print(taste.value)
+            }
+            
+            self.tableView.reloadData()
+        }) { (message) in
+            print(message)
+        }
+        
         // Do any additional setup after loading the view.
     }
+    
+    func createTastePreference(type : String, value : Float) -> TastePreference{
+        
+        if type == "Sweet"{
+            return TastePreference(type: .sweet, value: value)
+        }else if type == "Savoury"{
+            return TastePreference(type: .savoury, value: value)
+        }else if type == "Sour"{
+            return TastePreference(type: .sour, value: value)
+        }else if type == "Salty"{
+            return TastePreference(type: .salty, value: value)
+        }else if type == "Bitter"{
+            return TastePreference(type: .bitter, value: value)
+        }else if type == "Bland"{
+            return TastePreference(type: .bland, value: value)
+        }else{
+            return TastePreference(type: .bitter, value: 0)
+        }
+    }
+    
+    /*
+        //Untuk API suggestedFood
+         TastePalRequest.GET_TPSuggestedFood(lng: <#T##Float#>, lat: <#T##Float#>, endPoint: "", successCompletion: { (SuggestedFood, message) in
+         print(message)
+     
+         self.tableView.reloadData()
+         }) { (message) in
+         print(message)
+         }
+     
+     */
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "FindOutToResult") {
             let secondViewController = segue.destination as! ResultViewController
@@ -194,10 +275,30 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
                     return p1.distance < p2.distance
                 })
                 self.locationOutlet.text = self.restourantList[0].name
+                
                 self.restourantList = self.unique(restourants: self.restourantList)
                 self.tempRestourantList = self.restourantList
                 self.restourantTableView.reloadData()
                 self.tempFoodLoc = mapItem.placemark.coordinate
+                
+                //API Suggested Food
+                
+                let lng : Float = Float(self.restourantList[0].coordinate.longitude)
+                let lat : Float = Float(self.restourantList[0].coordinate.latitude)
+                
+                TastePalRequest.GET_TPSuggestedFood(lng: 20, lat: 10, endPoint: "", successCompletion: { (SuggestedFood, message) in
+                    let suggestedList = SuggestedFood.TPSuggestedFoodList
+                    
+                    self.searchResult.removeAll()
+                    
+                    for food in suggestedList{
+                        self.searchResult.append(food.food_name)
+                    }
+                    self.searchResult.sort()
+                    self.tableView.reloadData()
+                }) { (message) in
+                    print(message)
+                }
             }
             print(count)
         }
@@ -287,6 +388,7 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
                     tableView.separatorStyle = .none
                     
                     cell.reset()
+                    cell.tastePreferences = tastePreferences
                     cell.selectionStyle = .none
                     if(cell.baseRect.subviews.count == 0){
                         cell.animateView()
@@ -334,6 +436,24 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
             }
             searchBarOutlet.text?.removeAll()
             searchBarOutlet.showsCancelButton = false
+            
+            let lng : Float = Float((tempFoodLoc?.longitude)!)
+            let lat : Float = Float((tempFoodLoc?.latitude)!)
+            
+            TastePalRequest.GET_TPSuggestedFood(lng: lng, lat: lat, endPoint: "", successCompletion: { (SuggestedFood, message) in
+                let suggestedList = SuggestedFood.TPSuggestedFoodList
+                
+                self.searchResult.removeAll()
+                
+                for food in suggestedList{
+                    self.searchResult.append(food.food_name)
+                }
+                self.searchResult.sort()
+                self.tableView.reloadData()
+            }) { (message) in
+                print(message)
+            }
+            
         } else {
             if indexPath.row < selectedFood.count && !selectedFood.isEmpty {
                 if indexPath.row == 0{

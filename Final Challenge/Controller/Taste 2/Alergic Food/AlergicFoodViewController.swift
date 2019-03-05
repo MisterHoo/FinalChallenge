@@ -93,8 +93,60 @@ class AlergicFoodViewController: UIViewController,UITableViewDelegate,UITableVie
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func letsGo(_ sender: Any) {
-        performSegue(withIdentifier: "ToMain", sender: self)
+        
+        let tastePreferences = sortingTaste(tastePreferences: DummyFoodPreference.tastePreference)
+        
+//        print("Hasil AKHIR")
+//        for taste in tastePreferences{
+//            print("\(taste.type) : \(taste.value)")
+//        }
+        
+        var taste_name : [String] = ["","","","","",""]
+        var taste_value : [Float] = [0.0,0.0,0.0,0.0,0.0,0.0]
+        
+        for i in 0...tastePreferences.count-1{
+            taste_name[i] = (tastePreferences[i].type?.rawValue)!
+            taste_value[i] = tastePreferences[i].value!
+        }
+        
+        print(taste_name)
+        print(taste_value)
+        
+        TastePalRequest.POST_NEWGUEST(registered: "false",
+                                      first_taste: taste_name[0], first_value: taste_value[0],
+                                      second_taste: taste_name[1], second_value: taste_value[1],
+                                      third_taste: taste_name[2], third_value: taste_value[2],
+                                      fourth_taste: taste_name[3], fourth_value: taste_value[3],
+                                      fifth_taste: taste_name[4], fifth_value: taste_value[4],
+                                      sixth_taste: taste_name[5], sixth_value: taste_value[5],
+                                      successCompletion: { (newGuest, message) in
+                                    print(message)
+                                    self.performSegue(withIdentifier: "ToMain", sender: self)
+                                        
+                                    TastePalDataManager.NewGuest = newGuest
+        }) { (message) in
+            print(message)
+        }
+        
+       
     }
+    
+    func sortingTaste(tastePreferences : [TastePreference]) -> [TastePreference]{
+        
+        let result = tastePreferences.sorted { (a, b) -> Bool in
+        
+            if !(a.value!.isLess(than: b.value!)){
+                return true
+            }else{
+                return false
+                
+            }
+        }
+        
+        return result
+    }
+    
+    
     //MARK: read the data after searching the food
     func readTempFood(){
         let defaults = UserDefaults.standard

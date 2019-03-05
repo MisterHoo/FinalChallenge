@@ -19,11 +19,4 @@ class Review : NSObject{
     var desc : String?
 }
 
-enum Taste{
-    case sweet
-    case salty
-    case sour
-    case bitter
-    case bland
-    case savoury
-}
+

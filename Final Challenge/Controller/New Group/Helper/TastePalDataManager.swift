@@ -11,6 +11,9 @@ import Foundation
 struct TastePalDataManager {
     
     static var Review : TPReviewListModel!
+    static var NewGuest : TPNewGuestModel!
+    static var TastePreference : TPTastePreferencesModel!
+    static var ResultList : TPResultListModel!
     
 //    static var USER:UserModel!
 //    static var ABOUTCONTENT:AboutModel!
