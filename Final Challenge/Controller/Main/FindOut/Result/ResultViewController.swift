@@ -16,9 +16,13 @@ class ResultViewController: UIViewController {
     let secTitle = "Review"
     var foodName:String?
     var location:CLLocationCoordinate2D?
-    var reviews : [Review] = []
+    var food_id:Int = 0
+    var resto_id:Int = 0
+//    var reviews : [Review] = []
     
     var screenHeight = UIScreen.main.bounds.height
+    
+    var reviews : [TPResultModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +35,17 @@ class ResultViewController: UIViewController {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         navigationItem.largeTitleDisplayMode = .never
-        
-        
-        
+    
         tableView.tableFooterView = UIView()
         tableView.layoutIfNeeded()
+        
+        TastePalRequest.GET_TPResult(uid: TastePalDataManager.NewGuest.uid, lng: Float((location?.longitude)!), lat: Float((location?.latitude)!), food_name: foodName!, endPoint: "", successCompletion: { (ResultList, message) in
+            TastePalDataManager.ResultList = ResultList
+            self.reviews = ResultList.TPResultList
+            self.tableView.reloadData()
+        }) { (message) in
+            print(message)
+        }
     }
 }
 
@@ -111,7 +121,7 @@ extension ResultViewController : UITableViewDelegate, UITableViewDataSource{
                 //ngebalikin information
                 let cell = tableView.dequeueReusableCell(withIdentifier: "foodInformation") as! FoodInformationTableViewCell
                 if let recivedName = foodName {
-                    cell.foodName.text = recivedName
+                    cell.foodName.text = foodName
                 }
                 if let reciveLoc = location{
                     cell.location.text = "\(reciveLoc.latitude), \(reciveLoc.longitude)"

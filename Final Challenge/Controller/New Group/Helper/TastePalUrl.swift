@@ -36,6 +36,20 @@ class TastePalUrl: NSObject {
         return url
     }
     
+    static func GET_TASTEPREFERENCE(taste_id : Int) -> String{
+        let url : String = API_GET + "tastepreference/" + String(taste_id)
+        return url
+    }
+    
+    static func GET_SUGGESTEDFOOD(lng : Float, lat : Float) -> String{
+        let lngString : String = String(lng).addingPercentEncoding(withAllowedCharacters: NSCharacterSet.decimalDigits)!
+        
+        let latString : String = String(lat).addingPercentEncoding(withAllowedCharacters: NSCharacterSet.decimalDigits)!
+        
+        let url : String = API_GET + "suggestedFood/" + lngString + "/" + latString
+        return url
+    }
+    
     
     
 //    static let LOGIN = API_POST + "login" // [POST] : {email, password}

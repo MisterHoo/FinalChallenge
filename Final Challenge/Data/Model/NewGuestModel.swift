@@ -11,20 +11,23 @@ import EasyMapping
 
 class TPNewGuestModel : NSObject, EKMappingProtocol{
     @objc dynamic var message = ""
+    @objc dynamic var uid = 0
+    @objc dynamic var taste_id = 0
     
-    convenience init(message : String) {
+    convenience init(message : String, uid : Int, taste_id : Int) {
         self.init()
-        self.message = message
+//        self.message = message
+//        self.uid = uid
+//        self.taste_id = taste_id
     }
     
     static func objectMapping() -> EKObjectMapping {
         return EKObjectMapping(
             for: self,
             with: {(mapping) in
-                mapping.mapProperties(from:
-                    [
-                        "message"
-                    ])
+                mapping.mapKeyPath("message", toProperty: "message")
+                mapping.mapKeyPath("uid", toProperty: "uid")
+                mapping.mapKeyPath("taste_id", toProperty: "taste_id")
         })
     }
 }
