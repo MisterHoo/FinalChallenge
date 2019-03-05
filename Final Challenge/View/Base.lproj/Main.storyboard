@@ -89,7 +89,7 @@
                                             <constraint firstAttribute="height" constant="21" id="6Za-xl-CYy"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5E-Gs-uVq">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5E-Gs-uVq">
                                         <rect key="frame" x="41" y="0.0" width="298" height="44"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -105,7 +105,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="mRq-65-5q5" secondAttribute="bottom" constant="11" id="1jG-YU-4Kz"/>
-                                    <constraint firstItem="8yJ-Hk-3Zr" firstAttribute="leading" relation="lessThanOrEqual" secondItem="p5E-Gs-uVq" secondAttribute="trailing" constant="5" id="7Zw-8o-V34"/>
+                                    <constraint firstItem="8yJ-Hk-3Zr" firstAttribute="leading" secondItem="p5E-Gs-uVq" secondAttribute="trailing" constant="5" id="7Zw-8o-V34"/>
                                     <constraint firstItem="p5E-Gs-uVq" firstAttribute="leading" secondItem="mRq-65-5q5" secondAttribute="trailing" constant="4" id="AHp-L2-m6p"/>
                                     <constraint firstAttribute="bottom" secondItem="p5E-Gs-uVq" secondAttribute="bottom" id="BMA-Nq-dyE"/>
                                     <constraint firstItem="8yJ-Hk-3Zr" firstAttribute="top" secondItem="Ogc-FB-jzX" secondAttribute="top" constant="17" id="Eqi-DJ-xu9"/>

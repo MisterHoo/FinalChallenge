@@ -9,7 +9,8 @@
 import UIKit
 import CoreLocation
 import MapKit
-
+import GoogleMaps
+import GooglePlaces
 class FindOutViewController: UIViewController, CLLocationManagerDelegate{
 
     //MARK: Outlet
