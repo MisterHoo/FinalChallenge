@@ -25,7 +25,7 @@ class HistoryViewController: UIViewController {
         
         tableView.tableFooterView = UIView()
         
-        TastePalRequest.GET_TPReview(endPoint: "", successCompletion: { (reviewList, message) in
+        TastePalRequest.GET_TPReview(uid: TastePalDataManager.guest, endPoint: "", successCompletion: { (reviewList, message) in
             TastePalDataManager.Review = reviewList
             self.reviews = reviewList.TPReviewList
             print("Berhasil")
