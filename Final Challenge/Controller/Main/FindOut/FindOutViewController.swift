@@ -181,7 +181,7 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
         }else if let dest = segue.destination as? GiveReviewViewController{
             dest.lng = Float((tempFoodLoc?.longitude)!)
             dest.lat = Float((tempFoodLoc?.latitude)!)
-            dest.food_name = tempFoodName!
+            //dest.food_name = tempFoodName!
             dest.from = "find out"
             //kurang resto nama & location name
 //            dest.resto_name =
@@ -364,7 +364,10 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
         }
         selectedFood.append(searchTemp[index])
         searchTemp.remove(at: index)
-        tableView.reloadData()
+        print("madi kipe")
+        print(searching)
+        print(searchTemp.count)
+        self.tableView.reloadData()
     }
 }
 
@@ -374,7 +377,13 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
             return tempRestourantList.count
         }else {
             if searching {
-                return searchTemp.count
+
+                print(searchTemp.count)
+                if searchTemp.count == 0 {
+                    return 1
+                } else{
+                    return searchTemp.count
+                }
             }else{
                 if selectedFood.isEmpty {
                     return 3
@@ -387,7 +396,7 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print(tableView)
+        print("tableView")
         if tableView == restourantTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "restourantCell") as! RestorantTableViewCell
             cell.restourantName.text = tempRestourantList[indexPath.row].name
@@ -395,15 +404,20 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
             return cell
         }else {
             if searching {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "searchedFood") as! FoodSearchTableViewCell
-                cell.searchFoodText.text = searchTemp[indexPath.row]
-                cell.addSearchFoodOutlet.tag = indexPath.row
-                cell.addSearchFoodOutlet.addTarget(self, action: #selector(addFood), for: .touchUpInside)
-                cell.selectionStyle = .none
-                cell.backgroundColor = TastePalColor.charcoal
-                
-                return cell
-                
+                if searchTemp.count == 0 {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "addNewFood")
+                    print("keprint bangke")
+                    return cell!
+                }else {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "searchedFood") as! FoodSearchTableViewCell
+                    cell.searchFoodText.text = searchTemp[indexPath.row]
+                    cell.addSearchFoodOutlet.tag = indexPath.row
+                    cell.addSearchFoodOutlet.addTarget(self, action: #selector(addFood), for: .touchUpInside)
+                    cell.selectionStyle = .none
+                    cell.backgroundColor = TastePalColor.charcoal
+                    
+                    return cell
+                }
             }else{
                 if indexPath.row < selectedFood.count && !selectedFood.isEmpty {
                     if indexPath.row == 0{
@@ -499,18 +513,22 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
             }
             
         } else {
-            if indexPath.row < selectedFood.count && !selectedFood.isEmpty {
-                if indexPath.row == 0{
-                    
-                }else {
-                    tableView.deselectRow(at: indexPath, animated: true)
-                    print(selectedFood[indexPath.row])
-                    tempFoodName = selectedFood[indexPath.row]
-                    print("jalan pilih")
-                    performSegue(withIdentifier: "FindOutToResult", sender: self)
+            if searching == true && (indexPath.row == 0) && (searchTemp.count == 0) {
+                performSegue(withIdentifier: "FOtoReview", sender: self)
+            }else {
+                if indexPath.row < selectedFood.count && !selectedFood.isEmpty {
+                    if indexPath.row == 0{
+                        
+                    }else {
+                        tableView.deselectRow(at: indexPath, animated: true)
+                        print(selectedFood[indexPath.row])
+                        tempFoodName = selectedFood[indexPath.row]
+                        print("jalan pilih")
+                        performSegue(withIdentifier: "FindOutToResult", sender: self)
+                    }
+                }else if indexPath.row == 2+selectedFood.count{
+                    performSegue(withIdentifier: "FindOutToMightLike", sender: self)
                 }
-            }else if indexPath.row == 2+selectedFood.count{
-                performSegue(withIdentifier: "FindOutToMightLike", sender: self)
             }
         }
        
@@ -588,14 +606,16 @@ extension FindOutViewController : UISearchBarDelegate{
             searchBar.showsCancelButton = true
             searchResult.sort()
             searchTemp = searchResult
+            print(searchTemp.count)
             for search in selectedFood {
                 searchTemp.removeAll{$0 == search}
             }
-            tableView.reloadData()
         }else {
             searchBar.showsCancelButton = true
+            searchTemp.removeAll()
+            searching = true
         }
-        
+        tableView.reloadData()
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searching = false
