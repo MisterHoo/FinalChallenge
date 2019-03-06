@@ -42,6 +42,34 @@ class TastePalRequest: NSObject {
         })
     }
     
+    static func GET_TPFavoriteFood(uid : Int,
+                             endPoint:String,
+                             successCompletion:@escaping (TPFavoriteListModel, String) -> Void,
+                             failCompletion:@escaping (String) -> Void){
+        //        let headers:HTTPHeaders = ["X-Api-Key":"883F72561AFD4FAEB3A20E814DE4881E"]
+        let url = TastePalUrl.GET_FAVORITEFOOD(uid: uid)
+        print(url)
+        TastePalAPI.GET(url: url, /*header: headers,*/ showHUD: true, completion: {jsonData in
+            let json = JSON(jsonData)
+            print(json)
+            //            print(json["test"])
+            if(json["status"].boolValue){
+                //                print(json["result"])
+                //                print(json["result"].dictionaryObject!)
+                
+                //                print(json["result"].dictionary as Any)
+                
+                let content = EKMapper.object(
+                    fromExternalRepresentation: json["result"].dictionaryObject!,
+                    with: TPFavoriteListModel.objectMapping()
+                )
+                successCompletion(content as! TPFavoriteListModel,/*json["message"].stringValue*/"Success")
+            }else{
+                failCompletion(json["message"].stringValue)
+            }
+        })
+    }
+    
     static func GET_TPResult(uid : Int, foodId : Int, restoId : Int,
                              endPoint:String,
                              successCompletion:@escaping (TPResultListModel, String) -> Void,
@@ -96,12 +124,12 @@ class TastePalRequest: NSObject {
         })
     }
     
-    static func GET_TPTastePreference(taste_id : Int,
+    static func GET_TPTastePreference(uid : Int,
                              endPoint:String,
                              successCompletion:@escaping (TPTastePreferencesModel, String) -> Void,
                              failCompletion:@escaping (String) -> Void){
         //        let headers:HTTPHeaders = ["X-Api-Key":"883F72561AFD4FAEB3A20E814DE4881E"]
-        let url = TastePalUrl.GET_TASTEPREFERENCE(taste_id: taste_id)
+        let url = TastePalUrl.GET_TASTEPREFERENCE(uid: uid)
         
         TastePalAPI.GET(url: url, /*header: headers,*/ showHUD: true, completion: {jsonData in
             let json = JSON(jsonData)

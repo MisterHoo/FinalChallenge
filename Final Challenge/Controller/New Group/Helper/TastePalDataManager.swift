@@ -14,6 +14,8 @@ struct TastePalDataManager {
     static var NewGuest : TPNewGuestModel!
     static var TastePreference : TPTastePreferencesModel!
     static var ResultList : TPResultListModel!
+    static var FavoriteFoodList : TPFavoriteListModel!
+    static var uid : Int!
     
 //    static var USER:UserModel!
 //    static var ABOUTCONTENT:AboutModel!

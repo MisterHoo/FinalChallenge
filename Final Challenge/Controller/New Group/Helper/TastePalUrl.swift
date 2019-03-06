@@ -36,8 +36,8 @@ class TastePalUrl: NSObject {
         return url
     }
     
-    static func GET_TASTEPREFERENCE(taste_id : Int) -> String{
-        let url : String = API_GET + "tastepreference/" + String(taste_id)
+    static func GET_TASTEPREFERENCE(uid : Int) -> String{
+        let url : String = API_GET + "tastepreference/" + String(uid)
         return url
     }
     

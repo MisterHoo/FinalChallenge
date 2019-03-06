@@ -46,7 +46,7 @@ class ResultViewController: UIViewController {
         
         //TastePalDataManager.NewGuest.uid
         
-        TastePalRequest.GET_TPResult(uid: 1, foodId: food_id, restoId: resto_id, endPoint: "", successCompletion: { (ResultList, message) in
+        TastePalRequest.GET_TPResult(uid: TastePalDataManager.uid, foodId: food_id, restoId: resto_id, endPoint: "", successCompletion: { (ResultList, message) in
             TastePalDataManager.ResultList = ResultList
             self.reviews = ResultList.TPResultList
             
@@ -312,7 +312,7 @@ extension ResultViewController : ReadMoreDelegate{
 extension ResultViewController : UserAteDelegate{
     func didAte() {
         //userMakan
-        TastePalRequest.POST_ATEFOOD(food_id: food_id, uid: TastePalDataManager.NewGuest.uid, successCompletion: { (AteFoodResult, message) in
+        TastePalRequest.POST_ATEFOOD(food_id: food_id, uid: TastePalDataManager.uid, successCompletion: { (AteFoodResult, message) in
             print(AteFoodResult.message)
         }) { (message) in
             print(message)
