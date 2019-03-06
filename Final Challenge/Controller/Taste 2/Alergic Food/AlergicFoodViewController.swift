@@ -124,6 +124,9 @@ class AlergicFoodViewController: UIViewController,UITableViewDelegate,UITableVie
                                     self.performSegue(withIdentifier: "ToMain", sender: self)
                                         
                                     TastePalDataManager.NewGuest = newGuest
+                                        TastePalDataManager.uid = newGuest.uid
+                                        UserDefaults.standard.set(newGuest.uid, forKey: "uid")
+                                        print(newGuest.uid)
         }) { (message) in
             print(message)
         }

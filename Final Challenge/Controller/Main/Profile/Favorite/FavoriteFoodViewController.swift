@@ -13,6 +13,7 @@ class FavoriteFoodViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    var favoriteFoodList : [TPFavoriteModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +62,7 @@ class FavoriteFoodViewController: UIViewController {
 
 extension FavoriteFoodViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return favoriteFoodList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -70,9 +71,11 @@ extension FavoriteFoodViewController : UITableViewDelegate, UITableViewDataSourc
         cell?.selectionStyle = .none
         tableView.separatorColor = TastePalColor.olive
         
-//        cell?.textLabel?.text
-//        cell?.imageView?.image
-//        cell?.detailTextLabel?.text
+        cell?.textLabel?.text = favoriteFoodList[indexPath.row].food_name
+        cell?.imageView?.image = TastePalIcon.historyImage
+        cell?.imageView?.clipsToBounds = true
+        cell?.imageView?.contentMode = .scaleAspectFill
+        cell?.detailTextLabel?.text = "\(favoriteFoodList[indexPath.row].restaurant_name), \(favoriteFoodList[indexPath.row].location_name)"
         
         return cell!
     }

@@ -83,9 +83,9 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
         locationTouchable()
         setUpLocation()
         
-        print("UID : \(TastePalDataManager.NewGuest.taste_id)")
         
-        TastePalRequest.GET_TPTastePreference(taste_id: 1, endPoint: "", successCompletion: { (TPTastePreference, message) in
+        
+        TastePalRequest.GET_TPTastePreference(uid: TastePalDataManager.uid, endPoint: "", successCompletion: { (TPTastePreference, message) in
             TastePalDataManager.TastePreference = TPTastePreference
             
             
@@ -317,7 +317,7 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
                 let lng : Float = Float(self.restourantList[0].coordinate.longitude)
                 let lat : Float = Float(self.restourantList[0].coordinate.latitude)
                 
-                TastePalRequest.GET_TPSuggestedFood(lng: 20, lat: 10, endPoint: "", successCompletion: { (SuggestedFood, message) in
+                TastePalRequest.GET_TPSuggestedFood(lng: lng, lat: lat, endPoint: "", successCompletion: { (SuggestedFood, message) in
                     let suggestedList = SuggestedFood.TPSuggestedFoodList
                     
                     self.searchResult.removeAll()

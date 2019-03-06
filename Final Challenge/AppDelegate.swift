@@ -17,6 +17,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+        
+        if let uid = UserDefaults.standard.value(forKey: "uid") as? Int{
+            window = UIWindow(frame: UIScreen.main.bounds)
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let viewController = storyboard.instantiateInitialViewController()
+            window?.rootViewController = viewController
+            window?.makeKeyAndVisible()
+            TastePalDataManager.uid = uid
+            print(uid)
+        }else{
+            window = UIWindow(frame: UIScreen.main.bounds)
+            let storyboard = UIStoryboard(name: "TastePreferenceTestV2", bundle: Bundle.main)
+            let viewController = storyboard.instantiateInitialViewController()
+            window?.rootViewController = viewController
+            window?.makeKeyAndVisible()
+        }
+        
         return true
     }
 

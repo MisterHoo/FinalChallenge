@@ -26,6 +26,8 @@ class ProfileViewController: UIViewController {
         performSegue(withIdentifier: "toEditProfilePage", sender: self)
     }
     
+    var favoriteFoodList : [TPFavoriteModel] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,6 +45,18 @@ class ProfileViewController: UIViewController {
         
         headerPicture.image = userImage
         headerName.text = "Hi \(userName),"
+        
+        TastePalRequest.GET_TPFavoriteFood(uid: TastePalDataManager.uid, endPoint: "", successCompletion: { (favoriteList, message) in
+            TastePalDataManager.FavoriteFoodList = favoriteList
+            self.favoriteFoodList = favoriteList.TPFavoriteList
+            
+            print("FAVORITE FOOD : \(self.favoriteFoodList.count)")
+            
+            
+            self.tableView.reloadData()
+        }) { (message) in
+            print(message)
+        }
         
         
         
@@ -118,6 +132,12 @@ class ProfileViewController: UIViewController {
         return navTitleView
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if let dest = segue.destination as? FavoriteFoodViewController{
+            dest.favoriteFoodList = favoriteFoodList
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool){
         navigationController?.navigationBar.isHidden = true
     }
@@ -176,6 +196,10 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource{
             cell.collectionView.delegate = self
             cell.collectionView.dataSource = self
             
+            if favoriteFoodList.count > 0{
+                cell.collectionView.reloadData()
+            }
+            
             cell.selectionStyle = .none
             tableView.separatorStyle = .singleLine
             tableView.separatorColor = TastePalColor.olive
@@ -208,6 +232,11 @@ extension ProfileViewController: UICollectionViewDataSource, UICollectionViewDel
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "favoriteFoodCell", for: indexPath) as! FavoriteFoodCollectionViewCell
         
         cell.foodImage.layer.cornerRadius = 4
+        
+        if favoriteFoodList.count > 0{
+            cell.foodName.text = favoriteFoodList[indexPath.row].food_name
+            cell.foodLocation.text = "\(favoriteFoodList[indexPath.row].restaurant_name), \(favoriteFoodList[indexPath.row].location_name)"
+        }
         
         return cell
     }
