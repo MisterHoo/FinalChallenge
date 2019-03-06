@@ -42,21 +42,20 @@ class TastePalRequest: NSObject {
         })
     }
     
-    static func GET_TPResult(uid : Int, lng : Float, lat : Float, food_name : String,
+    static func GET_TPResult(uid : Int, foodId : Int, restoId : Int,
                              endPoint:String,
                              successCompletion:@escaping (TPResultListModel, String) -> Void,
                              failCompletion:@escaping (String) -> Void){
         //        let headers:HTTPHeaders = ["X-Api-Key":"883F72561AFD4FAEB3A20E814DE4881E"]
-        let url = TastePalUrl.GET_RESULT(lng: lng, lat: lat, food_name: food_name, uid: uid)
+        let url = TastePalUrl.GET_RESULT(food_id: foodId, resto_id: restoId, uid: uid)
         TastePalAPI.GET(url: url, /*header: headers,*/ showHUD: true, completion: {jsonData in
             let json = JSON(jsonData)
             print(json)
-            //            print(json["test"])
+    
             if(json["status"].boolValue){
-                //                print(json["result"])
-                //                print(json["result"].dictionaryObject!)
-                
-                //                print(json["result"].dictionary as Any)
+//                print(json["result"])
+//                print(json["result"].dictionaryObject!) 
+//                print(json["result"].dictionary as Any)
                 
                 let content = EKMapper.object(
                     fromExternalRepresentation: json["result"].dictionaryObject!,
@@ -264,18 +263,18 @@ class TastePalRequest: NSObject {
                                      "food_image" : food_image,
                                      "favorite_food" : favorite_food]
         //        let headers:HTTPHeaders = ["X-Api-Key":"883F72561AFD4FAEB3A20E814DE4881E"]
-        TastePalAPI.POST(url: TastePalUrl.POST_ATEFOOD, /*header: headers,*/ parameter: parameters, showHUD: true,completion:{jsonData in
+        TastePalAPI.POST(url: TastePalUrl.UPDATE_REVIEW, /*header: headers,*/ parameter: parameters, showHUD: true,completion:{jsonData in
             let json = JSON(jsonData)
             print(json)
             
             if(json["status"].boolValue){
                 let user = EKMapper.object(
-                    fromExternalRepresentation: json["message"].dictionaryObject!,
+                    fromExternalRepresentation: json["result"].dictionaryObject!,
                     with: TPUpdateReviewModel.objectMapping()
                 )
-                successCompletion(user as! TPUpdateReviewModel,json["message"].stringValue)
+                successCompletion(user as! TPUpdateReviewModel,"Success")
             }else{
-                failCompletion(json["message"].stringValue)
+                failCompletion("Failed")
             }
         })
     }

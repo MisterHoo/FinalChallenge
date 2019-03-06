@@ -80,6 +80,7 @@
 		66B737E621E47044000C9B50 /* ResultSimilarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B737E521E47044000C9B50 /* ResultSimilarTableViewCell.swift */; };
 		66C64B7522168B9200B6BB60 /* ProfileEditingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C64B7322168B9200B6BB60 /* ProfileEditingTableViewCell.swift */; };
 		66C64B7622168B9200B6BB60 /* ProfileEditingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66C64B7422168B9200B6BB60 /* ProfileEditingTableViewCell.xib */; };
+		66C8C94F222F841400164C6F /* FavoriteFoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C8C94E222F841400164C6F /* FavoriteFoodModel.swift */; };
 		66DB37E321FEC50D00A695E8 /* FindOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DB37E221FEC50D00A695E8 /* FindOutViewController.swift */; };
 		66E1436C221A932F00994540 /* TastePalAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E1436B221A932F00994540 /* TastePalAPI.swift */; };
 		66E1436E221A934D00994540 /* TastePalAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E1436D221A934D00994540 /* TastePalAlert.swift */; };
@@ -198,6 +199,7 @@
 		66B737E521E47044000C9B50 /* ResultSimilarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultSimilarTableViewCell.swift; sourceTree = "<group>"; };
 		66C64B7322168B9200B6BB60 /* ProfileEditingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditingTableViewCell.swift; sourceTree = "<group>"; };
 		66C64B7422168B9200B6BB60 /* ProfileEditingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileEditingTableViewCell.xib; sourceTree = "<group>"; };
+		66C8C94E222F841400164C6F /* FavoriteFoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFoodModel.swift; sourceTree = "<group>"; };
 		66DB37E221FEC50D00A695E8 /* FindOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindOutViewController.swift; sourceTree = "<group>"; };
 		66E1436B221A932F00994540 /* TastePalAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastePalAPI.swift; sourceTree = "<group>"; };
 		66E1436D221A934D00994540 /* TastePalAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastePalAlert.swift; sourceTree = "<group>"; };
@@ -415,6 +417,7 @@
 				66A53001222CF5770003A0E4 /* UpdateReviewModel.swift */,
 				66A53003222D28660003A0E4 /* TastePreferenceModel.swift */,
 				66A53005222D63880003A0E4 /* SuggestedFood.swift */,
+				66C8C94E222F841400164C6F /* FavoriteFoodModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -880,6 +883,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6611208821F1ADC9005403AF /* DropDownHeaderViewController.swift in Sources */,
+				66C8C94F222F841400164C6F /* FavoriteFoodModel.swift in Sources */,
 				66B737CE21E46B64000C9B50 /* ResultViewController.swift in Sources */,
 				66763D8021E8794900368E6E /* FoodsLikeTableViewCell.swift in Sources */,
 				CDE4B3AE21F1B6F200DFDE2D /*  CIImagetoCGImage.swift in Sources */,

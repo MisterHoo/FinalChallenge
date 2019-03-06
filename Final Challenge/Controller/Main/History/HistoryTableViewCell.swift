@@ -38,8 +38,10 @@ class HistoryTableViewCell: UITableViewCell {
     }
     
     func setRating(index : Int){
-        for i in 0...index{
-            starRatingOutlet[i].image = TastePalIcon.starYellow
+        if index >= 0{
+            for i in 0...index{
+                starRatingOutlet[i].image = TastePalIcon.starYellow
+            }
         }
     }
 }

@@ -26,10 +26,88 @@ class GiveReviewViewController: UIViewController {
     
     let tastePreferenceTestV2 = UIStoryboard(name: "TastePreferenceTestV2", bundle: nil)
     
+    var food_name : String = ""
+    var resto_name : String = ""
+    var location_name : String = ""
+    var reviewId : Int = 0
+    
+    var lng : Float = 0
+    var lat : Float = 0
+    
     @IBOutlet weak var submitButton: UIButton!
+    
+    var selectRating : Int = 0
+    var selectTaste : String = ""
+    var selectDesc : String = ""
+    var selectFavourite : Bool = false
+    var from : String = ""
     
 
     @IBAction func submitAction(_ sender: Any) {
+        
+        //selectedRating
+        if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? ImageCameraTableViewCell{
+            selectRating = cell.selectedRating
+        }
+        
+        if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 2)) as? GiveReviewDescTableViewCell{
+            selectDesc = cell.userTextView.text
+        }
+        
+        if selectRating == 0{
+            //out
+            let alert = UIAlertController(title: "Please give rating", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default) { (action) in
+            }
+            alert.addAction(action)
+            present(alert, animated: true) {
+                
+            }
+        }
+        
+        if selectDesc == ""{
+            //out
+            let alert = UIAlertController(title: "Please give description", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default) { (action) in
+            }
+            alert.addAction(action)
+            present(alert, animated: true) {
+                
+            }
+        }
+        
+        if selectTaste == ""{
+            //out
+            let alert = UIAlertController(title: "Please give Dominant Taste", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default) { (action) in
+            }
+            alert.addAction(action)
+            present(alert, animated: true) {
+                
+            }
+        }
+        
+        if from == "history"{
+            TastePalRequest.POST_UPDATEREVIEW(review_id: reviewId, descript: selectDesc, taste: selectTaste, rating: selectRating, food_image: "", favorite_food: String(selectFavourite), successCompletion: { (UpdateModel, message) in
+                
+                let alert = UIAlertController(title: "Your submit had been recorded", message: nil, preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default) { (action) in
+                }
+                alert.addAction(action)
+                self.present(alert, animated: true) {
+                    self.dismiss(animated: true, completion: {
+                        
+                    })
+                }
+            }) { (message) in
+                print(message);
+            }
+        }else if from == "find out"{
+            
+        }
+        
+        
+        
 //        TastePalRequest.POST_REGISTER(desc: <#T##String#>, taste: <#T##String#>, rating: <#T##Int#>, food_image: <#T##String#>, favorite_food: <#T##Bool#>, uid: <#T##Int#>, lng: <#T##Float#>, lat: <#T##Float#>, food_name: <#T##String#>, resto_name: <#T##String#>, resto_location: <#T##String#>, successCompletion: { (<#TPPostReviewModel#>, <#String#>) in
 //            <#code#>
 //        }) { (<#String#>) in
@@ -75,10 +153,12 @@ class GiveReviewViewController: UIViewController {
         if favoriteButton?.image == TastePalIcon.heartEmpty{
             //jadi favorite
             favoriteButton?.image = TastePalIcon.heartFilled
+            selectFavourite = true
             print("Jadi Favorite")
         }else{
             //gak jadi favorite
             favoriteButton?.image = TastePalIcon.heartEmpty
+            selectFavourite = false
             print("RemoveFromFavorite")
         }
     }
@@ -161,6 +241,9 @@ extension GiveReviewViewController : UITableViewDelegate, UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "CameraTableCell") as! ImageCameraTableViewCell
             cell.selectionStyle = .none
             
+            cell.foodName.text = food_name
+            cell.locationName.text = "\(resto_name), \(location_name)"
+            
             cell.cameraSystemDelegate = self
             cell.photoFromCamera.image = imageCamera
             
@@ -241,12 +324,16 @@ extension GiveReviewViewController : UICollectionViewDelegate, UICollectionViewD
         
         let item = collectionView.cellForItem(at: indexPath) as! ReviewBasicTasteCollectionViewCell
         
+        selectTaste = item.basicTasteLabel.text!
+        
         item.selectedView.isHidden = false
         item.tickImage.isHidden = false
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let item = collectionView.cellForItem(at: indexPath) as! ReviewBasicTasteCollectionViewCell
+        
+        selectTaste = ""
         
         item.selectedView.isHidden = true
         item.tickImage.isHidden = true

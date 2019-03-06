@@ -16,13 +16,13 @@ class ImageCameraTableViewCell: UITableViewCell{
     
     
     @IBOutlet var starRating: [UIImageView]!
-    
-    
     @IBOutlet weak var foodName: UILabel!
     @IBOutlet weak var locationName: UILabel!
     
     @IBOutlet weak var photoFromCamera: UIImageView!
     @IBOutlet weak var photoButton: UIButton!
+    
+    var selectedRating : Int = 0
     
     var cameraSystemDelegate : CameraSystemDelegate?
     
@@ -52,28 +52,33 @@ class ImageCameraTableViewCell: UITableViewCell{
     
     @objc func oneStarTapped(){
         resetStar()
+        selectedRating = 1
         starRating[0].image = UIImage(named: "StarYellow")
     }
     @objc func twoStarTapped(){
         resetStar()
+        selectedRating = 2
         for i in 0...1{
             starRating[i].image = UIImage(named: "StarYellow")
         }
     }
     @objc func threeStarTapped(){
         resetStar()
+        selectedRating = 3
         for i in 0...2{
             starRating[i].image = UIImage(named: "StarYellow")
         }
     }
     @objc func fourStarTapped(){
         resetStar()
+        selectedRating = 4
         for i in 0...3{
             starRating[i].image = UIImage(named: "StarYellow")
         }
     }
     @objc func fiveStarTapped(){
         resetStar()
+        selectedRating = 5
         for star in starRating{
             star.image = UIImage(named: "StarYellow")
         }

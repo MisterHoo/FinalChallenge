@@ -20,8 +20,11 @@ class ResultViewController: UIViewController {
     var resto_id:Int = 0
 //    var reviews : [Review] = []
     
+    var match_index : Int = 0
+    
     var screenHeight = UIScreen.main.bounds.height
     
+    var tastePreference : TPTastePreferencesModel?
     var reviews : [TPResultModel] = []
     
     override func viewDidLoad() {
@@ -39,14 +42,65 @@ class ResultViewController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.layoutIfNeeded()
         
-        TastePalRequest.GET_TPResult(uid: TastePalDataManager.NewGuest.uid, lng: Float((location?.longitude)!), lat: Float((location?.latitude)!), food_name: foodName!, endPoint: "", successCompletion: { (ResultList, message) in
+        tastePreference = TastePalDataManager.TastePreference
+        
+        //TastePalDataManager.NewGuest.uid
+        
+        TastePalRequest.GET_TPResult(uid: 1, foodId: food_id, restoId: resto_id, endPoint: "", successCompletion: { (ResultList, message) in
             TastePalDataManager.ResultList = ResultList
             self.reviews = ResultList.TPResultList
+            
+            self.match_index = self.checkMatch(listReview: ResultList.TPResultList, userTastePreference: self.tastePreference!)
+            print(self.match_index)
             self.tableView.reloadData()
         }) { (message) in
             print(message)
         }
     }
+    
+    func checkMatch(listReview : [TPResultModel], userTastePreference : TPTastePreferencesModel) -> Int{
+        
+        var count : [Int] = [0,0,0]
+        
+        for review in listReview{
+            if review.taste == userTastePreference.first_taste{
+                count[0] += 1
+            }else if review.taste == userTastePreference.second_taste{
+                count[1] += 1
+            }else if review.taste == userTastePreference.third_taste{
+                count[2] += 1
+            }
+        }
+        
+        let max = count.max()
+        
+        if max == count[0]{
+            return 1
+        }else if max == count[1]{
+            return 2
+        }else if max == count[2]{
+            return 3
+        }else{
+            return 0
+        }
+    }
+    
+    func checkTasteColor(taste : String) -> UIColor{
+        for tasteData in BasicTasteData.basicTaste{
+            if taste.capitalized == tasteData.name?.capitalized{
+                return tasteData.color!
+            }
+        }
+        
+        return UIColor.white
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? SeeAllReviewViewController{
+            dest.reviews = reviews
+        }
+    }
+    
 }
 
 extension ResultViewController : UITableViewDelegate, UITableViewDataSource{
@@ -66,7 +120,7 @@ extension ResultViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath == IndexPath(row: 0, section: 0){
             //information result
-            return 0.53 * screenHeight
+            return 0.6 * screenHeight
         }else if indexPath == IndexPath(row: 1, section: 0){
             //recommended food collection
                 return 0.25 * screenHeight
@@ -120,12 +174,37 @@ extension ResultViewController : UITableViewDelegate, UITableViewDataSource{
             if indexPath.row == 0 {
                 //ngebalikin information
                 let cell = tableView.dequeueReusableCell(withIdentifier: "foodInformation") as! FoodInformationTableViewCell
+                
+                //food Name
                 if let recivedName = foodName {
                     cell.foodName.text = foodName
                 }
-                if let reciveLoc = location{
-                    cell.location.text = "\(reciveLoc.latitude), \(reciveLoc.longitude)"
+                
+                //location
+                if reviews.count != 0{
+                    cell.location.text = "\(reviews[0].restaurant_name), \(reviews[0].location_name)"
                 }
+                
+                //setMatch
+                if match_index == 1{
+                    cell.match.text = "Strongly matches"
+                    cell.taste.text = tastePreference?.first_taste
+                    cell.taste.textColor = checkTasteColor(taste: (tastePreference?.first_taste)!)
+                }else if match_index == 2{
+                    cell.match.text = "Matches"
+                    cell.taste.text = tastePreference?.second_taste
+                    cell.taste.textColor = checkTasteColor(taste: (tastePreference?.second_taste)!)
+                }else if match_index == 3{
+                    cell.match.text = "Fairly matches"
+                    cell.taste.text = tastePreference?.third_taste
+                    cell.taste.textColor = checkTasteColor(taste: (tastePreference?.third_taste)!)
+                }else if match_index == 0{
+                    cell.match.text = "Doesn't really match"
+                    cell.taste.text = "taste"
+                    cell.taste.textColor = UIColor.white
+                }
+                
+                //set table Cell
                 tableView.separatorColor = TastePalColor.olive
                 cell.selectionStyle = .none
                 tableView.separatorStyle = .none
@@ -141,7 +220,6 @@ extension ResultViewController : UITableViewDelegate, UITableViewDataSource{
 //                tableView.separatorColor = TastePalColor.olive
 //                tableView.separatorStyle = .singleLine
                 cell.selectionStyle = .none
-                
                 
                 cell.collectionView.delegate = self
                 cell.collectionView.dataSource = self
@@ -169,6 +247,19 @@ extension ResultViewController : UITableViewDelegate, UITableViewDataSource{
                 cell.userImage.layer.cornerRadius = cell.userImage.frame.width/2
                 cell.readMoreDelegate = self
                 
+                cell.tasteLabel.layer.cornerRadius = 4
+                cell.tasteLabel.clipsToBounds = true
+                
+                //isi cell
+                
+                if reviews.count != 0{
+                    cell.userName.text = reviews[indexPath.row].name
+                    cell.tasteLabel.text = reviews[indexPath.row].taste
+                    cell.tasteLabel.backgroundColor = checkTasteColor(taste: reviews[indexPath.row].taste)
+                    cell.rating.text = String(reviews[indexPath.row].rating)
+                    cell.desc.text = reviews[indexPath.row].descript
+                    cell.desc.sizeToFit()
+                }
                 return cell
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewSectionFooterCell")
@@ -209,8 +300,6 @@ extension ResultViewController : UICollectionViewDelegate, UICollectionViewDataS
         return cell
     }
     
-    
-    
 }
 
 
@@ -223,7 +312,11 @@ extension ResultViewController : ReadMoreDelegate{
 extension ResultViewController : UserAteDelegate{
     func didAte() {
         //userMakan
-        
+        TastePalRequest.POST_ATEFOOD(food_id: food_id, uid: TastePalDataManager.NewGuest.uid, successCompletion: { (AteFoodResult, message) in
+            print(AteFoodResult.message)
+        }) { (message) in
+            print(message)
+        }
     }
 }
 

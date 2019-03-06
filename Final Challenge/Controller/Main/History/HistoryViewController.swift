@@ -13,6 +13,11 @@ class HistoryViewController: UIViewController {
     var reviews : [TPReviewModel] = []
     
     @IBOutlet weak var tableView: UITableView!
+
+    var selectReviewId = 0
+    var selectFoodName = ""
+    var selectRestoName = ""
+    var selectLocationName = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +81,16 @@ class HistoryViewController: UIViewController {
             print("ShowedUp")
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? GiveReviewViewController{
+            dest.food_name = selectFoodName
+            dest.location_name = selectLocationName
+            dest.resto_name = selectRestoName
+            dest.reviewId = selectReviewId
+            dest.from = "history"
+        }
+    }
 
 }
 
@@ -91,22 +106,15 @@ extension HistoryViewController : UITableViewDelegate, UITableViewDataSource{
         tableView.separatorColor = TastePalColor.olive
         
         cell.foodName.text = reviews[indexPath.row].food_name
-//        cell.placeName.text = "\(reviews[indexPath.row])"
+        cell.placeName.text = "\(reviews[indexPath.row].restaurant_name), \(reviews[indexPath.row].location_name)"
         cell.setRating(index: reviews[indexPath.row].rating-1)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, yyyy HH:mm"
+
+        cell.dateLabel.text = formatter.string(from: reviews[indexPath.row].reviewDate)
         
-//        cell.foodName.text = reviews[indexPath.row].name
-//        cell.placeName.text = reviews[indexPath.row].place
-//
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "MMM d, yyyy HH:mm"
-//
-//        cell.dateLabel.text = formatter.string(from: reviews[indexPath.row].date!)
-//
-//        for i in 0...(reviews[indexPath.row].rating! - 1){
-//            cell.starRatingOutlet[i].image = UIImage(named: "StarYellow")
-//
-//        }
-//
+        //Image
+
         return cell
     }
     
@@ -115,8 +123,14 @@ extension HistoryViewController : UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "HistoryToReview", sender: self)
+        
+        if reviews[indexPath.row].rating == 0{
+            selectReviewId = reviews[indexPath.row].review_id
+            selectFoodName = reviews[indexPath.row].food_name
+            selectRestoName = reviews[indexPath.row].restaurant_name
+            selectLocationName = reviews[indexPath.row].location_name
+            
+            performSegue(withIdentifier: "HistoryToReview", sender: self)
+        }
     }
-    
-    
 }

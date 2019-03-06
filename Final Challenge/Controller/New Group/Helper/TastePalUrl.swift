@@ -25,8 +25,8 @@ class TastePalUrl: NSObject {
     static let POST_ATEFOOD = API_POST + "ateFood" // sudah
     static let UPDATE_REVIEW = API_UPDATE + "review"
     
-    static func GET_RESULT(lng : Float, lat : Float, food_name : String, uid : Int) -> String{ //sudah
-        let url : String = API_GET + "result/" + "longitude=" + String(lng) + "/latitude=" + String(lat) + "/food_name=" + food_name + "/" + String(uid)
+    static func GET_RESULT(food_id : Int, resto_id : Int, uid : Int) -> String{ //sudah
+        let url : String = API_GET + "result/" + "restoId=" + String(resto_id) + "/foodId=" + String(food_id) + "/" + String(uid)
         
         return url
     }
@@ -47,6 +47,11 @@ class TastePalUrl: NSObject {
         let latString : String = String(lat).addingPercentEncoding(withAllowedCharacters: NSCharacterSet.decimalDigits)!
         
         let url : String = API_GET + "suggestedFood/" + lngString + "/" + latString
+        return url
+    }
+    
+    static func GET_FAVORITEFOOD(uid : Int) -> String{
+        let url : String = API_GET + "favoriteFood/" + String(uid)
         return url
     }
     

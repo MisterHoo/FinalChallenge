@@ -16,7 +16,7 @@ class TPResultListModel: NSObject, EKMappingProtocol{
         return EKObjectMapping(
             for: self,
             with: {(mapping) in
-                mapping.hasMany(TPReviewModel.self, forKeyPath: "content", forProperty: "TPResultList")
+                mapping.hasMany(TPResultModel.self, forKeyPath: "content", forProperty: "TPResultList")
         })
     }
 }
@@ -25,26 +25,36 @@ class TPResultModel : NSObject, EKMappingProtocol{
     @objc dynamic var food_name = ""
     @objc dynamic var food_image = ""
     @objc dynamic var restaurant_name = ""
-    @objc dynamic var restaurant_location = ""
+    @objc dynamic var location_name = ""
     @objc dynamic var taste = ""
     @objc dynamic var profile_image = ""
-    @objc dynamic var username = ""
+    @objc dynamic var name = ""
     @objc dynamic var rating = 0
     @objc dynamic var descript = ""
     
-    
-    convenience init(food_name : String, food_image : String, restaurant_name : String, restaurant_location : String, taste : String, profile_image : String, username : String, rating : Int, descript : String) {
+    convenience init(food_name : String, food_image : String, restaurant_name : String, location_name : String, taste : String, profile_image : String, name : String, rating : Int, descript : String) {
         self.init()
         self.food_name = food_name
         self.food_image = food_image
         self.restaurant_name = restaurant_name
-        self.restaurant_location = restaurant_location
+        self.location_name = location_name
         self.taste = taste
         self.profile_image = profile_image
-        self.username = username
+        self.name = name
         self.rating = rating
         self.descript = descript
     }
+    
+    /*
+     "name" : "hoo",
+     "food_name" : "Sate Kulit Kodok",
+     "restaurant_name" : "Sate Khas Senayan",
+     "food_image" : "no",
+     "rating" : "4",
+     "descript" : "pahit nya serasa ditinggalin dia :(",
+     "profile_image" : null,
+     "location_name" : "",
+     "taste" : "bitter"*/
     
     static func objectMapping() -> EKObjectMapping {
         return EKObjectMapping(
@@ -52,16 +62,15 @@ class TPResultModel : NSObject, EKMappingProtocol{
             with: {(mapping) in
                 mapping.mapProperties(from:
                     [
-                        "review_id",
-                        "descript",
-                        "taste",
-                        "rating",
-                        "food_image",
-                        "favorite_food",
-                        "food_id",
-                        "uid",
+                        "name",
                         "food_name",
-                        "restaurant_id"
+                        "restaurant_name",
+                        "food_image",
+                        "rating",
+                        "descript",
+                        "profile_image",
+                        "location_name",
+                        "taste"
                     ])
         })
     }

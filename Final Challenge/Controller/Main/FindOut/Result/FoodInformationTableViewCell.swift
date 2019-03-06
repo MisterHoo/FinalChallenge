@@ -20,6 +20,9 @@ class FoodInformationTableViewCell: UITableViewCell {
     @IBOutlet weak var foodName: UILabel!
     @IBOutlet weak var location: UILabel!
     @IBOutlet weak var match: UILabel!
+    @IBOutlet weak var taste: UILabel!
+    
+    
     
     var userAteDelegate : UserAteDelegate?
     

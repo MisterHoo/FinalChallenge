@@ -9,33 +9,32 @@
 import UIKit
 import EasyMapping
 
-class TPReviewListModel: NSObject, EKMappingProtocol{
-    @objc dynamic var TPReviewList = [TPReviewModel]()
+class TPFavoriteListModel: NSObject, EKMappingProtocol{
+    @objc dynamic var TPFavoriteList = [TPFavoriteModel]()
     
     static func objectMapping() -> EKObjectMapping {
         return EKObjectMapping(
             for: self,
             with: {(mapping) in
-                mapping.hasMany(TPReviewModel.self, forKeyPath: "content", forProperty: "TPReviewList")
+                mapping.hasMany(TPFavoriteModel.self, forKeyPath: "content", forProperty: "TPFavoriteList")
         })
     }
 }
 
-class TPReviewModel : NSObject, EKMappingProtocol{
-    @objc dynamic var restaurant_id = 0
-    @objc dynamic var descript = ""
-    @objc dynamic var rating = 0
-    @objc dynamic var taste = ""
+class TPFavoriteModel : NSObject, EKMappingProtocol{
     @objc dynamic var review_id = 0
-    @objc dynamic var food_name = ""
-    @objc dynamic var food_image = ""
-    @objc dynamic var favorite_food = false
-    @objc dynamic var uid = 0
     @objc dynamic var food_id = 0
-    @objc dynamic var location_name = ""
+    @objc dynamic var uid = 0
+    @objc dynamic var restaurant_id = 0
+    @objc dynamic var food_name = ""
     @objc dynamic var restaurant_name = ""
+    @objc dynamic var location_name = ""
+    @objc dynamic var taste = ""
+    @objc dynamic var rating = 0
     @objc dynamic var reviewDate = Date()
-    
+    @objc dynamic var favorite_food = false
+    @objc dynamic var descript = ""
+    @objc dynamic var food_image = ""
     
     convenience init(review_id : Int, descript : String, taste : String, rating : Int, food_image : String, favorite_food : Bool, food_id : Int, uid : Int, food_name : String, restaurant_id : Int, restaurant_name : String, location_name : String, reviewDate : Date) {
         self.init()

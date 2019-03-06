@@ -16,7 +16,6 @@ class BasicTaste : NSObject{
         self.name = name
         self.color = color
     }
-    
 }
 
 struct BasicTasteData{
