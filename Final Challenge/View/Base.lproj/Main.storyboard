@@ -1276,25 +1276,28 @@
                                                             <rect key="frame" x="108" y="0.0" width="235" height="100"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="-2" translatesAutoresizingMaskIntoConstraints="NO" id="VSX-Gu-ac1">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="87.333333333333329" height="35.666666666666664"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="86" height="35.666666666666664"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3z-is-ohf">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="87.333333333333329" height="19.333333333333332"/>
-                                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="food name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="be3-Rz-sSd">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="86" height="20"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="20" id="YzL-rb-ili"/>
+                                                                            </constraints>
                                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <textInputTraits key="textInputTraits" textContentType="name"/>
+                                                                        </textField>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="5Bl-RF-14p">
-                                                                            <rect key="frame" x="0.0" y="17.333333333333336" width="79.666666666666671" height="18.333333333333336"/>
+                                                                            <rect key="frame" x="0.0" y="18" width="79.666666666666671" height="17.666666666666671"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="at" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rqr-IS-LYq">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="14.333333333333334" height="18.333333333333332"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="14.333333333333334" height="17.666666666666668"/>
                                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H84-af-SCO">
-                                                                                    <rect key="frame" x="20.333333333333346" y="0.0" width="59.333333333333343" height="18.333333333333332"/>
+                                                                                    <rect key="frame" x="20.333333333333346" y="0.0" width="59.333333333333343" height="17.666666666666668"/>
                                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                     <nil key="highlightedColor"/>
@@ -1355,7 +1358,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <outlet property="foodName" destination="r3z-is-ohf" id="o0e-rU-lWz"/>
+                                            <outlet property="foodNameF" destination="be3-Rz-sSd" id="qVU-XR-byG"/>
                                             <outlet property="locationName" destination="H84-af-SCO" id="FbY-mI-Y5W"/>
                                             <outlet property="photoButton" destination="ZeT-S9-cXk" id="DlM-Fb-IgL"/>
                                             <outlet property="photoFromCamera" destination="u9C-j5-SLx" id="9Nk-H8-w1f"/>

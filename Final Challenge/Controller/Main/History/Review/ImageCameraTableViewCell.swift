@@ -16,8 +16,8 @@ class ImageCameraTableViewCell: UITableViewCell{
     
     
     @IBOutlet var starRating: [UIImageView]!
-    @IBOutlet weak var foodName: UILabel!
     @IBOutlet weak var locationName: UILabel!
+    @IBOutlet weak var foodNameF: UITextField!
     
     @IBOutlet weak var photoFromCamera: UIImageView!
     @IBOutlet weak var photoButton: UIButton!

@@ -122,7 +122,9 @@ class GiveReviewViewController: UIViewController {
         self.present(avoidedFood, animated: true, completion: nil)
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -241,7 +243,15 @@ extension GiveReviewViewController : UITableViewDelegate, UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "CameraTableCell") as! ImageCameraTableViewCell
             cell.selectionStyle = .none
             
-            cell.foodName.text = food_name
+            if let vcs = self.navigationController?.viewControllers{
+                let previousVC = vcs[vcs.count - 2]
+                if previousVC is FindOutViewController {
+                    cell.foodNameF.isUserInteractionEnabled = true
+                }
+                else {
+                    cell.isUserInteractionEnabled = false
+                }
+            }
             cell.locationName.text = "\(resto_name), \(location_name)"
             
             cell.cameraSystemDelegate = self
