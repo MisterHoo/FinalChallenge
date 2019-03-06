@@ -42,9 +42,10 @@ class TastePalUrl: NSObject {
     }
     
     static func GET_SUGGESTEDFOOD(lng : Float, lat : Float) -> String{
-        let lngString : String = String(lng).addingPercentEncoding(withAllowedCharacters: NSCharacterSet.decimalDigits)!
+        let characterset = CharacterSet(charactersIn: "-0123456789")
+        let lngString : String = String(lng).addingPercentEncoding(withAllowedCharacters: characterset)!
         
-        let latString : String = String(lat).addingPercentEncoding(withAllowedCharacters: NSCharacterSet.decimalDigits)!
+        let latString : String = String(lat).addingPercentEncoding(withAllowedCharacters: characterset)!
         
         let url : String = API_GET + "suggestedFood/" + lngString + "/" + latString
         return url

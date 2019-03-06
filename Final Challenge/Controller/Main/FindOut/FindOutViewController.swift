@@ -48,6 +48,7 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
     var restourantList:[RestourantStruct] = []
     var tempRestourantList:[RestourantStruct] = []
     var selectedFood: [String] = []
+    var restourantLoc: String?
     
     var tempFoodName: String?
     var tempFoodLoc: CLLocationCoordinate2D?
@@ -83,7 +84,7 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
         locationTouchable()
         setUpLocation()
         
-        
+        print(TastePalDataManager.uid)
         
         TastePalRequest.GET_TPTastePreference(uid: TastePalDataManager.uid, endPoint: "", successCompletion: { (TPTastePreference, message) in
             TastePalDataManager.TastePreference = TPTastePreference
@@ -162,6 +163,7 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
          }
      
      */
+    @IBAction func unwindToFO(segue:UIStoryboardSegue) { }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "FindOutToResult") {
@@ -184,8 +186,8 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
             //dest.food_name = tempFoodName!
             dest.from = "find out"
             //kurang resto nama & location name
-//            dest.resto_name =
-//            dest.location_name =
+            dest.resto_name = locationOutlet.text!
+            dest.location_name = restourantLoc!
             
         }
     }
@@ -295,6 +297,7 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
         search.start { (respons, error) in
             var count = 0
             for mapItem in (respons?.mapItems)! {
+                //search restourant location
                 print(mapItem.placemark.name)
                 count = count+1
                 let currentUserLocation = CLLocation(latitude: currLocation.latitude, longitude: currLocation.longitude)
@@ -311,32 +314,32 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
                 self.tempRestourantList = self.restourantList
                 self.restourantTableView.reloadData()
                 self.tempFoodLoc = mapItem.placemark.coordinate
-                
-                //API Suggested Food
-                
-                let lng : Float = Float(self.restourantList[0].coordinate.longitude)
-                let lat : Float = Float(self.restourantList[0].coordinate.latitude)
-                
-                TastePalRequest.GET_TPSuggestedFood(lng: lng, lat: lat, endPoint: "", successCompletion: { (SuggestedFood, message) in
-                    let suggestedList = SuggestedFood.TPSuggestedFoodList
-                    
-                    self.searchResult.removeAll()
-                    self.searchRestoId.removeAll()
-                    self.searchFoodId.removeAll()
-                    
-                    for food in suggestedList{
-                        self.foodData.append(FindOutViewController.foodDataStruct.init(name: food.food_name, id: food.food_id, restourantId: food.restaurant_id))
-                        self.searchResult.append(food.food_name)
-                        self.searchFoodId.append(food.food_id)
-                        self.searchRestoId.append(food.restaurant_id)
-                    }
-                    self.searchResult.sort()
-                    self.tableView.reloadData()
-                }) { (message) in
-                    print(message)
-                }
+                self.restourantLoc = mapItem.placemark.locality
+
             }
-            print(count)
+            //API Suggested Food
+            
+            let lng : Float = Float(self.restourantList[0].coordinate.longitude)
+            let lat : Float = Float(self.restourantList[0].coordinate.latitude)
+            
+            TastePalRequest.GET_TPSuggestedFood(lng: lng, lat: lat, endPoint: "", successCompletion: { (SuggestedFood, message) in
+                let suggestedList = SuggestedFood.TPSuggestedFoodList
+                
+                self.searchResult.removeAll()
+                self.searchRestoId.removeAll()
+                self.searchFoodId.removeAll()
+                
+                for food in suggestedList{
+                    self.foodData.append(FindOutViewController.foodDataStruct.init(name: food.food_name, id: food.food_id, restourantId: food.restaurant_id))
+                    self.searchResult.append(food.food_name)
+                    self.searchFoodId.append(food.food_id)
+                    self.searchRestoId.append(food.restaurant_id)
+                }
+                self.searchResult.sort()
+                self.tableView.reloadData()
+            }) { (message) in
+                print(message)
+            }
         }
     }
    
@@ -396,7 +399,6 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("tableView")
         if tableView == restourantTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "restourantCell") as! RestorantTableViewCell
             cell.restourantName.text = tempRestourantList[indexPath.row].name

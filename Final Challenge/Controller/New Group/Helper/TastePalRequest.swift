@@ -105,7 +105,6 @@ class TastePalRequest: NSObject {
         print(url)
         TastePalAPI.GET(url: url, /*header: headers,*/ showHUD: true, completion: {jsonData in
             let json = JSON(jsonData)
-            print(json)
             //            print(json["test"])
             if(json["status"].boolValue){
                 //                print(json["result"])
@@ -130,6 +129,7 @@ class TastePalRequest: NSObject {
                              failCompletion:@escaping (String) -> Void){
         //        let headers:HTTPHeaders = ["X-Api-Key":"883F72561AFD4FAEB3A20E814DE4881E"]
         let url = TastePalUrl.GET_TASTEPREFERENCE(uid: uid)
+        print(url)
         
         TastePalAPI.GET(url: url, /*header: headers,*/ showHUD: true, completion: {jsonData in
             let json = JSON(jsonData)
@@ -215,6 +215,25 @@ class TastePalRequest: NSObject {
         successCompletion:@escaping (TPPostReviewModel, String) -> Void,
         
         failCompletion:@escaping (String) -> Void){
+        
+//        let characterset = CharacterSet(charactersIn: "-0123456789")
+//        let lngString : String = String(lng).addingPercentEncoding(withAllowedCharacters: characterset)!
+//
+//        let latString : String = String(lat).addingPercentEncoding(withAllowedCharacters: characterset)!
+//
+//
+//
+//        print(desc)
+//        print(taste)
+//        print(rating)
+//        print(favorite_food)
+//        print(uid)
+//        print(lngString)
+//        print(latString)
+//        print(food_name)
+//        print(resto_name)
+//        print(resto_location)
+        
         let parameters:Parameters = ["descript":desc,
                                      "taste":taste,
                                      "rating":rating,
@@ -224,21 +243,22 @@ class TastePalRequest: NSObject {
                                      "lng":lng,
                                      "lat":lat,
                                      "food_name":food_name,
-                                     "resto_name":resto_name,
-                                     "resto_location":resto_location]
+                                     "restaurant_name":resto_name,
+                                     "restaurant_location":resto_location]
         //        let headers:HTTPHeaders = ["X-Api-Key":"883F72561AFD4FAEB3A20E814DE4881E"]
+        print(TastePalUrl.POST_REVIEW)
         TastePalAPI.POST(url: TastePalUrl.POST_REVIEW, /*header: headers,*/ parameter: parameters, showHUD: true,completion:{jsonData in
             let json = JSON(jsonData)
             print(json)
             
             if(json["status"].boolValue){
                 let user = EKMapper.object(
-                    fromExternalRepresentation: json["message"].dictionaryObject!,
+                    fromExternalRepresentation: json["result"].dictionaryObject!,
                     with: TPPostReviewModel.objectMapping()
                 )
-                successCompletion(user as! TPPostReviewModel,json["message"].stringValue)
+                successCompletion(user as! TPPostReviewModel,"Success")
             }else{
-                failCompletion(json["message"].stringValue)
+                failCompletion("Failed")
             }
         })
     }

@@ -19,6 +19,11 @@ class HistoryViewController: UIViewController {
     var selectRestoName = ""
     var selectLocationName = ""
     
+    @IBAction func unwindToHistory(segue:UIStoryboardSegue) {
+        self.tableView.reloadData()
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,7 +35,7 @@ class HistoryViewController: UIViewController {
         
         tableView.tableFooterView = UIView()
         
-        TastePalRequest.GET_TPReview(uid: TastePalDataManager.uid, endPoint: "", successCompletion: { (reviewList, message) in
+        TastePalRequest.GET_TPReview(uid: 1, endPoint: "", successCompletion: { (reviewList, message) in
             TastePalDataManager.Review = reviewList
             self.reviews = reviewList.TPReviewList
             print("Berhasil")
@@ -124,13 +129,13 @@ extension HistoryViewController : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if reviews[indexPath.row].rating == 0{
+//        if reviews[indexPath.row].rating == 0{
             selectReviewId = reviews[indexPath.row].review_id
             selectFoodName = reviews[indexPath.row].food_name
             selectRestoName = reviews[indexPath.row].restaurant_name
             selectLocationName = reviews[indexPath.row].location_name
             
             performSegue(withIdentifier: "HistoryToReview", sender: self)
-        }
+//        }
     }
 }

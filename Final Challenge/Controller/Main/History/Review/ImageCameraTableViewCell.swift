@@ -36,6 +36,7 @@ class ImageCameraTableViewCell: UITableViewCell{
         photoFromCamera.layer.cornerRadius = 4
         
         
+        
         starRating[0].isUserInteractionEnabled = true
         starRating[1].isUserInteractionEnabled = true
         starRating[2].isUserInteractionEnabled = true

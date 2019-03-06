@@ -40,6 +40,8 @@ class GiveReviewViewController: UIViewController {
     var selectTaste : String = ""
     var selectDesc : String = ""
     var selectFavourite : Bool = false
+    var selectFoodName : String = ""
+    
     var from : String = ""
     
 
@@ -47,11 +49,24 @@ class GiveReviewViewController: UIViewController {
         
         //selectedRating
         if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? ImageCameraTableViewCell{
+            selectFoodName = cell.foodNameF.text!
             selectRating = cell.selectedRating
         }
         
         if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 2)) as? GiveReviewDescTableViewCell{
             selectDesc = cell.userTextView.text
+        }
+        
+        if from == "find out"{
+            if selectFoodName == ""{
+                let alert = UIAlertController(title: "Please give the name of the food", message: nil, preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default) { (action) in
+                }
+                alert.addAction(action)
+                present(alert, animated: true) {
+                    
+                }
+            }
         }
         
         if selectRating == 0{
@@ -92,28 +107,30 @@ class GiveReviewViewController: UIViewController {
                 
                 let alert = UIAlertController(title: "Your submit had been recorded", message: nil, preferredStyle: .alert)
                 let action = UIAlertAction(title: "OK", style: .default) { (action) in
+                    self.performSegue(withIdentifier: "unwindToHistory", sender: self)
                 }
                 alert.addAction(action)
                 self.present(alert, animated: true) {
-                    self.dismiss(animated: true, completion: {
-                        
-                    })
+                    
                 }
             }) { (message) in
-                print(message);
+                print("Failed");
             }
         }else if from == "find out"{
-            
+            TastePalRequest.POST_REVIEW(desc: selectDesc, taste: selectTaste, rating: selectRating, food_image: "", favorite_food: selectFavourite, uid: TastePalDataManager.uid, lng: lng, lat: lat, food_name: selectFoodName, resto_name: resto_name, resto_location: location_name, successCompletion: { (PostReview, message) in
+                print(message)
+                let alert = UIAlertController(title: "Your submit had been recorded", message: nil, preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default) { (action) in
+                    self.performSegue(withIdentifier: "unwindToFo", sender: self)
+                }
+                alert.addAction(action)
+                self.present(alert, animated: true) {
+                    
+                }
+            }) { (message) in
+                print(message)
+            }
         }
-        
-        
-        
-//        TastePalRequest.POST_REGISTER(desc: <#T##String#>, taste: <#T##String#>, rating: <#T##Int#>, food_image: <#T##String#>, favorite_food: <#T##Bool#>, uid: <#T##Int#>, lng: <#T##Float#>, lat: <#T##Float#>, food_name: <#T##String#>, resto_name: <#T##String#>, resto_location: <#T##String#>, successCompletion: { (<#TPPostReviewModel#>, <#String#>) in
-//            <#code#>
-//        }) { (<#String#>) in
-//            <#code#>
-//        }
-        
         
     }
     
@@ -249,7 +266,8 @@ extension GiveReviewViewController : UITableViewDelegate, UITableViewDataSource{
                     cell.foodNameF.isUserInteractionEnabled = true
                 }
                 else {
-                    cell.isUserInteractionEnabled = false
+                    cell.foodNameF.isUserInteractionEnabled = false
+                    cell.foodNameF.text = food_name
                 }
             }
             cell.locationName.text = "\(resto_name), \(location_name)"
