@@ -434,7 +434,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KEn-QE-YVa">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KEn-QE-YVa">
                                 <rect key="frame" x="0.0" y="100" width="375" height="489"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -460,8 +460,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="restourantName" destination="rir-uW-tLK" id="4AZ-nw-vEN"/>
                                             <outlet property="restourantRange" destination="you-42-nYM" id="ElS-uh-38s"/>
@@ -2310,11 +2311,11 @@
             </objects>
             <point key="canvasLocation" x="1597.5999999999999" y="793.5960591133005"/>
         </scene>
-        <!--Nav Bar View Controller-->
+        <!--Profile-->
         <scene sceneID="daM-Id-2Wl">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SmY-jC-QPz" customClass="NavBarViewController" customModule="Final_Challenge" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="contacts" id="XiF-XS-cNE"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="Tab Profile" selectedImage="Tab Profile Selected" id="XiF-XS-cNE"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="6qA-aQ-kqF">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -2337,11 +2338,11 @@
             </objects>
             <point key="canvasLocation" x="1629.5999999999999" y="1622.6600985221676"/>
         </scene>
-        <!--Nav Bar View Controller-->
+        <!--Find Out-->
         <scene sceneID="s1v-Pr-edh">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fN9-qn-Iyf" customClass="NavBarViewController" customModule="Final_Challenge" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="search" id="BU3-QO-Rs2"/>
+                    <tabBarItem key="tabBarItem" title="Find Out" image="Tab FindOut" selectedImage="Tab FindOut Selected" id="BU3-QO-Rs2"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" largeTitles="YES" id="jp7-Qb-SOp">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
@@ -2375,9 +2376,13 @@
         <image name="Result Image Placeholder" width="375" height="180"/>
         <image name="StarGray" width="20" height="19"/>
         <image name="StarYellow" width="20" height="19"/>
+        <image name="Tab FindOut" width="25" height="25"/>
+        <image name="Tab FindOut Selected" width="25" height="25"/>
+        <image name="Tab Profile" width="25" height="25"/>
+        <image name="Tab Profile Selected" width="25" height="25"/>
         <image name="Tick" width="15" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="snE-Wi-0DN"/>
+        <segue reference="xGB-E1-xOX"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -39,17 +39,16 @@ class TastePreferenceFOTableViewCell: UITableViewCell {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        let totalWidth = collectionView.frame.width
-        let itemSize = totalWidth / CGFloat(tastePreferences.count)
-        let layout = UICollectionViewFlowLayout()
-//        layout.sectionInset = UIEdgeInsets(top: 12, left: 0, bottom: 4, right: 0)
-        layout.itemSize = CGSize(width: itemSize, height: 30)
-        
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
-        
-        collectionView.collectionViewLayout = layout
-        
+//        let totalWidth = collectionView.frame.width
+//        let itemSize = totalWidth / CGFloat(tastePreferences.count)
+//        let layout = UICollectionViewFlowLayout()
+//        //        layout.sectionInset = UIEdgeInsets(top: 12, left: 0, bottom: 4, right: 0)
+//        layout.itemSize = CGSize(width: itemSize, height: 30)
+//
+//        layout.minimumLineSpacing = 0
+//        layout.minimumInteritemSpacing = 0
+//
+//        collectionView.collectionViewLayout = layout
         
 //        let label = UILabel()
 //        label.text = "COBA - COBA"
@@ -91,7 +90,7 @@ class TastePreferenceFOTableViewCell: UITableViewCell {
             
             view.translatesAutoresizingMaskIntoConstraints = false
             
-            view.heightAnchor.constraint(equalToConstant:  baseRect.frame.height - 25).isActive = true
+            view.heightAnchor.constraint(equalToConstant:  baseRect.frame.height).isActive = true
             view.topAnchor.constraint(equalTo: baseRect.topAnchor, constant: 0).isActive = true
             let leadingConstraint = view.leadingAnchor.constraint(equalTo: baseRect.leadingAnchor, constant: indexLeading)
             leadingConstraint.isActive = true
@@ -119,6 +118,11 @@ class TastePreferenceFOTableViewCell: UITableViewCell {
             indexLeading = (CGFloat(baseWidth) - constant)
             indexTrailing -= view.frame.width
         }
+    }
+    
+    func reloadCollectionView(){
+        collectionView.reloadData()
+       
     }
     
     func makeTasteView(preference : TastePreference) -> UIView{
@@ -151,7 +155,7 @@ class TastePreferenceFOTableViewCell: UITableViewCell {
     }
 }
 
-extension TastePreferenceFOTableViewCell : UICollectionViewDelegate, UICollectionViewDataSource{
+extension TastePreferenceFOTableViewCell : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return tastePreferences.count
     }
@@ -164,5 +168,15 @@ extension TastePreferenceFOTableViewCell : UICollectionViewDelegate, UICollectio
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let totalWidth = collectionView.frame.width
+        let itemWidth = totalWidth / CGFloat(tastePreferences.count)
+        
+        let itemSize = CGSize(width: itemWidth - 10, height: 30)
+        
+        return itemSize
+    }
+    
     
 }

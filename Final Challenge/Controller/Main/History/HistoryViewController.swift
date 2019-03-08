@@ -35,16 +35,6 @@ class HistoryViewController: UIViewController {
         
         tableView.tableFooterView = UIView()
         
-        TastePalRequest.GET_TPReview(uid: 1, endPoint: "", successCompletion: { (reviewList, message) in
-            TastePalDataManager.Review = reviewList
-            self.reviews = reviewList.TPReviewList
-            print("Berhasil")
-            
-            self.tableView.reloadData()
-        }) { (message) in
-            print("Gagal")
-        }
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(showFilter))
         
         tableView.delegate = self
@@ -57,6 +47,18 @@ class HistoryViewController: UIViewController {
 //        let filterButtonAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
 //        UIBarButtonItem.appearance().setTitleTextAttributes(filterButtonAttributes , for: .normal)
 //    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        TastePalRequest.GET_TPReview(uid: TastePalDataManager.uid, endPoint: "", successCompletion: { (reviewList, message) in
+            TastePalDataManager.Review = reviewList
+            self.reviews = reviewList.TPReviewList
+            print("Berhasil")
+            
+            self.tableView.reloadData()
+        }) { (message) in
+            print("Gagal")
+        }
+    }
     
     @objc func showFilter(){
         print("Filter")

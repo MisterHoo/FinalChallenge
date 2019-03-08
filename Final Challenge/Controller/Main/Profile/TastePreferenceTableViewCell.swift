@@ -18,7 +18,7 @@ class TastePreferenceTableViewCell: UITableViewCell {
     @IBOutlet weak var baseRect: UIView!
     
     //    var tastePreference = TastePalData.user.tastePreferencexb
-    var tastePreferences : [TastePreference] = DummyFoodPreference.tastePreference
+    var tastePreferences : [TastePreference] = []
     
     @IBOutlet weak var buttonReTest: UIButton!
     
@@ -53,19 +53,6 @@ class TastePreferenceTableViewCell: UITableViewCell {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        
-        let totalWidth = collectionView.frame.width
-        print("Total nya segini bosque \(tastePreferences.count)")
-        
-        let itemSize = totalWidth / CGFloat(tastePreferences.count)
-        let layout = UICollectionViewFlowLayout()
-        //        layout.sectionInset = UIEdgeInsets(top: 12, left: 0, bottom: 4, right: 0)
-        layout.itemSize = CGSize(width: itemSize, height: 30)
-        
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
-        
-        collectionView.collectionViewLayout = layout
         
         //        let label = UILabel()
         //        label.text = "COBA - COBA"
@@ -105,7 +92,7 @@ class TastePreferenceTableViewCell: UITableViewCell {
             
             view.translatesAutoresizingMaskIntoConstraints = false
             
-            view.heightAnchor.constraint(equalToConstant:  baseRect.frame.height - 20).isActive = true
+            view.heightAnchor.constraint(equalToConstant:  baseRect.frame.height).isActive = true
             view.topAnchor.constraint(equalTo: baseRect.topAnchor, constant: 0).isActive = true
             let leadingConstraint = view.leadingAnchor.constraint(equalTo: baseRect.leadingAnchor, constant: indexLeading)
             leadingConstraint.isActive = true
@@ -166,7 +153,7 @@ class TastePreferenceTableViewCell: UITableViewCell {
 
 }
 
-extension TastePreferenceTableViewCell : UICollectionViewDataSource, UICollectionViewDelegate{
+extension TastePreferenceTableViewCell : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return tastePreferences.count
     }
@@ -180,6 +167,15 @@ extension TastePreferenceTableViewCell : UICollectionViewDataSource, UICollectio
         return cell
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let totalWidth = collectionView.frame.width
+        
+        let itemWidth = totalWidth / CGFloat(tastePreferences.count)
+        let layout = UICollectionViewFlowLayout()
+        //        layout.sectionInset = UIEdgeInsets(top: 12, left: 0, bottom: 4, right: 0)
+        let itemSize = CGSize(width: itemWidth - 10, height: 30)
+        
+        return itemSize
+    }
     
 }
