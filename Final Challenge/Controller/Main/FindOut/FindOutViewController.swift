@@ -241,7 +241,9 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
         
         return uniqueRestourants
     }
+    //MARK: setup clLocation
     func setUpLocation(){
+         locationManager.delegate = self
         let authorization = CLLocationManager.authorizationStatus()
         if authorization == .notDetermined{
             locationManager.requestWhenInUseAuthorization()
@@ -252,7 +254,6 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
             print("Location denied")
         }else{
             if CLLocationManager.locationServicesEnabled(){
-                locationManager.delegate = self
                 locationManager.distanceFilter = 100.0
                 locationManager.desiredAccuracy = kCLLocationAccuracyBest
                 locationManager.startUpdatingLocation()
@@ -264,6 +265,16 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
             }
         }
        
+    }
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .denied {
+            let alert = UIAlertController(title: "Alert", message: "plese turn on location", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            print("Plese enable location")
+        }else {
+            setUpLocation()
+        }
     }
     // update when user change location
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
