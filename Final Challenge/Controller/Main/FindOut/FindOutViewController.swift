@@ -39,7 +39,7 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
     //variable
     let notificationFeddback = UINotificationFeedbackGenerator()
     var searching: Bool = false
-    var searchResult: [String] = ["Nasi Bebek Goreng","Nasi Ayam Goreng","Teromg Bakar","Perkedel Jagung","Ayam Goreng"]
+    var searchResult: [String] = []
     var searchFoodId : [Int] = []
     var searchRestoId : [Int] = []
     var searchTemp: [String] = []
@@ -120,6 +120,8 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
             }
             print(message)
             
+            TastePalDataManager.LocalTastePreference = self.tastePreferences
+            
             for taste in self.tastePreferences{
                 print(taste.type?.rawValue)
                 print(taste.value)
@@ -183,6 +185,8 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
         }else if let dest = segue.destination as? GiveReviewViewController{
             dest.lng = Float((tempFoodLoc?.longitude)!)
             dest.lat = Float((tempFoodLoc?.latitude)!)
+            print(tempFoodLoc?.longitude)
+            print(tempFoodLoc?.latitude)
             //dest.food_name = tempFoodName!
             dest.from = "find out"
             //kurang resto nama & location name
@@ -313,7 +317,7 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
                 self.restourantList = self.unique(restourants: self.restourantList)
                 self.tempRestourantList = self.restourantList
                 self.restourantTableView.reloadData()
-                self.tempFoodLoc = mapItem.placemark.coordinate
+                
                 self.restourantLoc = mapItem.placemark.locality
 
             }
@@ -322,8 +326,13 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
             let lng : Float = Float(self.restourantList[0].coordinate.longitude)
             let lat : Float = Float(self.restourantList[0].coordinate.latitude)
             
+            self.tempFoodLoc = self.restourantList[0].coordinate
+            
             TastePalRequest.GET_TPSuggestedFood(lng: lng, lat: lat, endPoint: "", successCompletion: { (SuggestedFood, message) in
                 let suggestedList = SuggestedFood.TPSuggestedFoodList
+                
+                print("longitude : \(lng)")
+                print("latitude : \(lat)")
                 
                 self.searchResult.removeAll()
                 self.searchRestoId.removeAll()
@@ -403,6 +412,7 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "restourantCell") as! RestorantTableViewCell
             cell.restourantName.text = tempRestourantList[indexPath.row].name
             cell.restourantRange.text = String(format: "%.2f", tempRestourantList[indexPath.row].distance)+" KM"
+            
             return cell
         }else {
             if searching {
@@ -442,8 +452,14 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
                     cell.reset()
                     cell.tastePreferences = tastePreferences
                     cell.selectionStyle = .none
-                    if(cell.baseRect.subviews.count == 0){
-                        cell.animateView()
+                    
+                    print(tastePreferences.count)
+                    
+                    if tastePreferences.count > 0{
+                        if(cell.baseRect.subviews.count == 0){
+                            cell.animateView()
+                            cell.reloadCollectionView()
+                        }
                     }
                     
                     return cell
@@ -492,14 +508,19 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
             let lng : Float = Float((tempFoodLoc?.longitude)!)
             let lat : Float = Float((tempFoodLoc?.latitude)!)
             
-            TastePalRequest.GET_TPSuggestedFood(lng: lng, lat: lat, endPoint: "", successCompletion: { (SuggestedFood, message) in
-                let suggestedList = SuggestedFood.TPSuggestedFoodList
+            TastePalRequest.GET_TPSuggestedFood(lng: lng, lat: lat, endPoint: "", successCompletion: { (suggestedFood, message) in
+                let suggestedList = suggestedFood.TPSuggestedFoodList
+                
+                print("longitude : \(lng)")
+                print("latitude : \(lat)")
                 
                 self.searchResult.removeAll()
                 
                 self.searchResult.removeAll()
                 self.searchRestoId.removeAll()
                 self.searchFoodId.removeAll()
+                
+                print("jumlah : \(suggestedList.count)")
                 
                 for food in suggestedList{
                     self.foodData.append(FindOutViewController.foodDataStruct.init(name: food.food_name, id: food.food_id, restourantId: food.restaurant_id))

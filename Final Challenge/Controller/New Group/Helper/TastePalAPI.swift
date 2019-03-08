@@ -79,7 +79,7 @@ class TastePalAPI: NSObject {
     static func POST_WITH_UPLOAD_IMAGE(
         url:String,
         parameter:Parameters,
-        imageFile:UIImage,
+        imageFile:UIImage?,
         imageFileName:String,
         imageParameter:String,
         showHUD:Bool,
@@ -87,25 +87,43 @@ class TastePalAPI: NSObject {
         if(showHUD){
             SVProgressHUD.show(withStatus: "Please wait...")
         }
-        Alamofire.upload(multipartFormData: { (multipartFormData) in
-            multipartFormData.append(
-                imageFile.jpegData(compressionQuality: 0.5)!,
-                //                UIImageJPEGRepresentation(imageFile, 0.5)!,
-                withName: imageParameter,
-                fileName: imageFileName,
-                mimeType: "image/jpeg")
-            for (key, value) in parameter {
-                multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key)
-            }
-        }, to:url){ (result) in
-            switch result {
-            case .success(let upload, _, _):
-                upload.responseJSON { response in
-                    completion(response.result.value!)
+        
+        if let image = imageFile as? UIImage{
+            Alamofire.upload(multipartFormData: { (multipartFormData) in
+                multipartFormData.append(
+                    image.jpegData(compressionQuality: 0.5)!,
+                    //                UIImageJPEGRepresentation(imageFile, 0.5)!,
+                    withName: imageParameter,
+                    fileName: imageFileName,
+                    mimeType: "image/jpeg")
+                for (key, value) in parameter {
+                    multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key)
                 }
-            case .failure( _):
-                SVProgressHUD.dismiss()
-                TastePalAlert.show(message: "Your internet connection have a problem")
+            }, to:url){ (result) in
+                switch result {
+                case .success(let upload, _, _):
+                    upload.responseJSON { response in
+                        completion(response.result.value!)
+                    }
+                case .failure( _):
+                    SVProgressHUD.dismiss()
+                    TastePalAlert.show(message: "Your internet connection have a problem")
+                }
+            }
+        }else{
+            Alamofire.request(
+                URL(string: url)!,
+                method: .post,
+                parameters: parameter,
+                encoding: URLEncoding.default/*,
+                 headers: header*/).responseJSON { (response) in
+                    if response.result.isSuccess {
+                        SVProgressHUD.dismiss()
+                        completion(response.result.value!)
+                    }else{
+                        SVProgressHUD.dismiss()
+                        TastePalAlert.show(message: "Your internet connection have a problem")
+                    }
             }
         }
     }

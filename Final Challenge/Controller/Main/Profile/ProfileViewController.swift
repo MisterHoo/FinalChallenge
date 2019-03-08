@@ -16,7 +16,7 @@ class ProfileViewController: UIViewController {
     var screenHeight = UIScreen.main.bounds.height
     
     var userImage = TastePalIcon.profileImage
-    var userName = "Justine"
+    var userName = "User"
     
     @IBOutlet weak var headerPicture: UIImageView!
     @IBOutlet weak var headerName: UILabel!
@@ -25,6 +25,8 @@ class ProfileViewController: UIViewController {
     @IBAction func editProfileTapped(_ sender: Any) {
         performSegue(withIdentifier: "toEditProfilePage", sender: self)
     }
+    
+    var tastePreferences : [TastePreference] = []
     
     var favoriteFoodList : [TPFavoriteModel] = []
     
@@ -46,18 +48,7 @@ class ProfileViewController: UIViewController {
         headerPicture.image = userImage
         headerName.text = "Hi \(userName),"
         
-        TastePalRequest.GET_TPFavoriteFood(uid: TastePalDataManager.uid, endPoint: "", successCompletion: { (favoriteList, message) in
-            TastePalDataManager.FavoriteFoodList = favoriteList
-            self.favoriteFoodList = favoriteList.TPFavoriteList
-            
-            print("FAVORITE FOOD : \(self.favoriteFoodList.count)")
-            
-            
-            self.tableView.reloadData()
-        }) { (message) in
-            print(message)
-        }
-        
+        tableView.tableFooterView = UIView()
         
         
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editProfile))
@@ -76,7 +67,75 @@ class ProfileViewController: UIViewController {
 //
 //        navigationView.layoutIfNeeded()
         
-        tableView.tableFooterView = UIView()
+        
+        
+        TastePalRequest.GET_TPTastePreference(uid: TastePalDataManager.uid, endPoint: "", successCompletion: { (TPTastePreference, message) in
+            TastePalDataManager.TastePreference = TPTastePreference
+            
+            
+            
+            let tpModel = TPTastePreference
+            
+            print(tpModel.first_taste)
+            
+            if tpModel.first_taste != ""{
+                self.tastePreferences.append(self.createTastePreference(type: tpModel.first_taste, value: tpModel.first_value))
+            }
+            
+            if tpModel.second_taste != ""{
+                self.tastePreferences.append(self.createTastePreference(type: tpModel.second_taste, value: tpModel.second_value))
+            }
+            
+            if tpModel.third_taste != ""{
+                self.tastePreferences.append(self.createTastePreference(type: tpModel.third_taste, value: tpModel.third_value))
+            }
+            
+            if tpModel.fourth_taste != ""{
+                self.tastePreferences.append(self.createTastePreference(type: tpModel.fourth_taste, value: tpModel.fourth_value))
+            }
+            
+            if tpModel.fifth_taste != ""{
+                self.tastePreferences.append(self.createTastePreference(type: tpModel.fifth_taste, value: tpModel.fifth_value))
+            }
+            
+            if tpModel.sixth_taste != ""{
+                self.tastePreferences.append(self.createTastePreference(type: tpModel.sixth_taste, value: tpModel.sixth_value))
+            }
+            print(message)
+            
+            TastePalDataManager.LocalTastePreference = self.tastePreferences
+            
+            for taste in self.tastePreferences{
+                print(taste.type?.rawValue)
+                print(taste.value)
+            }
+            
+            self.tableView.reloadData()
+        }) { (message) in
+            print(message)
+        }
+        
+        // Do any additional setup after loading the view.
+    }
+
+    
+    func createTastePreference(type : String, value : Float) -> TastePreference{
+        
+        if type == "Sweet"{
+            return TastePreference(type: .sweet, value: value)
+        }else if type == "Savoury"{
+            return TastePreference(type: .savoury, value: value)
+        }else if type == "Sour"{
+            return TastePreference(type: .sour, value: value)
+        }else if type == "Salty"{
+            return TastePreference(type: .salty, value: value)
+        }else if type == "Bitter"{
+            return TastePreference(type: .bitter, value: value)
+        }else if type == "Bland"{
+            return TastePreference(type: .bland, value: value)
+        }else{
+            return TastePreference(type: .bitter, value: 0)
+        }
     }
     
 //    @objc func editProfile(){
@@ -140,6 +199,18 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool){
         navigationController?.navigationBar.isHidden = true
+        
+        TastePalRequest.GET_TPFavoriteFood(uid: TastePalDataManager.uid, endPoint: "", successCompletion: { (favoriteList, message) in
+            TastePalDataManager.FavoriteFoodList = favoriteList
+            self.favoriteFoodList = favoriteList.TPFavoriteList
+            
+            print("FAVORITE FOOD : \(self.favoriteFoodList.count)")
+            
+            
+            self.tableView.reloadData()
+        }) { (message) in
+            print(message)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -182,10 +253,14 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource{
             tableView.separatorStyle = .none
             cell.reset()
             cell.selectionStyle = .none
+            cell.tastePreferences = tastePreferences
             
             cell.retestDelegate = self
-            if(cell.baseRect.subviews.count == 0){
-                cell.animateView()
+            if tastePreferences.count > 0{
+                if(cell.baseRect.subviews.count == 0){
+                    cell.animateView()
+                    cell.collectionView.reloadData()
+                }
             }
             
             return cell
@@ -224,7 +299,11 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource{
 
 extension ProfileViewController: UICollectionViewDataSource, UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        if favoriteFoodList.count > 2{
+            return 2
+        }else{
+            return favoriteFoodList.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

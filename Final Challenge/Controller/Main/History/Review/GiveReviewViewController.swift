@@ -12,7 +12,6 @@ class GiveReviewViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var reviewToSubmit = ""
-    var takenPhoto : UIImage?
     var avoidedFood: [String] = []
     
     var reviews : [Review] = []
@@ -41,16 +40,49 @@ class GiveReviewViewController: UIViewController {
     var selectDesc : String = ""
     var selectFavourite : Bool = false
     var selectFoodName : String = ""
+    var selectImage : UIImage?
     
     var from : String = ""
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        print("history long : \(lng)")
+        print("history lat : \(lat)")
+        
+        view.backgroundColor = TastePalColor.charcoal
+        
+        navigationItem.title = "Review"
+        navigationItem.largeTitleDisplayMode = .never
+        //benerin right bar button item
+        favoriteButton = UIBarButtonItem(image: TastePalIcon.heartEmpty, style: .done, target: self, action: #selector(favoriteFood))
+        
+        navigationItem.rightBarButtonItem = favoriteButton
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.allowsSelection = false
+        tableView.keyboardDismissMode = .onDrag
+        
+        //set button submit
+        
+        submitButton.layer.cornerRadius = 4
+        //        submitButton.backgroundColor = TastePalColor.olive
+        
+        // Do any additional setup after loading the view.
+    }
+    
     @IBAction func submitAction(_ sender: Any) {
         
         //selectedRating
         if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? ImageCameraTableViewCell{
             selectFoodName = cell.foodNameF.text!
             selectRating = cell.selectedRating
+            selectImage = imageCamera
         }
         
         if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 2)) as? GiveReviewDescTableViewCell{
@@ -66,8 +98,21 @@ class GiveReviewViewController: UIViewController {
                 present(alert, animated: true) {
                     
                 }
+                
+                return
             }
         }
+        
+//        if selectImage == TastePalIcon.historyImage{
+//            let alert = UIAlertController(title: "Please give Image", message: nil, preferredStyle: .alert)
+//            let action = UIAlertAction(title: "OK", style: .default) { (action) in
+//            }
+//            alert.addAction(action)
+//            present(alert, animated: true) {
+//
+//            }
+//            return
+//        }
         
         if selectRating == 0{
             //out
@@ -78,6 +123,8 @@ class GiveReviewViewController: UIViewController {
             present(alert, animated: true) {
                 
             }
+            return
+        
         }
         
         if selectDesc == ""{
@@ -89,6 +136,7 @@ class GiveReviewViewController: UIViewController {
             present(alert, animated: true) {
                 
             }
+            return
         }
         
         if selectTaste == ""{
@@ -100,12 +148,12 @@ class GiveReviewViewController: UIViewController {
             present(alert, animated: true) {
                 
             }
+            return
         }
         
         if from == "history"{
-            TastePalRequest.POST_UPDATEREVIEW(review_id: reviewId, descript: selectDesc, taste: selectTaste, rating: selectRating, food_image: "", favorite_food: String(selectFavourite), successCompletion: { (UpdateModel, message) in
-                
-                let alert = UIAlertController(title: "Your submit had been recorded", message: nil, preferredStyle: .alert)
+            TastePalRequest.POST_UPDATEREVIEW(review_id: reviewId, descript: selectDesc, taste: selectTaste, rating: selectRating, food_image: "", food_image_name: "nama Makanan", food_paramter: "a", favorite_food: String(selectFavourite), successCompletion: { (UpdateModel, message) in
+                let alert = UIAlertController(title: "Your review has been submitted", message: nil, preferredStyle: .alert)
                 let action = UIAlertAction(title: "OK", style: .default) { (action) in
                     self.performSegue(withIdentifier: "unwindToHistory", sender: self)
                 }
@@ -119,7 +167,9 @@ class GiveReviewViewController: UIViewController {
         }else if from == "find out"{
             TastePalRequest.POST_REVIEW(desc: selectDesc, taste: selectTaste, rating: selectRating, food_image: "", favorite_food: selectFavourite, uid: TastePalDataManager.uid, lng: lng, lat: lat, food_name: selectFoodName, resto_name: resto_name, resto_location: location_name, successCompletion: { (PostReview, message) in
                 print(message)
-                let alert = UIAlertController(title: "Your submit had been recorded", message: nil, preferredStyle: .alert)
+                print(self.lng)
+                print(self.lat)
+                let alert = UIAlertController(title: "Your review has been submitted", message: nil, preferredStyle: .alert)
                 let action = UIAlertAction(title: "OK", style: .default) { (action) in
                     self.performSegue(withIdentifier: "unwindToFo", sender: self)
                 }
@@ -131,7 +181,6 @@ class GiveReviewViewController: UIViewController {
                 print(message)
             }
         }
-        
     }
     
     @IBAction func addButton(_ sender: Any) {
@@ -139,33 +188,7 @@ class GiveReviewViewController: UIViewController {
         self.present(avoidedFood, animated: true, completion: nil)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        view.backgroundColor = TastePalColor.charcoal
-        
-        navigationItem.title = "Review"
-        navigationItem.largeTitleDisplayMode = .never
-        //benerin right bar button item
-        favoriteButton = UIBarButtonItem(image: TastePalIcon.heartEmpty, style: .done, target: self, action: #selector(favoriteFood))
-        
-        navigationItem.rightBarButtonItem = favoriteButton
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        tableView.allowsSelection = false
-        
-        //set button submit
-        
-        submitButton.layer.cornerRadius = 4
-//        submitButton.backgroundColor = TastePalColor.olive
-        
-        // Do any additional setup after loading the view.
-    }
+   
     
     @objc func favoriteFood(){
         
@@ -402,8 +425,8 @@ extension GiveReviewViewController : CameraSystemDelegate, UINavigationControlle
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage{
-            
-            takenPhoto = image
+
+            imageCamera = image
             print(info[UIImagePickerController.InfoKey.imageURL])
             print(image.size)
             
