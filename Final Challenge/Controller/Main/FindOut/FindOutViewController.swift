@@ -342,11 +342,18 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
                 
                 for food in suggestedList{
                     self.foodData.append(FindOutViewController.foodDataStruct.init(name: food.food_name, id: food.food_id, restourantId: food.restaurant_id))
+                    self.foodData.sort(by: { (rhs, lhs) -> Bool in
+                        return rhs.name < lhs.name
+                    })
                     self.searchResult.append(food.food_name)
                     self.searchFoodId.append(food.food_id)
                     self.searchRestoId.append(food.restaurant_id)
                 }
-                self.searchResult.sort()
+                for index in self.foodData{
+                    self.searchResult.append(index.name)
+                    self.searchFoodId.append(index.id)
+                    self.searchRestoId.append(index.restourantId)
+                }
                 self.tableView.reloadData()
             }) { (message) in
                 print(message)
@@ -514,12 +521,18 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
                 
                 for food in suggestedList{
                     self.foodData.append(FindOutViewController.foodDataStruct.init(name: food.food_name, id: food.food_id, restourantId: food.restaurant_id))
+                    self.foodData.sort(by: { (rhs, lhs) -> Bool in
+                        return rhs.name < lhs.name
+                    })
                     self.searchResult.append(food.food_name)
                     self.searchFoodId.append(food.food_id)
                     self.searchRestoId.append(food.restaurant_id)
                 }
-            
-                self.searchResult.sort()
+                for index in self.foodData{
+                    self.searchResult.append(index.name)
+                    self.searchFoodId.append(index.id)
+                    self.searchRestoId.append(index.restourantId)
+                }
                 self.tableView.reloadData()
             }) { (message) in
                 print(message)
