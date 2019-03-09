@@ -309,7 +309,11 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
         request.region = MKCoordinateRegion(center: currLocation, latitudinalMeters: 10, longitudinalMeters: 10)
         
         let search = MKLocalSearch(request: request)
-        search.start { (respons, error) in
+        search.start { [weak self](respons, error) in
+            guard error == nil else {
+                print(error)
+                return
+            }
             var count = 0
             for mapItem in (respons?.mapItems)! {
                 //search restourant location
@@ -319,25 +323,25 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
                 let landMarkLocation = CLLocation(latitude: mapItem.placemark.coordinate.latitude, longitude:  mapItem.placemark.coordinate.longitude)
                 let distanceInKM = (currentUserLocation.distance(from: landMarkLocation))/1000
 //                self.distance.append(Int(distanceInMeters))
-                self.restourantList.append(RestourantStruct(name: mapItem.name!, distance: distanceInKM, coordinate: mapItem.placemark.coordinate))
-                self.restourantList = self.restourantList.sorted(by: { (p1, p2) -> Bool in
+                self!.restourantList.append(RestourantStruct(name: mapItem.name!, distance: distanceInKM, coordinate: mapItem.placemark.coordinate))
+                self!.restourantList = self!.restourantList.sorted(by: { (p1, p2) -> Bool in
                     return p1.distance < p2.distance
                 })
-                self.locationOutlet.text = self.restourantList[0].name
+                self!.locationOutlet.text = self!.restourantList[0].name
                 
-                self.restourantList = self.unique(restourants: self.restourantList)
-                self.tempRestourantList = self.restourantList
-                self.restourantTableView.reloadData()
+                self!.restourantList = self!.unique(restourants: self!.restourantList)
+                self!.tempRestourantList = self!.restourantList
+                self!.restourantTableView.reloadData()
                 
-                self.restourantLoc = mapItem.placemark.locality
+                self!.restourantLoc = mapItem.placemark.locality
 
             }
             //API Suggested Food
             
-            let lng : Float = Float(self.restourantList[0].coordinate.longitude)
-            let lat : Float = Float(self.restourantList[0].coordinate.latitude)
+            let lng : Float = Float(self!.restourantList[0].coordinate.longitude)
+            let lat : Float = Float(self!.restourantList[0].coordinate.latitude)
             
-            self.tempFoodLoc = self.restourantList[0].coordinate
+            self!.tempFoodLoc = self!.restourantList[0].coordinate
             
             TastePalRequest.GET_TPSuggestedFood(lng: lng, lat: lat, endPoint: "", successCompletion: { (SuggestedFood, message) in
                 let suggestedList = SuggestedFood.TPSuggestedFoodList
@@ -345,25 +349,25 @@ class FindOutViewController: UIViewController, CLLocationManagerDelegate{
                 print("longitude : \(lng)")
                 print("latitude : \(lat)")
                 
-                self.searchResult.removeAll()
-                self.searchRestoId.removeAll()
-                self.searchFoodId.removeAll()
+                self!.searchResult.removeAll()
+                self!.searchRestoId.removeAll()
+                self!.searchFoodId.removeAll()
                 
                 for food in suggestedList{
-                    self.foodData.append(FindOutViewController.foodDataStruct.init(name: food.food_name, id: food.food_id, restourantId: food.restaurant_id))
-                    self.foodData.sort(by: { (rhs, lhs) -> Bool in
+                    self!.foodData.append(FindOutViewController.foodDataStruct.init(name: food.food_name, id: food.food_id, restourantId: food.restaurant_id))
+                    self!.foodData.sort(by: { (rhs, lhs) -> Bool in
                         return rhs.name < lhs.name
                     })
-                    self.searchResult.append(food.food_name)
-                    self.searchFoodId.append(food.food_id)
-                    self.searchRestoId.append(food.restaurant_id)
+                    self!.searchResult.append(food.food_name)
+                    self!.searchFoodId.append(food.food_id)
+                    self!.searchRestoId.append(food.restaurant_id)
                 }
-                for index in self.foodData{
-                    self.searchResult.append(index.name)
-                    self.searchFoodId.append(index.id)
-                    self.searchRestoId.append(index.restourantId)
+                for index in self!.foodData{
+                    self!.searchResult.append(index.name)
+                    self!.searchFoodId.append(index.id)
+                    self!.searchRestoId.append(index.restourantId)
                 }
-                self.tableView.reloadData()
+                self!.tableView.reloadData()
             }) { (message) in
                 print(message)
             }
@@ -436,7 +440,6 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
             if searching {
                 if searchTemp.count == 0 {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "addNewFood")
-                    print("keprint bangke")
                     return cell!
                 }else {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "searchedFood") as! FoodSearchTableViewCell
@@ -554,6 +557,8 @@ extension FindOutViewController : UITableViewDelegate, UITableViewDataSource{
                     self.searchFoodId.append(index.id)
                     self.searchRestoId.append(index.restourantId)
                 }
+                print("check search result")
+                print(self.searchResult)
                 self.tableView.reloadData()
             }) { (message) in
                 print(message)

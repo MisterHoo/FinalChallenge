@@ -165,6 +165,8 @@ class GiveReviewViewController: UIViewController {
                 print("Failed");
             }
         }else if from == "find out"{
+            let lngS = String(lng)
+            let latS = String(lat)
             TastePalRequest.POST_REVIEW(desc: selectDesc, taste: selectTaste, rating: selectRating, food_image: "", favorite_food: selectFavourite, uid: TastePalDataManager.uid, lng: lng, lat: lat, food_name: selectFoodName, resto_name: resto_name, resto_location: location_name, successCompletion: { (PostReview, message) in
                 print(message)
                 print(self.lng)
